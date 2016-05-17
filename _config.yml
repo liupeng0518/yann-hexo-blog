@@ -72,3 +72,8 @@ deploy:
   repo: git@github.com:yannxia/hexo.git
   branch: gh-pages
   message: Updated
+deploy:
+  type: git
+  repo: git@git.coding.net:yann/hexo.git
+  branch: gh-pages
+  message: Updated
