@@ -8,3 +8,11 @@ tags: docker daocloud ci lighttpd
 
 
 静态博客的核心就在于整个生成的网站是全静态，没有任何与服务器交互的部分，所以服务器只要提供HTTP服务即可，所以可以部署在Github, Coding, BAE最便宜的静态实例之上。这些都是网上的教程很多，大家百度一波就好了，就在我把自己的HEXO博客挂在BAE的静态实例之上，就在考虑为什么不把博客放在Daoclou之上呢，Docker的容器化简直是现在是最火的方向。
+
+整理下思路，大致上也就是
+
+1. Step 1 ：打包一个Http server
+2. Step 2 ：把Pages放进web目录
+3. Step 3 ：启动服务器
+
+思路搞清楚，那我们就开始搞起来吧，
