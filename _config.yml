@@ -12,7 +12,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://blog.yannxia.info
+url: http://g.yannxia.info
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -65,14 +65,27 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: maupassant
 
+disqus_shortname: zAmIRiTPCE
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
+
+# Git deploy
+## https://github.com/hexojs/hexo-deployer-git
 deploy:
   type: git
-  repo: git@github.com:yannxia/hexo.git
-  branch: gh-pages
   message: Updated
-  
+  repo:
+    github: git@github.com:yannxia/hexo.git,gh-pages
+    coding: git@git.coding.net:yann/hexo.git,gh-pages
+    coding-2: git@git.coding.net:yann/my-blog-page.git,master
+    bae: https://git.duapp.com/appidb2814744p0,master
+# deploy:
+#   type: git
+#   repo: git@github.com:yannxia/hexo.git
+#   branch: gh-pages
+#   message: Updated
+
   # type: git
   # repo: git@git.coding.net:yann/hexo.git
   # branch: gh-pages
