@@ -78,7 +78,7 @@ deploy:
   repo:
     github: git@github.com:yannxia/hexo.git,gh-pages
     coding: git@git.coding.net:yann/hexo.git,gh-pages
-    coding-2: git@git.coding.net:yann/my-blog-page.git,master
+    # coding-2: git@git.coding.net:yann/my-blog-page.git,master
     bae: https://git.duapp.com/appidb2814744p0,master
 # deploy:
 #   type: git
