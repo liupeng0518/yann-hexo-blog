@@ -1,5 +1,5 @@
 ---
-title: spring-convert
+title: spring-convert-(基本结构)
 date: 2016-12-13 16:43:18
 tags: Spring Java
 ---
@@ -74,7 +74,7 @@ public interface ConversionService {
 
 先立FLAG，根据我对源码的了解，肯定有一个类似于[keyCovertInstantConcurrentHashMap](https://github.com/yannxia/chameleon/blob/master/src/main/java/info/yannxia/java/chameleon/AbstractConvertFactory.java) 的东西作为一个核心容器。
 
-[Flag](http://ww2.sinaimg.cn/large/759074fcjw1f0d87evnxdj21bc0qo0ws.jpg)
+![Flag](http://ww2.sinaimg.cn/large/759074fcjw1f0d87evnxdj21bc0qo0ws.jpg)
 
 看代码，老司机告诉你们一个真理，从第一行往下看是不明智的，从调用端入口看，那才是明智之选。
 所以我们先从convert这个最核心的方法看起来。
@@ -131,4 +131,63 @@ private GenericConverter getRegisteredConverter(TypeDescriptor sourceType,
 		}
 ```
 从代码上，我们就发现了，this.converters 和 this.globalConverters 这两个就是整个转换的核心所在。
+看下比较核心的converters的声明
 
+```java
+private final Set<GenericConverter> globalConverters = new LinkedHashSet<GenericConverter>();
+private final Map<ConvertiblePair, ConvertersForPair> converters =
+				new LinkedHashMap<ConvertiblePair, ConvertersForPair>(36);
+```
+
+上面立的那个Flag算是成功了解围了，的确是一个HashMap，不过实际是一个LinkedHashMap。
+那我继续看啊···ConvertiblePair是个什么鬼东西
+
+
+```java
+final class ConvertiblePair {
+		private final Class<?> sourceType;
+		private final Class<?> targetType;
+
+		public ConvertiblePair(Class<?> sourceType, Class<?> targetType) {
+			Assert.notNull(sourceType, "Source type must not be null");
+			Assert.notNull(targetType, "Target type must not be null");
+			this.sourceType = sourceType;
+			this.targetType = targetType;
+		}
+		@Override
+		public int hashCode() {
+			return (this.sourceType.hashCode() * 31 + this.targetType.hashCode());
+		}
+	}
+```
+那我们找到了这个Key，这个设计，正如我之前变色龙中所声明 [ConvertKey](https://github.com/yannxia/chameleon/blob/master/src/main/java/info/yannxia/java/chameleon/ConvertKey.java)极为的类似。
+
+不过Spring的Value就是复杂了些，
+
+```java
+private static class ConvertersForPair {
+
+	private final LinkedList<GenericConverter> converters = new LinkedList<GenericConverter>();
+
+	public void add(GenericConverter converter) {
+		this.converters.addFirst(converter);
+	}
+
+	public GenericConverter getConverter(TypeDescriptor sourceType, TypeDescriptor targetType) {
+		for (GenericConverter converter : this.converters) {
+			if (!(converter instanceof ConditionalGenericConverter) ||
+					((ConditionalGenericConverter) converter).matches(sourceType, targetType)) {
+				return converter;
+			}
+		}
+		return null;
+	}
+}
+```
+我们从这里getConverter方法，可以看出，通过S和T的类型描述去获得真正的转换器。举个例子
+
+```java
+DefaultConversionService defaultConversionService = new DefaultConversionService();
+defaultConversionService.convert("1", Integer.class);
+```
+这里最后会调用的是 StringToNumber 这个 Converter。
