@@ -2,6 +2,7 @@
 title: chameleon项目安利
 date: 2016-12-07 17:18:31
 tags: java convert
+categories: Java
 ---
 
 chameleon(变色龙) 是一个Java的Bean Converter轮子，实现注解化类型转换。

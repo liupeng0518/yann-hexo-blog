@@ -1,7 +1,13 @@
+---
+title: Resume
+date: 2016-12-26 12:02:44
+categories: Me
+---
+
 # 联系方式
 - 手机：13761560491
 - Email：me@yannxia.info
-- 微信号：iamxiayan [手机号易可]
+- 微信号：iamxiayan [手机号亦可]
 
 ---
 
@@ -12,7 +18,7 @@
  - 工作年限：2年
  - 技术博客：[http://b.yannxia.info](http://b.yannxia.info)
  - Github: [https://github.com/yannxia](https://github.com/yannxia)
- - 期望职位：Java程序员
+ - 期望职位：Java工程师
  - 期望城市：上海，南京，杭州
 
 ---
@@ -63,20 +69,22 @@
 
 ## 演讲和讲义
 
-- 2016年6月公司内部分享：[聊聊去中心化](http://jobdeer.com)
-- 2016年12月公司内部分享：[New Feature in JDK8](http://jobdeer.com)
+- 2016年6月公司内部分享：[设计模式漫谈](http://www.slideshare.net/ssuseraae7d2/ss-70458409)
+- 2016年12月公司内部分享：[New Features in JDK8](http://www.slideshare.net/ssuseraae7d2/new-features-in-jdk8)
 
 
 ## 荣誉
+- 2015年度麻袋理财 优秀团队奖
 - 重庆市第六届高校数据库应用程序设计大赛 二等奖及最佳文档奖
 - 重庆市第四届大学生程序设计大赛(ACM) 三等奖
-- 重庆市安利杯程序设计大赛 二等奖
 
 
 ## 自我评价
-- 热爱编程，不喜欢手都不能自拔。
-- 好奇星人，新技术，新框架统统都喜欢。
-- 细节狂魔，不断重构，热衷CodeReview。
+- 热爱编程，三天不写代码，手抖而不能自拔
+- 好奇星人，新技术，新框架统统都喜欢
+- 细节狂魔，不断重构，热衷CodeReview
+
+---
 
 # 技能清单
 
@@ -90,5 +98,7 @@
 
 ---
 
-# 致谢
-感谢您花时间阅读我的简历，期待能有机会和您共事。
+# 附
+- 部分链接可能需要科学上网。
+	- github
+    - slideshare
