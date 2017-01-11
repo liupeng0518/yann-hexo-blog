@@ -7,7 +7,8 @@ categories: Me
 
 
 # VOCATION
-- 上海麻袋理财 Java工程师
+- Java工程师
+- 伪fullstack工程师
 
 # PROGRAMMING SKILLS
 
