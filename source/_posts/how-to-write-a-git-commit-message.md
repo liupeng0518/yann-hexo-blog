@@ -1,5 +1,5 @@
 ---
-title: 编写git commit message的七条建议(翻译)
+title: 编写git commit message的七条建议 [译]
 date: 2016-12-22 09:18:31
 tags: git 翻译
 categories: 翻译
