@@ -90,3 +90,9 @@ deploy:
   # repo: git@git.coding.net:yann/hexo.git
   # branch: gh-pages
   # message: Updated
+
+# hexo sitemap网站地图
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
