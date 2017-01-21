@@ -1,9 +1,6 @@
-# hexo
-
+# Yann's B;og
 this is my static blog.
-
 [yann's blog](http://b.yannnxia.info)
-
 
 ## Content
 
