@@ -11,3 +11,4 @@ this is my static blog.
 5. [Spring-Covert-(具体实现)](http://b.yannxia.info/2016/12/13/spring-convert-02/)
 6. [why-jetbrains-needs-kotlin](http://b.yannxia.info/2017/01/05/why-jetbrains-needs-kotlin/)
 7. [如何用C语言写一个五子棋](http://b.yannxia.info/2017/01/20/how-to-code-gobang-in-c/)
+8. [关于KMP算法中的一个小问题](http://b.yannxia.info/2017/01/25/why-is-x-in-kmp/)
