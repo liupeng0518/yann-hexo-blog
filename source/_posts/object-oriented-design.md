@@ -1,7 +1,10 @@
-#SOLID, GRASP和其他面向对象设计的基本原则
-##学习面向对象的设计原则，并牢牢掌握SOLID和GRASP规则背后的思想
+---
+title: SOLID, GRASP和其他面向对象设计的基本原则
+date: 2017-02-20 15:27:07
+tags: OO
+---
 
-（by Muhammad Umair  ·  Feb. 13, 17 · Web Dev Zone，[原文链接](https://dzone.com/articles/solid-grasp-and-other-basic-principles-of-object-o) ）
+##学习面向对象的设计原则，并牢牢掌握SOLID和GRASP规则背后的思想
 
 今天开始编程，体验与Qlik合作带来的驱动数据应用开发的强大引擎。
 
@@ -565,4 +568,9 @@ Public Configuration{
 
 <p>许多软件设计模式诸如适配器模式，外观模式以及观察者模式都是间接原则的更专业化的体现。
 
+> 原文 [原文链接](https://dzone.com/articles/solid-grasp-and-other-basic-principles-of-object-o)
 
+**译者：** 
+- [misha913loki](https://github.com/misha913loki)
+- [renlulu](https://github.com/renlulu) 
+- [yannxia](https://github.com/yannxia)

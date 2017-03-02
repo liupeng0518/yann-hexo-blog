@@ -1,5 +1,5 @@
 ---
-title: spring cloud 01 - config 
+title: spring cloud - 配置中心服务
 date: 2017-03-01 15:27:07
 tags: spring-cloud
 ---
@@ -54,7 +54,7 @@ application+profile+.yml 等
  [24.4 Profile-specific properties](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html#boot-features-external-config-profile-specific-properties) 在这段中说明，Spring的逻辑是这样的。
 
 ```java
-@Override
+	@Override
 	public Environment findOne(String config, String profile, String label) {
 		SpringApplicationBuilder builder = new SpringApplicationBuilder(
 				PropertyPlaceholderAutoConfiguration.class);
@@ -86,40 +86,210 @@ application+profile+.yml 等
 那再深层次为何是这个文件，经过不懈的努力，在 ConfigFileApplicationListener 中发现。
 org.springframework.boot.context.config.ConfigFileApplicationListener.Loader#load(java.lang.String, java.lang.String, org.springframework.boot.context.config.ConfigFileApplicationListener.Profile) 方法
 
-```
+```java
 private void load(String location, String name, Profile profile)
 				throws IOException {
-			String group = "profile=" + (profile == null ? "" : profile);
-			if (!StringUtils.hasText(name)) {
-				// Try to load directly from the location
-				loadIntoGroup(group, location, profile);
-			}
-			else {
-				// Search for a file with the given name
-				for (String ext : this.propertiesLoader.getAllFileExtensions()) { ①
-					if (profile != null) {
-						// Try the profile-specific file
-						loadIntoGroup(group, location + name + "-" + profile + "." + ext,
-								null);
-						for (Profile processedProfile : this.processedProfiles) {
-							if (processedProfile != null) {
-								loadIntoGroup(group, location + name + "-"
-										+ processedProfile + "." + ext, profile); ②
-							}
-						}
-						// Sometimes people put "spring.profiles: dev" in
-						// application-dev.yml (gh-340). Arguably we should try and error
-						// out on that, but we can be kind and load it anyway.
-						loadIntoGroup(group, location + name + "-" + profile + "." + ext,
-								profile);
+	String group = "profile=" + (profile == null ? "" : profile);
+	if (!StringUtils.hasText(name)) {
+		// Try to load directly from the location
+		loadIntoGroup(group, location, profile);
+	}
+	else {
+	// Search for a file with the given name
+	for (String ext : this.propertiesLoader.getAllFileExtensions()) { ①
+		if (profile != null) {
+			// Try the profile-specific file
+			loadIntoGroup(group, location + name + "-" + profile + "." + ext,null);
+			for (Profile processedProfile : this.processedProfiles) {
+				if (processedProfile != null) {
+					loadIntoGroup(group, location + name + "-" + processedProfile + "." + ext, profile); ②
 					}
-					// Also try the profile-specific section (if any) of the normal file
-					loadIntoGroup(group, location + name + "." + ext, profile);
 				}
+				// Sometimes people put "spring.profiles: dev" in
+				// application-dev.yml (gh-340). Arguably we should try and error
+				// out on that, but we can be kind and load it anyway.
+				loadIntoGroup(group, location + name + "-" + profile + "." + ext, profile);
+				}
+				// Also try the profile-specific section (if any) of the normal file
+				loadIntoGroup(group, location + name + "." + ext, profile);
 			}
 		}
+	}
 ```
 我们可以从 ① 发现Spring所支持的后缀名："properties","xml","yml","yaml" ，而在②处我们发现就是按照 - 逻辑给拼接起来的。
+
+
+### Config Server 是怎么样的一种服务呢？
+
+- org.springframework.cloud.config.server.environment.EnvironmentController
+- org.springframework.cloud.config.server.resource.ResourceController
+这两个类出卖了整个项目，每次看Spring源码都能发现一些比较高级的用法。
+比如：
+
+```java
+	@RequestMapping("/{name}-{profiles}.properties")
+	public ResponseEntity<String> properties(@PathVariable String name,
+			@PathVariable String profiles,
+			@RequestParam(defaultValue = "true") boolean resolvePlaceholders)
+			throws IOException {
+		return labelledProperties(name, profiles, null, resolvePlaceholders);
+	}
+```
+
+原来可以在一个 ／ 后面直接使用2个@PathVariable。
+
+看到这里也就明白了，整个Config Server其实是一个Web服务，基于HTTP的方式。从这个方式：
+
+```java
+	@RequestMapping("/{name}/{profiles}/{label:.*}")
+	public Environment labelled(@PathVariable String name, @PathVariable String profiles,
+			@PathVariable String label) {
+		if (label != null && label.contains("(_)")) {
+			// "(_)" is uncommon in a git branch name, but "/" cannot be matched
+			// by Spring MVC
+			label = label.replace("(_)", "/");
+		}
+		Environment environment = this.repository.findOne(name, profiles, label); ①
+		return environment;
+	}
+```
+我们从①得知，最核心的就是Environment，正如我们上一点所说。
+
+---
+Config Server的内容并不多，从源码的包中我们就发现，更多的功能就有待后续的增加吧，我们接下来看看 Config Client
+
+
+## Config Clinet
+
+### Client 如何查询 Server
+我们把眼光转型到 org.springframework.cloud.config.client.ConfigServicePropertySourceLocator
+
+```java
+public org.springframework.core.env.PropertySource<?> locate(
+			org.springframework.core.env.Environment environment) {
+	ConfigClientProperties properties = this.defaultProperties.override(environment);
+	CompositePropertySource composite = new CompositePropertySource("configService");
+	RestTemplate restTemplate = this.restTemplate == null ? getSecureRestTemplate(properties): this.restTemplate;
+	Exception error = null;
+	String errorBody = null;
+	logger.info("Fetching config from server at: " + properties.getRawUri());
+	try {
+		String[] labels = new String[] { "" };
+		if (StringUtils.hasText(properties.getLabel())) {
+			labels = StringUtils.commaDelimitedListToStringArray(properties.getLabel());
+		}
+
+		String state = ConfigClientStateHolder.getState();
+
+		// Try all the labels until one works
+		for (String label : labels) {
+			Environment result = getRemoteEnvironment(restTemplate,properties, label.trim(), state);  ①
+			if (result != null) {
+				logger.info(String.format("Located environment: name=%s, profiles=%s, label=%s, version=%s, state=%s",
+						result.getName(),
+						result.getProfiles() == null ? "" : Arrays.asList(result.getProfiles()),
+						result.getLabel(), result.getVersion(), result.getState()));
+				if (result.getPropertySources() != null) { // result.getPropertySources() can be null if using xml
+					for (PropertySource source : result.getPropertySources()) {
+						@SuppressWarnings("unchecked")
+						Map<String, Object> map = (Map<String, Object>) source
+								.getSource();
+						composite.addPropertySource(new MapPropertySource(source
+								.getName(), map));
+					}
+				}
+
+				if (StringUtils.hasText(result.getState()) || StringUtils.hasText(result.getVersion())) {
+					HashMap<String, Object> map = new HashMap<>();
+					putValue(map, "config.client.state", result.getState());
+					putValue(map, "config.client.version", result.getVersion());
+					composite.addFirstPropertySource(new MapPropertySource("configClient", map));
+				}
+				return composite;
+			}
+		}
+	}
+	以下异常处理略…………
+
+}
+	
+private Environment getRemoteEnvironment(RestTemplate restTemplate, ConfigClientProperties properties,
+											 String label, String state) {
+	String path = "/{name}/{profile}";   ②
+	String name = properties.getName();
+	String profile = properties.getProfile();
+	String token = properties.getToken();
+	String uri = properties.getRawUri();
+	
+	Object[] args = new String[] { name, profile };
+	if (StringUtils.hasText(label)) {
+		args = new String[] { name, profile, label };
+		path = path + "/{label}";
+	}
+	ResponseEntity<Environment> response = null;
+
+	try {
+		HttpHeaders headers = new HttpHeaders();
+		if (StringUtils.hasText(token)) {
+			headers.add(TOKEN_HEADER, token);
+		}
+		if (StringUtils.hasText(state)) { //TODO: opt in to sending state?
+				headers.add(STATE_HEADER, state);
+		}
+		final HttpEntity<Void> entity = new HttpEntity<>((Void) null, headers);
+		response = restTemplate.exchange(uri + path, HttpMethod.GET,
+					entity, Environment.class, args); ③
+	}
+	catch (HttpClientErrorException e) {
+		if (e.getStatusCode() != HttpStatus.NOT_FOUND) {
+			throw e;
+		}
+	}
+
+	if (response == null || response.getStatusCode() != HttpStatus.OK) {
+		return null;
+	}
+	Environment result = response.getBody();
+	return result;
+}
+	
+```
+
+从 ① 处我们看出来这最后是一个Http的请求。 从 ② 处，我们直接看出最终访问的 HTTP的地址就是 "/{name}/{profile}"， 从 ③ 处我们又发现最后得到的就是  Environment.class 这个类型，和我们在Server上看见的代码是一致，这样我们的整个逻辑就串联起来了。
+
+----
+
+
+## 总结
+
+Spring Cloud Config 在编写此博客的时候还是一个很简单的服务，仅仅是提供一个 Environment.class 的CS架构的服务，在Server也没实现分布式等等，现在看来还说一个比较基础的服务。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
