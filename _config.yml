@@ -76,10 +76,10 @@ deploy:
   type: git
   message: Updated
   repo:
-    github: git@github.com:yannxia/hexo.git,gh-pages
-    coding: git@git.coding.net:yann/hexo.git,gh-pages
+    github: git@github.com:yannxia/yann-hexo-blog.git,gh-pages
+    # coding: git@git.coding.net:yann/hexo.git,gh-pages
     # coding-2: git@git.coding.net:yann/my-blog-page.git,master
-    bae: https://git.duapp.com/appidb2814744p0,master
+    # bae: https://git.duapp.com/appidb2814744p0,master
 # deploy:
 #   type: git
 #   repo: git@github.com:yannxia/hexo.git
