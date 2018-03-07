@@ -1,4 +1,413 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>SOLID, GRASP和其他面向对象设计的基本原则 | Yann's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">SOLID, GRASP和其他面向对象设计的基本原则</h1><a id="logo" href="/.">Yann's Blog</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">SOLID, GRASP和其他面向对象设计的基本原则</h1><div class="post-meta">Feb 20, 2017</div><a class="disqus-comment-count" data-disqus-identifier="2017/02/20/object-oriented-design/" href="/2017/02/20/object-oriented-design/#disqus_thread"></a><div class="post-content"><p>##学习面向对象的设计原则，并牢牢掌握SOLID和GRASP规则背后的思想</p>
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.5" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.5">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.5">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.5">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.5" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.0.5',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'SLJ0R87CAH',
+      apiKey: '81f2fde834f83d2c78e8ed80c943cce9',
+      indexName: 'yann_blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="OO," />
+
+
+<meta name="description" content="##学习面向对象的设计原则，并牢牢掌握SOLID和GRASP规则背后的思想 今天开始编程，体验与Qlik合作带来的驱动数据应用开发的强大引擎。 从一些老生常谈的事情开始说起来吧，软件代码应该符合以下特质：  可维护性 可扩展性 模块化">
+<meta name="keywords" content="OO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SOLID, GRASP和其他面向对象设计的基本原则">
+<meta property="og:url" content="https://g.yannxia.top/2017/02/20/object-oriented-design/index.html">
+<meta property="og:site_name" content="Yann&#39;s Blog">
+<meta property="og:description" content="##学习面向对象的设计原则，并牢牢掌握SOLID和GRASP规则背后的思想 今天开始编程，体验与Qlik合作带来的驱动数据应用开发的强大引擎。 从一些老生常谈的事情开始说起来吧，软件代码应该符合以下特质：  可维护性 可扩展性 模块化">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.objectorienteddesign.org/wp-content/uploads/2016/12/PolymorphismDiagram.jpg">
+<meta property="og:image" content="http://www.objectorienteddesign.org/wp-content/uploads/2016/12/InformationExpert.jpg">
+<meta property="og:image" content="http://www.objectorienteddesign.org/wp-content/uploads/2016/12/FavorCompositionOverInheritance1.jpg">
+<meta property="og:image" content="http://www.objectorienteddesign.org/wp-content/uploads/2016/12/FavorCompositionOverInheritance2.jpg">
+<meta property="og:image" content="http://www.objectorienteddesign.org/wp-content/uploads/2016/12/FavorCompositionOverInheritance3.jpg">
+<meta property="og:updated_time" content="2018-03-07T02:06:34.758Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SOLID, GRASP和其他面向对象设计的基本原则">
+<meta name="twitter:description" content="##学习面向对象的设计原则，并牢牢掌握SOLID和GRASP规则背后的思想 今天开始编程，体验与Qlik合作带来的驱动数据应用开发的强大引擎。 从一些老生常谈的事情开始说起来吧，软件代码应该符合以下特质：  可维护性 可扩展性 模块化">
+<meta name="twitter:image" content="http://www.objectorienteddesign.org/wp-content/uploads/2016/12/PolymorphismDiagram.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="https://g.yannxia.top/2017/02/20/object-oriented-design/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>SOLID, GRASP和其他面向对象设计的基本原则 | Yann's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yann's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://g.yannxia.top/2017/02/20/object-oriented-design/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yann.xia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/Logo-2018.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yann's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SOLID, GRASP和其他面向对象设计的基本原则</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-20T15:27:07+08:00">2017-02-20</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OO/" itemprop="url" rel="index"><span itemprop="name">OO</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/20/object-oriented-design/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/02/20/object-oriented-design/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>##学习面向对象的设计原则，并牢牢掌握SOLID和GRASP规则背后的思想</p>
 <p>今天开始编程，体验与Qlik合作带来的驱动数据应用开发的强大引擎。</p>
 <p>从一些老生常谈的事情开始说起来吧，软件代码应该符合以下特质：</p>
 <ul>
@@ -6,6 +415,7 @@
 <li>可扩展性</li>
 <li>模块化</li>
 </ul>
+<a id="more"></a>
 <p>每当你想要质问代码是否满足以上标准的时候，就会将自己置于困难之中。</p>
 <p>如果要使软件代码在其生命周期内维护起来更简单，可拓展更强且模块化，那么我们认为这种代码必须具有高于平均代码质量的一些特征。</p>
 <p>我曾经编写过难以阅读，难以拓展，并且充满了坏味道的代码。在经历了大约6个月的开发学习后，才终于有了一些改善。因此，开发过程中的经历对于理解项目代码质量来说是至关重要的。</p>
@@ -71,7 +481,7 @@
 <p>这三个方法（打开、读取和关闭）对于处理设备传入的数据已经足够了。然后，假设需要添加基于USB接口的另一个数据采集设备。</p>
 <p>USB设备的问题在于，当你打开连接时，来自先前连接的数据仍保留在缓冲区中。因此，在对USB设备的第一次读取调用时，返回来自上一个会话的数据。有针对性的采集行为会破坏这些数据。幸运的是，基于USB的设备驱动程序提供刷新功能，预先清除了基于USB的采集设备中的缓冲区。那么如何在代码中实现这个功能，并使代码的改动最小？</p>
 <p>一个简单但是草率的解决方案是更新代码，通过标识识别是否调用USB设备，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class USBDevice:IDevice&#123;</span><br><span class="line">	public void Open()&#123;</span><br><span class="line">		// Device specific opening logic</span><br><span class="line">	&#125;</span><br><span class="line">	public void Read()&#123;</span><br><span class="line">   		// Reading logic specific to this device&lt;br&gt; </span><br><span class="line">	&#125;	</span><br><span class="line">	public void Close()&#123;</span><br><span class="line">		// Device specific closing logic.</span><br><span class="line">	&#125;</span><br><span class="line">	public void Refresh()&#123;</span><br><span class="line">		// specific only to USB interface Device</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//Client code..</span><br><span class="line">Public void Acquire(IDevice aDevice)&#123;</span><br><span class="line">       aDevice.Open();</span><br><span class="line">       // Identify if the object passed here is USBDevice class Object.    </span><br><span class="line">	if(aDevice.GetType() == typeof(USBDevice))&#123;</span><br><span class="line">	USBDevice aUsbDevice = (USBDevice) aDevice;</span><br><span class="line">	aUsbDevice.Refresh();</span><br><span class="line">	&#125;</span><br><span class="line">       // remaining code….</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class USBDevice:IDevice&#123;</span><br><span class="line">	public void Open()&#123;</span><br><span class="line">		// Device specific opening logic</span><br><span class="line">	&#125;</span><br><span class="line">	public void Read()&#123;</span><br><span class="line">   		// Reading logic specific to this device&lt;br&gt;</span><br><span class="line">	&#125;</span><br><span class="line">	public void Close()&#123;</span><br><span class="line">		// Device specific closing logic.</span><br><span class="line">	&#125;</span><br><span class="line">	public void Refresh()&#123;</span><br><span class="line">		// specific only to USB interface Device</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//Client code..</span><br><span class="line">Public void Acquire(IDevice aDevice)&#123;</span><br><span class="line">       aDevice.Open();</span><br><span class="line">       // Identify if the object passed here is USBDevice class Object.    </span><br><span class="line">	if(aDevice.GetType() == typeof(USBDevice))&#123;</span><br><span class="line">	USBDevice aUsbDevice = (USBDevice) aDevice;</span><br><span class="line">	aUsbDevice.Refresh();</span><br><span class="line">	&#125;</span><br><span class="line">       // remaining code….</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在这个解决方案中，客户端代码直接使用具体类以及接口（或抽象类），这意味着抽象程度不足以使客户端执行其功能。</p>
 <p>另一种陈述方式是基类无法满足需求（刷新操作），但是子类可以，实际上，子类有该项行为。因此，派生类和基类不兼容且子类不能被代替。所以，该解决方案违反了里氏替换原则。</p>
 <p>下面这个示例中，客户端依赖于更多的实体（iDevices 和 USB Devices），一个实体的任何一点改变都将影响其他实体。因此，违反LSP原则将导致类之间的互相依赖。</p>
@@ -181,35 +591,518 @@
 <blockquote>
 <p>原文 <a href="https://dzone.com/articles/solid-grasp-and-other-basic-principles-of-object-o" target="_blank" rel="noopener">原文链接</a></p>
 </blockquote>
-<p><strong>译者：</strong> </p>
+<p><strong>译者：</strong></p>
 <ul>
 <li><a href="https://github.com/misha913loki" target="_blank" rel="noopener">misha913loki</a></li>
-<li><a href="https://github.com/renlulu" target="_blank" rel="noopener">renlulu</a> </li>
+<li><a href="https://github.com/renlulu" target="_blank" rel="noopener">renlulu</a></li>
 <li><a href="https://github.com/yannxia" target="_blank" rel="noopener">yannxia</a></li>
 </ul>
-</imag></div><div class="tags"><a href="/tags/OO/">OO</a></div><div class="post-nav"><a class="pre" href="/2017/03/01/spring-cloud-01-config/">spring cloud - 配置中心服务</a><a class="next" href="/2017/02/07/getting-started-with-docker/">从零开始学Docker</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论 「请确保 disqus.com 可以正常加载」</button></div><script>var disqus_shortname = 'yannxia';
-var disqus_identifier = '2017/02/20/object-oriented-design/';
-var disqus_title = 'SOLID, GRASP和其他面向对象设计的基本原则';
-var disqus_url = 'https://g.yannxia.top/2017/02/20/object-oriented-design/';
-$('.btn_click_load').click(function() {
-  (function() {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-  $('.btn_click_load').css('display','none');
-});
-$.ajax({
-  url: 'https://disqus.com/next/config.json',
-  timeout: 3000,
-  type: 'GET',
-  success: (function() {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    $('.btn_click_load').css('display','none');
-  })(),
-  error: function() {
-    $('.btn_click_load').css('display','block');
+</imag>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/OO/" rel="tag"># OO</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/07/getting-started-with-docker/" rel="next" title="从零开始学Docker">
+                <i class="fa fa-chevron-left"></i> 从零开始学Docker
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/01/spring-cloud-01-config/" rel="prev" title="Spring cloud 配置中心服务">
+                Spring cloud 配置中心服务 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/Logo-2018.png"
+                alt="yann.xia" />
+            
+              <p class="site-author-name" itemprop="name">yann.xia</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/yannxia" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/yann.xia" target="_blank" title="知乎"><i class="fa fa-fw fa-globe"></i>知乎</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Dependency-Inversion-Principle（依赖反转）"><span class="nav-number">1.</span> <span class="nav-text">Dependency Inversion Principle（依赖反转）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hollywood（好莱坞原则）"><span class="nav-number">2.</span> <span class="nav-text">Hollywood（好莱坞原则）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Polymorphism（多态）"><span class="nav-number">3.</span> <span class="nav-text">Polymorphism（多态）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Information-Expert（信息专家原则）"><span class="nav-number">4.</span> <span class="nav-text">Information Expert（信息专家原则）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Creator（创造者原则）"><span class="nav-number">5.</span> <span class="nav-text">Creator（创造者原则）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pure-Fabrication（纯虚构模式）"><span class="nav-number">6.</span> <span class="nav-text">Pure Fabrication（纯虚构模式）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Controller（控制器原则）"><span class="nav-number">7.</span> <span class="nav-text">Controller（控制器原则）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Favor-Composition-Over-Inheritance（组合优于继承原则）"><span class="nav-number">8.</span> <span class="nav-text">Favor Composition Over Inheritance（组合优于继承原则）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Indirection（间接原则）"><span class="nav-number">9.</span> <span class="nav-text">Indirection（间接原则）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yann</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.0.5</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
   }
-});</script><script id="dsq-count-scr" src="//yannxia.disqus.com/count.js" async></script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="https://g.yannxia.top"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/翻译/">翻译</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/java-convert/" style="font-size: 15px;">java convert</a> <a href="/tags/c-game/" style="font-size: 15px;">c game</a> <a href="/tags/docker-翻译/" style="font-size: 15px;">docker 翻译</a> <a href="/tags/git-翻译/" style="font-size: 15px;">git 翻译</a> <a href="/tags/spring-cloud/" style="font-size: 15px;">spring-cloud</a> <a href="/tags/OO/" style="font-size: 15px;">OO</a> <a href="/tags/Spring-Java/" style="font-size: 15px;">Spring Java</a> <a href="/tags/java-spring/" style="font-size: 15px;">java spring</a> <a href="/tags/docker-daocloud-ci-lighttpd/" style="font-size: 15px;">docker daocloud ci lighttpd</a> <a href="/tags/KMP-算法/" style="font-size: 15px;">KMP 算法</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/06/07/lombok-project/">Project Lombok</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/spring-cloud-01-config/">spring cloud - 配置中心服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/object-oriented-design/">SOLID, GRASP和其他面向对象设计的基本原则</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/getting-started-with-docker/">从零开始学Docker</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/25/why-is-x-in-kmp/">关于KMP算法中的一个小问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/20/how-to-code-gobang-in-c/">如何用C语言写一个五子棋</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/why-jetbrains-needs-kotlin/">为什么JetBrains需要Kotlin [译]</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/01/bye-2016/">2016 技术总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/27/spring-convert-02/">spring-convert-(具体调用)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/how-to-write-a-git-commit-message/">编写git commit message的七条建议 [译]</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//yannxia.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Yann's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.5"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.5"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.5"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.5"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.5"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.5"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.5"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://zAmIRiTPCE.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://g.yannxia.top/2017/02/20/object-oriented-design/';
+        this.page.identifier = '2017/02/20/object-oriented-design/';
+        this.page.title = 'SOLID, GRASP和其他面向对象设计的基本原则';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://zAmIRiTPCE.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.0.5"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

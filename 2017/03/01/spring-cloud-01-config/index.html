@@ -1,6 +1,417 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>spring cloud - 配置中心服务 | Yann's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">spring cloud - 配置中心服务</h1><a id="logo" href="/.">Yann's Blog</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">spring cloud - 配置中心服务</h1><div class="post-meta">Mar 1, 2017</div><a class="disqus-comment-count" data-disqus-identifier="2017/03/01/spring-cloud-01-config/" href="/2017/03/01/spring-cloud-01-config/#disqus_thread"></a><div class="post-content"><p>为什么要写这一个系列的博客，主要是记录在自己学习Spring cloud中思考，倘若能够给大家一点点帮助，就更好了，写这个系列的话，抱着少即是多的心态，我们每一章讲的不会特别多，尽可能的每一章都比知识萃取的深一点。</p>
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.5" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.5">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.5">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.5">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.5" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.0.5',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'SLJ0R87CAH',
+      apiKey: '81f2fde834f83d2c78e8ed80c943cce9',
+      indexName: 'yann_blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Java,Spring Cloud," />
+
+
+<meta name="description" content="为什么要写这一个系列的博客，主要是记录在自己学习Spring cloud中思考，倘若能够给大家一点点帮助，就更好了，写这个系列的话，抱着少即是多的心态，我们每一章讲的不会特别多，尽可能的每一章都比知识萃取的深一点。  PRE本文写于 2017-03-01， 代码针对于 Spring Cloud Camden.SR5 版本。">
+<meta name="keywords" content="Java,Spring Cloud">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring cloud 配置中心服务">
+<meta property="og:url" content="https://g.yannxia.top/2017/03/01/spring-cloud-01-config/index.html">
+<meta property="og:site_name" content="Yann&#39;s Blog">
+<meta property="og:description" content="为什么要写这一个系列的博客，主要是记录在自己学习Spring cloud中思考，倘若能够给大家一点点帮助，就更好了，写这个系列的话，抱着少即是多的心态，我们每一章讲的不会特别多，尽可能的每一章都比知识萃取的深一点。  PRE本文写于 2017-03-01， 代码针对于 Spring Cloud Camden.SR5 版本。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-07T02:06:27.721Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring cloud 配置中心服务">
+<meta name="twitter:description" content="为什么要写这一个系列的博客，主要是记录在自己学习Spring cloud中思考，倘若能够给大家一点点帮助，就更好了，写这个系列的话，抱着少即是多的心态，我们每一章讲的不会特别多，尽可能的每一章都比知识萃取的深一点。  PRE本文写于 2017-03-01， 代码针对于 Spring Cloud Camden.SR5 版本。">
+
+
+
+
+
+
+  <link rel="canonical" href="https://g.yannxia.top/2017/03/01/spring-cloud-01-config/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Spring cloud 配置中心服务 | Yann's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yann's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://g.yannxia.top/2017/03/01/spring-cloud-01-config/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yann.xia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/Logo-2018.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yann's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Spring cloud 配置中心服务</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-01T15:27:07+08:00">2017-03-01</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/Spring-Cloud/" itemprop="url" rel="index"><span itemprop="name">Spring Cloud</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/01/spring-cloud-01-config/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/03/01/spring-cloud-01-config/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>为什么要写这一个系列的博客，主要是记录在自己学习Spring cloud中思考，倘若能够给大家一点点帮助，就更好了，写这个系列的话，抱着少即是多的心态，我们每一章讲的不会特别多，尽可能的每一章都比知识萃取的深一点。</p>
 <hr>
 <h4 id="PRE"><a href="#PRE" class="headerlink" title="PRE"></a>PRE</h4><p>本文写于 2017-03-01， 代码针对于 <strong>Spring Cloud Camden.SR5</strong> 版本。</p>
+<a id="more"></a>
 <h2 id="Spring-Cloud-Config"><a href="#Spring-Cloud-Config" class="headerlink" title="Spring Cloud Config"></a>Spring Cloud Config</h2><blockquote>
 <p>Spring Cloud Config provides server and client-side support for externalized configuration in a distributed system.</p>
 </blockquote>
@@ -13,12 +424,12 @@
 <p>具体的步骤这里就不说了，可以参考 Quick Intro to Spring Cloud Configuration 这个文章写的很详细，关于几点，接下来会细聊一下。</p>
 <h3 id="Config-Server如何选择配置文件"><a href="#Config-Server如何选择配置文件" class="headerlink" title="Config Server如何选择配置文件"></a>Config Server如何选择配置文件</h3><blockquote>
 <p>Where do you want to store the configuration data for the Config Server? The strategy that governs this behaviour is the EnvironmentRepository</p>
+</blockquote>
 <ul>
 <li>{application} maps to “spring.application.name” on the client side;</li>
 <li>{profile} maps to “spring.profiles.active” on the client (comma separated list); and</li>
 <li>{label} which is a server side feature labelling a “versioned” set of config files.</li>
 </ul>
-</blockquote>
 <p>Config Server 是从哪里去读文件的，这里说明了，核心的是EnvironmentRepository这个接口<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">EnvironmentRepository</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function">Environment <span class="title">findOne</span><span class="params">(String application, String profile, String label)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>我们可以看出来，根据application+ profile+ label 就可以确定一个唯一的环境变量对象。正如上文所言application是 <em>客户端</em> 的spring.application.name的属性，profile 是 <em>客户端</em> 的spring.profiles.active属性，而 label 是 <em>服务端</em> 的版本概念。</p>
 <p>在服务端的代码中，我们发现我们是配置了我们所有的配置所在的仓库地址的，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.cloud.config.server.git.uri: file:///$&#123;user.home&#125;/config-repo</span><br></pre></td></tr></table></figure></p>
@@ -40,33 +451,518 @@
 <hr>
 <p>Config Server的内容并不多，从源码的包中我们就发现，更多的功能就有待后续的增加吧，我们接下来看看 Config Client</p>
 <h2 id="Config-Clinet"><a href="#Config-Clinet" class="headerlink" title="Config Clinet"></a>Config Clinet</h2><h3 id="Client-如何查询-Server"><a href="#Client-如何查询-Server" class="headerlink" title="Client 如何查询 Server"></a>Client 如何查询 Server</h3><p>我们把眼光转型到 org.springframework.cloud.config.client.ConfigServicePropertySourceLocator</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> org.springframework.core.env.PropertySource&lt;?&gt; locate(</span><br><span class="line">			org.springframework.core.env.Environment environment) &#123;</span><br><span class="line">	ConfigClientProperties properties = <span class="keyword">this</span>.defaultProperties.override(environment);</span><br><span class="line">	CompositePropertySource composite = <span class="keyword">new</span> CompositePropertySource(<span class="string">"configService"</span>);</span><br><span class="line">	RestTemplate restTemplate = <span class="keyword">this</span>.restTemplate == <span class="keyword">null</span> ? getSecureRestTemplate(properties): <span class="keyword">this</span>.restTemplate;</span><br><span class="line">	Exception error = <span class="keyword">null</span>;</span><br><span class="line">	String errorBody = <span class="keyword">null</span>;</span><br><span class="line">	logger.info(<span class="string">"Fetching config from server at: "</span> + properties.getRawUri());</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		String[] labels = <span class="keyword">new</span> String[] &#123; <span class="string">""</span> &#125;;</span><br><span class="line">		<span class="keyword">if</span> (StringUtils.hasText(properties.getLabel())) &#123;</span><br><span class="line">			labels = StringUtils.commaDelimitedListToStringArray(properties.getLabel());</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		String state = ConfigClientStateHolder.getState();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Try all the labels until one works</span></span><br><span class="line">		<span class="keyword">for</span> (String label : labels) &#123;</span><br><span class="line">			Environment result = getRemoteEnvironment(restTemplate,properties, label.trim(), state);  ①</span><br><span class="line">			<span class="keyword">if</span> (result != <span class="keyword">null</span>) &#123;</span><br><span class="line">				logger.info(String.format(<span class="string">"Located environment: name=%s, profiles=%s, label=%s, version=%s, state=%s"</span>,</span><br><span class="line">						result.getName(),</span><br><span class="line">						result.getProfiles() == <span class="keyword">null</span> ? <span class="string">""</span> : Arrays.asList(result.getProfiles()),</span><br><span class="line">						result.getLabel(), result.getVersion(), result.getState()));</span><br><span class="line">				<span class="keyword">if</span> (result.getPropertySources() != <span class="keyword">null</span>) &#123; <span class="comment">// result.getPropertySources() can be null if using xml</span></span><br><span class="line">					<span class="keyword">for</span> (PropertySource source : result.getPropertySources()) &#123;</span><br><span class="line">						<span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">						Map&lt;String, Object&gt; map = (Map&lt;String, Object&gt;) source</span><br><span class="line">								.getSource();</span><br><span class="line">						composite.addPropertySource(<span class="keyword">new</span> MapPropertySource(source</span><br><span class="line">								.getName(), map));</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				<span class="keyword">if</span> (StringUtils.hasText(result.getState()) || StringUtils.hasText(result.getVersion())) &#123;</span><br><span class="line">					HashMap&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">					putValue(map, <span class="string">"config.client.state"</span>, result.getState());</span><br><span class="line">					putValue(map, <span class="string">"config.client.version"</span>, result.getVersion());</span><br><span class="line">					composite.addFirstPropertySource(<span class="keyword">new</span> MapPropertySource(<span class="string">"configClient"</span>, map));</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">return</span> composite;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	以下异常处理略…………</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line"><span class="function"><span class="keyword">private</span> Environment <span class="title">getRemoteEnvironment</span><span class="params">(RestTemplate restTemplate, ConfigClientProperties properties,</span></span></span><br><span class="line"><span class="function"><span class="params">											 String label, String state)</span> </span>&#123;</span><br><span class="line">	String path = <span class="string">"/&#123;name&#125;/&#123;profile&#125;"</span>;   ②</span><br><span class="line">	String name = properties.getName();</span><br><span class="line">	String profile = properties.getProfile();</span><br><span class="line">	String token = properties.getToken();</span><br><span class="line">	String uri = properties.getRawUri();</span><br><span class="line">	</span><br><span class="line">	Object[] args = <span class="keyword">new</span> String[] &#123; name, profile &#125;;</span><br><span class="line">	<span class="keyword">if</span> (StringUtils.hasText(label)) &#123;</span><br><span class="line">		args = <span class="keyword">new</span> String[] &#123; name, profile, label &#125;;</span><br><span class="line">		path = path + <span class="string">"/&#123;label&#125;"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ResponseEntity&lt;Environment&gt; response = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		HttpHeaders headers = <span class="keyword">new</span> HttpHeaders();</span><br><span class="line">		<span class="keyword">if</span> (StringUtils.hasText(token)) &#123;</span><br><span class="line">			headers.add(TOKEN_HEADER, token);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (StringUtils.hasText(state)) &#123; <span class="comment">//<span class="doctag">TODO:</span> opt in to sending state?</span></span><br><span class="line">				headers.add(STATE_HEADER, state);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">final</span> HttpEntity&lt;Void&gt; entity = <span class="keyword">new</span> HttpEntity&lt;&gt;((Void) <span class="keyword">null</span>, headers);</span><br><span class="line">		response = restTemplate.exchange(uri + path, HttpMethod.GET,</span><br><span class="line">					entity, Environment.class, args); ③</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">catch</span> (HttpClientErrorException e) &#123;</span><br><span class="line">		<span class="keyword">if</span> (e.getStatusCode() != HttpStatus.NOT_FOUND) &#123;</span><br><span class="line">			<span class="keyword">throw</span> e;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (response == <span class="keyword">null</span> || response.getStatusCode() != HttpStatus.OK) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	Environment result = response.getBody();</span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> org.springframework.core.env.PropertySource&lt;?&gt; locate(</span><br><span class="line">			org.springframework.core.env.Environment environment) &#123;</span><br><span class="line">	ConfigClientProperties properties = <span class="keyword">this</span>.defaultProperties.override(environment);</span><br><span class="line">	CompositePropertySource composite = <span class="keyword">new</span> CompositePropertySource(<span class="string">"configService"</span>);</span><br><span class="line">	RestTemplate restTemplate = <span class="keyword">this</span>.restTemplate == <span class="keyword">null</span> ? getSecureRestTemplate(properties): <span class="keyword">this</span>.restTemplate;</span><br><span class="line">	Exception error = <span class="keyword">null</span>;</span><br><span class="line">	String errorBody = <span class="keyword">null</span>;</span><br><span class="line">	logger.info(<span class="string">"Fetching config from server at: "</span> + properties.getRawUri());</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		String[] labels = <span class="keyword">new</span> String[] &#123; <span class="string">""</span> &#125;;</span><br><span class="line">		<span class="keyword">if</span> (StringUtils.hasText(properties.getLabel())) &#123;</span><br><span class="line">			labels = StringUtils.commaDelimitedListToStringArray(properties.getLabel());</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		String state = ConfigClientStateHolder.getState();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Try all the labels until one works</span></span><br><span class="line">		<span class="keyword">for</span> (String label : labels) &#123;</span><br><span class="line">			Environment result = getRemoteEnvironment(restTemplate,properties, label.trim(), state);  ①</span><br><span class="line">			<span class="keyword">if</span> (result != <span class="keyword">null</span>) &#123;</span><br><span class="line">				logger.info(String.format(<span class="string">"Located environment: name=%s, profiles=%s, label=%s, version=%s, state=%s"</span>,</span><br><span class="line">						result.getName(),</span><br><span class="line">						result.getProfiles() == <span class="keyword">null</span> ? <span class="string">""</span> : Arrays.asList(result.getProfiles()),</span><br><span class="line">						result.getLabel(), result.getVersion(), result.getState()));</span><br><span class="line">				<span class="keyword">if</span> (result.getPropertySources() != <span class="keyword">null</span>) &#123; <span class="comment">// result.getPropertySources() can be null if using xml</span></span><br><span class="line">					<span class="keyword">for</span> (PropertySource source : result.getPropertySources()) &#123;</span><br><span class="line">						<span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">						Map&lt;String, Object&gt; map = (Map&lt;String, Object&gt;) source</span><br><span class="line">								.getSource();</span><br><span class="line">						composite.addPropertySource(<span class="keyword">new</span> MapPropertySource(source</span><br><span class="line">								.getName(), map));</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				<span class="keyword">if</span> (StringUtils.hasText(result.getState()) || StringUtils.hasText(result.getVersion())) &#123;</span><br><span class="line">					HashMap&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">					putValue(map, <span class="string">"config.client.state"</span>, result.getState());</span><br><span class="line">					putValue(map, <span class="string">"config.client.version"</span>, result.getVersion());</span><br><span class="line">					composite.addFirstPropertySource(<span class="keyword">new</span> MapPropertySource(<span class="string">"configClient"</span>, map));</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">return</span> composite;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	以下异常处理略…………</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> Environment <span class="title">getRemoteEnvironment</span><span class="params">(RestTemplate restTemplate, ConfigClientProperties properties,</span></span></span><br><span class="line"><span class="function"><span class="params">											 String label, String state)</span> </span>&#123;</span><br><span class="line">	String path = <span class="string">"/&#123;name&#125;/&#123;profile&#125;"</span>;   ②</span><br><span class="line">	String name = properties.getName();</span><br><span class="line">	String profile = properties.getProfile();</span><br><span class="line">	String token = properties.getToken();</span><br><span class="line">	String uri = properties.getRawUri();</span><br><span class="line"></span><br><span class="line">	Object[] args = <span class="keyword">new</span> String[] &#123; name, profile &#125;;</span><br><span class="line">	<span class="keyword">if</span> (StringUtils.hasText(label)) &#123;</span><br><span class="line">		args = <span class="keyword">new</span> String[] &#123; name, profile, label &#125;;</span><br><span class="line">		path = path + <span class="string">"/&#123;label&#125;"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ResponseEntity&lt;Environment&gt; response = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		HttpHeaders headers = <span class="keyword">new</span> HttpHeaders();</span><br><span class="line">		<span class="keyword">if</span> (StringUtils.hasText(token)) &#123;</span><br><span class="line">			headers.add(TOKEN_HEADER, token);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (StringUtils.hasText(state)) &#123; <span class="comment">//<span class="doctag">TODO:</span> opt in to sending state?</span></span><br><span class="line">				headers.add(STATE_HEADER, state);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">final</span> HttpEntity&lt;Void&gt; entity = <span class="keyword">new</span> HttpEntity&lt;&gt;((Void) <span class="keyword">null</span>, headers);</span><br><span class="line">		response = restTemplate.exchange(uri + path, HttpMethod.GET,</span><br><span class="line">					entity, Environment.class, args); ③</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">catch</span> (HttpClientErrorException e) &#123;</span><br><span class="line">		<span class="keyword">if</span> (e.getStatusCode() != HttpStatus.NOT_FOUND) &#123;</span><br><span class="line">			<span class="keyword">throw</span> e;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (response == <span class="keyword">null</span> || response.getStatusCode() != HttpStatus.OK) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	Environment result = response.getBody();</span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>从 ① 处我们看出来这最后是一个Http的请求。 从 ② 处，我们直接看出最终访问的 HTTP的地址就是 “/{name}/{profile}”， 从 ③ 处我们又发现最后得到的就是  Environment.class 这个类型，和我们在Server上看见的代码是一致，这样我们的整个逻辑就串联起来了。</p>
 <hr>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Spring Cloud Config 在编写此博客的时候还是一个很简单的服务，仅仅是提供一个 Environment.class 的CS架构的服务，在Server也没实现分布式等等，现在看来还说一个比较基础的服务。</p>
-</div><div class="tags"><a href="/tags/spring-cloud/">spring-cloud</a></div><div class="post-nav"><a class="pre" href="/2017/06/07/lombok-project/">Project Lombok</a><a class="next" href="/2017/02/20/object-oriented-design/">SOLID, GRASP和其他面向对象设计的基本原则</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论 「请确保 disqus.com 可以正常加载」</button></div><script>var disqus_shortname = 'yannxia';
-var disqus_identifier = '2017/03/01/spring-cloud-01-config/';
-var disqus_title = 'spring cloud - 配置中心服务';
-var disqus_url = 'https://g.yannxia.top/2017/03/01/spring-cloud-01-config/';
-$('.btn_click_load').click(function() {
-  (function() {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-  $('.btn_click_load').css('display','none');
-});
-$.ajax({
-  url: 'https://disqus.com/next/config.json',
-  timeout: 3000,
-  type: 'GET',
-  success: (function() {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    $('.btn_click_load').css('display','none');
-  })(),
-  error: function() {
-    $('.btn_click_load').css('display','block');
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/Spring-Cloud/" rel="tag"># Spring Cloud</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/20/object-oriented-design/" rel="next" title="SOLID, GRASP和其他面向对象设计的基本原则">
+                <i class="fa fa-chevron-left"></i> SOLID, GRASP和其他面向对象设计的基本原则
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/07/lombok-project/" rel="prev" title="Project Lombok">
+                Project Lombok <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/Logo-2018.png"
+                alt="yann.xia" />
+            
+              <p class="site-author-name" itemprop="name">yann.xia</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/yannxia" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/yann.xia" target="_blank" title="知乎"><i class="fa fa-fw fa-globe"></i>知乎</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#PRE"><span class="nav-number">1.</span> <span class="nav-text">PRE</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Cloud-Config"><span class="nav-number"></span> <span class="nav-text">Spring Cloud Config</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Config-Server"><span class="nav-number"></span> <span class="nav-text">Config Server</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Config-Server如何选择配置文件"><span class="nav-number"></span> <span class="nav-text">Config Server如何选择配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Config-Server-是怎么样的一种服务呢？"><span class="nav-number"></span> <span class="nav-text">Config Server 是怎么样的一种服务呢？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Config-Clinet"><span class="nav-number"></span> <span class="nav-text">Config Clinet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Client-如何查询-Server"><span class="nav-number"></span> <span class="nav-text">Client 如何查询 Server</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number"></span> <span class="nav-text">总结</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yann</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.0.5</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
   }
-});</script><script id="dsq-count-scr" src="//yannxia.disqus.com/count.js" async></script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="https://g.yannxia.top"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/翻译/">翻译</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/java-convert/" style="font-size: 15px;">java convert</a> <a href="/tags/c-game/" style="font-size: 15px;">c game</a> <a href="/tags/docker-翻译/" style="font-size: 15px;">docker 翻译</a> <a href="/tags/git-翻译/" style="font-size: 15px;">git 翻译</a> <a href="/tags/spring-cloud/" style="font-size: 15px;">spring-cloud</a> <a href="/tags/OO/" style="font-size: 15px;">OO</a> <a href="/tags/Spring-Java/" style="font-size: 15px;">Spring Java</a> <a href="/tags/java-spring/" style="font-size: 15px;">java spring</a> <a href="/tags/docker-daocloud-ci-lighttpd/" style="font-size: 15px;">docker daocloud ci lighttpd</a> <a href="/tags/KMP-算法/" style="font-size: 15px;">KMP 算法</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/06/07/lombok-project/">Project Lombok</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/spring-cloud-01-config/">spring cloud - 配置中心服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/object-oriented-design/">SOLID, GRASP和其他面向对象设计的基本原则</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/getting-started-with-docker/">从零开始学Docker</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/25/why-is-x-in-kmp/">关于KMP算法中的一个小问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/20/how-to-code-gobang-in-c/">如何用C语言写一个五子棋</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/why-jetbrains-needs-kotlin/">为什么JetBrains需要Kotlin [译]</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/01/bye-2016/">2016 技术总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/27/spring-convert-02/">spring-convert-(具体调用)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/how-to-write-a-git-commit-message/">编写git commit message的七条建议 [译]</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//yannxia.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Yann's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.5"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.5"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.5"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.5"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.5"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.5"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.5"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://zAmIRiTPCE.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://g.yannxia.top/2017/03/01/spring-cloud-01-config/';
+        this.page.identifier = '2017/03/01/spring-cloud-01-config/';
+        this.page.title = 'Spring cloud 配置中心服务';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://zAmIRiTPCE.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.0.5"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
