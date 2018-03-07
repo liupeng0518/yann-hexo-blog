@@ -1,7 +1,10 @@
 ---
 title: SOLID, GRASP和其他面向对象设计的基本原则
 date: 2017-02-20 15:27:07
-tags: OO
+tags:
+- OO
+categories:
+- OO
 ---
 
 ##学习面向对象的设计原则，并牢牢掌握SOLID和GRASP规则背后的思想
@@ -13,6 +16,8 @@ tags: OO
 - 可维护性
 - 可扩展性
 - 模块化
+
+<!-- more -->
 
 每当你想要质问代码是否满足以上标准的时候，就会将自己置于困难之中。
 
@@ -46,7 +51,7 @@ tags: OO
 16. Indirection (GRASP) 中介模式
 
 在我早期职业生涯中我经常犯一个错误，总说试图一次性使用这些所有的原则。这是一个巨大的认知错误，我希望你引以为戒。
- 
+
 #Single Responsibility Principle（单一责任原则）
 单一责任原则（SRP）定义：
 
@@ -54,7 +59,7 @@ tags: OO
 
 一个类利用它的函数或者契约（以及函数相关的成员变量）来执行其功能。
 我们来看下面这个类
- 
+
 	Class Simulation{
 		Public LoadSimulationFile()
 		Public Simulate()
@@ -97,7 +102,7 @@ tags: OO
 		//Read from the network
 	 }
 	}
-	
+
 	Class Client {
 		Public void ReadData(DataStream ds){
 		ds.Read();
@@ -106,7 +111,7 @@ tags: OO
 ```
 在这个示例中，客户端读取（ds.Read()）来自于网络数据流。如果我想要扩展这个客户端的功能使之能够读取其他数据流的内容，例如PCI数据流，那么我需要添加另外继承自DataStream的子类，如下所示：
 
-```	
+```
 	Class PCIDataStream:DataStream{
 		Publc byte[] Read(){
 		//Read data from PCI
@@ -152,7 +157,7 @@ tags: OO
 		// Device specific closing logic.
 		}
 	}
-	
+
 	public class NetWorkDevice:IDevice{
 		public void Open(){
 		// Device specific opening logic
@@ -177,8 +182,8 @@ USB设备的问题在于，当你打开连接时，来自先前连接的数据�
 			// Device specific opening logic
 		}
 		public void Read(){
-    		// Reading logic specific to this device<br> 
-		}	
+    		// Reading logic specific to this device<br>
+		}
 		public void Close(){
 			// Device specific closing logic.
 		}
@@ -570,7 +575,7 @@ Public Configuration{
 
 > 原文 [原文链接](https://dzone.com/articles/solid-grasp-and-other-basic-principles-of-object-o)
 
-**译者：** 
+**译者：**
 - [misha913loki](https://github.com/misha913loki)
-- [renlulu](https://github.com/renlulu) 
+- [renlulu](https://github.com/renlulu)
 - [yannxia](https://github.com/yannxia)

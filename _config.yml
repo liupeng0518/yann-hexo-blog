@@ -12,7 +12,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://b.yannxia.info
+url: http://g.yannxia.top
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -25,7 +25,6 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render: googled4a6d96e03c25941.html
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -63,9 +62,9 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: maupassant
+theme: next
 
-disqus_shortname: zAmIRiTPCE
+# disqus_shortname: zAmIRiTPCE
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -91,8 +90,13 @@ deploy:
   # branch: gh-pages
   # message: Updated
 
+#  algolia
+algolia:
+  applicationID: 'SLJ0R87CAH'
+  apiKey: '81f2fde834f83d2c78e8ed80c943cce9'
+  indexName: 'yann_blog'
+  chunkSize: 5000
+
 # hexo sitemap网站地图
 sitemap:
   path: sitemap.xml
-baidusitemap:
-  path: baidusitemap.xml

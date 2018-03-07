@@ -1,21 +1,27 @@
 ---
-title: java_tips
+title: java 小技巧 (1)
+date: 2018-03-07 09:18:31
 tags:
+- Java
+- Tips
+categories:
+- Java
+- Tips
 ---
 
 
 1. 空间换时间的小把戏
-	
+
 ```java
 enum Type {
         NAME("姓名"), AGE("年龄"), ADDRESS("住址");
-        
+
         private String typeName;
-        
+
         Type(String typeName) {
             this.typeName = typeName;
         }
-        
+
         public static Type fromTypeName(String name) {
             for (Type t : Type.values()) {
                 if (t.typeName.equals(name)) return t;

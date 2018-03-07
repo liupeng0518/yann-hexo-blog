@@ -1,8 +1,16 @@
 ---
 title: 使用Daocloud持续部署Hexo
 date: 2016-05-26 12:02:44
-tags: docker daocloud ci lighttpd
-categories: Docker
+tags:
+- Docker
+- Daocloud
+- Ci
+- Lighttpd
+categories:
+- Docker
+- Daocloud
+- Ci
+- Lighttpd
 ---
 
 开始写博客，不太喜欢CSDN之类的技术博客，还是喜欢维护自己的博客网站，买了一个域名也一直没用，虽然手上也有一个ECS，但是搭建一个WordPress真的挺麻烦，而且只是想做一个安静的美男子。选来选取还是全静态的博客比较适合我这样的懒人，现在Github page使用的静态博客很轻便，大致上现在就是Jekyll 和 Hexo [优缺点对比](https://www.zhihu.com/question/21981094). 总而言之，咱们也不能沦为设备党，还是应该以内容为主。

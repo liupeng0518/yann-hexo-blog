@@ -1,8 +1,11 @@
 ---
 title: 编写git commit message的七条建议 [译]
 date: 2016-12-22 09:18:31
-tags: git 翻译
-categories: 翻译
+tags:
+- Git 
+- 翻译
+categories:
+- 翻译
 ---
 
 ## 引言：为什么说提交信息很重要
@@ -19,7 +22,7 @@ categories: 翻译
     22b25e0 Consolidated Util and MutableAnnotationUtils classes into existing AsmUtils
     7f96f57 polishing
 ```
-    
+
 来对比一下来自同一仓库的最近的提交：
 
 ```bash
@@ -30,7 +33,7 @@ categories: 翻译
     887815f Update docbook dependency and generate epub
     ac8326d Polish mockito usage
 ```
-    
+
 你更喜欢看哪个？
 前者的提交记录在长度和形式上都相差甚远；后者在这些方面保持了简介和一致。前者是在不经思考的情况下提交的，而后者的提交却从来不是偶然。
 
@@ -56,7 +59,7 @@ categories: 翻译
 
 ## Git提交信息格式的7条优良规范
 
->Keep in mind: 
+>Keep in mind:
 [This](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) [has](http://www.git-scm.com/book/en/Distributed-Git-Contributing-to-a-Project#Commit-Guidelines)
 [all](https://github.com/torvalds/subsurface/blob/master/README#L82-109)
 [been](http://who-t.blogspot.co.at/2009/12/on-commit-messages.html)
@@ -126,7 +129,7 @@ categories: 翻译
 
 ```bash
 	Derezz the master control program
-	
+
 	MCP turned out to be evil and had become intent on world domination.
 	This commit throws Tron's disc into MCP (causing its deresolution)
 	and turns it back into a chess game.
@@ -141,9 +144,9 @@ categories: 翻译
 	commit 42e769bdf4894310333942ffc5a15151222a87be
 	Author: Kevin Flynn <kevin@flynnsarcade.com>
 	Date:   Fri Jan 01 00:00:00 1982 -0200
-	
+
 	Derezz the master control program
-	
+
 	MCP turned out to be evil and had become intent on world domination.
 	This commit throws Tron's disc into MCP (causing its deresolution)
 	and turns it back into a chess game.
@@ -155,7 +158,7 @@ categories: 翻译
 	$ git log --oneline
 	42e769 Derezz the master control program
 ```
-	
+
 或者`git shortlog`，它可以显示一系列的用户提交记录，但是也仅仅展示简洁的主题行信息：
 
 ```bash
@@ -173,7 +176,7 @@ categories: 翻译
 	   Introduce protoype chess program
 ```
 
-当然，在不同的git语境中主题行和详情的差异还有很多，但是如果没有空行将其隔开，它们中任何一个都将工作不正常。 
+当然，在不同的git语境中主题行和详情的差异还有很多，但是如果没有空行将其隔开，它们中任何一个都将工作不正常。
 
 
 ### 2.限制主题长度在50个字符以内
@@ -216,7 +219,7 @@ GitHub的UI就充分考虑了这个约定，当你提交主题超过50字符的�
 也许有时候祈使句会听起来有点粗鲁，这也是我们为什么不经常使用它的原因。但是用它书写git提交的主题行说明却很合适，因为当你利用git命令创建提交的时候它自己本身也是采用祈使语气的。
 
 例如当你使用`git merge`的时候创建的默认信息如下：
-	
+
 ```bash
 	Merge branch 'myfeature'
 ```
@@ -252,9 +255,9 @@ GitHub的UI就充分考虑了这个约定，当你提交主题超过50字符的�
 
 为了避免迷惑，以下的简单原则能够保证每次都正确的进行描述。
 ### 一个格式正确的git提交主题行应该能够用来组成以下句子：
-- 如果被应用，这个提交将 \___________(在这里书写你的主题行) 
+- 如果被应用，这个提交将 \___________(在这里书写你的主题行)
 例如：
-	
+
 - 如果被应用，这个提交将为了可读性重构子系统X
 - 如果被应用，这个提交将更新入门指南
 - 如果被应用，这个提交将移除弃用方法
@@ -299,7 +302,7 @@ git不会自动去折叠文字。因此当你书写提交信息的详情时，�
 	   by !eof().
 
 	   fail(), clear(n) and exceptions() are just never called. Delete
-	them.	
+	them.
 ```
 
 

@@ -1,7 +1,12 @@
 ---
-title: spring-convert-(基本结构)
+title: Spring-convert-(基本结构)
 date: 2016-12-13 16:43:18
-tags: Spring Java
+tags:
+- Spring
+- Java
+categories:
+- Spring
+- Java
 ---
 
 上次自己留的坑，自己填一下吧。
@@ -22,7 +27,7 @@ public interface Converter<S, T> {
     T convert(S source);
 }
 ```
-从名称就能很轻易的看出，这是最基础的从 S -> T.  这点应该和Spring学习。对比我喜欢用A -> B 
+从名称就能很轻易的看出，这是最基础的从 S -> T.  这点应该和Spring学习。对比我喜欢用A -> B
 的确不如Spring的 Soruce 和 Target 专业。细节处应该好好学(doge:)。大家都是写Java的，至于用法，就不用细说。
 
 ### ConverterFactory

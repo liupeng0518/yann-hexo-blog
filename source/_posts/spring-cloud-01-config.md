@@ -1,7 +1,12 @@
 ---
-title: spring cloud - 配置中心服务
+title: Spring cloud 配置中心服务
 date: 2017-03-01 15:27:07
-tags: spring-cloud
+tags:
+- Java
+- Spring Cloud
+categories:
+- Java
+- Spring Cloud
 ---
 
 为什么要写这一个系列的博客，主要是记录在自己学习Spring cloud中思考，倘若能够给大家一点点帮助，就更好了，写这个系列的话，抱着少即是多的心态，我们每一章讲的不会特别多，尽可能的每一章都比知识萃取的深一点。
@@ -10,6 +15,7 @@ tags: spring-cloud
 #### PRE
 本文写于 2017-03-01， 代码针对于 **Spring Cloud Camden.SR5** 版本。
 
+<!-- more -->
 
 ## Spring Cloud Config
 >Spring Cloud Config provides server and client-side support for externalized configuration in a distributed system.
@@ -26,7 +32,7 @@ tags: spring-cloud
 
 ### Config Server如何选择配置文件
 > Where do you want to store the configuration data for the Config Server? The strategy that governs this behaviour is the EnvironmentRepository
-> 
+>
 - {application} maps to "spring.application.name" on the client side;
 - {profile} maps to "spring.profiles.active" on the client (comma separated list); and
 - {label} which is a server side feature labelling a "versioned" set of config files.
@@ -212,7 +218,7 @@ public org.springframework.core.env.PropertySource<?> locate(
 	以下异常处理略…………
 
 }
-	
+
 private Environment getRemoteEnvironment(RestTemplate restTemplate, ConfigClientProperties properties,
 											 String label, String state) {
 	String path = "/{name}/{profile}";   ②
@@ -220,7 +226,7 @@ private Environment getRemoteEnvironment(RestTemplate restTemplate, ConfigClient
 	String profile = properties.getProfile();
 	String token = properties.getToken();
 	String uri = properties.getRawUri();
-	
+
 	Object[] args = new String[] { name, profile };
 	if (StringUtils.hasText(label)) {
 		args = new String[] { name, profile, label };
@@ -252,7 +258,7 @@ private Environment getRemoteEnvironment(RestTemplate restTemplate, ConfigClient
 	Environment result = response.getBody();
 	return result;
 }
-	
+
 ```
 
 从 ① 处我们看出来这最后是一个Http的请求。 从 ② 处，我们直接看出最终访问的 HTTP的地址就是 "/{name}/{profile}"， 从 ③ 处我们又发现最后得到的就是  Environment.class 这个类型，和我们在Server上看见的代码是一致，这样我们的整个逻辑就串联起来了。
@@ -263,34 +269,3 @@ private Environment getRemoteEnvironment(RestTemplate restTemplate, ConfigClient
 ## 总结
 
 Spring Cloud Config 在编写此博客的时候还是一个很简单的服务，仅仅是提供一个 Environment.class 的CS架构的服务，在Server也没实现分布式等等，现在看来还说一个比较基础的服务。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,13 +1,18 @@
 ---
 title: chameleon项目安利
 date: 2016-12-07 17:18:31
-tags: java convert
-categories: Java
+tags:
+- Java
+- Convert
+categories:
+- Java
 ---
 
 chameleon(变色龙) 是一个Java的Bean Converter轮子，实现注解化类型转换。
 
 [Github地址](https://github.com/yannxia/chameleon)
+
+<!-- more -->
 
 ## 背景
 经常在业务里写 A -> B 这样的转换方法，每次都需要手动调用极其的麻烦，而且每次这种代码复用起来又是比较麻烦的，最初尝试过使用 com.google.common.base.Converter的这个转换接口，
@@ -105,7 +110,7 @@ void setupObject(Object object) {
         Arrays.stream(methods)
                 .filter(AbstractConvertFactory::isConvertorMethod)
                 .forEach(method -> {
-                    Class[] froms = method.getParameterTypes(); 
+                    Class[] froms = method.getParameterTypes();
                     Class to = method.getReturnType();
                     ConvertKey convertKey = new ConvertKey(to, froms);
                     CovertInstant covertInstant = new CovertInstant(object, method);

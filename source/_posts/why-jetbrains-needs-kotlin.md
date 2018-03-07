@@ -2,6 +2,9 @@
 title: 为什么JetBrains需要Kotlin [译]
 date: 2017-01-05 22:28:38
 tags:
+- 翻译
+categories:
+- 翻译
 ---
 
 [原文链接](https://blog.jetbrains.com/kotlin/2011/08/why-jetbrains-needs-kotlin/)
@@ -10,6 +13,7 @@ tags:
 Kotlin的文档中详细的阐述了为何Kotlin会存在。尽管如此，我们仍想清晰的知道JetBrains希望从中得到什么。显然我们在其中投入了长期的经历，花费多年的时间希望达成我的期望。
 在此我将解释为何我们乐意投入。
 
+<!-- more -->
 
 第一并且最重要的原因是，这关乎到我们的生产力。尽管我们已经有了数个基于JVM的编程语言，可至今我们所有基于IntelliJ的IDEs都几乎全部还是使用Java来编写的。
 IntelliJ的构建系统基于Groovy 和 Gant，Groovy适用于一些测试代码，有些JRuby代码在RubyMine中，仅仅如此。但是我们想要通过切换一门编程语言从而获得更高的生产力。

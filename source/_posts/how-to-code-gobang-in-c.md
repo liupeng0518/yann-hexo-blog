@@ -1,12 +1,19 @@
 ---
 title: 如何用C语言写一个五子棋
 date: 2017-01-20 16:53:59
-tags: c game
+tags:
+- C
+- Game
+categories:
+- C
+- Game
 ---
 
 为什么突然想起来写这么个东西，大概是有一天，突然想测试下自己的C语言到底还记得多少。
 就找了年末没什么事情的时候，花了大概2个小时撸了一个这么个东西。
 [renju-c 源码下载](https://github.com/yannxia-self/renju-c)
+
+<!-- more -->
 
 ## 我们需要怎么个东西
 大概是我们需要一个黑框框里面能过下五子棋的东西。
@@ -51,7 +58,7 @@ void init()
 
 蓝色的在中间，就是我们需要判断的棋子，我们可以从 竖横的方向 和 斜的方向去判断是否有五个字。
 
-比如图示中，我们假设 蓝色点是 (a,b) 点，我们先从左侧找，最长的同色我们发现是2个，我们再向后找最长同色，我们发现是0个，那我们只有 2+1[自身] = 3 就是3个。 
+比如图示中，我们假设 蓝色点是 (a,b) 点，我们先从左侧找，最长的同色我们发现是2个，我们再向后找最长同色，我们发现是0个，那我们只有 2+1[自身] = 3 就是3个。
 
 <iframe id="embed_dom" name="embed_dom" frameborder="0" style="border:1px solid #000;display:block;width:800px; height:400px;" src="https://www.processon.com/embed/5881d5bae4b049e795be4834"></iframe>
 
