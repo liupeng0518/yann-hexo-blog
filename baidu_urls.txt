@@ -1,15 +1,1 @@
 http://g.yannxia.top/2018/03/22/interview-review/
-http://g.yannxia.top/2018/03/07/java-tips/
-http://g.yannxia.top/2017/06/07/lombok-project/
-http://g.yannxia.top/2017/03/01/spring-cloud-01-config/
-http://g.yannxia.top/2017/02/20/object-oriented-design/
-http://g.yannxia.top/2017/02/07/getting-started-with-docker/
-http://g.yannxia.top/2017/01/25/why-is-x-in-kmp/
-http://g.yannxia.top/2017/01/20/how-to-code-gobang-in-c/
-http://g.yannxia.top/2017/01/05/why-jetbrains-needs-kotlin/
-http://g.yannxia.top/2017/01/01/bye-2016/
-http://g.yannxia.top/2016/12/27/spring-convert-02/
-http://g.yannxia.top/2016/12/22/how-to-write-a-git-commit-message/
-http://g.yannxia.top/2016/12/13/spring-convert-01/
-http://g.yannxia.top/2016/12/07/about-chameleon/
-http://g.yannxia.top/2016/05/26/use-daocloud-hexo/
