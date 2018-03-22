@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="Yann&#39;s Blog">
 <meta property="og:description" content="抱着面一次学一点知识的心态写下此文，知识浅薄忘扶正。大部分的内容都有链接可以点击面试岗位分别为:     阿里巴巴-优酷-视频分发-高级开发 哔哩哔哩-基础架构部 饿了么-基础架构部  3-5年工作经验岗位。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-22T10:49:27.131Z">
+<meta property="og:updated_time" content="2018-03-22T11:49:02.854Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2018年初面试回顾">
 <meta name="twitter:description" content="抱着面一次学一点知识的心态写下此文，知识浅薄忘扶正。大部分的内容都有链接可以点击面试岗位分别为:     阿里巴巴-优酷-视频分发-高级开发 哔哩哔哩-基础架构部 饿了么-基础架构部  3-5年工作经验岗位。">
@@ -391,15 +391,14 @@
 <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
 <li><a href="#数据库相关">数据库相关</a></li>
 <li><a href="#Java相关">Java相关</a></li>
-<li>程序设计相关</li>
-<li>算法相关</li>
-<li>杂项</li>
+<li><a href="#项目相关]">项目相关</a></li>
+<li><a href="#杂项">杂项</a></li>
 </ul>
 <h2 id="数据库相关"><a href="#数据库相关" class="headerlink" title="数据库相关"></a>数据库相关</h2><ol>
 <li><p><strong>关系型数据库的特性?</strong> </p>
 <p> 这个问题其实问的是 <a href="http://blog.csdn.net/u012440687/article/details/52116108" target="_blank" rel="noopener">ACID</a> 这个特性。</p>
 </li>
-<li><p><strong>数据库的索引是否了解？</strong><br> 大家都听过的，之后会追问，索引如何实现的？ <a href="https://www.jianshu.com/p/814c1675361c" target="_blank" rel="noopener">B+树的实现</a> 可以参考这篇文章<br>我觉得一点要注意，可能和我一样忘接了B树是多路的不是二叉树，并且B+树和B树的有个很大的不一样，B+可以通过叶子结点遍历<br>整个一层，而B只能从根节点访问，所以B+在磁盘的上表现更好，因为数据聚合在一起。（阿里的面试官反馈最想知道的其实索引在内存, 比磁盘更快）</p>
+<li><p><strong>数据库的索引是否了解？</strong><br> 大家都听过的，之后会追问，索引如何实现的？ <a href="https://www.jianshu.com/p/814c1675361c" target="_blank" rel="noopener">B+树的实现</a> 可以参考这篇文章<br>我觉得一点要注意，可能和我一样忘接了B树是多路的不是二叉树，并且B+树和B树的有个很大的不一样，B+可以通过叶子结点遍历整个一层，而B只能从根节点访问，所以B+在磁盘的上表现更好，因为数据聚合在一起。（阿里的面试官反馈最想知道的其实索引在内存, 比磁盘更快）</p>
 </li>
 <li><p><strong>哪些字段适合增加索引？</strong><br> 这个问题在网上说的也比较的空洞，这里有一个比较好的文章可以看一下 <a href="https://segmentfault.com/a/1190000003072424" target="_blank" rel="noopener">数据索引的选择</a><br>这个问题一定注意索引是有成本的，主要在于第一会大量的增加内存空间，之外每一次的插入，更新，删除都需要重新维护索引。</p>
 </li>
@@ -419,11 +418,11 @@
 </ul>
 </li>
 <li><p><strong>Redis中的LRU是如何实现的？</strong><br> 看过这个又忘了，我就说了一个暴力的方式，用Array实现，当然Array实现就会CopyArray的开销很慢，面试官当然会问我还有没有更好的方式？那我想了下用Tree自璇吧，面试官懂了，提醒我用 <a href="https://www.cnblogs.com/HarryHook/p/6654773.html" target="_blank" rel="noopener">双向链表</a>，好吧，我知道自己错了，这样就很明白LRU的实现了，面试之前还得多看看数据结构相关的。</p>
-<p> 数据库相关的内容大概就是这样的，B站在面试的过程中会考关于数据库设计，这块我觉得我们小公司出身的程序员可能占优吧，因为数据库真的是自己设计的。</p>
+<p> <strong>总结：</strong>数据库相关的内容大概就是这样的，B站在面试的过程中会考关于数据库设计，这块我觉得我们小公司出身的程序员可能占优吧，因为数据库真的是自己设计的。</p>
 </li>
 </ol>
 <h2 id="Java相关"><a href="#Java相关" class="headerlink" title="Java相关"></a>Java相关</h2><ol>
-<li><p><strong>Hashmap的实现原理？</strong><br> 这个问题属于烂大街的问题，就不做描述了（<a href="http://www.importnew.com/16301.html" target="_blank" rel="noopener">Hashmap实现</a>），但是除此之外问了一个问题，在高并发的情况下，hashmap 会导致死循环的问题，这个笔者在工作中没有遇见，这个只是在竞争的情况下才会发生，具体的原因 [多线程的情况下的扩容导致] (<a href="https://www.cnblogs.com/dongguacai/p/5599100.html)，没回答上来的难点。" target="_blank" rel="noopener">https://www.cnblogs.com/dongguacai/p/5599100.html)，没回答上来的难点。</a></p>
+<li><p><strong>Hashmap的实现原理？</strong><br> 这个问题属于烂大街的问题，就不做描述了（<a href="http://www.importnew.com/16301.html" target="_blank" rel="noopener">Hashmap实现</a>），但是除此之外问了一个问题，在高并发的情况下，hashmap 会导致死循环的问题，这个笔者在工作中没有遇见，这个只是在竞争的情况下才会发生，具体的原因 <a href="https://www.cnblogs.com/dongguacai/p/5599100.html" target="_blank" rel="noopener">多线程的情况下的扩容导致</a> ，没回答上来的难点。</p>
 </li>
 <li><p><strong>Netty为什么可以提高性能？</strong><br> 这个问题<a href="http://www.importnew.com/15656.html" target="_blank" rel="noopener">Netty实现原理浅析</a>，我觉得核心在Reactor上，采用事件的方式减少了BIO的线程等待，不过面试官好像不太满意，额我还是觉得我应该回答的没错……略尴尬</p>
 </li>
@@ -438,6 +437,17 @@
 <li>小内存导致使用大量的交换区</li>
 <li>IO堵塞<br>这里的LongGC应该说的是经常发生GC而不是很长的GC</li>
 </ol>
+</li>
+<li><p><strong>字节码操作会使用在哪些地方？</strong><br> 笔者所能够想到了就是 Spring在实现动态代理的地方使用了 Cglib，这里有文 <a href="http://www.infoq.com/cn/articles/Living-Matrix-Bytecode-Manipulation" target="_blank" rel="noopener">字节码操纵技术探秘</a> 实际上我觉得使用的地方应该不是特别多。</p>
+</li>
+<li><p><strong>设计模式的使用</strong><br> 老生常谈 <a href="http://blog.51cto.com/sihai/2071497" target="_blank" rel="noopener">设计模式——开发常用的设计模式梳理</a></p>
+</li>
+</ol>
+<h2 id="项目相关"><a href="#项目相关" class="headerlink" title="项目相关"></a>项目相关</h2><p>这块涉及到公司的代码，故不做展开。</p>
+<h2 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h2><ol>
+<li><p>你认为好代码的代码应该是怎么样的？<br> 关于这个问题，我觉得代码的<strong><em>一致性</em></strong>，我在这四年来的代码经验中，就像是代码大全开篇所言的（隐喻性），就像是一个房子在构建，如果有标准化的工程，那我们在参观每一个房间的时候就会很省心省力，代码如果都是一致的，那阅读的过程中就会很轻松。</p>
+</li>
+<li><p>你有什么想问我的？<br> 这个经久不衰的问题（:-D），我每次都还是喜欢问面试官他工作的难点是什么，和自己的预期进行一个匹配。</p>
 </li>
 </ol>
 
@@ -715,7 +725,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库相关"><span class="nav-number">2.</span> <span class="nav-text">数据库相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java相关"><span class="nav-number">3.</span> <span class="nav-text">Java相关</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库相关"><span class="nav-number">2.</span> <span class="nav-text">数据库相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java相关"><span class="nav-number">3.</span> <span class="nav-text">Java相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目相关"><span class="nav-number">4.</span> <span class="nav-text">项目相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#杂项"><span class="nav-number">5.</span> <span class="nav-text">杂项</span></a></li></ol></div>
             
 
           </div>
