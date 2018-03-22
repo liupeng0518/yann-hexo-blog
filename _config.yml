@@ -72,13 +72,16 @@ theme: next
 # Git deploy
 ## https://github.com/hexojs/hexo-deployer-git
 deploy:
-  type: git
-  message: Updated
-  repo:
-    github: git@github.com:yannxia/yann-hexo-blog.git,gh-pages
-    # coding: git@git.coding.net:yann/hexo.git,gh-pages
+  -
+    type: git
+    message: Updated
+    repo:
+      github: git@github.com:yannxia/yann-hexo-blog.git,gh-pages
+      # coding: git@git.coding.net:yann/hexo.git,gh-pages
     # coding-2: git@git.coding.net:yann/my-blog-page.git,master
     # bae: https://git.duapp.com/appidb2814744p0,master
+  -
+    type: baidu_url_submitter
 # deploy:
 #   type: git
 #   repo: git@github.com:yannxia/hexo.git
@@ -100,3 +103,9 @@ algolia:
 # hexo sitemap网站地图
 sitemap:
   path: sitemap.xml
+
+baidu_url_submit:
+  count: 100 ## 提交最新的一个链接
+  host: g.yannxia.top
+  token: etkvxK9GucUBxQPn
+  path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
