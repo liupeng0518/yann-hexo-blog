@@ -385,6 +385,7 @@
 <li>哔哩哔哩-基础架构部</li>
 <li>饿了么-基础架构部</li>
 </ul>
+<p>3-5年工作经验岗位。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/03/22/interview-review/#more" rel="contents">
@@ -537,16 +538,17 @@
 
       
         
-          
-            <ol>
+          <ol>
 <li>空间换时间的小把戏</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Type &#123;</span><br><span class="line">        NAME(<span class="string">"姓名"</span>), AGE(<span class="string">"年龄"</span>), ADDRESS(<span class="string">"住址"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> String typeName;</span><br><span class="line"></span><br><span class="line">        Type(String typeName) &#123;</span><br><span class="line">            <span class="keyword">this</span>.typeName = typeName;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Type <span class="title">fromTypeName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (Type t : Type.values()) &#123;</span><br><span class="line">                <span class="keyword">if</span> (t.typeName.equals(name)) <span class="keyword">return</span> t;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>这样写的坏处大概就是这个 fromTypeName 里面的for循环，虽然语义很清晰，但是我们每次都要去遍历整个枚举对象。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Type &#123;</span><br><span class="line">        NAME(<span class="string">"姓名"</span>), AGE(<span class="string">"年龄"</span>), ADDRESS(<span class="string">"住址"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> Map&lt;String, Type&gt; all = <span class="keyword">new</span> HashMap&lt;String, Type&gt;() &#123;</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">for</span> (Type t : Type.values()) &#123;</span><br><span class="line">                    all.put(t.typeName, t);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">private</span> String typeName;</span><br><span class="line"></span><br><span class="line">        Type(String typeName) &#123;</span><br><span class="line">            <span class="keyword">this</span>.typeName = typeName;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> B.<span class="function">Type <span class="title">fromTypeName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> all.get(name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>在运行之初，我们将所有的对象都放置于Map中，这样直接通过HaskMap去获取对象的效率更高，从O(n) -&gt; O(1) 很标准的空间换时间的小把戏。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/07/java-tips/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

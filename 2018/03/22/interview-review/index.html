@@ -101,18 +101,18 @@
   <meta name="keywords" content="面试," />
 
 
-<meta name="description" content="抱着面一次学一点知识的心态写下此文，知识浅薄忘扶正。大部分的内容都有链接可以点击面试岗位分别为:     阿里巴巴-优酷-视频分发-高级开发 哔哩哔哩-基础架构部 饿了么-基础架构部">
+<meta name="description" content="抱着面一次学一点知识的心态写下此文，知识浅薄忘扶正。大部分的内容都有链接可以点击面试岗位分别为:     阿里巴巴-优酷-视频分发-高级开发 哔哩哔哩-基础架构部 饿了么-基础架构部  3-5年工作经验岗位。">
 <meta name="keywords" content="面试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2018年初面试回顾">
 <meta property="og:url" content="http://g.yannxia.top/2018/03/22/interview-review/index.html">
 <meta property="og:site_name" content="Yann&#39;s Blog">
-<meta property="og:description" content="抱着面一次学一点知识的心态写下此文，知识浅薄忘扶正。大部分的内容都有链接可以点击面试岗位分别为:     阿里巴巴-优酷-视频分发-高级开发 哔哩哔哩-基础架构部 饿了么-基础架构部">
+<meta property="og:description" content="抱着面一次学一点知识的心态写下此文，知识浅薄忘扶正。大部分的内容都有链接可以点击面试岗位分别为:     阿里巴巴-优酷-视频分发-高级开发 哔哩哔哩-基础架构部 饿了么-基础架构部  3-5年工作经验岗位。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-22T09:57:06.183Z">
+<meta property="og:updated_time" content="2018-03-22T10:49:27.131Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2018年初面试回顾">
-<meta name="twitter:description" content="抱着面一次学一点知识的心态写下此文，知识浅薄忘扶正。大部分的内容都有链接可以点击面试岗位分别为:     阿里巴巴-优酷-视频分发-高级开发 哔哩哔哩-基础架构部 饿了么-基础架构部">
+<meta name="twitter:description" content="抱着面一次学一点知识的心态写下此文，知识浅薄忘扶正。大部分的内容都有链接可以点击面试岗位分别为:     阿里巴巴-优酷-视频分发-高级开发 哔哩哔哩-基础架构部 饿了么-基础架构部  3-5年工作经验岗位。">
 
 
 
@@ -386,10 +386,11 @@
 <li>哔哩哔哩-基础架构部</li>
 <li>饿了么-基础架构部</li>
 </ul>
+<p>3-5年工作经验岗位。</p>
 <a id="more"></a>
 <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
 <li><a href="#数据库相关">数据库相关</a></li>
-<li>Java相关</li>
+<li><a href="#Java相关">Java相关</a></li>
 <li>程序设计相关</li>
 <li>算法相关</li>
 <li>杂项</li>
@@ -419,6 +420,24 @@
 </li>
 <li><p><strong>Redis中的LRU是如何实现的？</strong><br> 看过这个又忘了，我就说了一个暴力的方式，用Array实现，当然Array实现就会CopyArray的开销很慢，面试官当然会问我还有没有更好的方式？那我想了下用Tree自璇吧，面试官懂了，提醒我用 <a href="https://www.cnblogs.com/HarryHook/p/6654773.html" target="_blank" rel="noopener">双向链表</a>，好吧，我知道自己错了，这样就很明白LRU的实现了，面试之前还得多看看数据结构相关的。</p>
 <p> 数据库相关的内容大概就是这样的，B站在面试的过程中会考关于数据库设计，这块我觉得我们小公司出身的程序员可能占优吧，因为数据库真的是自己设计的。</p>
+</li>
+</ol>
+<h2 id="Java相关"><a href="#Java相关" class="headerlink" title="Java相关"></a>Java相关</h2><ol>
+<li><p><strong>Hashmap的实现原理？</strong><br> 这个问题属于烂大街的问题，就不做描述了（<a href="http://www.importnew.com/16301.html" target="_blank" rel="noopener">Hashmap实现</a>），但是除此之外问了一个问题，在高并发的情况下，hashmap 会导致死循环的问题，这个笔者在工作中没有遇见，这个只是在竞争的情况下才会发生，具体的原因 [多线程的情况下的扩容导致] (<a href="https://www.cnblogs.com/dongguacai/p/5599100.html)，没回答上来的难点。" target="_blank" rel="noopener">https://www.cnblogs.com/dongguacai/p/5599100.html)，没回答上来的难点。</a></p>
+</li>
+<li><p><strong>Netty为什么可以提高性能？</strong><br> 这个问题<a href="http://www.importnew.com/15656.html" target="_blank" rel="noopener">Netty实现原理浅析</a>，我觉得核心在Reactor上，采用事件的方式减少了BIO的线程等待，不过面试官好像不太满意，额我还是觉得我应该回答的没错……略尴尬</p>
+</li>
+<li><p><strong>JavaComplier的实现原理？</strong><br> 编译原理没学好，我放弃。这个问题是我说我写过JVM虚拟机因伸出来的，至于我记得部分就是抄袭 《自己动手写Java虚拟机》使用Go做了一个简陋的虚拟机。</p>
+</li>
+<li><p><strong>JVM的GC？</strong><br> 这也是一个老生常谈的问题了，但是一时间还真是记不住，推荐一篇好文 <a href="https://www.zybuluo.com/Yano/note/321063" target="_blank" rel="noopener">Java 虚拟机面试题全面解析</a>，关于GC的也推荐 <a href="https://www.cnblogs.com/ityouknow/p/5614961.html" target="_blank" rel="noopener">GC算法 垃圾收集器</a>，实战推荐 <a href="https://www.cnblogs.com/feiyudemeng/p/8276911.html" target="_blank" rel="noopener">从实际案例聊聊Java应用的GC优化</a> 。还是推荐大家背一背，真心会忘，实在能记得大概吧，不然就有点尴尬。</p>
+</li>
+<li><p><strong>触发Long GC原因可能是？</strong><br> 没有触发过，发个文<a href="https://dzone.com/articles/how-to-reduce-long-gc-pause" target="_blank" rel="noopener">How to Reduce Long GC Pauses</a>，简而言之有几个原因 </p>
+<ol>
+<li>大量的对象创建</li>
+<li>young和old的比例失调</li>
+<li>小内存导致使用大量的交换区</li>
+<li>IO堵塞<br>这里的LongGC应该说的是经常发生GC而不是很长的GC</li>
+</ol>
 </li>
 </ol>
 
@@ -696,7 +715,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库相关"><span class="nav-number">2.</span> <span class="nav-text">数据库相关</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库相关"><span class="nav-number">2.</span> <span class="nav-text">数据库相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java相关"><span class="nav-number">3.</span> <span class="nav-text">Java相关</span></a></li></ol></div>
             
 
           </div>
