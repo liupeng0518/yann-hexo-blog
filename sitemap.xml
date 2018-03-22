@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://g.yannxia.top/about/index.html</loc>
+    
+    <lastmod>2018-03-22T12:16:22.732Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://g.yannxia.top/2018/03/22/interview-review/</loc>
     
     <lastmod>2018-03-22T11:49:02.854Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://g.yannxia.top/2018/03/07/java-tips/</loc>
     
     <lastmod>2018-03-22T10:02:33.711Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://g.yannxia.top/about/index.html</loc>
-    
-    <lastmod>2018-03-07T02:45:51.669Z</lastmod>
     
   </url>
   
@@ -82,13 +82,6 @@
     <loc>http://g.yannxia.top/2016/05/26/use-daocloud-hexo/</loc>
     
     <lastmod>2018-03-07T01:54:16.236Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://g.yannxia.top/about/resume.html</loc>
-    
-    <lastmod>2018-03-07T01:51:39.361Z</lastmod>
     
   </url>
   
