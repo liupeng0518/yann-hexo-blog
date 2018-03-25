@@ -18,12 +18,10 @@ categories:
 - Java
 - Python
 
+# SHARE
+- [Awesome Java](https://pan.baidu.com/s/1M0jf7yATrwMWNZFPXIBZnQ)
+- [Git工作流](https://pan.baidu.com/s/1_VxflOEa3JUJkpy0hMQekA)
+
 
 # RESUME
 - 简历 [点击下载](http://g.yannxia.top/about/夏岩的简历.pdf)
-
-
-
-<a href="../uploads/me.jpg">
-  <img src="../uploads/clickme.png"></img>
-</a>

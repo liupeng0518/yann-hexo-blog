@@ -67,7 +67,7 @@ tags:
 	编译原理没学好，我放弃。这个问题是我说我写过JVM虚拟机因伸出来的，至于我记得部分就是抄袭 《自己动手写Java虚拟机》使用Go做了一个简陋的虚拟机。
 
 4. **JVM的GC？**  
-	这也是一个老生常谈的问题了，但是一时间还真是记不住，推荐一篇好文 [Java 虚拟机面试题全面解析](https://www.zybuluo.com/Yano/note/321063)，关于GC的也推荐 [GC算法 垃圾收集器](https://www.cnblogs.com/ityouknow/p/5614961.html)，实战推荐 [从实际案例聊聊Java应用的GC优化](https://www.cnblogs.com/feiyudemeng/p/8276911.html) 。还是推荐大家背一背，真心会忘，实在能记得大概吧，不然就有点尴尬。
+	这也是一个老生常谈的问题了，但是一时间还真是记不住，推荐一篇好文 [Java 虚拟机面试题全面解析](https://www.zybuluo.com/Yano/note/321063)，关于GC的也推荐 [GC算法 垃圾收集器](https://www.cnblogs.com/ityouknow/p/5614961.html)，实战推荐 [从实际案例聊聊Java应用的GC优化](https://www.cnblogs.com/feiyudemeng/p/8276911.html) 。还是推荐大家背一背，真心会忘，实在能记得大概吧，不然就有点尴尬。补充一个CMS的[细解](https://plumbr.io/handbook/garbage-collection-algorithms-implementations/concurrent-mark-and-sweep)
 
 5. **触发Long GC原因可能是？**  
 	没有触发过，发个文[How to Reduce Long GC Pauses](https://dzone.com/articles/how-to-reduce-long-gc-pause)，简而言之有几个原因 
@@ -82,13 +82,19 @@ tags:
 7. **设计模式的使用**	 
 	老生常谈 [设计模式——开发常用的设计模式梳理](http://blog.51cto.com/sihai/2071497)
 
-## 项目相关
-这块涉及到公司的代码，故不做展开。
+8. **解释锁的各种特性**    
+	推荐一个文章 [java 中的锁 -- 偏向锁、轻量级锁、自旋锁、重量级锁](https://my.oschina.net/u/1170450/blog/1679424)
 
+## 项目相关
+1. **某项目强依赖Redis，如果Redis挂掉怎么处理？Redis连接变的高延迟怎么处理？**
+2. **设计一个日志收集系统，2K终端会上传日志压缩包200KB以Gzip的方式上传，架构如何设计，最终能够做数据可视化。**
 	
 ## 杂项
-1. 你认为好代码的代码应该是怎么样的？  
+1. **你认为好代码的代码应该是怎么样的？**  
 	关于这个问题，我觉得代码的***一致性***，我在这四年来的代码经验中，就像是代码大全开篇所言的（隐喻性），就像是一个房子在构建，如果有标准化的工程，那我们在参观每一个房间的时候就会很省心省力，代码如果都是一致的，那阅读的过程中就会很轻松。
 
-2. 你有什么想问我的？  
+2. **你有什么想问我的？  **
 	这个经久不衰的问题（:-D），我每次都还是喜欢问面试官他工作的难点是什么，和自己的预期进行一个匹配。
+	
+## 其他
+大部分的架构部门都会考虑Go，所以都会问下Go学的怎么样，大家如果立志于架构组还需要学习现在更流行的Go语言了。
