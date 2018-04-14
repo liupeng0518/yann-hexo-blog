@@ -9,7 +9,7 @@
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
 
 
@@ -49,16 +49,16 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=6.0.5" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=6.0.5">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=6.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=6.0.5">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=6.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=6.0.5">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=6.1.0">
 
 
 
@@ -74,7 +74,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Gemini',
-    version: '6.0.5',
+    version: '6.1.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
     fastclick: false,
@@ -97,11 +97,7 @@
 
 
 
-  
-  <meta name="keywords" content="Yann's Blog" />
-
-
-<meta property="og:type" content="website">
+  <meta property="og:type" content="website">
 <meta property="og:title" content="Yann&#39;s Blog">
 <meta property="og:url" content="http://g.yannxia.top/tags/Tips/index.html">
 <meta property="og:site_name" content="Yann&#39;s Blog">
@@ -123,6 +119,7 @@
     sidebar: "",
   };
 </script>
+
   <title>标签: Tips | Yann's Blog</title>
   
 
@@ -184,12 +181,12 @@
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"> <div class="site-brand-wrapper">
+      <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Yann's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -201,7 +198,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -209,31 +206,47 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-百科">
+    <a href="http:/wiki.yannxia.top/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-wikipedia-w"></i> <br />百科</a>
+  </li>
 
+      
       
         <li class="menu-item menu-item-search">
           
@@ -244,6 +257,8 @@
         </li>
       
     </ul>
+  
+
   
 
   
@@ -277,11 +292,12 @@
 </nav>
 
 
+
   
 
 
 
- </div>
+</div>
     </header>
 
     
@@ -290,6 +306,29 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+          
           <div id="content" class="content">
             
 
@@ -570,7 +609,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Yann Xia</span>
@@ -583,7 +622,7 @@
 
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.6.0</div>
 
 
 
@@ -672,28 +711,28 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.0.5"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.0.5"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.0.5"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.5"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
 
 
 
   
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.1.0"></script>
+
+
+
+  
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.5"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
 
 
 
@@ -741,7 +780,7 @@
   <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
   
 
-  <script src="/js/src/algolia-search.js?v=6.0.5"></script>
+  <script src="/js/src/algolia-search.js?v=6.1.0"></script>
 
 
 
