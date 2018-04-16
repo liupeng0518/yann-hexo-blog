@@ -12,5 +12,5 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: http://blog.yannxia.info/sitemap.xml
-Sitemap: http://blog.yannxia.info/baidusitemap.xml
+Sitemap: http://blog.yannxia.top/sitemap.xml
+Sitemap: http://blog.yannxia.top/baidusitemap.xml
