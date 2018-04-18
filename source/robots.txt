@@ -2,6 +2,8 @@
 User-agent: *
 Allow: /
 Allow: /archives/
+Allow: /categories/
+Allow: /tags/
 
 Disallow: /vendors/
 Disallow: /js/
@@ -10,5 +12,5 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: http://b.yannxia.info/sitemap.xml
-Sitemap: http://b.yannxia.info/baidusitemap.xml
+Sitemap: http://blog.yannxia.top/sitemap.xml
+Sitemap: http://blog.yannxia.top/baidusitemap.xml

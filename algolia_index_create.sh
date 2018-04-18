@@ -1,3 +1,2 @@
-export HEXO_ALGOLIA_INDEXING_KEY=81f2fde834f83d2c78e8ed80c943cce9
 hexo clean
-hexo algolia
+HEXO_ALGOLIA_INDEXING_KEY=fd4f2896d73497ea343ec5d504a06bb4 hexo algolia
