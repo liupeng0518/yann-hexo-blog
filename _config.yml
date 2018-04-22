@@ -12,7 +12,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://g.yannxia.top
+url: http://blog.yannxia.top
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -96,7 +96,7 @@ deploy:
 #  algolia
 algolia:
   applicationID: 'SLJ0R87CAH'
-  apiKey: '81f2fde834f83d2c78e8ed80c943cce9'
+  apiKey: 'fd4f2896d73497ea343ec5d504a06bb4'
   indexName: 'yann_blog'
   chunkSize: 5000
 
@@ -105,7 +105,7 @@ sitemap:
   path: sitemap.xml
 
 baidu_url_submit:
-  count: 100 ## 提交最新的一个链接
-  host: g.yannxia.top
+  count: 5 ## 提交最新的一个链接
+  host: blog.yannxia.top
   token: etkvxK9GucUBxQPn
   path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
