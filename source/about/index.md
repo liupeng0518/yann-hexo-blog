@@ -13,7 +13,7 @@ categories:
 <style type="text/css">
     #content {
         width: 100%;
-        height: 600px;
+        height: 700px;
     }
 </style>
 
@@ -23,8 +23,8 @@ categories:
     new TypeIt('#element', {
         speed: 45
     })
-        .type('欢迎光临寒舍，')
-        .pause(300)
+        .type('<b>欢迎光临寒舍</b>')
+        .pause(500)
         .options({ speed: 45 })
         .break()
         .type('我叫夏岩，茫茫程序员海洋中的微不足道的一枚。')
@@ -52,7 +52,7 @@ categories:
         .break()
         .type(':) See you..')
         .break()
-        .type('如果是猎头/HR小姐姐 <a href="http://g.yannxia.top/about/夏岩的简历.pdf">你的要在这里哦！</a>')
+        .type('如果是猎头/HR小姐姐 <a href="http://blog.yannxia.top/about/夏岩的简历.pdf">你的要在这里哦！</a>')
 </script>
 
 {% endraw %}
