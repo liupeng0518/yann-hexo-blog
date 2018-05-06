@@ -109,7 +109,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://electricala2z.com/wp-content/uploads/2017/10/osi-model.gif">
 <meta property="og:image" content="https://networkingfolks.files.wordpress.com/2012/03/arp13.jpg">
-<meta property="og:updated_time" content="2018-05-06T14:31:29.798Z">
+<meta property="og:updated_time" content="2018-05-06T14:37:44.095Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP&#x2F;IP-(1)-ARP">
 <meta name="twitter:description" content="预备知识网络是分层的，TCP/IP 关注的是 第三层采用 IP 协议 和 第四层 采用的是 TCP 和 UDP 协议。对于第一层和第二层，我们需要在意的是 MTU （最大传输单元）,这个值有一个最小值,因为载波监听的需求，并没强制性的最大值，Lan默认的是1500。(如何优化MTU可以见 参考2) 如何查询MTU可以通过 ifconfig 命令查询。">
@@ -487,13 +487,14 @@
 
 
 <h3 id="ARP-相关命令"><a href="#ARP-相关命令" class="headerlink" title="ARP 相关命令"></a>ARP 相关命令</h3><ul>
-<li>arp -a: 查询所有arp相关</li>
-<li>tcpdump -n arp: 监听arp请求</li>
+<li><code>arp -a</code> : 查询所有arp相关</li>
+<li><code>tcpdump -n arp</code> : 监听arp请求</li>
 </ul>
-<h3 id="ARP-相关攻击"><a href="#ARP-相关攻击" class="headerlink" title="ARP 相关攻击"></a>ARP 相关攻击</h3><p>arp本身没有验证性，可以强制回答自己的mac地址。如果有黑客接入网络会导致大批量的arp地址错误。</p>
-<h2 id="参考文件"><a href="#参考文件" class="headerlink" title="参考文件"></a>参考文件</h2><ol>
+<h3 id="ARP-相关攻击"><a href="#ARP-相关攻击" class="headerlink" title="ARP 相关攻击"></a>ARP 相关攻击</h3><p>arp本身没有验证性，可以强制回答自己的mac地址。如果有黑客接入网络会导致大批量的arp地址错误。<br>可以参考本文的 <code>参考资料3</code>。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
 <li><a href="">TCP/IP协议卷一: 详解</a></li>
 <li><a href="https://kb.netgear.com/19863/Ping-Test-to-determine-Optimal-MTU-Size-on-Router" target="_blank" rel="noopener">Ping Test to determine Optimal MTU Size on Router</a></li>
+<li><a href="http://www.freebuf.com/articles/system/10517.html" target="_blank" rel="noopener">ARP攻击防范方法总结</a></li>
 </ol>
 
       
@@ -868,7 +869,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#预备知识"><span class="nav-number">1.</span> <span class="nav-text">预备知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARP"><span class="nav-number">2.</span> <span class="nav-text">ARP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ARP-协议"><span class="nav-number">2.1.</span> <span class="nav-text">ARP 协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARP-流程"><span class="nav-number">2.2.</span> <span class="nav-text">ARP 流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARP-相关命令"><span class="nav-number">2.3.</span> <span class="nav-text">ARP 相关命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARP-相关攻击"><span class="nav-number">2.4.</span> <span class="nav-text">ARP 相关攻击</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文件"><span class="nav-number">3.</span> <span class="nav-text">参考文件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#预备知识"><span class="nav-number">1.</span> <span class="nav-text">预备知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARP"><span class="nav-number">2.</span> <span class="nav-text">ARP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ARP-协议"><span class="nav-number">2.1.</span> <span class="nav-text">ARP 协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARP-流程"><span class="nav-number">2.2.</span> <span class="nav-text">ARP 流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARP-相关命令"><span class="nav-number">2.3.</span> <span class="nav-text">ARP 相关命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARP-相关攻击"><span class="nav-number">2.4.</span> <span class="nav-text">ARP 相关攻击</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
