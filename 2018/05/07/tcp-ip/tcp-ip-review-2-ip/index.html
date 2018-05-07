@@ -99,19 +99,19 @@
 
 
 
-  <meta name="description" content="IP 协议格式 IP 报文是 无连接 的，IP报文可能出现丢失，重复等等，这个在IP协议中是无任何保证的，IP协议就是能够将数据发送到目标地址即可。值得注意的点：  IP的头部中有一个总长度字段，这个是以字节为单位的，这个单位只有16位，所以最大为 2^16 = 65535 长度，不过依然会被MTU限制切分 标识字段：这个字段为每一个报文生成一个累加的值，对于数据分片的时候，如果">
+  <meta name="description" content="IP 协议格式 IP 报文是 无连接 的，IP报文可能出现丢失，重复等等，这个在IP协议中是无任何保证的，IP协议就是能够将数据发送到目标地址即可。值得注意的点：  IP的头部中有一个总长度字段，这个是以字节为单位的，这个单位只有16位，所以最大为 2^16 = 65535 长度，不过依然会被MTU限制切分 标识字段：这个字段为每一个报文生成一个累加的值，对于数据分片的时候，如果标识">
 <meta name="keywords" content="TCP&#x2F;IP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TCP&#x2F;IP-(2)-Internet协议">
 <meta property="og:url" content="http://blog.yannxia.top/2018/05/07/tcp-ip/tcp-ip-review-2-ip/index.html">
 <meta property="og:site_name" content="Yann&#39;s Blog">
-<meta property="og:description" content="IP 协议格式 IP 报文是 无连接 的，IP报文可能出现丢失，重复等等，这个在IP协议中是无任何保证的，IP协议就是能够将数据发送到目标地址即可。值得注意的点：  IP的头部中有一个总长度字段，这个是以字节为单位的，这个单位只有16位，所以最大为 2^16 = 65535 长度，不过依然会被MTU限制切分 标识字段：这个字段为每一个报文生成一个累加的值，对于数据分片的时候，如果">
+<meta property="og:description" content="IP 协议格式 IP 报文是 无连接 的，IP报文可能出现丢失，重复等等，这个在IP协议中是无任何保证的，IP协议就是能够将数据发送到目标地址即可。值得注意的点：  IP的头部中有一个总长度字段，这个是以字节为单位的，这个单位只有16位，所以最大为 2^16 = 65535 长度，不过依然会被MTU限制切分 标识字段：这个字段为每一个报文生成一个累加的值，对于数据分片的时候，如果标识">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525701055612&di=0948d9e53d38bcc604965c72842d3074&imgtype=0&src=http%3A%2F%2F7xntdm.com1.z0.glb.clouddn.com%2FIPformat.png">
-<meta property="og:updated_time" content="2018-05-07T11:29:53.863Z">
+<meta property="og:updated_time" content="2018-05-07T11:31:56.870Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP&#x2F;IP-(2)-Internet协议">
-<meta name="twitter:description" content="IP 协议格式 IP 报文是 无连接 的，IP报文可能出现丢失，重复等等，这个在IP协议中是无任何保证的，IP协议就是能够将数据发送到目标地址即可。值得注意的点：  IP的头部中有一个总长度字段，这个是以字节为单位的，这个单位只有16位，所以最大为 2^16 = 65535 长度，不过依然会被MTU限制切分 标识字段：这个字段为每一个报文生成一个累加的值，对于数据分片的时候，如果">
+<meta name="twitter:description" content="IP 协议格式 IP 报文是 无连接 的，IP报文可能出现丢失，重复等等，这个在IP协议中是无任何保证的，IP协议就是能够将数据发送到目标地址即可。值得注意的点：  IP的头部中有一个总长度字段，这个是以字节为单位的，这个单位只有16位，所以最大为 2^16 = 65535 长度，不过依然会被MTU限制切分 标识字段：这个字段为每一个报文生成一个累加的值，对于数据分片的时候，如果标识">
 <meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525701055612&di=0948d9e53d38bcc604965c72842d3074&imgtype=0&src=http%3A%2F%2F7xntdm.com1.z0.glb.clouddn.com%2FIPformat.png">
 
 
@@ -468,6 +468,7 @@
 <li>标识字段：这个字段为每一个报文生成一个累加的值，对于数据分片的时候，如果标识字段相同即可认为是同一个数据片</li>
 <li>TTL：代表最大的调数，每经过一个Route就减一，等于0的时候就自然被丢弃</li>
 </ul>
+<a id="more"></a>
 <h2 id="IP转发"><a href="#IP转发" class="headerlink" title="IP转发"></a>IP转发</h2><p>IP包的转发逻辑是没有强制规定的，不过这个实现的话一般会有4个必要的属性</p>
 <ul>
 <li>目的地：目标地址</li>

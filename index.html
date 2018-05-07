@@ -449,10 +449,7 @@
 
       
         
-          
-            
-
-<script src="https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js"></script>
+          <script src="https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js"></script>
 <script src="https://cdn.bootcss.com/snap.svg/0.5.1/snap.svg-min.js"></script>
 <script src="https://cdn.bootcss.com/underscore.js/1.9.0/underscore-min.js"></script>
 <script src="https://cdn.bootcss.com/raphael/2.2.7/raphael.min.js"></script>
@@ -466,52 +463,13 @@
 <li>标识字段：这个字段为每一个报文生成一个累加的值，对于数据分片的时候，如果标识字段相同即可认为是同一个数据片</li>
 <li>TTL：代表最大的调数，每经过一个Route就减一，等于0的时候就自然被丢弃</li>
 </ul>
-<h2 id="IP转发"><a href="#IP转发" class="headerlink" title="IP转发"></a>IP转发</h2><p>IP包的转发逻辑是没有强制规定的，不过这个实现的话一般会有4个必要的属性</p>
-<ul>
-<li>目的地：目标地址</li>
-<li>掩码：子网掩码</li>
-<li>下一跳：传递给下一个网络路由的地址</li>
-<li>接口：也就是网卡</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>目的地</th>
-<th style="text-align:center">掩码</th>
-<th style="text-align:right">下一跳</th>
-<th style="text-align:right">接口</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>180.70.65.192</td>
-<td style="text-align:center">/26</td>
-<td style="text-align:right">-</td>
-<td style="text-align:right">m2</td>
-</tr>
-<tr>
-<td>180.70.65.192</td>
-<td style="text-align:center">/25</td>
-<td style="text-align:right">-</td>
-<td style="text-align:right">m0</td>
-</tr>
-</tbody>
-</table>
-<p>逻辑步骤是这样的</p>
-<ol>
-<li>将目标IP和掩码进行运算，得到正确的网段</li>
-<li>找到匹配的路由表信息</li>
-<li>如果存在下一条地址就将此报文发送给下一条地址 / 如果没有就直接交付给ARP协议通过内网转发</li>
-</ol>
-<h2 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h2><ul>
-<li><code>route -n</code> : 查看所有的路由表</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
-<li><a href="https://book.douban.com/subject/1088054/" target="_blank" rel="noopener">TCP/IP协议卷一: 详解</a></li>
-<li><a href="https://book.douban.com/subject/5386194/" target="_blank" rel="noopener">TCP/IP协议族</a></li>
-</ol>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/07/tcp-ip/tcp-ip-review-2-ip/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
