@@ -99,20 +99,27 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yann&#39;s Blog">
-<meta property="og:url" content="http://blog.yannxia.top/tags/思考/index.html">
+  <meta name="description" content="IP 协议格式 IP 报文是 无连接 的，IP报文可能出现丢失，重复等等，这个在IP协议中是无任何保证的，IP协议就是能够将数据发送到目标地址即可。值得注意的点：  IP的头部中有一个总长度字段，这个是以字节为单位的，这个单位只有16位，所以最大为 2^16 = 65535 长度，不过依然会被MTU限制切分 标识字段：这个字段为每一个报文生成一个累加的值，对于数据分片的时候，如果">
+<meta name="keywords" content="TCP&#x2F;IP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TCP&#x2F;IP-(2)-Internet协议">
+<meta property="og:url" content="http://blog.yannxia.top/2018/05/07/tcp-ip/tcp-ip-review-2-ip/index.html">
 <meta property="og:site_name" content="Yann&#39;s Blog">
+<meta property="og:description" content="IP 协议格式 IP 报文是 无连接 的，IP报文可能出现丢失，重复等等，这个在IP协议中是无任何保证的，IP协议就是能够将数据发送到目标地址即可。值得注意的点：  IP的头部中有一个总长度字段，这个是以字节为单位的，这个单位只有16位，所以最大为 2^16 = 65535 长度，不过依然会被MTU限制切分 标识字段：这个字段为每一个报文生成一个累加的值，对于数据分片的时候，如果">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525701055612&di=0948d9e53d38bcc604965c72842d3074&imgtype=0&src=http%3A%2F%2F7xntdm.com1.z0.glb.clouddn.com%2FIPformat.png">
+<meta property="og:updated_time" content="2018-05-07T11:29:53.863Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yann&#39;s Blog">
+<meta name="twitter:title" content="TCP&#x2F;IP-(2)-Internet协议">
+<meta name="twitter:description" content="IP 协议格式 IP 报文是 无连接 的，IP报文可能出现丢失，重复等等，这个在IP协议中是无任何保证的，IP协议就是能够将数据发送到目标地址即可。值得注意的点：  IP的头部中有一个总长度字段，这个是以字节为单位的，这个单位只有16位，所以最大为 2^16 = 65535 长度，不过依然会被MTU限制切分 标识字段：这个字段为每一个报文生成一个累加的值，对于数据分片的时候，如果">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525701055612&di=0948d9e53d38bcc604965c72842d3074&imgtype=0&src=http%3A%2F%2F7xntdm.com1.z0.glb.clouddn.com%2FIPformat.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://blog.yannxia.top/tags/思考/"/>
+  <link rel="canonical" href="http://blog.yannxia.top/2018/05/07/tcp-ip/tcp-ip-review-2-ip/"/>
 
 
 
@@ -122,7 +129,7 @@
   };
 </script>
 
-  <title>标签: 思考 | Yann's Blog</title>
+  <title>TCP/IP-(2)-Internet协议 | Yann's Blog</title>
   
 
 
@@ -179,7 +186,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -323,84 +330,294 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>思考<small>标签</small>
-        </h2>
-      </div>
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2018/05/07/tcp-ip/tcp-ip-review-2-ip/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yann.xia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/Logo-2018.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yann's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">TCP/IP-(2)-Internet协议</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-07T19:30:07+08:00">2018-05-07</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/网络编程/" itemprop="url" rel="index"><span itemprop="name">网络编程</span></a></span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/网络编程/TCP-IP/" itemprop="url" rel="index"><span itemprop="name">TCP/IP</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/05/07/tcp-ip/tcp-ip-review-2-ip/" class="leancloud_visitors" data-flag-title="TCP/IP-(2)-Internet协议">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
 
       
         
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<script src="https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js"></script>
+<script src="https://cdn.bootcss.com/snap.svg/0.5.1/snap.svg-min.js"></script>
+<script src="https://cdn.bootcss.com/underscore.js/1.9.0/underscore-min.js"></script>
+<script src="https://cdn.bootcss.com/raphael/2.2.7/raphael.min.js"></script>
+<script src="https://cdn.bootcss.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
 
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/18/rethink/think_in_iot/" itemprop="url">
-              
-                <span itemprop="name">对IOT技术思考</span>
-              
-            </a>
-        
-      </h3>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-18T17:56:26+08:00"
-              content="2018-04-18" >
-          04-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+<h2 id="IP-协议格式"><a href="#IP-协议格式" class="headerlink" title="IP 协议格式"></a>IP 协议格式</h2><p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1525701055612&amp;di=0948d9e53d38bcc604965c72842d3074&amp;imgtype=0&amp;src=http%3A%2F%2F7xntdm.com1.z0.glb.clouddn.com%2FIPformat.png" alt="ip"></p>
+<p>IP 报文是 <code>无连接</code> 的，IP报文可能出现丢失，重复等等，这个在IP协议中是无任何保证的，IP协议就是能够将数据发送到目标地址即可。<br>值得注意的点：</p>
+<ul>
+<li>IP的头部中有一个总长度字段，这个是以<code>字节</code>为单位的，这个单位只有16位，所以最大为 2^16 = 65535 长度，不过依然会被MTU限制切分</li>
+<li>标识字段：这个字段为每一个报文生成一个累加的值，对于数据分片的时候，如果标识字段相同即可认为是同一个数据片</li>
+<li>TTL：代表最大的调数，每经过一个Route就减一，等于0的时候就自然被丢弃</li>
+</ul>
+<h2 id="IP转发"><a href="#IP转发" class="headerlink" title="IP转发"></a>IP转发</h2><p>IP包的转发逻辑是没有强制规定的，不过这个实现的话一般会有4个必要的属性</p>
+<ul>
+<li>目的地：目标地址</li>
+<li>掩码：子网掩码</li>
+<li>下一跳：传递给下一个网络路由的地址</li>
+<li>接口：也就是网卡</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>目的地</th>
+<th style="text-align:center">掩码</th>
+<th style="text-align:right">下一跳</th>
+<th style="text-align:right">接口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>180.70.65.192</td>
+<td style="text-align:center">/26</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">m2</td>
+</tr>
+<tr>
+<td>180.70.65.192</td>
+<td style="text-align:center">/25</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">m0</td>
+</tr>
+</tbody>
+</table>
+<p>逻辑步骤是这样的</p>
+<ol>
+<li>将目标IP和掩码进行运算，得到正确的网段</li>
+<li>找到匹配的路由表信息</li>
+<li>如果存在下一条地址就将此报文发送给下一条地址 / 如果没有就直接交付给ARP协议通过内网转发</li>
+</ol>
+<h2 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h2><ul>
+<li><code>route -n</code> : 查看所有的路由表</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="https://book.douban.com/subject/1088054/" target="_blank" rel="noopener">TCP/IP协议卷一: 详解</a></li>
+<li><a href="https://book.douban.com/subject/5386194/" target="_blank" rel="noopener">TCP/IP协议族</a></li>
+</ol>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/TCP-IP/" rel="tag"># TCP/IP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/07/java/nio/java-nio-1-basic/" rel="next" title="Java网络编程-(1)-NIO基础">
+                <i class="fa fa-chevron-left"></i> Java网络编程-(1)-NIO基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2122379" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -421,8 +638,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -656,6 +882,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IP-协议格式"><span class="nav-number">1.</span> <span class="nav-text">IP 协议格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP转发"><span class="nav-number">2.</span> <span class="nav-text">IP转发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关命令"><span class="nav-number">3.</span> <span class="nav-text">相关命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -791,6 +1033,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
+
+
 
   
 
@@ -803,6 +1049,23 @@
 
   
 
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://blog.yannxia.top/2018/05/07/tcp-ip/tcp-ip-review-2-ip/';
+        this.page.identifier = '2018/05/07/tcp-ip/tcp-ip-review-2-ip/';
+        this.page.title = 'TCP/IP-(2)-Internet协议';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://yann-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
   
 
 

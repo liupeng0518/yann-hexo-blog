@@ -344,6 +344,225 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2018/05/07/tcp-ip/tcp-ip-review-2-ip/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yann.xia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/Logo-2018.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yann's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/07/tcp-ip/tcp-ip-review-2-ip/" itemprop="url">TCP/IP-(2)-Internet协议</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-07T19:30:07+08:00">2018-05-07</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/网络编程/" itemprop="url" rel="index"><span itemprop="name">网络编程</span></a></span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/网络编程/TCP-IP/" itemprop="url" rel="index"><span itemprop="name">TCP/IP</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/05/07/tcp-ip/tcp-ip-review-2-ip/" class="leancloud_visitors" data-flag-title="TCP/IP-(2)-Internet协议">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+
+<script src="https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js"></script>
+<script src="https://cdn.bootcss.com/snap.svg/0.5.1/snap.svg-min.js"></script>
+<script src="https://cdn.bootcss.com/underscore.js/1.9.0/underscore-min.js"></script>
+<script src="https://cdn.bootcss.com/raphael/2.2.7/raphael.min.js"></script>
+<script src="https://cdn.bootcss.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+
+
+<h2 id="IP-协议格式"><a href="#IP-协议格式" class="headerlink" title="IP 协议格式"></a>IP 协议格式</h2><p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1525701055612&amp;di=0948d9e53d38bcc604965c72842d3074&amp;imgtype=0&amp;src=http%3A%2F%2F7xntdm.com1.z0.glb.clouddn.com%2FIPformat.png" alt="ip"></p>
+<p>IP 报文是 <code>无连接</code> 的，IP报文可能出现丢失，重复等等，这个在IP协议中是无任何保证的，IP协议就是能够将数据发送到目标地址即可。<br>值得注意的点：</p>
+<ul>
+<li>IP的头部中有一个总长度字段，这个是以<code>字节</code>为单位的，这个单位只有16位，所以最大为 2^16 = 65535 长度，不过依然会被MTU限制切分</li>
+<li>标识字段：这个字段为每一个报文生成一个累加的值，对于数据分片的时候，如果标识字段相同即可认为是同一个数据片</li>
+<li>TTL：代表最大的调数，每经过一个Route就减一，等于0的时候就自然被丢弃</li>
+</ul>
+<h2 id="IP转发"><a href="#IP转发" class="headerlink" title="IP转发"></a>IP转发</h2><p>IP包的转发逻辑是没有强制规定的，不过这个实现的话一般会有4个必要的属性</p>
+<ul>
+<li>目的地：目标地址</li>
+<li>掩码：子网掩码</li>
+<li>下一跳：传递给下一个网络路由的地址</li>
+<li>接口：也就是网卡</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>目的地</th>
+<th style="text-align:center">掩码</th>
+<th style="text-align:right">下一跳</th>
+<th style="text-align:right">接口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>180.70.65.192</td>
+<td style="text-align:center">/26</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">m2</td>
+</tr>
+<tr>
+<td>180.70.65.192</td>
+<td style="text-align:center">/25</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">m0</td>
+</tr>
+</tbody>
+</table>
+<p>逻辑步骤是这样的</p>
+<ol>
+<li>将目标IP和掩码进行运算，得到正确的网段</li>
+<li>找到匹配的路由表信息</li>
+<li>如果存在下一条地址就将此报文发送给下一条地址 / 如果没有就直接交付给ARP协议通过内网转发</li>
+</ol>
+<h2 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h2><ul>
+<li><code>route -n</code> : 查看所有的路由表</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="https://book.douban.com/subject/1088054/" target="_blank" rel="noopener">TCP/IP协议卷一: 详解</a></li>
+<li><a href="https://book.douban.com/subject/5386194/" target="_blank" rel="noopener">TCP/IP协议族</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2018/05/07/java/nio/java-nio-1-basic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -456,25 +675,15 @@
 
       
         
-          
-            <h2 id="Java-BIO"><a href="#Java-BIO" class="headerlink" title="Java BIO"></a>Java BIO</h2><p>传统的网络模式是BIO的模式<br><img src="http://tutorials.jenkov.com/images/java-nio/nio-vs-io-1.png" alt="BIO"></p>
+          <h2 id="Java-BIO"><a href="#Java-BIO" class="headerlink" title="Java BIO"></a>Java BIO</h2><p>传统的网络模式是BIO的模式<br><img src="http://tutorials.jenkov.com/images/java-nio/nio-vs-io-1.png" alt="BIO"></p>
 <p>我们发现BIO编程模型中最为致命的部分就是 我们需要为 <strong>Stream</strong> 使用一个 <strong>Thread</strong>。<br>所以在JDK1.6中引入了NIO，优化这一部分。</p>
-<h2 id="Java-NIO"><a href="#Java-NIO" class="headerlink" title="Java NIO"></a>Java NIO</h2><p>NIO 的网络模型对比BIO模式，主要采用 <strong>面向缓存</strong> 的方式。<br><img src="https://image.slidesharecdn.com/javanio2final1-160607115222/95/java-nio2-7-638.jpg?cb=1465300539" alt="NIO"></p>
-<h2 id="Java-NIO-编程抽象"><a href="#Java-NIO-编程抽象" class="headerlink" title="Java NIO 编程抽象"></a>Java NIO 编程抽象</h2><p>Java将NIO抽象为三个模型 <code>Channels</code> <code>Buffers</code> <code>Selectors</code></p>
-<ul>
-<li>Channels: 提供Buffers的读写能力</li>
-<li>Buffers: 面向缓存的数据</li>
-<li>Selectors: 选择器</li>
-</ul>
-<p>Selector 可以让一个线程处理多个 Channels<br><img src="http://tutorials.jenkov.com/images/java-nio/overview-selectors.png" alt="overview-selectors"></p>
-<p>关于Channels，如果我一点Linux编程的经验，我们应该也会猜测出Channel中是储存具体的FD（文件句柄）。<br><img src="http://tutorials.jenkov.com/images/java-nio/overview-channels-buffers.png" alt="overview-channels-buffers"></p>
-<h2 id="Java-NIO-的编程模版"><a href="#Java-NIO-的编程模版" class="headerlink" title="Java NIO 的编程模版"></a>Java NIO 的编程模版</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.net.InetSocketAddress;</span><br><span class="line"><span class="keyword">import</span> java.net.ServerSocket;</span><br><span class="line"><span class="keyword">import</span> java.nio.ByteBuffer;</span><br><span class="line"><span class="keyword">import</span> java.nio.channels.SelectableChannel;</span><br><span class="line"><span class="keyword">import</span> java.nio.channels.SelectionKey;</span><br><span class="line"><span class="keyword">import</span> java.nio.channels.Selector;</span><br><span class="line"><span class="keyword">import</span> java.nio.channels.ServerSocketChannel;</span><br><span class="line"><span class="keyword">import</span> java.nio.channels.SocketChannel;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.swing.text.html.HTMLDocument.Iterator;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* Simple echo-back server which listens for incoming stream connections and</span></span><br><span class="line"><span class="comment">* echoes back whatever it reads. A single Selector object is used to listen to</span></span><br><span class="line"><span class="comment">* the server socket (to accept new connections) and all the active socket</span></span><br><span class="line"><span class="comment">* channels.</span></span><br><span class="line"><span class="comment">* <span class="doctag">@author</span> zale (zalezone.cn)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SelectSockets</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> PORT_NUMBER = <span class="number">1234</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] argv)</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> SelectSockets().go(argv);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">go</span><span class="params">(String[] argv)</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> port = PORT_NUMBER;</span><br><span class="line">        <span class="keyword">if</span> (argv.length &gt; <span class="number">0</span>)</span><br><span class="line">        &#123; <span class="comment">// 覆盖默认的监听端口</span></span><br><span class="line">            port = Integer.parseInt(argv[<span class="number">0</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"Listening on port "</span> + port);</span><br><span class="line">        ServerSocketChannel serverChannel = ServerSocketChannel.open();<span class="comment">// 打开一个未绑定的serversocketchannel</span></span><br><span class="line">        ServerSocket serverSocket = serverChannel.socket();<span class="comment">// 得到一个ServerSocket去和它绑定</span></span><br><span class="line">        Selector selector = Selector.open();<span class="comment">// 创建一个Selector供下面使用</span></span><br><span class="line">        serverSocket.bind(<span class="keyword">new</span> InetSocketAddress(port));<span class="comment">//设置server channel将会监听的端口</span></span><br><span class="line">        serverChannel.configureBlocking(<span class="keyword">false</span>);<span class="comment">//设置非阻塞模式</span></span><br><span class="line">        serverChannel.register(selector, SelectionKey.OP_ACCEPT);<span class="comment">//将ServerSocketChannel注册到Selector</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// This may block for a long time. Upon returning, the</span></span><br><span class="line">            <span class="comment">// selected set contains keys of the ready channels.</span></span><br><span class="line">            <span class="keyword">int</span> n = selector.select();</span><br><span class="line">            <span class="keyword">if</span> (n == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">continue</span>; <span class="comment">// nothing to do</span></span><br><span class="line">            &#125;           </span><br><span class="line">            java.util.Iterator&lt;SelectionKey&gt; it = selector.selectedKeys().iterator();<span class="comment">// Get an iterator over the set of selected keys</span></span><br><span class="line">            <span class="comment">//在被选择的set中遍历全部的key</span></span><br><span class="line">            <span class="keyword">while</span> (it.hasNext())</span><br><span class="line">            &#123;</span><br><span class="line">                SelectionKey key = (SelectionKey) it.next();</span><br><span class="line">                <span class="comment">// 判断是否是一个连接到来</span></span><br><span class="line">                <span class="keyword">if</span> (key.isAcceptable())</span><br><span class="line">                &#123;</span><br><span class="line">                    ServerSocketChannel server =(ServerSocketChannel) key.channel();</span><br><span class="line">                    SocketChannel channel = server.accept();</span><br><span class="line">                    registerChannel(selector, channel,SelectionKey.OP_READ);<span class="comment">//注册读事件</span></span><br><span class="line">                    sayHello(channel);<span class="comment">//对连接进行处理</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//判断这个channel上是否有数据要读</span></span><br><span class="line">                <span class="keyword">if</span> (key.isReadable())</span><br><span class="line">                &#123;</span><br><span class="line">                    readDataFromSocket(key);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//从selected set中移除这个key，因为它已经被处理过了</span></span><br><span class="line">                it.remove();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ----------------------------------------------------------</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Register the given channel with the given selector for the given</span></span><br><span class="line"><span class="comment">    * operations of interest</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">registerChannel</span><span class="params">(Selector selector,SelectableChannel channel, <span class="keyword">int</span> ops)</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (channel == <span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span>; <span class="comment">// 可能会发生</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 设置通道为非阻塞</span></span><br><span class="line">        channel.configureBlocking(<span class="keyword">false</span>);</span><br><span class="line">        <span class="comment">// 将通道注册到选择器上</span></span><br><span class="line">        channel.register(selector, ops);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ----------------------------------------------------------</span></span><br><span class="line">    <span class="comment">// Use the same byte buffer for all channels. A single thread is</span></span><br><span class="line">    <span class="comment">// servicing all the channels, so no danger of concurrent acccess.</span></span><br><span class="line">    <span class="comment">//对所有的通道使用相同的缓冲区。单线程为所有的通道进行服务，所以并发访问没有风险</span></span><br><span class="line">    <span class="keyword">private</span> ByteBuffer buffer = ByteBuffer.allocateDirect(<span class="number">1024</span>);</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Sample data handler method for a channel with data ready to read.</span></span><br><span class="line"><span class="comment">    * 对于一个准备读入数据的通道的简单的数据处理方法</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> key</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    A SelectionKey object associated with a channel determined by</span></span><br><span class="line"><span class="comment">    the selector to be ready for reading. If the channel returns</span></span><br><span class="line"><span class="comment">    an EOF condition, it is closed here, which automatically</span></span><br><span class="line"><span class="comment">    invalidates the associated key. The selector will then</span></span><br><span class="line"><span class="comment">    de-register the channel on the next select call.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    一个选择器决定了和通道关联的SelectionKey object是准备读状态。如果通道返回EOF，通道将被关闭。</span></span><br><span class="line"><span class="comment">    并且会自动使相关的key失效，选择器然后会在下一次的select call时取消掉通道的注册</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">readDataFromSocket</span><span class="params">(SelectionKey key)</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        SocketChannel socketChannel = (SocketChannel) key.channel();</span><br><span class="line">        <span class="keyword">int</span> count;</span><br><span class="line">        buffer.clear(); <span class="comment">// 清空Buffer</span></span><br><span class="line">        <span class="comment">// Loop while data is available; channel is nonblocking</span></span><br><span class="line">        <span class="comment">//当可以读到数据时一直循环，通道为非阻塞</span></span><br><span class="line">        <span class="keyword">while</span> ((count = socketChannel.read(buffer)) &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            buffer.flip(); <span class="comment">// 将缓冲区置为可读</span></span><br><span class="line">            <span class="comment">// Send the data; don't assume it goes all at once</span></span><br><span class="line">            <span class="comment">//发送数据，不要期望能一次将数据发送完</span></span><br><span class="line">            <span class="keyword">while</span> (buffer.hasRemaining())</span><br><span class="line">            &#123;</span><br><span class="line">                socketChannel.write(buffer);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// WARNING: the above loop is evil. Because</span></span><br><span class="line">            <span class="comment">// it's writing back to the same nonblocking</span></span><br><span class="line">            <span class="comment">// channel it read the data from, this code can</span></span><br><span class="line">            <span class="comment">// potentially spin in a busy loop. In real life</span></span><br><span class="line">            <span class="comment">// you'd do something more useful than this.</span></span><br><span class="line">            <span class="comment">//这里的循环是无意义的，具体按实际情况而定</span></span><br><span class="line">            buffer.clear(); <span class="comment">// Empty buffer</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (count &lt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// Close channel on EOF, invalidates the key</span></span><br><span class="line">            <span class="comment">//读取结束后关闭通道，使key失效</span></span><br><span class="line">            socketChannel.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ----------------------------------------------------------</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Spew a greeting to the incoming client connection.</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> channel</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    The newly connected SocketChannel to say hello to.</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">sayHello</span><span class="params">(SocketChannel channel)</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        buffer.clear();</span><br><span class="line">        buffer.put(<span class="string">"Hi there!\r\n"</span>.getBytes());</span><br><span class="line">        buffer.flip();</span><br><span class="line">        channel.write(buffer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
-<li><a href="http://tutorials.jenkov.com/java-nio/index.html" target="_blank" rel="noopener">Java NIO Tutorial</a></li>
-<li><a href="http://www.importnew.com/22623.html" target="_blank" rel="noopener">java NIO详解</a></li>
-</ol>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/07/java/nio/java-nio-1-basic/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1752,172 +1961,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2017/06/07/lombok-project/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yann.xia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/Logo-2018.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yann's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/07/lombok-project/" itemprop="url">Project Lombok</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-07T00:12:58+08:00">2017-06-07</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/06/07/lombok-project/" class="leancloud_visitors" data-flag-title="Project Lombok">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
-<li><a href="#Lombok简介">Lombok简介</a></li>
-<li><a href="#Lombok安装">Lombok安装</a></li>
-<li><a href="#Lombok使用">Lombok使用</a></li>
-<li><a href="#Lombok原理">Lombok原理</a></li>
-</ul>
-<h2 id="Lombok简介"><a href="#Lombok简介" class="headerlink" title="Lombok简介"></a>Lombok简介</h2><blockquote>
-<p>Project Lombok makes java a spicier language by adding ‘handlers’ that know &gt;how to build and compile simple, boilerplate-free, not-quite-java code.</p>
-</blockquote>
-<p>如Github上项目介绍所言，Lombok项目通过添加“处理程序”，使java成为一种更为简单的语言。作为一个Old Java Developer,我们都知道我们经常需要定义一系列的套路，比如定义如下的格式对象。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/07/lombok-project/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1969,7 +2012,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
