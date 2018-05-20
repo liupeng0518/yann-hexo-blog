@@ -99,28 +99,21 @@
 
 
 
-  <meta name="description" content="预备知识网络是分层的，TCP/IP 关注的是 第三层采用 IP 协议 和 第四层 采用的是 TCP 和 UDP 协议。对于第一层和第二层，我们需要在意的是 MTU （最大传输单元）,这个值有一个最小值,因为载波监听的需求，并没强制性的最大值，Lan默认的是1500。(如何优化MTU可以见 参考2) 如何查询MTU可以通过 ifconfig 命令查询。">
-<meta name="keywords" content="TCP&#x2F;IP">
-<meta property="og:type" content="article">
-<meta property="og:title" content="TCP&#x2F;IP-(1)-ARP">
-<meta property="og:url" content="http://blog.yannxia.top/2018/05/06/tcp-ip/tcp-ip-review-1-arp/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="记一次奇怪的Apollo配置中心错误">
+<meta property="og:url" content="http://blog.yannxia.top/2018/05/20/bugs/a-strange-apollo-config-error/index.html">
 <meta property="og:site_name" content="Yann&#39;s Blog">
-<meta property="og:description" content="预备知识网络是分层的，TCP/IP 关注的是 第三层采用 IP 协议 和 第四层 采用的是 TCP 和 UDP 协议。对于第一层和第二层，我们需要在意的是 MTU （最大传输单元）,这个值有一个最小值,因为载波监听的需求，并没强制性的最大值，Lan默认的是1500。(如何优化MTU可以见 参考2) 如何查询MTU可以通过 ifconfig 命令查询。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://electricala2z.com/wp-content/uploads/2017/10/osi-model.gif">
-<meta property="og:image" content="https://networkingfolks.files.wordpress.com/2012/03/arp13.jpg">
-<meta property="og:updated_time" content="2018-05-07T11:29:44.830Z">
+<meta property="og:updated_time" content="2018-05-20T07:23:45.048Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TCP&#x2F;IP-(1)-ARP">
-<meta name="twitter:description" content="预备知识网络是分层的，TCP/IP 关注的是 第三层采用 IP 协议 和 第四层 采用的是 TCP 和 UDP 协议。对于第一层和第二层，我们需要在意的是 MTU （最大传输单元）,这个值有一个最小值,因为载波监听的需求，并没强制性的最大值，Lan默认的是1500。(如何优化MTU可以见 参考2) 如何查询MTU可以通过 ifconfig 命令查询。">
-<meta name="twitter:image" content="http://electricala2z.com/wp-content/uploads/2017/10/osi-model.gif">
+<meta name="twitter:title" content="记一次奇怪的Apollo配置中心错误">
 
 
 
 
 
 
-  <link rel="canonical" href="http://blog.yannxia.top/2018/05/06/tcp-ip/tcp-ip-review-1-arp/"/>
+  <link rel="canonical" href="http://blog.yannxia.top/2018/05/20/bugs/a-strange-apollo-config-error/"/>
 
 
 
@@ -130,7 +123,7 @@
   };
 </script>
 
-  <title>TCP/IP-(1)-ARP | Yann's Blog</title>
+  <title>记一次奇怪的Apollo配置中心错误 | Yann's Blog</title>
   
 
 
@@ -351,7 +344,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2018/05/06/tcp-ip/tcp-ip-review-1-arp/">
+    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2018/05/20/bugs/a-strange-apollo-config-error/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yann.xia">
@@ -368,7 +361,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">TCP/IP-(1)-ARP</h2>
+          <h2 class="post-title" itemprop="name headline">记一次奇怪的Apollo配置中心错误</h2>
         
 
         <div class="post-meta">
@@ -380,7 +373,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-06T22:30:07+08:00">2018-05-06</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-20T15:04:08+08:00">2018-05-20</time>
             
 
             
@@ -401,14 +394,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/网络编程/" itemprop="url" rel="index"><span itemprop="name">网络编程</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
 
                 
                 
                   ， 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/网络编程/TCP-IP/" itemprop="url" rel="index"><span itemprop="name">TCP/IP</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/apollo/" itemprop="url" rel="index"><span itemprop="name">apollo</span></a></span>
 
                 
                 
@@ -422,7 +415,7 @@
 
           
           
-             <span id="/2018/05/06/tcp-ip/tcp-ip-review-1-arp/" class="leancloud_visitors" data-flag-title="TCP/IP-(1)-ARP">
+             <span id="/2018/05/20/bugs/a-strange-apollo-config-error/" class="leancloud_visitors" data-flag-title="记一次奇怪的Apollo配置中心错误">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -462,40 +455,35 @@
 <script src="https://cdn.bootcss.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
 
 
-<h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><p><img src="http://electricala2z.com/wp-content/uploads/2017/10/osi-model.gif" alt="OSI"><br>网络是<strong>分层</strong>的，TCP/IP 关注的是 第三层采用 IP 协议 和 第四层 采用的是 TCP 和 UDP 协议。<br>对于第一层和第二层，我们需要在意的是 <strong>MTU</strong> （最大传输单元）,<br>这个值有一个<strong>最小值</strong>,因为载波监听的需求，并没强制性的最大值，Lan默认的是1500。(如何优化MTU可以见 <strong>参考2</strong>) 如何查询MTU可以通过 <code>ifconfig</code> 命令查询。</p>
 <a id="more"></a>
-<h2 id="ARP"><a href="#ARP" class="headerlink" title="ARP"></a>ARP</h2><h3 id="ARP-协议"><a href="#ARP-协议" class="headerlink" title="ARP 协议"></a>ARP 协议</h3><p>ARP 提供的是IP转化为MAC地址的功能，提供的是在局域网内传输的能力，因为在局域网内传输数据，需要使用MAC地址（因为在数据链路层的协议需要）。</p>
-<ul>
-<li>静态映射：直接写在路由表内</li>
-<li>动态映射：采用广播的方式查询（ARP协议）</li>
-</ul>
-<p><img src="https://networkingfolks.files.wordpress.com/2012/03/arp13.jpg" alt="ARP"></p>
-<h3 id="ARP-流程"><a href="#ARP-流程" class="headerlink" title="ARP 流程"></a>ARP 流程</h3><p><strong>ARP</strong>的核心是有一个源目标IP地址和目标IP地址，目标的物理地址是<strong>填充0</strong>，以广播的方式发送出去，识别出是自己IP的机器以单播的方式返回给发送者。</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:mvc</span>=<span class="string">"http://www.springframework.org/schema/mvc"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:apollo</span>=<span class="string">"http://www.ctrip.com/schema/apollo"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/context</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/context/spring-context.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/mvc</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/mvc/spring-mvc.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.ctrip.com/schema/apollo</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.ctrip.com/schema/apollo.xsd"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">apollo:config</span> <span class="attr">namespaces</span>=<span class="string">"mallcenter"</span> <span class="attr">order</span>=<span class="string">"-99999"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"sqlSessionFactory"</span> <span class="attr">class</span>=<span class="string">"org.mybatis.spring.SqlSessionFactoryBean"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"configLocation"</span> <span class="attr">value</span>=<span class="string">"/WEB-INF/sqlMapConfig.xml"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"mapperLocations"</span> <span class="attr">value</span>=<span class="string">"classpath*:mybatis/*mapper.xml"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"typeAliasesPackage"</span> <span class="attr">value</span>=<span class="string">"cn.htd.zeus.mall.biz.dmo"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.mybatis.spring.mapper.MapperScannerConfigurer"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"basePackage"</span> <span class="attr">value</span>=<span class="string">"cn.daocloud.**.dao"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"sqlSessionFactoryBeanName"</span> <span class="attr">value</span>=<span class="string">"sqlSessionFactory"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"sqlSession"</span> <span class="attr">class</span>=<span class="string">"org.mybatis.spring.SqlSessionTemplate"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"0"</span> <span class="attr">ref</span>=<span class="string">"sqlSessionFactory"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dataSource"</span> <span class="attr">class</span>=<span class="string">"cn.htd.zeus.mall.common.util.XBasicDataSource"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">destroy-method</span>=<span class="string">"close"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClassName"</span> <span class="attr">value</span>=<span class="string">"$&#123;dataSource.driverClassName&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"$&#123;dataSource.url&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"$&#123;dataSource.username&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"$&#123;dataSource.password&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"initialSize"</span> <span class="attr">value</span>=<span class="string">"$&#123;dataSource.initialSize&#125;"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>启动 项目的时候会报错  <code>${dataSource.initialSize}</code> 不能转为 <code>int</code>，这个很容易知道是因为我们没有获取到配置 <code>dataSource.initialSize</code> 下面就漫长的分析之路。</p>
+<h2 id="第一回合：怀疑-apollo-没有成功注册PostProcessBeanFactory"><a href="#第一回合：怀疑-apollo-没有成功注册PostProcessBeanFactory" class="headerlink" title="第一回合：怀疑 apollo 没有成功注册PostProcessBeanFactory"></a>第一回合：怀疑 apollo 没有成功注册PostProcessBeanFactory</h2><p>因为这个项目是War项目，找个Tomcat镜像，war放进去RemoteDebug一下，我们知道 Apollo 是<br><code>com.ctrip.framework.apollo.spring.config.ConfigPropertySourcesProcessor</code> 在这个类装载的时候会注册</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postProcessBeanDefinitionRegistry</span><span class="params">(BeanDefinitionRegistry registry)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        BeanRegistrationUtil.registerBeanDefinitionIfNotExists(registry, PropertySourcesPlaceholderConfigurer.class.getName(), PropertySourcesPlaceholderConfigurer.class);</span><br><span class="line">        BeanRegistrationUtil.registerBeanDefinitionIfNotExists(registry, ApolloAnnotationProcessor.class.getName(), ApolloAnnotationProcessor.class);</span><br><span class="line">        BeanRegistrationUtil.registerBeanDefinitionIfNotExists(registry, SpringValueProcessor.class.getName(), SpringValueProcessor.class);</span><br><span class="line">        BeanRegistrationUtil.registerBeanDefinitionIfNotExists(registry, ApolloJsonValueProcessor.class.getName(), ApolloJsonValueProcessor.class);</span><br><span class="line">        <span class="keyword">this</span>.processSpringValueDefinition(registry);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p> 果不其然，还没有运行到这里的时候系统已经挂掉了，那问题可以大概确认，apollo 并没有起作用。</p>
+<h2 id="第二回合：确认Spring在哪个阶段挂掉了"><a href="#第二回合：确认Spring在哪个阶段挂掉了" class="headerlink" title="第二回合：确认Spring在哪个阶段挂掉了"></a>第二回合：确认Spring在哪个阶段挂掉了</h2> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Allows post-processing of the bean factory in context subclasses.</span></span><br><span class="line">  postProcessBeanFactory(beanFactory);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Invoke factory processors registered as beans in the context.</span></span><br><span class="line">  invokeBeanFactoryPostProcessors(beanFactory);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Register bean processors that intercept bean creation.</span></span><br><span class="line">  registerBeanPostProcessors(beanFactory);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Initialize message source for this context.</span></span><br><span class="line">  initMessageSource();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Initialize event multicaster for this context.</span></span><br><span class="line">  initApplicationEventMulticaster();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Initialize other special beans in specific context subclasses.</span></span><br><span class="line">  onRefresh();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Check for listener beans and register them.</span></span><br><span class="line">  registerListeners();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Instantiate all remaining (non-lazy-init) singletons.</span></span><br><span class="line">  finishBeanFactoryInitialization(beanFactory);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Last step: publish corresponding event.</span></span><br><span class="line">  finishRefresh();</span><br></pre></td></tr></table></figure>
+<p> 上面的代码大家应该很熟悉，我们都知道Spring的顺序，通过Debug，我们发现Apollo在 <code>invokeBeanFactoryPostProcessors(beanFactory)</code> 阶段已经挂掉了，那问题到这里就有点清晰了，我们的Apollo作用的范围在 <code>invokeBeanFactoryPostProcessors</code>之后，那问题就来了，为什么我们的 <code>datasource</code> 对象在 <code>invokeBeanFactoryPostProcessors</code>阶段初始化？</p>
+<h2 id="第三回合：抓住凶手"><a href="#第三回合：抓住凶手" class="headerlink" title="第三回合：抓住凶手"></a>第三回合：抓住凶手</h2><p>上个Section我们知道，<code>invokeBeanFactoryPostProcessors</code> 系统挂掉，那为什么我们的 <code>datasource</code> 会在 <code>invokeBeanFactoryPostProcessors</code> 运行，从注释中，我们可以看出来这个阶段其实在注册 <code>factory processors</code>,通过Debug，我们发现了在注册完 Apollo之后，又注册了 <code>MapperScannerConfigurer</code>，<code>SqlSessionFactoryBean</code>, <code>XBasicDataSource</code>, DataSource 和 SqlSessionFactoryBean的关系很容易发现，写着呢，那 MapperScannerConfigurer 查看Google</p>
+<blockquote>
+<p>注 意 , 没 有 必 要 去 指 定 SqlSessionFactory 或 SqlSessionTemplate , 因 为 MapperScannerConfigurer 将会创建 MapperFactoryBean,之后自动装配。 ——&lt;第六章 注入映射器&gt;</p>
+</blockquote>
+<p>那我们明白，因为我们的注入了一个非必要的Bean在注册PostBeanFactory导致的失败。</p>
 
 
 <div id="diagram"></div>
 <script>
 	var data =
-	['Title: ARP流程',
-	 'Sender->Receiver: 1.准备广播报文',
-	 'Note right of Sender: 目标地址IP，目标MAC地址置为0',
-	 'Receiver->Sender: 2.单播响应',
-	 'Note left of Receiver: 采用ARP报文将自己的MAC响应'].join('\n');
+	['Title: 此次错误启动时序图',
+	 'Refresh()->invokeBeanFactoryPostProcessors(): 1.注册factory processors',
+	 'invokeBeanFactoryPostProcessors()->MapperScannerConfigurer(): 2.构建MapperScannerConfigurer',
+	 'MapperScannerConfigurer()->SqlSessionFactoryBean(): 3.构建SqlSessionFactoryBean',
+	 'SqlSessionFactoryBean()->XBasicDataSource(): 4.构建XBasicDataSource',
+	 'Note left of XBasicDataSource(): 此阶段的ApolloConfig没有成功注入',
+	 ].join('\n');
   	var diagram = Diagram.parse(data);
   	diagram.drawSVG("diagram", {theme: 'simple'});
 </script>
 
-
-<h3 id="ARP-相关命令"><a href="#ARP-相关命令" class="headerlink" title="ARP 相关命令"></a>ARP 相关命令</h3><ul>
-<li><code>arp -a</code> : 查询所有arp相关</li>
-<li><code>tcpdump -n arp</code> : 监听arp请求</li>
-</ul>
-<h3 id="ARP-相关攻击"><a href="#ARP-相关攻击" class="headerlink" title="ARP 相关攻击"></a>ARP 相关攻击</h3><p>arp本身没有验证性，可以强制回答自己的mac地址。如果有黑客接入网络会导致大批量的arp地址错误。<br>可以参考本文的 <code>参考资料3</code>。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
-<li><a href="https://book.douban.com/subject/1088054/" target="_blank" rel="noopener">TCP/IP协议卷一: 详解</a></li>
-<li><a href="https://kb.netgear.com/19863/Ping-Test-to-determine-Optimal-MTU-Size-on-Router" target="_blank" rel="noopener">Ping Test to determine Optimal MTU Size on Router</a></li>
-<li><a href="http://www.freebuf.com/articles/system/10517.html" target="_blank" rel="noopener">ARP攻击防范方法总结</a></li>
-</ol>
 
       
     </div>
@@ -514,12 +502,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/TCP-IP/" rel="tag"># TCP/IP</a>
-          
-        </div>
-      
 
       
       
@@ -529,8 +511,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/21/what-is-my-recommend-books/" rel="next" title="我的推荐书单 [草稿]">
-                <i class="fa fa-chevron-left"></i> 我的推荐书单 [草稿]
+              <a href="/2018/05/07/tcp-ip/tcp-ip-review-2-ip/" rel="next" title="TCP/IP-(2)-Internet协议">
+                <i class="fa fa-chevron-left"></i> TCP/IP-(2)-Internet协议
               </a>
             
           </div>
@@ -538,10 +520,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/07/java/nio/java-nio-1-basic/" rel="prev" title="Java网络编程-(1)-NIO基础">
-                Java网络编程-(1)-NIO基础 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -881,7 +859,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#预备知识"><span class="nav-number">1.</span> <span class="nav-text">预备知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARP"><span class="nav-number">2.</span> <span class="nav-text">ARP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ARP-协议"><span class="nav-number">2.1.</span> <span class="nav-text">ARP 协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARP-流程"><span class="nav-number">2.2.</span> <span class="nav-text">ARP 流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARP-相关命令"><span class="nav-number">2.3.</span> <span class="nav-text">ARP 相关命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARP-相关攻击"><span class="nav-number">2.4.</span> <span class="nav-text">ARP 相关攻击</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一回合：怀疑-apollo-没有成功注册PostProcessBeanFactory"><span class="nav-number">2.</span> <span class="nav-text">第一回合：怀疑 apollo 没有成功注册PostProcessBeanFactory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二回合：确认Spring在哪个阶段挂掉了"><span class="nav-number">3.</span> <span class="nav-text">第二回合：确认Spring在哪个阶段挂掉了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三回合：抓住凶手"><span class="nav-number">4.</span> <span class="nav-text">第三回合：抓住凶手</span></a></li></ol></div>
             
 
           </div>
@@ -1042,9 +1020,9 @@ var jiathis_config={
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://blog.yannxia.top/2018/05/06/tcp-ip/tcp-ip-review-1-arp/';
-        this.page.identifier = '2018/05/06/tcp-ip/tcp-ip-review-1-arp/';
-        this.page.title = 'TCP/IP-(1)-ARP';
+        this.page.url = 'http://blog.yannxia.top/2018/05/20/bugs/a-strange-apollo-config-error/';
+        this.page.identifier = '2018/05/20/bugs/a-strange-apollo-config-error/';
+        this.page.title = '记一次奇怪的Apollo配置中心错误';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');
