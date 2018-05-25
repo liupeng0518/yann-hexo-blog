@@ -8,11 +8,11 @@ categories: ["网络编程","TCP/IP"]
 
 {% raw %}
 
-<script src="https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js"></script>
-<script src="https://cdn.bootcss.com/snap.svg/0.5.1/snap.svg-min.js"></script>
-<script src="https://cdn.bootcss.com/underscore.js/1.9.0/underscore-min.js"></script>
-<script src="https://cdn.bootcss.com/raphael/2.2.7/raphael.min.js"></script>
-<script src="https://cdn.bootcss.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+<script src="https://lib.baomitu.com/webfont/1.6.28/webfontloader.js"></script>
+<script src="https://lib.baomitu.com/snap.svg/0.5.1/snap.svg-min.js"></script>
+<script src="https://lib.baomitu.com/underscore.js/1.9.0/underscore-min.js"></script>
+<script src="https://lib.baomitu.com/raphael/2.2.7/raphael.min.js"></script>
+<script src="https://lib.baomitu.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
 
 {% endraw %}
 
