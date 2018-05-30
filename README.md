@@ -1,4 +1,4 @@
-# Yann's B;og
+# Yann's Blog
 this is my static blog.
 [yann's blog](http://b.yannnxia.info)
 
