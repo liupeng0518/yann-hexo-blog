@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://blog.yannxia.top/2018/06/05/tcp-ip/tcp-ip-review-4-tcp/</loc>
+    <loc>http://blog.yannxia.top/2018/06/12/java/netty/netty-1-bootstrap/</loc>
     
-    <lastmod>2018-06-05T10:34:20.648Z</lastmod>
+    <lastmod>2018-06-13T09:01:57.144Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.yannxia.top/2018/06/12/java/netty/netty-0-prepare/</loc>
+    
+    <lastmod>2018-06-12T15:21:12.249Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://blog.yannxia.top/2018/06/05/tcp-ip/tcp-ip-review-3-udp/</loc>
     
-    <lastmod>2018-06-05T08:13:16.128Z</lastmod>
+    <lastmod>2018-06-12T15:12:18.943Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.yannxia.top/2018/06/05/tcp-ip/tcp-ip-review-4-tcp/</loc>
+    
+    <lastmod>2018-06-12T14:51:30.388Z</lastmod>
     
   </url>
   
