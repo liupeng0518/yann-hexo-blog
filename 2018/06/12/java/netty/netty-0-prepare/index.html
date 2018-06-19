@@ -101,16 +101,16 @@
 
   <meta name="description" content="前言关于Netty我们都知道（现在还不知道的Netty的怕是凤毛麟角）  Netty is an asynchronous event-driven network application frameworkfor rapid development of maintainable high performance protocol servers &amp;amp; clients.  Netty是一个">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Netty网络编程-(0)-预备知识">
+<meta property="og:title" content="Netty源码分析-(0)-预备知识">
 <meta property="og:url" content="http://blog.yannxia.top/2018/06/12/java/netty/netty-0-prepare/index.html">
 <meta property="og:site_name" content="Yann&#39;s Blog">
 <meta property="og:description" content="前言关于Netty我们都知道（现在还不知道的Netty的怕是凤毛麟角）  Netty is an asynchronous event-driven network application frameworkfor rapid development of maintainable high performance protocol servers &amp;amp; clients.  Netty是一个">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528824537102&di=b9b5678aee772b881bb9a76fb1d4c8a2&imgtype=jpg&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D3111796757%2C2564753992%26fm%3D214%26gp%3D0.jpg">
 <meta property="og:image" content="http://netty.io/images/components.png">
-<meta property="og:updated_time" content="2018-06-12T15:21:12.249Z">
+<meta property="og:updated_time" content="2018-06-14T13:54:04.194Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Netty网络编程-(0)-预备知识">
+<meta name="twitter:title" content="Netty源码分析-(0)-预备知识">
 <meta name="twitter:description" content="前言关于Netty我们都知道（现在还不知道的Netty的怕是凤毛麟角）  Netty is an asynchronous event-driven network application frameworkfor rapid development of maintainable high performance protocol servers &amp;amp; clients.  Netty是一个">
 <meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528824537102&di=b9b5678aee772b881bb9a76fb1d4c8a2&imgtype=jpg&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D3111796757%2C2564753992%26fm%3D214%26gp%3D0.jpg">
 
@@ -129,7 +129,7 @@
   };
 </script>
 
-  <title>Netty网络编程-(0)-预备知识 | Yann's Blog</title>
+  <title>Netty源码分析-(0)-预备知识 | Yann's Blog</title>
   
 
 
@@ -367,7 +367,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Netty网络编程-(0)-预备知识</h2>
+          <h2 class="post-title" itemprop="name headline">Netty源码分析-(0)-预备知识</h2>
         
 
         <div class="post-meta">
@@ -428,7 +428,7 @@
 
           
           
-             <span id="/2018/06/12/java/netty/netty-0-prepare/" class="leancloud_visitors" data-flag-title="Netty网络编程-(0)-预备知识">
+             <span id="/2018/06/12/java/netty/netty-0-prepare/" class="leancloud_visitors" data-flag-title="Netty源码分析-(0)-预备知识">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -539,8 +539,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/12/java/netty/netty-1-bootstrap/" rel="prev" title="Netty网络编程-(1)-Bootstrap">
-                Netty网络编程-(1)-Bootstrap <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/12/java/netty/netty-1-bootstrap/" rel="prev" title="Netty源码分析-(1)-Bootstrap">
+                Netty源码分析-(1)-Bootstrap <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -655,7 +655,7 @@ var jiathis_config={
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1046,7 +1046,7 @@ var jiathis_config={
       var disqus_config = function () {
         this.page.url = 'http://blog.yannxia.top/2018/06/12/java/netty/netty-0-prepare/';
         this.page.identifier = '2018/06/12/java/netty/netty-0-prepare/';
-        this.page.title = 'Netty网络编程-(0)-预备知识';
+        this.page.title = 'Netty源码分析-(0)-预备知识';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');

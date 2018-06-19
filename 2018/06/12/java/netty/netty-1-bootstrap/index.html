@@ -101,15 +101,15 @@
 
   <meta name="description" content="BootstrapBootstrap 是 Netty 提供的一个便利的工厂类, 我们可以通过它来完成 Netty 的客户端或服务器端的 Netty 初始化。下面我以 Netty 源码例子中的 Discard 服务器作为例子, 从客户端和服务器端分别分析一下Netty 的程序是如何启动的。 快速定位几个关键点">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Netty网络编程-(1)-Bootstrap">
+<meta property="og:title" content="Netty源码分析-(1)-Bootstrap">
 <meta property="og:url" content="http://blog.yannxia.top/2018/06/12/java/netty/netty-1-bootstrap/index.html">
 <meta property="og:site_name" content="Yann&#39;s Blog">
 <meta property="og:description" content="BootstrapBootstrap 是 Netty 提供的一个便利的工厂类, 我们可以通过它来完成 Netty 的客户端或服务器端的 Netty 初始化。下面我以 Netty 源码例子中的 Discard 服务器作为例子, 从客户端和服务器端分别分析一下Netty 的程序是如何启动的。 快速定位几个关键点">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.2cto.com/uploadfile/Collfiles/20180504/20180504092323746.png">
-<meta property="og:updated_time" content="2018-06-13T09:12:40.517Z">
+<meta property="og:updated_time" content="2018-06-14T13:53:57.264Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Netty网络编程-(1)-Bootstrap">
+<meta name="twitter:title" content="Netty源码分析-(1)-Bootstrap">
 <meta name="twitter:description" content="BootstrapBootstrap 是 Netty 提供的一个便利的工厂类, 我们可以通过它来完成 Netty 的客户端或服务器端的 Netty 初始化。下面我以 Netty 源码例子中的 Discard 服务器作为例子, 从客户端和服务器端分别分析一下Netty 的程序是如何启动的。 快速定位几个关键点">
 <meta name="twitter:image" content="https://www.2cto.com/uploadfile/Collfiles/20180504/20180504092323746.png">
 
@@ -128,7 +128,7 @@
   };
 </script>
 
-  <title>Netty网络编程-(1)-Bootstrap | Yann's Blog</title>
+  <title>Netty源码分析-(1)-Bootstrap | Yann's Blog</title>
   
 
 
@@ -366,7 +366,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Netty网络编程-(1)-Bootstrap</h2>
+          <h2 class="post-title" itemprop="name headline">Netty源码分析-(1)-Bootstrap</h2>
         
 
         <div class="post-meta">
@@ -427,7 +427,7 @@
 
           
           
-             <span id="/2018/06/12/java/netty/netty-1-bootstrap/" class="leancloud_visitors" data-flag-title="Netty网络编程-(1)-Bootstrap">
+             <span id="/2018/06/12/java/netty/netty-1-bootstrap/" class="leancloud_visitors" data-flag-title="Netty源码分析-(1)-Bootstrap">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -564,8 +564,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/12/java/netty/netty-0-prepare/" rel="next" title="Netty网络编程-(0)-预备知识">
-                <i class="fa fa-chevron-left"></i> Netty网络编程-(0)-预备知识
+              <a href="/2018/06/12/java/netty/netty-0-prepare/" rel="next" title="Netty源码分析-(0)-预备知识">
+                <i class="fa fa-chevron-left"></i> Netty源码分析-(0)-预备知识
               </a>
             
           </div>
@@ -573,6 +573,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/19/java/netty/netty-2-acceptor-thread/" rel="prev" title="Netty源码分析-(2)-Acceptor与线程模型">
+                Netty源码分析-(2)-Acceptor与线程模型 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -686,7 +690,7 @@ var jiathis_config={
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1077,7 +1081,7 @@ var jiathis_config={
       var disqus_config = function () {
         this.page.url = 'http://blog.yannxia.top/2018/06/12/java/netty/netty-1-bootstrap/';
         this.page.identifier = '2018/06/12/java/netty/netty-1-bootstrap/';
-        this.page.title = 'Netty网络编程-(1)-Bootstrap';
+        this.page.title = 'Netty源码分析-(1)-Bootstrap';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');
