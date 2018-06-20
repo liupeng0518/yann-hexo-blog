@@ -1,5 +1,5 @@
 ---
-title: Netty网络编程-(0)-预备知识
+title: Netty源码分析-(0)-预备知识
 date: 2018-06-12 21:29:48
 tags:
 toc: true
@@ -16,6 +16,8 @@ Netty是一个异步事件驱动的应用框架，能够让我们更快的做一
 
 阅读此系列博文，**我对你的要求是** 使用过原生的Java Nio进行过网络编程。
 此篇博客算是我阅读Netty的笔记，会有自己探索的过程，望斧正。
+
+<!-- more -->
 
 ## 预备知识
 - Java NIO
@@ -36,3 +38,16 @@ Netty是一个异步事件驱动的应用框架，能够让我们更快的做一
 
 
 ## 源码解读顺序
+1. Netty 服务端启动流程
+   - 如何初始化NioServer
+   - NioEventLoop模型和Channel
+
+
+2. Netty 服务端接受请求分析
+  - Netty 线程模式
+  - 如何调用Pipeline
+  - Pipeline工作机制
+
+
+3. Netty 的ByteBuf
+  - Netty的Bytebuf实现
