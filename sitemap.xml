@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.yannxia.top/2018/06/21/java/netty/netty-5-otherwise/</loc>
+    
+    <lastmod>2018-06-21T09:38:14.418Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.yannxia.top/2018/06/21/java/netty/netty-4-bytebuf/</loc>
     
     <lastmod>2018-06-21T08:28:34.403Z</lastmod>
