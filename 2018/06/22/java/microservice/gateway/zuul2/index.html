@@ -99,20 +99,20 @@
 
 
 
-  <meta name="description" content="Zuul2Zuul2的难产，终于在 2018.4.13 上架了中心仓库，也代表着Zuul正式加入Netty全家桶的怀抱，关于Netty有一篇宏观性的博文有兴趣的可以阅读 Zuul 2 : The Netflix Journey to Asynchronous, Non-Blocking Systems 此篇博客。">
+  <meta name="description" content="Zuul2Zuul2的难产，终于在 2018.4.13 上架了中心仓库，也代表着Zuul正式加入Netty全家桶的怀抱，关于 Zuul2 有一篇宏观性的博文有兴趣的可以阅读 Zuul 2 : The Netflix Journey to Asynchronous, Non-Blocking Systems 此篇博客。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Zuul2源码分析">
 <meta property="og:url" content="http://blog.yannxia.top/2018/06/22/java/microservice/gateway/zuul2/index.html">
 <meta property="og:site_name" content="Yann&#39;s Blog">
-<meta property="og:description" content="Zuul2Zuul2的难产，终于在 2018.4.13 上架了中心仓库，也代表着Zuul正式加入Netty全家桶的怀抱，关于Netty有一篇宏观性的博文有兴趣的可以阅读 Zuul 2 : The Netflix Journey to Asynchronous, Non-Blocking Systems 此篇博客。">
+<meta property="og:description" content="Zuul2Zuul2的难产，终于在 2018.4.13 上架了中心仓库，也代表着Zuul正式加入Netty全家桶的怀抱，关于 Zuul2 有一篇宏观性的博文有兴趣的可以阅读 Zuul 2 : The Netflix Journey to Asynchronous, Non-Blocking Systems 此篇博客。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://s1.ax1x.com/2018/06/22/PSzIQs.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/06/22/PSzHe0.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/06/22/PpSZSH.png">
-<meta property="og:updated_time" content="2018-06-22T10:10:27.737Z">
+<meta property="og:updated_time" content="2018-06-22T13:32:38.635Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Zuul2源码分析">
-<meta name="twitter:description" content="Zuul2Zuul2的难产，终于在 2018.4.13 上架了中心仓库，也代表着Zuul正式加入Netty全家桶的怀抱，关于Netty有一篇宏观性的博文有兴趣的可以阅读 Zuul 2 : The Netflix Journey to Asynchronous, Non-Blocking Systems 此篇博客。">
+<meta name="twitter:description" content="Zuul2Zuul2的难产，终于在 2018.4.13 上架了中心仓库，也代表着Zuul正式加入Netty全家桶的怀抱，关于 Zuul2 有一篇宏观性的博文有兴趣的可以阅读 Zuul 2 : The Netflix Journey to Asynchronous, Non-Blocking Systems 此篇博客。">
 <meta name="twitter:image" content="https://s1.ax1x.com/2018/06/22/PSzIQs.png">
 
 
@@ -460,7 +460,7 @@
       
 
       
-        <h1 id="Zuul2"><a href="#Zuul2" class="headerlink" title="Zuul2"></a>Zuul2</h1><p>Zuul2的难产，终于在 2018.4.13 上架了中心仓库，也代表着Zuul正式加入Netty全家桶的怀抱，关于Netty有一篇宏观性的博文有兴趣的可以阅读 <a href="https://medium.com/netflix-techblog/zuul-2-the-netflix-journey-to-asynchronous-non-blocking-systems-45947377fb5c" target="_blank" rel="noopener">Zuul 2 : The Netflix Journey to Asynchronous, Non-Blocking Systems</a> 此篇博客。</p>
+        <h1 id="Zuul2"><a href="#Zuul2" class="headerlink" title="Zuul2"></a>Zuul2</h1><p>Zuul2的难产，终于在 2018.4.13 上架了中心仓库，也代表着Zuul正式加入Netty全家桶的怀抱，关于 Zuul2 有一篇宏观性的博文有兴趣的可以阅读 <a href="https://medium.com/netflix-techblog/zuul-2-the-netflix-journey-to-asynchronous-non-blocking-systems-45947377fb5c" target="_blank" rel="noopener">Zuul 2 : The Netflix Journey to Asynchronous, Non-Blocking Systems</a> 此篇博客。</p>
 <a id="more"></a>
 <p>简而言之，Zuul2也就是从传统的 BIO 切换到了 NIO 模式。<br><img src="https://s1.ax1x.com/2018/06/22/PSzIQs.png" alt="bio-thread"><br>传统的BIO模型基于Thread的方式</p>
 <p><img src="https://s1.ax1x.com/2018/06/22/PSzHe0.png" alt="nio-thread"><br>NIO模型基于Reactor模型</p>
