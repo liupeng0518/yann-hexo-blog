@@ -1,5 +1,5 @@
-http://blog.yannxia.top/2018/06/21/java/netty/netty-4-bytebuf/
+http://blog.yannxia.top/2018/06/22/java/microservice/gateway/zuul2/
 http://blog.yannxia.top/2018/06/21/java/netty/netty-5-otherwise/
+http://blog.yannxia.top/2018/06/21/java/netty/netty-4-bytebuf/
 http://blog.yannxia.top/2018/06/20/java/netty/netty-3-pipeline/
 http://blog.yannxia.top/2018/06/19/java/netty/netty-2-acceptor-thread/
-http://blog.yannxia.top/2018/06/12/java/netty/netty-1-bootstrap/
