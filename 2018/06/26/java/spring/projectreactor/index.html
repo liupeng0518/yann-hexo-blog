@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<link href="https://lib.baomitu.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=6.1.0">
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'SLJ0R87CAH',
+      apiKey: 'fd4f2896d73497ea343ec5d504a06bb4',
+      indexName: 'yann_blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="我们都知道 ProjectReactor 是借鉴 Rxjava 的，这个在Android开发中一个极为重要的库，现在因为后端服务采用Netty，又在Reactive的东风之下，后端也选择采用 响应式编程模式进行开发，响应式编程不是一个新概念，响应式编程就是用异步数据流进行编程，在传统的GUI应用中因为不能阻塞 绘图IO 所以有很多基于事件的编程模式，响应式编程提高了代码的抽象水平，因此能专注于那些">
+<meta property="og:type" content="article">
+<meta property="og:title" content="由表及里学 ProjectReactor">
+<meta property="og:url" content="http://blog.yannxia.top/2018/06/26/java/spring/projectreactor/index.html">
+<meta property="og:site_name" content="Yann&#39;s Blog">
+<meta property="og:description" content="我们都知道 ProjectReactor 是借鉴 Rxjava 的，这个在Android开发中一个极为重要的库，现在因为后端服务采用Netty，又在Reactive的东风之下，后端也选择采用 响应式编程模式进行开发，响应式编程不是一个新概念，响应式编程就是用异步数据流进行编程，在传统的GUI应用中因为不能阻塞 绘图IO 所以有很多基于事件的编程模式，响应式编程提高了代码的抽象水平，因此能专注于那些">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/06/27/PPboXq.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/06/28/PiGG0H.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/06/28/PiGJ7d.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/06/28/PiG8ne.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/06/28/PiGvjO.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/06/27/PP7x54.png">
+<meta property="og:updated_time" content="2018-06-28T09:33:37.725Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="由表及里学 ProjectReactor">
+<meta name="twitter:description" content="我们都知道 ProjectReactor 是借鉴 Rxjava 的，这个在Android开发中一个极为重要的库，现在因为后端服务采用Netty，又在Reactive的东风之下，后端也选择采用 响应式编程模式进行开发，响应式编程不是一个新概念，响应式编程就是用异步数据流进行编程，在传统的GUI应用中因为不能阻塞 绘图IO 所以有很多基于事件的编程模式，响应式编程提高了代码的抽象水平，因此能专注于那些">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/06/27/PPboXq.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.yannxia.top/2018/06/26/java/spring/projectreactor/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>由表及里学 ProjectReactor | Yann's Blog</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2b9a42875b7d709260d7a35c174566ba";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yann's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-百科">
+    <a href="http://wiki.yannxia.top" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-wikipedia-w"></i> <br />百科</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-计划">
+    <a href="/plan/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-paper-plane"></i> <br />计划</a>
+</li>
+
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2018/06/26/java/spring/projectreactor/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yann.xia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/Logo-2018.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yann's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">由表及里学 ProjectReactor</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-26T22:49:48+08:00">2018-06-26</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a></span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/spring/projectreactor/" itemprop="url" rel="index"><span itemprop="name">projectreactor</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/06/26/java/spring/projectreactor/" class="leancloud_visitors" data-flag-title="由表及里学 ProjectReactor">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>我们都知道 ProjectReactor 是借鉴 Rxjava 的，这个在Android开发中一个极为重要的库，现在因为后端服务采用Netty，又在Reactive的东风之下，后端也选择采用 <a href="https://en.wikipedia.org/wiki/Reactive_programming" target="_blank" rel="noopener"><code>响应式编程模式</code></a>进行开发，响应式编程不是一个新概念，响应式编程就是用异步数据流进行编程，在传统的GUI应用中因为不能阻塞 <code>绘图IO</code> 所以有很多基于事件的编程模式，响应式编程提高了代码的抽象水平，因此能专注于那些定义业务逻辑的事件的依存关系，而无需摆弄大量的线程相关实现细节。<br>下文简称 <code>projectreactor</code> 为 <code>PRR</code>。</p>
+<a id="more"></a>
+
+
+<script src="https://lib.baomitu.com/webfont/1.6.28/webfontloader.js"></script>
+<script src="https://lib.baomitu.com/snap.svg/0.5.1/snap.svg-min.js"></script>
+<script src="https://lib.baomitu.com/underscore.js/1.9.0/underscore-min.js"></script>
+<script src="https://lib.baomitu.com/raphael/2.2.7/raphael.min.js"></script>
+<script src="https://lib.baomitu.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+
+
+<h2 id="响应式编程"><a href="#响应式编程" class="headerlink" title="响应式编程"></a>响应式编程</h2><p>本质上的 <code>响应式编程模式</code> 就是一个 <code>观察者模式</code>。</p>
+<h3 id="为什么需要响应式编程"><a href="#为什么需要响应式编程" class="headerlink" title="为什么需要响应式编程"></a>为什么需要响应式编程</h3><p>为什么需要响应式编程，在文档也明确的表示，简而言之就是，我们针对大量的并发用户，我们可以选择</p>
+<ul>
+<li>并行化（parallelize）:使用更多的线程和硬件资源</li>
+<li>基于<code>现有的资源</code>提高执行效率 </li>
+</ul>
+<p>第一种方式，往往采用分布式计算，在这里不做多展开。<br>第二种方式，通过编写 <code>异步非阻塞</code> 的代码，可以减少资源的浪费，在Java中一般采用，<code>回调（Callbacks）</code> 和 <code>Futures</code> ，但是这两种方式都有局限性，</p>
+<ul>
+<li>回调很难组合起来，因为很快就会导致代码难以理解和维护（即所谓的“回调地狱（callback hell）”），</li>
+<li>Futures 比回调要好一点，但即使在 Java 8 引入了 CompletableFuture，它对于多个处理的组合仍不够好用。 编排多个 Futures 是可行的，但却不易。此外，Future 还有一个问题：当对 Future 对象最终调用 get() 方法时，仍然会导致阻塞，并且缺乏对多个值以及更进一步对错误的处理。</li>
+<li><a href="http://projectreactor.io/docs/core/release/reference/#_asynchronicity_to_the_rescue" target="_blank" rel="noopener"><code>关于原因的详细阅读</code></a></li>
+</ul>
+<h3 id="官方的例子"><a href="#官方的例子" class="headerlink" title="官方的例子"></a>官方的例子</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">userService.getFavorites(userId) ➊</span><br><span class="line">           .flatMap(favoriteService::getDetails)  ➋</span><br><span class="line">           .switchIfEmpty(suggestionService.getSuggestions())  ➌</span><br><span class="line">           .take(<span class="number">5</span>)  ➍</span><br><span class="line">           .publishOn(UiUtils.uiThreadScheduler())  ➎</span><br><span class="line">           .subscribe(uiList::show, UiUtils::errorPopup);  ➏</span><br></pre></td></tr></table></figure>
+<p>➊ 根据用户ID获得喜欢的信息（打开一个 <code>Publisher</code>）<br>➋ 使用 <code>flatMap</code> 操作获得详情信息<br>➌ 使用 <code>switchIfEmpty</code> 操作，在没有喜欢数据的情况下，采用系统推荐的方式获得<br>➍ 取前五个<br>➎ 在 <code>uiThread</code> 上进行发布<br>➏ 最终的消费行为  </p>
+<p>➊➋➌➍ 的行为就看起来很直观，这个和我们使用 <a href="http://www.runoob.com/java/java8-streams.html" target="_blank" rel="noopener"><code>Java 8 中的 Streams 编程</code></a> 极为相近，但是这里实现和 Strem 是不同的，在后续的分析会展开。<br>➎ 和 ➏ 在我们之前的编码（注：传统后台服务）中没有遇见过类似的，这里的行为，我们可以在后续的 <a href="http://projectreactor.io/docs/core/release/reference/#schedulers" target="_blank" rel="noopener"><code>Reference#schedulers</code></a> 中可以得知，<code>publishOn</code> 将影响后续的行为操作所在的线程，那我们就明白了，之前的操作会在某个线程中执行，而最后一个 <code>subscribe()</code> 函数将在 <code>uiThread</code> 中执行。</p>
+<h2 id="SPI-模型定义"><a href="#SPI-模型定义" class="headerlink" title="SPI 模型定义"></a>SPI 模型定义</h2><h3 id="Publisher-即被观察者"><a href="#Publisher-即被观察者" class="headerlink" title="Publisher 即被观察者"></a>Publisher 即被观察者</h3><p>Publisher 在 <code>PRR</code> 中 所承担的角色也就是传统的 <code>观察者模式</code> 中的 <code>被观察者对象</code>，在 <code>PRR</code> 的定义也极为简单。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.reactivestreams;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Publisher</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(Subscriber&lt;? <span class="keyword">super</span> T&gt; s)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>Publisher</code> 的定义可以看出来，<code>Publisher</code> 接受 <code>Subscriber</code>，非常简单的一个接口。但是这里有个有趣的小细节，这个类所在的包是 <code>org.reactivestreams</code>，这里的做法和传统的 J2EE 标准类似，我们使用标准的 <code>Javax</code> 接口定义行为，不定义具体的实现。</p>
+<h3 id="Subscriber-即观察者"><a href="#Subscriber-即观察者" class="headerlink" title="Subscriber 即观察者"></a>Subscriber 即观察者</h3><p>Subscriber 在 <code>PRR</code> 中 所承担的角色也就是传统的 <code>观察者模式</code> 中的 <code>观察者对象</code>，在 <code>PRR</code> 的定义要多一些。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Subscriber</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSubscribe</span><span class="params">(Subscription s)</span></span>; ➊</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(T t)</span></span>; ➋</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable t)</span></span>; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onComplete</span><span class="params">()</span></span>; ➍</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>➊ 订阅时被调用<br>➋ 每一个元素接受时被触发一次<br>➌ 当在触发错误的时候被调用<br>➍ 在接受完最后一个元素最终完成被调用  </p>
+<p><code>Subscriber</code> 的定义可以看出来，<code>Publisher</code> 是主要的行为对象，用来描述我们最终的执行逻辑。</p>
+<h3 id="Subscription-桥接者"><a href="#Subscription-桥接者" class="headerlink" title="Subscription 桥接者"></a>Subscription 桥接者</h3><p>在最基础的 <code>观察者模式</code> 中，我们只是需要 <code>Subscriber 观察者</code> <code>Publisher 发布者</code>，而在 <code>PRR</code> 中增加了一个 <code>Subscription</code> 作为 <code>Subscriber</code> <code>Publisher</code> 的桥接者。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Subscription</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">request</span><span class="params">(<span class="keyword">long</span> n)</span></span>; ➊</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span></span>; ➋</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>➊ 获取 N 个元素往下传递<br>➋ 取消执行</p>
+<p>为什么需要这个对象，笔者觉得是一是为了解耦合，第二在 <code>Reference</code> 中有提到 <code>Backpressure</code> 也就是下游可以保护自己不受上游大流量冲击，这个在 <code>Stream</code> 编程中是无法做到的，想要做到这个，就需要可以控制流速，那秘密看起来也就是在 <code>request(long n)</code> 中。</p>
+<p><img src="https://s1.ax1x.com/2018/06/27/PPboXq.png" alt="Subscriber&amp;Publisher&amp;Subscription"></p>
+<h2 id="他们如何工作"><a href="#他们如何工作" class="headerlink" title="他们如何工作"></a>他们如何工作</h2><p>我们尝试使用最简单的一个例子进行我们的 <code>探险之旅</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Flux.just(<span class="string">"tom"</span>, <span class="string">"jack"</span>, <span class="string">"allen"</span>)</span><br><span class="line">    .map(s-&gt; s.concat(<span class="string">"\@qq.com"</span>))</span><br><span class="line">    .subscribe(System.out::println);</span><br></pre></td></tr></table></figure>
+<p>我们仅仅是将 <code>String</code> 对象进行增加一个邮箱后缀，然后再打印出来，这是一个非常简单的逻辑。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//reactor.core.publisher.Flux#fromArray</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">Flux&lt;T&gt; <span class="title">fromArray</span><span class="params">(T[] array)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 检查略</span></span><br><span class="line">    <span class="keyword">return</span> onAssembly(<span class="keyword">new</span> FluxArray&lt;&gt;(array));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以清晰的发现，<code>PRR</code> 只是将 array 包裹成了一个 <code>FluxArray</code> 对象，我们来看看它的声明。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">FluxArray</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">Flux</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Fuseable</span>, <span class="title">Scannable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">final</span> T[] array;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@SafeVarargs</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">FluxArray</span><span class="params">(T... array)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.array = Objects.requireNonNull(array, <span class="string">"array"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在具体的实例中，<code>FluxArray</code> 也仅仅是将 <code>array</code> 储存了起来，然后就返回回来了，那我们紧接着去看看 <code>.map(s-&gt; s.concat(&quot;@qq.com&quot;))</code> 又做了什么。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> &lt;V&gt; <span class="function">Flux&lt;V&gt; <span class="title">map</span><span class="params">(Function&lt;? <span class="keyword">super</span> T, ? extends V&gt; mapper)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> <span class="keyword">instanceof</span> Fuseable) &#123;</span><br><span class="line">        <span class="keyword">return</span> onAssembly(<span class="keyword">new</span> FluxMapFuseable&lt;&gt;(<span class="keyword">this</span>, mapper)); ➊</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> onAssembly(<span class="keyword">new</span> FluxMap&lt;&gt;(<span class="keyword">this</span>, mapper)); ➋</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 ➊ ➋ 处，我们发现都是简单的将这个 <code>Function&lt;T,V&gt;</code> 包装成一个新的  <code>FluxMapFuseable/FluxMap</code> 对象返回，但是我们可以看到在 <code>FluxMap</code> 的构造函数中需要2个值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FluxMap(Flux&lt;? extends T&gt; source, Function&lt;? <span class="keyword">super</span> T, ? extends R&gt; mapper) &#123;</span><br><span class="line">    <span class="keyword">super</span>(source);</span><br><span class="line">    <span class="keyword">this</span>.mapper = Objects.requireNonNull(mapper, <span class="string">"mapper"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>想到了什么？这里和设计模式中的 <code>代理模式</code> 极为接近，我们每次将一个 <code>操作</code> 和 <code>源Publisher</code> 组合变成一个 <code>新Publisher</code>，到这里我们已经明白了在 <code>subscribe()</code> 之前，我们什么都没做，只是在不断的包裹 <code>Publisher</code> 将作为原始的 <code>Publisher</code> 一层又一层的返回回来。终于到了我们最为激动人心的 <code>subscribe()</code> 函数了。</p>
+<p>通过一顿 <code>Jump Definition</code> 大法，我们找到<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//reactor.core.publisher.Flux#subscribe(reactor.core.CoreSubscriber&lt;? super T&gt;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(CoreSubscriber&lt;? <span class="keyword">super</span> T&gt; actual)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>在 Flux 的 <code>抽象类</code> 中，这是一个抽象函数，也就是函数是需要子类中实现的，那我们在上面的分析过程中，我们知道每一次 <code>Operator</code> 都会包裹出一个新的 <code>Flux</code>，那我们去找到最后一次生成的 <code>FluxMapFuseable</code> 去看看它的实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(CoreSubscriber&lt;? <span class="keyword">super</span> R&gt; actual)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (actual <span class="keyword">instanceof</span> ConditionalSubscriber) &#123;</span><br><span class="line">        ConditionalSubscriber&lt;? <span class="keyword">super</span> R&gt; cs = (ConditionalSubscriber&lt;? <span class="keyword">super</span> R&gt;) actual;</span><br><span class="line">        source.subscribe(<span class="keyword">new</span> MapFuseableConditionalSubscriber&lt;&gt;(cs, mapper));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    source.subscribe(<span class="keyword">new</span> MapFuseableSubscriber&lt;&gt;(actual, mapper));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>➊ 我们暂时不去关心处理 <code>Fuseable</code> 这个对象<br>➋ 我们自己的 <code>Subscriber</code> 在这里被包裹成一个 <code>MapFuseableSubscriber</code> 对象，又订阅 <code>source</code>，还记得 <code>source</code> 这个对象吗？我们当前所在的 <code>this</code> 对象是 <code>FluxMapFuseable</code>，而他的上一次的源头也就是我们的<code>FluxArray</code> 对象，这行我们就发现了 <code>MapFuseableSubscriber</code> 只是一个中间人，将我们的源头 <code>FluxArray</code> 和 我们自定义的 <code>Subscriber</code> 关联起来，通过将 <code>Subscriber</code> 包装成新的 <code>MapFuseableSubscriber</code> 的方式</p>
+<p>那我们继续看看 <code>FluxArray</code> 是如何处理 <code>subscribe()</code> 函数的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(CoreSubscriber&lt;? <span class="keyword">super</span> T&gt; s, T[] array)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (array.length == <span class="number">0</span>) &#123;</span><br><span class="line">        Operators.complete(s);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (s <span class="keyword">instanceof</span> ConditionalSubscriber) &#123;</span><br><span class="line">        s.onSubscribe(<span class="keyword">new</span> ArrayConditionalSubscription&lt;&gt;((ConditionalSubscriber&lt;? <span class="keyword">super</span> T&gt;) s, array)); ➊</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        s.onSubscribe(<span class="keyword">new</span> ArraySubscription&lt;&gt;(s, array)); ➋</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>熟悉的味道，➊➋ 将 <code>Subscriber</code> 和 <code>Publisher</code> 包裹成一个 <code>Subscription</code> 对象，并将其 作为<code>onSubscribe</code> 函数调用的对象，这样的话，我们就可以完整的理解，为什么 <a href="http://projectreactor.io/docs/core/release/reference/#reactive.subscribe" target="_blank" rel="noopener"><code>Nothing Happens Until You subscribe()</code></a> 因为实际上在我们调用 <code>subscribe()</code> 所有的方法都只是在申明对象。只有在 <code>subscribe</code> 之后才能出发 <code>onSubscribe</code> 调用。</p>
+<p>那问题又来了 <code>onSubscribe</code> 又做了什么？那我们知道现在的这个 <code>s</code> 也就是 <code>MapFuseableSubscriber</code> 我们去看看它的 <code>onSubscribe</code> 实现就明白了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSubscribe</span><span class="params">(Subscription s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (Operators.validate(<span class="keyword">this</span>.s, s)) &#123;</span><br><span class="line">            <span class="keyword">this</span>.s = (QueueSubscription&lt;T&gt;) s;</span><br><span class="line">            actual.onSubscribe(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>很简单，我们又获得了我们自己所定义的 <code>Subscriber</code> 并调用它的 <code>onSubscribe</code> 函数，因为我们采用 <code>Lambda</code> 的方式生成的 <code>Subscriber</code> 所以也就是 <code>LambdaSubscriber</code> 对象，在他的实现中是如此写到</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">onSubscribe</span><span class="params">(Subscription s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (Operators.validate(subscription, s)) &#123;</span><br><span class="line">        <span class="keyword">this</span>.subscription = s;</span><br><span class="line">        <span class="keyword">if</span> (subscriptionConsumer != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                subscriptionConsumer.accept(s); ➊</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span> (Throwable t) &#123;</span><br><span class="line">                Exceptions.throwIfFatal(t);</span><br><span class="line">                s.cancel();</span><br><span class="line">                onError(t);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            s.request(Long.MAX_VALUE); ➋</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>无论是 ➊ 还是 ➋ 最为核心的都是调用了 <code>Subscription.request()</code> 函数，还记这个 <code>Subscription</code> 吗？也就是我们上一步的 <code>MapFuseableSubscriber</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">request</span><span class="params">(<span class="keyword">long</span> n)</span> </span>&#123;</span><br><span class="line">    s.request(n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这这里的S又是我们最外围的 <code>FluxArray</code>，我们继续查看下去。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">request</span><span class="params">(<span class="keyword">long</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (Operators.validate(n)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (Operators.addCap(REQUESTED, <span class="keyword">this</span>, n) == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (n == Long.MAX_VALUE) &#123;</span><br><span class="line">                fastPath(); ➊</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                slowPath(n); ➋</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里进行了一个简单的优化，我们直接去阅读 <code>fastPath()</code> 函数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fastPath</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> T[] a = array;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> len = a.length;</span><br><span class="line">    <span class="keyword">final</span> Subscriber&lt;? <span class="keyword">super</span> T&gt; s = actual;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = index; i != len; i++) &#123; ➊</span><br><span class="line">        <span class="keyword">if</span> (cancelled) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        T t = a[i];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (t == <span class="keyword">null</span>) &#123;</span><br><span class="line">            s.onError(<span class="keyword">new</span> NullPointerException(<span class="string">"The "</span> + i + <span class="string">"th array element was null"</span>));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        s.onNext(t); ➋</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (cancelled) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    s.onComplete();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个函数非常的简单，核心也就是一个循环体 ➊，我们在 ➋ 看出我们最终处理单一元素的 <code>onNext()</code> 函数，而这个 s 对象是 <code>FluxMapFuseable</code> 对象，在它的 onNext() 中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(T t)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (sourceMode == ASYNC) &#123;</span><br><span class="line">        actual.onNext(<span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (done) &#123;</span><br><span class="line">        Operators.onNextDropped(t, actual.currentContext());</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    R v;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        v = Objects.requireNonNull(mapper.apply(t),</span><br><span class="line">                <span class="string">"The mapper returned a null value."</span>); ➊</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (Throwable e) &#123;</span><br><span class="line">        onError(Operators.onOperatorError(s, e, t, actual.currentContext()));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    actual.onNext(v); ➋ </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 ➊ 处进行 Mapper 变形<br>在 ➋ 将 变形之后的结构传递给下一个 <code>Subscriber</code><br>这里的 <code>actual</code> 也就是我们的自己所写的 <code>Subscriber</code></p>
+<h3 id="小结一下"><a href="#小结一下" class="headerlink" title="小结一下"></a>小结一下</h3><ol>
+<li><p>当我们每进行一次 <code>Operator</code> 操作 （也就 map filter flatmap），就会将原有的 <code>FluxPublisher</code> 包裹成一个新的 <code>FluxPublisher</code><br><img src="https://s1.ax1x.com/2018/06/28/PiGG0H.png" alt="transfer"></p>
+</li>
+<li><p>当我们最终进行 <code>subscribe</code> 操作的时候，就会从最外层的 <code>Publisher</code> 一层一层的处理，从这层将 <code>Subscriber</code> 变化成需要的 <code>Subscriber</code> 直到最外层的 <code>Publisher</code><br><img src="https://s1.ax1x.com/2018/06/28/PiGJ7d.md.png" alt="transfer"></p>
+</li>
+<li><p>在最外层的 <code>Publisher</code> 的时候调用 上一层 <code>Subscriber</code> 的 <code>onSubscribe</code> 函数，在此处将 <code>Publisher</code> 和 <code>Subscriber</code> 包裹成一个 <code>Subscription</code> 对象作为 <code>onSubscribe</code> 的入参数。<br><img src="https://s1.ax1x.com/2018/06/28/PiG8ne.png" alt="last"></p>
+</li>
+<li><p>最终在 原始 <code>Subscriber</code> 对象调用 <code>request()</code> ，触发 <code>Subscription</code> 的 <code>Source</code> 获得数据作为 <code>onNext</code> 的参数，但是注意 <code>Subscription</code> 包裹的是我们封装的 <code>Subscriber</code> 所有的数据是从 <code>MapSubscriber</code> 进行一次转换再给我们的原始 <code>Subscriber</code> 的。<br><img src="https://s1.ax1x.com/2018/06/28/PiGvjO.png" alt="Work"></p>
+</li>
+</ol>
+<p>经过一顿分析，整个 <code>PRR</code> 是如何将操作整合起来的，我们已经有一个大致的了解，通过不断的包裹出新的 <code>Subscriber</code> 对象，在最终的 <code>request()</code> 行为中触发整个消息的处理，这个过程非常像 <code>俄罗斯套娃</code>，一层一层的将变化组合形变操作变成一个新的 <code>Subscriber</code>， 然后就和一个管道一样，一层一层的往下传递。</p>
+<h2 id="线程切换-Schedulers"><a href="#线程切换-Schedulers" class="headerlink" title="线程切换 Schedulers"></a>线程切换 Schedulers</h2><p>整个 <code>PPR</code> 和 竞品 <code>RxJava</code> 除了变化操作以外，最为重要的就是 <code>线程切换</code>，<code>线程切换</code>, <code>PPR</code>内置了4中线程调度器。</p>
+<ul>
+<li>使用当前线程的 <code>Schedulers.immediate()</code></li>
+<li>一个被复用的单一线程 <code>Schedulers.single()</code>，如果希望是创建新线程的模式请使用 <code>Schedulers.newSingle()</code></li>
+<li>一个弹性线程池 <code>Schedulers.elastic()</code>，这个非常适合处理一些 <code>I/O blocking</code> 实践</li>
+<li>一个固定Wokers的线程池 <code>Schedulers.parallel()</code> 这个会创建和 <code>CPU</code> 核心数一样的线程池</li>
+</ul>
+<p><code>PPR</code> 进行线程切换的函数也很简单，只有两个</p>
+<ul>
+<li><code>publishOn</code> : 这个函数将影响之后的操作</li>
+<li><code>subscribeOn</code> : 这个函数仅仅影响 <code>事件源</code> 所在的线程</li>
+</ul>
+<h3 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Flux.just(<span class="string">"tom"</span>)</span><br><span class="line">    .map(s -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="string">"(concat @qq.com) at ["</span> + Thread.currentThread() + <span class="string">"]"</span>);</span><br><span class="line">        <span class="keyword">return</span> s.concat(<span class="string">"@qq.com"</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .publishOn(Schedulers.newSingle(<span class="string">"thread-a"</span>))</span><br><span class="line">    .map(s -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="string">"(concat foo) at ["</span> + Thread.currentThread() + <span class="string">"]"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> s.concat(<span class="string">"foo"</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .filter(s -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="string">"(startsWith f) at ["</span> + Thread.currentThread() + <span class="string">"]"</span>);</span><br><span class="line">        <span class="keyword">return</span> s.startsWith(<span class="string">"t"</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .publishOn(Schedulers.newSingle(<span class="string">"thread-b"</span>))</span><br><span class="line">    .map(s -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="string">"(to length) at ["</span> + Thread.currentThread() + <span class="string">"]"</span>);</span><br><span class="line">        <span class="keyword">return</span> s.length();</span><br><span class="line">    &#125;)</span><br><span class="line">    .subscribeOn(Schedulers.newSingle(<span class="string">"source"</span>))</span><br><span class="line">    .subscribe(System.out::println);</span><br></pre></td></tr></table></figure>
+<p>执行的结果如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(concat @qq.com) at [Thread[source-1,5,main]]  ➊</span><br><span class="line">(concat foo) at [Thread[thread-a-3,5,main]] ➋</span><br><span class="line">(startsWith f) at [Thread[thread-a-3,5,main]] ➌</span><br><span class="line">(to length) at [Thread[thread-b-2,5,main]] ➍</span><br></pre></td></tr></table></figure>
+<p>➊ 正对应着  <code>.subscribeOn(Schedulers.newSingle(&quot;source&quot;))</code> 在一个 <code>source</code> 线程开始事件，和顺序无关<br>➋ ➌ 都对应着 <code>.publishOn(Schedulers.newSingle(&quot;thread-a&quot;))</code> 在一个 <code>thread-a</code> 进行操作<br>➍ 不言而喻</p>
+<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p>其中会有什么黑科技呢，在阅读源码之前，我也有这样的思考。我们一顿 <code>Jump</code> 我们又看见了一个熟悉的身影。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> Flux&lt;T&gt; <span class="title">publishOn</span><span class="params">(Scheduler scheduler, <span class="keyword">boolean</span> delayError, <span class="keyword">int</span> prefetch, <span class="keyword">int</span> lowTide)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> <span class="keyword">instanceof</span> Callable) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> <span class="keyword">instanceof</span> Fuseable.ScalarCallable) &#123;</span><br><span class="line">            <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">            Fuseable.ScalarCallable&lt;T&gt; s = (Fuseable.ScalarCallable&lt;T&gt;) <span class="keyword">this</span>;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> onAssembly(<span class="keyword">new</span> FluxSubscribeOnValue&lt;&gt;(s.call(), scheduler)); ➊</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                <span class="comment">//leave FluxSubscribeOnCallable defer exception call</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">        Callable&lt;T&gt; c = (Callable&lt;T&gt;)<span class="keyword">this</span>;</span><br><span class="line">        <span class="keyword">return</span> onAssembly(<span class="keyword">new</span> FluxSubscribeOnCallable&lt;&gt;(c, scheduler)); ➋</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> onAssembly(<span class="keyword">new</span> FluxPublishOn&lt;&gt;(<span class="keyword">this</span>, scheduler, delayError, prefetch, lowTide, Queues.get(prefetch))); ➌</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>暂且不管其他的部分，我们发现核心的依然是 构建了一个新的包裹 <code>Subscribe</code>，我们去看看最为简单的 <code>FluxPublishOn</code>，这里仅仅是 <code>New</code> 出一个新的对象，至于正在的运行时，在这里是无从得知的。但是我们去看看它的定义发现一个有钱的函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(CoreSubscriber&lt;? <span class="keyword">super</span> T&gt; actual)</span> </span>&#123;</span><br><span class="line">    Worker worker = Objects.requireNonNull(scheduler.createWorker(),</span><br><span class="line">					<span class="string">"The scheduler returned a null worker"</span>);</span><br><span class="line">    <span class="comment">//阉割</span></span><br><span class="line">    <span class="keyword">if</span> (actual <span class="keyword">instanceof</span> ConditionalSubscriber) &#123;</span><br><span class="line">        ConditionalSubscriber&lt;? <span class="keyword">super</span> T&gt; cs = (ConditionalSubscriber&lt;? <span class="keyword">super</span> T&gt;) actual;</span><br><span class="line">        source.subscribe(<span class="keyword">new</span> PublishOnConditionalSubscriber&lt;&gt;(cs,</span><br><span class="line">                scheduler,</span><br><span class="line">                worker,</span><br><span class="line">                delayError,</span><br><span class="line">                prefetch,</span><br><span class="line">                lowTide,</span><br><span class="line">                queueSupplier));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    source.subscribe(<span class="keyword">new</span> PublishOnSubscriber&lt;&gt;(actual,</span><br><span class="line">            scheduler,</span><br><span class="line">            worker,</span><br><span class="line">            delayError,</span><br><span class="line">            prefetch,</span><br><span class="line">            lowTide,</span><br><span class="line">            queueSupplier));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们发现在 <code>subscribe()</code> 函数中，我们在构建一个新的 <code>PublishOnSubscriber</code> 对象时候，我们将 <code>worker</code> 传入其中，我们又将 <code>actual</code> 上一层的 <code>Subscriber</code> 传入，在这里可以推测出，我们又将 <code>Subscriber</code> 包装了。</p>
+<p>而我们已经知道了事件的触发处是 <code>request()</code>，和传递元素处是 <code>onNext()</code> 那线程切换自然也在这两处地方。我们找到源码。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//reactor.core.publisher.FluxPublishOn.PublishOnSubscriber#request</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">request</span><span class="params">(<span class="keyword">long</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (Operators.validate(n)) &#123;</span><br><span class="line">        Operators.addCap(REQUESTED, <span class="keyword">this</span>, n);</span><br><span class="line">        <span class="comment">//WIP also guards during request and onError is possible</span></span><br><span class="line">        trySchedule(<span class="keyword">this</span>, <span class="keyword">null</span>, <span class="keyword">null</span>); ➊</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//reactor.core.publisher.FluxPublishOn.PublishOnSubscriber#onNext</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(T t)</span> </span>&#123; </span><br><span class="line">    <span class="keyword">if</span> (!queue.offer(t)) &#123;  ➋ </span><br><span class="line">            error = Operators.onOperatorError(s, Exceptions.failWithOverflow(Exceptions.BACKPRESSURE_ERROR_QUEUE_FULL), t,</span><br><span class="line">                    actual.currentContext());</span><br><span class="line">            done = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    trySchedule(<span class="keyword">this</span>, <span class="keyword">null</span>, t); ➌</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>➊➌ 处出现的 trySchedule() 也就是切换线程的核心。<br>➋ 处有个值得注意的地方，我们将当前的接受的到的元素放置到了一个队列之中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">trySchedule</span><span class="params">(@Nullable Subscription subscription,</span></span></span><br><span class="line"><span class="function"><span class="params">				@Nullable Throwable suppressed,</span></span></span><br><span class="line"><span class="function"><span class="params">				@Nullable Object dataSignal)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        worker.schedule(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (RejectedExecutionException ree) &#123;</span><br><span class="line">       <span class="comment">//略</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>切换的代码并不复杂，在当前的对象放到另外一个 <code>Worker</code> 中运行，而我们知道，从另外一个线程运行代码是在 <code>Runnable</code> 的 <code>run</code> 函数中<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//reactor.core.publisher.FluxPublishOn.PublishOnSubscriber#run</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (outputFused) &#123;</span><br><span class="line">        runBackfused();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (sourceMode == Fuseable.SYNC) &#123;</span><br><span class="line">        runSync();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        runAsync();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>继续看查看<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">runSync</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> ConditionalSubscriber&lt;? <span class="keyword">super</span> T&gt; a = actual;</span><br><span class="line">    <span class="keyword">final</span> Queue&lt;T&gt; q = queue;</span><br><span class="line">    <span class="keyword">long</span> e = produced;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (; ; ) &#123;</span><br><span class="line">        <span class="keyword">long</span> r = requested;</span><br><span class="line">        <span class="keyword">while</span> (e != r) &#123;</span><br><span class="line">            T v;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                v = q.poll(); ➊</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span> (Throwable ex) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (v == <span class="keyword">null</span>) &#123;</span><br><span class="line">                doComplete(a);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (a.tryOnNext(v)) &#123; ➋</span><br><span class="line">                e++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (q.isEmpty()) &#123;</span><br><span class="line">            doComplete(a);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>➊ 在切换线程之前，我们将我们需要处理的元素存储在我们的 <code>Queue</code>队列之中，在这里取出来<br>➋ 将我们的数据交付给真实操作的 <code>Subscriber</code> </p>
+<h3 id="短小结"><a href="#短小结" class="headerlink" title="短小结"></a>短小结</h3><p>看到这里的时候，我们已经知道了 <code>publishOn</code> 的工作原理，和 <code>Operator</code> 是类型的，只是在 <code>OnNext()</code> 的函数嵌入线程处理的代码，为什么 <code>publishOn</code> 仅对后续的操作有效，我们也可以看出来，因为 <code>publishOn</code> 的原理如下图。</p>
+<p><div style="width:100%; overflow-y:scroll;" id="diagram"></div></p>
+<script>
+    var data =
+    ['Title: publishOn原理时序图',
+     'Source->FluxPublishOn: 1. onNext 将输入元素置于 Queue',
+     'FluxPublishOn->FluxPublishOn: 2.trySchedule 切换线程',
+     'FluxPublishOn->FluxPublishOn: 3. run 取出 Queue 继续处理',
+     'FluxPublishOn->Subscriber: 4. 后续Subscriber处理'
+    ].join('\n');
+      var diagram = Diagram.parse(data);
+      diagram.drawSVG("diagram", {theme: 'simple', scale: 0.5});
+</script>
+
+<p>所以我们知道了，<code>publishOn</code> 并不会关心之前的操作是在哪里进行的，到它这里的时候，会切换一次线程即可。</p>
+<h3 id="subscribeOn-原理"><a href="#subscribeOn-原理" class="headerlink" title="subscribeOn 原理"></a>subscribeOn 原理</h3><p>因为从上文的描述中，我们得知了 <code>subscribeOn</code> 修改的是 <code>Source</code> 的行为，在几个关键的函数中，大概率就是只有 <code>subscribe()</code> 阶段可以修改这个，果不其然。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(CoreSubscriber&lt;? <span class="keyword">super</span> T&gt; actual)</span> </span>&#123;</span><br><span class="line">    Worker worker = Objects.requireNonNull(scheduler.createWorker(),</span><br><span class="line">                <span class="string">"The scheduler returned a null Function"</span>);</span><br><span class="line"></span><br><span class="line">    SubscribeOnSubscriber&lt;T&gt; parent = <span class="keyword">new</span> SubscribeOnSubscriber&lt;&gt;(source,</span><br><span class="line">            actual, worker, requestOnSeparateThread);</span><br><span class="line">    actual.onSubscribe(parent); ➊</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        worker.schedule(parent); ➋</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (RejectedExecutionException ree) &#123;</span><br><span class="line">       <span class="comment">//skip</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在 ➊ 处，构建了一个新的 <code>Subscriber</code> 叫 <code>SubscribeOn</code>，将 <code>actual</code> 包裹成一个新的对象 ，然后在 ➋ 处进行了 线程的切换。而它的 <code>Run</code> 也很简单</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    THREAD.lazySet(<span class="keyword">this</span>, Thread.currentThread());</span><br><span class="line">    source.subscribe(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们看出来，<code>subscribeOn</code> 相对来说更为简单，我们 创建一个新的 <code>Subscriber</code> 将 <code>源Subscriber</code> 关联起来，然后切换线程，之后就是正常的运行机制。</p>
+<p><div style="width:100%; overflow-y:scroll;" id="diagram2"></div></p>
+<script>
+    var data2 =
+    ['Title: subscribeOn原理时序图',
+     'Source->FluxSubscribeOn: 1. subscribe 构建一个 SubscribeOnSubscriber，关联源 Subscriber',
+     'FluxSubscribeOn->FluxSubscribeOn: 2.schedule 切换线程',
+     'FluxSubscribeOn->Source: 3. subscribe 继续远逻辑处理',
+    ].join('\n');
+      var diagram2 = Diagram.parse(data2);
+      diagram2.drawSVG("diagram2", {theme: 'simple', scale: 0.5});
+</script>
+
+<h3 id="谜题"><a href="#谜题" class="headerlink" title="谜题"></a>谜题</h3><p>如果我们写出形如下面的代码，那结果应该如何。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Flux.just(<span class="string">"tom"</span>)</span><br><span class="line">    .map(s -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="string">"(to length) at ["</span> + Thread.currentThread() + <span class="string">"]"</span>);</span><br><span class="line">        <span class="keyword">return</span> s.length();</span><br><span class="line">    &#125;)</span><br><span class="line">    .subscribeOn(Schedulers.newSingle(<span class="string">"source1"</span>))</span><br><span class="line">    .subscribeOn(Schedulers.newSingle(<span class="string">"source2"</span>))</span><br><span class="line">    .subscribeOn(Schedulers.newSingle(<span class="string">"source3"</span>))</span><br><span class="line">    .subscribeOn(Schedulers.newSingle(<span class="string">"source4"</span>))</span><br><span class="line">    .subscribe(System.out::println);</span><br></pre></td></tr></table></figure></p>
+<p>答案是:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(to length) at [Thread[source1-4,5,main]]</span><br></pre></td></tr></table></figure></p>
+<p>我们发现下面的 <code>.subscribeOn()</code> 根本无效，让我们会议一下，<code>Subscriber</code> 的包装是 逆序的。 包装的顺序是 <code>源Subscriber</code> <code>Subscriber-Source-1</code> <code>Subscriber-Source-2</code> <code>Subscriber-Source-3</code> <code>Subscriber-Source-4</code> 那我们在 <code>Subscriber-Source-4</code> 阶段进行了线程切换，之后到了 <code>Subscriber-Source-3</code> 又进行了一次切换 所以只有最后一次 <code>Subscriber-Source-1</code> 最终影响我们的 <code>Source</code> 事件所在的线程。</p>
+<h2 id="大总结"><a href="#大总结" class="headerlink" title="大总结"></a>大总结</h2><p>我们最后总结一下<br><img src="https://s1.ax1x.com/2018/06/27/PP7x54.png" alt="BigPic"></p>
+<ol>
+<li>在声明阶段，我们像 <code>俄罗斯套娃</code> 一样，创建一个嵌套一个的 <code>Publisher</code></li>
+<li>在 <code>subscribe()</code> 调用的时候，我们从最外围的  <code>Publisher</code> 根据包裹的 <code>Operator</code> 创建各种 <code>Subscriber</code></li>
+<li><code>Subscriber</code> 通过 <code>onSubscribe()</code> 使得他们像一个链条一样关联起来，并和 最外围的 <code>Publisher</code> 组合成一个 <code>Subscription</code></li>
+<li>在最底层的 <code>Subscriber</code> 调用 <code>onSubscribe</code> 去调用 <code>Subscription</code> 的 <code>request(n);</code> 函数开始操作</li>
+<li>元素就像水管中的水一样挨个 经过  <code>Subscriber</code> 的 <code>onNext()</code>，直至我们最终消费的 <code>Subscriber</code></li>
+</ol>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><a href="http://projectreactor.io/docs/core/release/reference/#intro-reactive" target="_blank" rel="noopener">Reactor 3 Reference</a></li>
+<li><a href="https://htmlpreview.github.io/" target="_blank" rel="noopener">Reactor 3 参考文档</a></li>
+<li><a href="http://projectreactor.mydoc.io/?t=44474" target="_blank" rel="noopener">Reactor 指南中文版</a></li>
+<li><a href="https://community.oracle.com/docs/DOC-1006738" target="_blank" rel="noopener">Reactive Programming with JDK 9 Flow API</a></li>
+<li><a href="https://blog.piasy.com/AdvancedRxJava/2017/03/19/comparison-of-reactive-streams-part-1/" target="_blank" rel="noopener">Reactive Stream 各实现的对比（一）</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/22/java/microservice/gateway/zuul2/" rel="next" title="Zuul2源码分析">
+                <i class="fa fa-chevron-left"></i> Zuul2源码分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2122379" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/Logo-2018.png"
+                alt="yann.xia" />
+            
+              <p class="site-author-name" itemprop="name">yann.xia</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">32</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/yannxia" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/yann.xia" target="_blank" title="ZhiHu" rel="external nofollow"><i class="fa fa-fw fa-bomb"></i>ZhiHu</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                小伙伴の博客
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://sakeven.me/" title="Sakeven" target="_blank">Sakeven</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://reficul.io/" title="Reficul" target="_blank">Reficul</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.tomwei7.com/" title="Tomwei" target="_blank">Tomwei</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.jinwei.me" title="Jinwei" target="_blank">Jinwei</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://renlulu.github.io/" title="Renlulu" target="_blank">Renlulu</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://justjjy.com/" title="JJY" target="_blank">JJY</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhyee.top" title="Zhyee" target="_blank">Zhyee</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.ihypo.net" title="Hypo" target="_blank">Hypo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.heytaoge.com/" title="Taoge" target="_blank">Taoge</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.hdls.me/" title="海的澜色" target="_blank">海的澜色</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#响应式编程"><span class="nav-number">1.</span> <span class="nav-text">响应式编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么需要响应式编程"><span class="nav-number">1.1.</span> <span class="nav-text">为什么需要响应式编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#官方的例子"><span class="nav-number">1.2.</span> <span class="nav-text">官方的例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SPI-模型定义"><span class="nav-number">2.</span> <span class="nav-text">SPI 模型定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Publisher-即被观察者"><span class="nav-number">2.1.</span> <span class="nav-text">Publisher 即被观察者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subscriber-即观察者"><span class="nav-number">2.2.</span> <span class="nav-text">Subscriber 即观察者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subscription-桥接者"><span class="nav-number">2.3.</span> <span class="nav-text">Subscription 桥接者</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#他们如何工作"><span class="nav-number">3.</span> <span class="nav-text">他们如何工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#小结一下"><span class="nav-number">3.1.</span> <span class="nav-text">小结一下</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程切换-Schedulers"><span class="nav-number">4.</span> <span class="nav-text">线程切换 Schedulers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#举个例子"><span class="nav-number">4.1.</span> <span class="nav-text">举个例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作原理"><span class="nav-number">4.2.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#短小结"><span class="nav-number">4.3.</span> <span class="nav-text">短小结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#subscribeOn-原理"><span class="nav-number">4.4.</span> <span class="nav-text">subscribeOn 原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#谜题"><span class="nav-number">4.5.</span> <span class="nav-text">谜题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大总结"><span class="nav-number">5.</span> <span class="nav-text">大总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文档"><span class="nav-number">6.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate"> 
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yann Xia</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="https://lib.baomitu.com/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://lib.baomitu.com/velocity/1.2.1/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://lib.baomitu.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
+
+
+
+  
+
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://blog.yannxia.top/2018/06/26/java/spring/projectreactor/';
+        this.page.identifier = '2018/06/26/java/spring/projectreactor/';
+        this.page.title = '由表及里学 ProjectReactor';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://yann-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+    
+  
+  <link rel="stylesheet" href="https://lib.baomitu.com/instantsearch.js/1.0.0/instantsearch.min.css">
+
+  
+  
+    
+  
+  <script src="https://lib.baomitu.com/instantsearch.js/1.0.0/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.1.0"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("KPHj3vsvOqeV377r9yw1DdLl-gzGzoHsz", "wGzWlWVU3AFfxa6TgF2BadlD");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

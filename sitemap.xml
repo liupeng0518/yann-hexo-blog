@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.yannxia.top/2018/06/26/java/spring/projectreactor/</loc>
+    
+    <lastmod>2018-06-28T09:33:37.725Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.yannxia.top/2018/06/22/java/microservice/gateway/zuul2/</loc>
     
     <lastmod>2018-06-22T13:32:38.635Z</lastmod>
