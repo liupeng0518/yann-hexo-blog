@@ -8,12 +8,12 @@
       "startDate": "2018,4,20",
       "endDate": "2018,6,1",
       "headline": "TCP/IP Illustrated Vol.1",
-      "text": "<p>Read TCP/IP Illustrated Vol.1</p>",
-      "asset": {
-        "media": "",
-        "credit": "",
-        "caption": ""
-      }
+      "text": "<p>Read TCP/IP Illustrated Vol.1</p>"
+    }, {
+      "startDate": "2018,6,15",
+      "endDate": "2018,6,30",
+      "headline": "Netty源码分析",
+      "text": "<p>Netty源码分析系列</p>"
     }]
   }
 }
