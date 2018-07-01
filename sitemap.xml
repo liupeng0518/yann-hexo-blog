@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.yannxia.top/plan/index.html</loc>
+    
+    <lastmod>2018-07-01T13:45:18.097Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.yannxia.top/plan/learn-timeline.json</loc>
     
     <lastmod>2018-07-01T13:42:14.923Z</lastmod>
@@ -40,13 +47,6 @@
     <loc>http://blog.yannxia.top/2018/06/21/java/netty/netty-4-bytebuf/</loc>
     
     <lastmod>2018-06-21T08:28:34.403Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.yannxia.top/plan/index.html</loc>
-    
-    <lastmod>2018-06-20T09:38:42.468Z</lastmod>
     
   </url>
   
