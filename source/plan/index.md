@@ -1,12 +1,18 @@
 ---
-title: 学习计划
+title: 各种计划
 date: 2018-04-19 18:43:42
 ---
 
-## 正在阅读
-- TCP/IP Illustrated Vol.1 ✔
-- Netty源码解析系列 ⇦
+<!-- ⇦ ✔ --->
 
+## Plan
+- Motan 源码解读 ⇦
+- Akka 源码解读
+
+## Done
+- TCP/IP Illustrated Vol.1 ✔
+- Netty源码解析系列 ✔
+- 由表及里学 ProjectReactor ✔
 
 
 ---
@@ -24,7 +30,8 @@ date: 2018-04-19 18:43:42
           source: 'learn-timeline.json',
           embed_id: 'my-timeline',
           hash_bookmark: true,
-          lang: 'zh-cn'
+          lang: 'zh-cn',
+          start_at_end: true
       });
   </script>
 
