@@ -32,3 +32,135 @@ Motan框架中主要有 `register`、`transport`、`serialize`、`protocol`几�
 
 在进行RPC请求时，Client通过代理机制调用cluster模块，cluster根据配置的HA和LoadBalance选出一个可用的Server，通过serialize模块把RPC请求转换为字节流，然后通过transport模块发送到Server端。
 
+## Demo without Spring
+一切代码的开始总是从Demo开始的
+
+
+{% tabs Sample unique name %}
+<!-- tab Motan Server端 -->
+这段代码可以说是最为简单的Server端了。
+{% codeblock lang:java %}
+public class MotanServer {
+    public static void main(String[] args) {
+        //1. 使用代码形式实现, 可以不使用spring 容器
+        ServiceConfig<MotanDemoService> motanDemoService = new ServiceConfig<>();
+
+        //2. 配置端口及实现类
+        motanDemoService.setInterface(MotanDemoService.class);
+        motanDemoService.setRef(new MotanDemoServiceImpl());
+
+        //3. 配置服务的group及版本号
+        motanDemoService.setGroup("motan-demo-rpc");
+        motanDemoService.setVersion("1.0");
+
+        //4. 配置 注册中心
+        RegistryConfig directRegistry = new RegistryConfig();
+        directRegistry.setRegProtocol("local");
+        directRegistry.setCheck("false"); //不检查是否注册成功
+        motanDemoService.setRegistry(directRegistry);
+
+        //5. 配置RPC协议
+        ProtocolConfig protocol = new ProtocolConfig();
+        protocol.setId("motan");
+        protocol.setName("motan");
+        motanDemoService.setProtocol(protocol);
+
+        //6. 配置协议:端口 和输出
+        motanDemoService.setApplication("motan");
+        motanDemoService.setExport("motan:8002");
+        motanDemoService.export();
+
+        //7. 设置心跳
+        MotanSwitcherUtil.setSwitcherValue(MotanConstants.REGISTRY_HEARTBEAT_SWITCHER, true);
+        System.out.println("server start...");
+    }
+}
+{% endcodeblock %}
+<!-- endtab -->
+<!-- tab Motan Client端 -->
+{% codeblock lang:java %}
+public class MotanClient {
+    public static void main(String[] args) {
+        //1. 引用配置
+        RefererConfig<MotanDemoService> motanDemoServiceReferer = new RefererConfig<>();
+
+        //2. 设置接口及实现类
+        motanDemoServiceReferer.setInterface(MotanDemoService.class);
+
+        //3. 配置服务的group以及版本号
+        motanDemoServiceReferer.setGroup("motan-demo-rpc");
+        motanDemoServiceReferer.setVersion("1.0");
+        motanDemoServiceReferer.setRequestTimeout(300);
+
+        // 4. 配置注册中心直连调用
+         RegistryConfig directRegistry = new RegistryConfig();
+         directRegistry.setRegProtocol("local");
+         directRegistry.setPort(8002);
+         motanDemoServiceReferer.setRegistry(directRegistry);
+         
+        // 5. 配置RPC 协议
+        ProtocolConfig protocol = new ProtocolConfig();
+        protocol.setId("motan");
+        protocol.setName("motan");
+
+        motanDemoServiceReferer.setProtocol(protocol);
+        motanDemoServiceReferer.setDirectUrl("localhost:8002");
+
+        // 6. 使用服务调用
+        MotanDemoService service = motanDemoServiceReferer.getRef();
+        System.out.println(service.hello("motan"));
+
+        System.exit(0);
+    }
+}
+{% endcodeblock %}
+<!-- endtab -->
+<!-- tab 接口定义 -->
+{% codeblock lang:java %}
+public interface MotanDemoService {
+    String hello(String name);
+}
+
+public class MotanDemoServiceImpl implements MotanDemoService {
+    @Override
+    public String hello(String name) {
+        return "hello-" + name;
+    }
+}
+{% endcodeblock %}
+<!-- endtab -->
+{% endtabs %}
+
+
+执行结果如下
+
+```bash
+by-motan-motan
+```
+
+
+## 启动流程分析
+我们从上面的代码可以看出来，在服务侧的代码中，大部分都是在声明，在 `motanDemoService.export();`这部才是开始执行暴露出 `RPC` 接口的行为，我们从这里作为一个突破口。
+
+```java
+public synchronized void export() {
+    checkInterfaceAndMethods(interfaceClass, methods);
+
+    List<URL> registryUrls = loadRegistryUrls();
+    if (registryUrls == null || registryUrls.size() == 0) {
+        throw new IllegalStateException("Should set registry config for service:" + interfaceClass.getName());
+    }
+
+    Map<String, Integer> protocolPorts = getProtocolAndPort();
+    for (ProtocolConfig protocolConfig : protocols) {
+        Integer port = protocolPorts.get(protocolConfig.getId());
+        if (port == null) {
+            throw new MotanServiceException(String.format("Unknow port in service:%s, protocol:%s", interfaceClass.getName(),
+                    protocolConfig.getId()));
+        }
+        doExport(protocolConfig, port, registryUrls);
+    }
+
+    afterExport();
+}
+```
