@@ -2,6 +2,15 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
@@ -51,16 +60,16 @@
 
 <link href="https://lib.baomitu.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=6.3.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=6.1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=6.3.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=6.1.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=6.3.0">
 
 
 
@@ -76,7 +85,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Gemini',
-    version: '6.1.0',
+    version: '6.3.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
     fastclick: false,
@@ -108,7 +117,10 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://s1.ax1x.com/2018/06/30/PFWib4.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/06/30/PFWkVJ.png">
-<meta property="og:updated_time" content="2018-06-30T05:36:23.538Z">
+<meta property="og:image" content="https://s1.ax1x.com/2018/07/05/PZ93Y4.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/07/05/PVz3Yd.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/07/08/PmGFN8.png">
+<meta property="og:updated_time" content="2018-07-09T14:46:21.189Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Motan源码分析">
 <meta name="twitter:description" content="MotanMotan 是一套基于java开发的RPC框架，除了常规的点对点调用外，Motan 还提供服务治理功能，包括服务节点的自动发现、摘除、高可用和负载均衡等。Motan 具有良好的扩展性，主要模块都提供了多种不同的实现，例如支持多种注册中心，支持多种rpc协议等。（可以看作 Dubbo 的复刻版） 跳过介绍">
@@ -190,9 +202,7 @@
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"> 
-
-<div class="site-brand-wrapper">
+      <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
@@ -203,9 +213,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <h1 class="site-subtitle" itemprop="description"></h1>
-      
+    
   </div>
 
   <div class="site-nav-toggle">
@@ -217,58 +225,54 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
         
+        
           
-  <li class="menu-item menu-item-home">
+          <li class="menu-item menu-item-home">
     <a href="/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
-</li>
-
-      
+  </li>
+        
         
         
           
-  <li class="menu-item menu-item-about">
+          <li class="menu-item menu-item-about">
     <a href="/about/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
-</li>
-
-      
+  </li>
+        
         
         
           
-  <li class="menu-item menu-item-archives">
+          <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
-</li>
-
-      
+  </li>
+        
         
         
           
-  <li class="menu-item menu-item-百科">
-    <a href="http://wiki.yannxia.top" rel="section">
+          <li class="menu-item menu-item-百科">
+    <a href="http:/wiki.yannxia.top" rel="section">
       <i class="menu-item-icon fa fa-fw fa-wikipedia-w"></i> <br />百科</a>
-</li>
-
-      
+  </li>
+        
         
         
           
-  <li class="menu-item menu-item-计划">
+          <li class="menu-item menu-item-计划">
     <a href="/plan/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-paper-plane"></i> <br />计划</a>
-</li>
+  </li>
 
       
-
       
         <li class="menu-item menu-item-search">
           
@@ -314,11 +318,12 @@
 </nav>
 
 
+
   
 
 
 
- </div>
+</div>
     </header>
 
     
@@ -367,11 +372,19 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Motan源码分析</h2>
+          <h2 class="post-title" itemprop="name headline">Motan源码分析
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -379,12 +392,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-30T13:25:48+08:00">2018-06-30</time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-30 13:25:48" itemprop="dateCreated datePublished" datetime="2018-06-30T13:25:48+08:00">2018-06-30</time>
             
 
             
-            
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-07-09 22:46:21" itemprop="dateModified" datetime="2018-07-09T22:46:21+08:00">2018-07-09</time>
+              
             
           </span>
 
@@ -404,14 +435,14 @@
 
                 
                 
-                  ， 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/RPC/" itemprop="url" rel="index"><span itemprop="name">RPC</span></a></span>
 
                 
                 
-                  ， 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/RPC/Motan/" itemprop="url" rel="index"><span itemprop="name">Motan</span></a></span>
@@ -460,7 +491,16 @@
 
       
         <h1 id="Motan"><a href="#Motan" class="headerlink" title="Motan"></a>Motan</h1><p><code>Motan</code> 是一套基于java开发的RPC框架，除了常规的点对点调用外，<code>Motan</code> 还提供服务治理功能，包括服务节点的自动发现、摘除、高可用和负载均衡等。<code>Motan</code> 具有良好的扩展性，主要模块都提供了多种不同的实现，例如支持多种注册中心，支持多种rpc协议等。（可以看作 <code>Dubbo</code> 的复刻版）</p>
-<p><a href="">跳过介绍</a><br><a id="more"></a></p>
+<p><a href="#启动分析">跳过介绍</a><br><a id="more"></a></p>
+
+
+<script src="https://lib.baomitu.com/webfont/1.6.28/webfontloader.js"></script>
+<script src="https://lib.baomitu.com/snap.svg/0.5.1/snap.svg-min.js"></script>
+<script src="https://lib.baomitu.com/underscore.js/1.9.0/underscore-min.js"></script>
+<script src="https://lib.baomitu.com/raphael/2.2.7/raphael.min.js"></script>
+<script src="https://lib.baomitu.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+
+
 <h2 id="Montan架构"><a href="#Montan架构" class="headerlink" title="Montan架构"></a>Montan架构</h2><p><code>Motan</code> 中分为服务提供方(RPC Server)，服务调用方(RPC Client)和服务注册中心(Registry)三个角色。<br><img src="https://s1.ax1x.com/2018/06/30/PFWib4.png" alt="arch-motan)"></p>
 <h2 id="模块概述"><a href="#模块概述" class="headerlink" title="模块概述"></a>模块概述</h2><p>Motan框架中主要有 <code>register</code>、<code>transport</code>、<code>serialize</code>、<code>protocol</code>几个功能模块，各个功能模块都支持通过SPI进行扩展，各模块的交互如下图所示：<br><img src="https://s1.ax1x.com/2018/06/30/PFWkVJ.png" alt="motan-models"></p>
 <ul>
@@ -476,7 +516,125 @@
 </li>
 </ul>
 <p>在进行RPC请求时，Client通过代理机制调用cluster模块，cluster根据配置的HA和LoadBalance选出一个可用的Server，通过serialize模块把RPC请求转换为字节流，然后通过transport模块发送到Server端。</p>
+<h2 id="Demo-without-Spring"><a href="#Demo-without-Spring" class="headerlink" title="Demo without Spring"></a>Demo without Spring</h2><p>一切代码的开始总是从Demo开始的</p>
+<div class="tabs" id="sample-unique-name"><ul class="nav-tabs"><li class="tab active"><a href="#sample-unique-name-1">Motan Server端</a></li><li class="tab"><a href="#sample-unique-name-2">Motan Client端</a></li><li class="tab"><a href="#sample-unique-name-3">接口定义</a></li></ul><div class="tab-content"><div class="tab-pane active" id="sample-unique-name-1"><p>这段代码可以说是最为简单的Server端了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MotanServer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1. 使用代码形式实现, 可以不使用spring 容器</span></span><br><span class="line">        ServiceConfig&lt;MotanDemoService&gt; motanDemoService = <span class="keyword">new</span> ServiceConfig&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2. 配置端口及实现类</span></span><br><span class="line">        motanDemoService.setInterface(MotanDemoService.class);</span><br><span class="line">        motanDemoService.setRef(<span class="keyword">new</span> MotanDemoServiceImpl());</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3. 配置服务的group及版本号</span></span><br><span class="line">        motanDemoService.setGroup(<span class="string">“motan-demo-rpc”</span>);</span><br><span class="line">        motanDemoService.setVersion(<span class="string">“1.0”</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//4. 配置 注册中心</span></span><br><span class="line">        RegistryConfig directRegistry = <span class="keyword">new</span> RegistryConfig();</span><br><span class="line">        directRegistry.setRegProtocol(<span class="string">“local”</span>);</span><br><span class="line">        directRegistry.setCheck(<span class="string">“false”</span>); <span class="comment">//不检查是否注册成功</span></span><br><span class="line">        motanDemoService.setRegistry(directRegistry);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//5. 配置RPC协议</span></span><br><span class="line">        ProtocolConfig protocol = <span class="keyword">new</span> ProtocolConfig();</span><br><span class="line">        protocol.setId(<span class="string">“motan”</span>);</span><br><span class="line">        protocol.setName(<span class="string">“motan”</span>);</span><br><span class="line">        motanDemoService.setProtocol(protocol);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//6. 配置协议:端口 和输出</span></span><br><span class="line">        motanDemoService.setApplication(<span class="string">“motan”</span>);</span><br><span class="line">        motanDemoService.setExport(<span class="string">“motan:8002”</span>);</span><br><span class="line">        motanDemoService.export();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//7. 设置心跳</span></span><br><span class="line">        MotanSwitcherUtil.setSwitcherValue(MotanConstants.REGISTRY_HEARTBEAT_SWITCHER, <span class="keyword">true</span>);</span><br><span class="line">        System.out.println(<span class="string">“server start…”</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div><div class="tab-pane" id="sample-unique-name-2"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MotanClient</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1. 引用配置</span></span><br><span class="line">        RefererConfig&lt;MotanDemoService&gt; motanDemoServiceReferer = <span class="keyword">new</span> RefererConfig&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2. 设置接口及实现类</span></span><br><span class="line">        motanDemoServiceReferer.setInterface(MotanDemoService.class);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3. 配置服务的group以及版本号</span></span><br><span class="line">        motanDemoServiceReferer.setGroup(<span class="string">“motan-demo-rpc”</span>);</span><br><span class="line">        motanDemoServiceReferer.setVersion(<span class="string">“1.0”</span>);</span><br><span class="line">        motanDemoServiceReferer.setRequestTimeout(<span class="number">300</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4. 配置注册中心直连调用</span></span><br><span class="line">         RegistryConfig directRegistry = <span class="keyword">new</span> RegistryConfig();</span><br><span class="line">         directRegistry.setRegProtocol(<span class="string">“local”</span>);</span><br><span class="line">         directRegistry.setPort(<span class="number">8002</span>);</span><br><span class="line">         motanDemoServiceReferer.setRegistry(directRegistry);</span><br><span class="line">         </span><br><span class="line">        <span class="comment">// 5. 配置RPC 协议</span></span><br><span class="line">        ProtocolConfig protocol = <span class="keyword">new</span> ProtocolConfig();</span><br><span class="line">        protocol.setId(<span class="string">“motan”</span>);</span><br><span class="line">        protocol.setName(<span class="string">“motan”</span>);</span><br><span class="line"></span><br><span class="line">        motanDemoServiceReferer.setProtocol(protocol);</span><br><span class="line">        motanDemoServiceReferer.setDirectUrl(<span class="string">“localhost:8002”</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 6. 使用服务调用</span></span><br><span class="line">        MotanDemoService service = motanDemoServiceReferer.getRef();</span><br><span class="line">        System.out.println(service.hello(<span class="string">“motan”</span>));</span><br><span class="line"></span><br><span class="line">        System.exit(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div><div class="tab-pane" id="sample-unique-name-3"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MotanDemoService</span> </span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">hello</span><span class="params">(String name)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MotanDemoServiceImpl</span> <span class="keyword">implements</span> <span class="title">MotanDemoService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">“hello-“</span> + name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div></div></div>
+<p>执行结果如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">by-motan-motan</span><br></pre></td></tr></table></figure>
+<h1 id="启动分析"><a href="#启动分析" class="headerlink" title="启动分析"></a>启动分析</h1><h2 id="启动流程分析"><a href="#启动流程分析" class="headerlink" title="启动流程分析"></a>启动流程分析</h2><p>我们从上面的代码可以看出来，在服务侧的代码中，大部分都是在声明，在 <code>motanDemoService.export();</code>这部才是开始执行暴露出 <code>RPC</code> 接口的行为，我们从这里作为一个突破口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">export</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    checkInterfaceAndMethods(interfaceClass, methods);</span><br><span class="line">    List&lt;URL&gt; registryUrls = loadRegistryUrls(); ➊</span><br><span class="line">    Map&lt;String, Integer&gt; protocolPorts = getProtocolAndPort();</span><br><span class="line">    <span class="keyword">for</span> (ProtocolConfig protocolConfig : protocols) &#123;</span><br><span class="line">        Integer port = protocolPorts.get(protocolConfig.getId());</span><br><span class="line">        <span class="keyword">if</span> (port == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//Skip</span></span><br><span class="line">        &#125;</span><br><span class="line">        doExport(protocolConfig, port, registryUrls); ➋</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    afterExport(); ➌</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码逻辑很清晰<br>➊ 载入注册中心的地址<br>➋ 真实暴露接口的行为，我们从这里继续分析下去<br>➌ 暴露之后的操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">doExport</span><span class="params">(ProtocolConfig protocolConfig, <span class="keyword">int</span> port, List&lt;URL&gt; registryURLs)</span> </span>&#123;</span><br><span class="line">    String protocolName = protocolConfig.getName();    </span><br><span class="line">    String hostAddress = host;</span><br><span class="line"></span><br><span class="line">    Map&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">    collectConfigParams(map, protocolConfig, basicService, extConfig, <span class="keyword">this</span>);</span><br><span class="line">    collectMethodConfigParams(map, <span class="keyword">this</span>.getMethods());</span><br><span class="line"></span><br><span class="line">    URL serviceUrl = <span class="keyword">new</span> URL(protocolName, hostAddress, port, interfaceClass.getName(), map);</span><br><span class="line">    List&lt;URL&gt; urls = <span class="keyword">new</span> ArrayList&lt;URL&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// injvm 协议只支持注册到本地，其他协议可以注册到local、remote</span></span><br><span class="line">    <span class="keyword">if</span> (MotanConstants.PROTOCOL_INJVM.equals(protocolConfig.getId())) &#123;</span><br><span class="line">        URL localRegistryUrl = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">for</span> (URL ru : registryURLs) &#123;</span><br><span class="line">            <span class="keyword">if</span> (MotanConstants.REGISTRY_PROTOCOL_LOCAL.equals(ru.getProtocol())) &#123;</span><br><span class="line">                localRegistryUrl = ru.createCopy();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        urls.add(localRegistryUrl);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (URL ru : registryURLs) &#123;</span><br><span class="line">            urls.add(ru.createCopy());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (URL u : urls) &#123; ➊</span><br><span class="line">        u.addParameter(URLParamType.embed.getName(), StringTools.urlEncode(serviceUrl.toFullStr()));</span><br><span class="line">        registereUrls.add(u.createCopy());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ConfigHandler configHandler = ExtensionLoader.getExtensionLoader(ConfigHandler.class).getExtension(MotanConstants.DEFAULT_VALUE);   ➋</span><br><span class="line"></span><br><span class="line">    exporters.add(configHandler.export(interfaceClass, ref, urls)); ➌</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>➊ 之前的代码都在在准备对象的URL，这个的URL是Motan自己实现的，在此处将URL收集起来<br>➋ 通过SPI技术载入 <code>ConfigHandler</code> 对象<br>➌ 暴露出接口并将其在 <code>exporters</code> 管理起来</p>
+<p>我们来看看 <code>Exporter</code> 的定义<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Exporter</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">    <span class="function">Provider&lt;T&gt; <span class="title">getProvider</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">unexport</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://s1.ax1x.com/2018/07/05/PZ93Y4.png" alt=""></p>
+<p>原来 <code>Exporter</code> 是 <code>Provider</code> 的包装对象。迄今为止，我们值得启动流程为下图</p>
+<p><div style="width:100%; overflow-y:scroll;" id="diagram"></div></p>
+<script>
+    var data =
+    ['Title: Motan启动流程',
+     'ServiceConfig->ConfigHandler: 1. export(interfaceClass, ref, urls)',
+     'ConfigHandler->ServiceConfig: 2. exporters.add()',
+    ].join('\n');
+      var diagram = Diagram.parse(data);
+      diagram.drawSVG("diagram", {theme: 'simple', scale: 0.5});
+</script>
 
+
+<h2 id="课间补习-SPI"><a href="#课间补习-SPI" class="headerlink" title="课间补习 SPI"></a>课间补习 SPI</h2><p><code>Java Service Provider</code> 主要是被框架的开发人员使用，比如java.sql.Driver接口，其他不同厂商可以针对同一接口做出不同的实现，mysql和postgresql都有不同的实现提供给用户，而Java的SPI机制可以为某个接口寻找服务实现。</p>
+<blockquote>
+<p>当服务的提供者提供了一种接口的实现之后，需要在classpath下的META-INF/services/目录里创建一个以服务接口命名的文件，这个文件里的内容就是这个接口的具体的实现类。当其他的程序需要这个服务的时候，就可以通过查找这个jar包（一般都是以jar包做依赖）的META-INF/services/中的配置文件，配置文件中有接口的具体实现类名，可以根据这个类名进行加载实例化，就可以使用该服务了。JDK中查找服务的实现的工具类是：java.util.ServiceLoader。 By 《Java中SPI机制深入及源码解析》<br>关于详细的内容可以参考上文引用的博文 <a href="https://cxis.me/2017/04/17/Java%E4%B8%ADSPI%E6%9C%BA%E5%88%B6%E6%B7%B1%E5%85%A5%E5%8F%8A%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" target="_blank" rel="noopener">Java中SPI机制深入及源码解析</a></p>
+</blockquote>
+<h2 id="继续前进"><a href="#继续前进" class="headerlink" title="继续前进"></a>继续前进</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">Exporter&lt;T&gt; <span class="title">export</span><span class="params">(Class&lt;T&gt; interfaceClass, T ref, List&lt;URL&gt; registryUrls)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    String serviceStr = StringTools.urlDecode(registryUrls.get(<span class="number">0</span>).getParameter(URLParamType.embed.getName()));</span><br><span class="line">    URL serviceUrl = URL.valueOf(serviceStr);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// export service</span></span><br><span class="line">    <span class="comment">// 利用protocol decorator来增加filter特性</span></span><br><span class="line">    String protocolName = serviceUrl.getParameter(URLParamType.protocol.getName(), URLParamType.protocol.getValue());</span><br><span class="line">    Protocol orgProtocol = ExtensionLoader.getExtensionLoader(Protocol.class).getExtension(protocolName); ➊</span><br><span class="line">    Provider&lt;T&gt; provider = getProvider(orgProtocol, ref, serviceUrl, interfaceClass);</span><br><span class="line"></span><br><span class="line">    Protocol protocol = <span class="keyword">new</span> ProtocolFilterDecorator(orgProtocol); ➋</span><br><span class="line">    Exporter&lt;T&gt; exporter = protocol.export(provider, serviceUrl); ➌</span><br><span class="line"></span><br><span class="line">    <span class="comment">// register service</span></span><br><span class="line">    register(registryUrls, serviceUrl); ➍</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> exporter;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>➊ 又是熟悉的 <code>ExtensionLoader</code> 我们再次通过 <code>SPI</code> 获得我们的 <code>Protocal</code>，这里开始 <code>Protocal</code>有了多种实现，包括 <code>RPC</code>, <code>InJVM</code>, <code>Motan2</code> 等<br>➋ 我们将  <code>Protocol</code> 包裹为 <code>ProtocolFilterDecorator</code> <a href="#Motan-Filter-机制">Motan Filter 机制</a><br>➌ 将 <code>Protocol</code> 包裹为 <code>ProtocolFilterDecorator</code> 并发布出来 <a href="#Motan-Filter-机制">Motan 注册机制</a><br>➍ 将服务注册到服务发现上</p>
+<h2 id="Motan-Filter-机制"><a href="#Motan-Filter-机制" class="headerlink" title="Motan Filter 机制"></a>Motan Filter 机制</h2><blockquote>
+<p>Filter 发送/接收请求过程中增加切面逻辑，默认提供日志统计等功能<br>Filter 是 Motan 很重要的一个实现接口</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">Exporter&lt;T&gt; <span class="title">export</span><span class="params">(Provider&lt;T&gt; provider, URL url)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> protocol.export(decorateWithFilter(provider, url), url); <span class="comment">//将 provider 包装</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">private</span> &lt;T&gt; <span class="function">Provider&lt;T&gt; <span class="title">decorateWithFilter</span><span class="params">(<span class="keyword">final</span> Provider&lt;T&gt; provider, URL url)</span> </span>&#123;</span><br><span class="line">    List&lt;Filter&gt; filters = getFilters(url, MotanConstants.NODE_TYPE_SERVICE); ➊</span><br><span class="line">    <span class="keyword">if</span> (filters == <span class="keyword">null</span> || filters.size() == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> provider;</span><br><span class="line">    &#125;</span><br><span class="line">    Provider&lt;T&gt; lastProvider = provider; ➋</span><br><span class="line">    <span class="keyword">for</span> (Filter filter : filters) &#123;</span><br><span class="line">        <span class="keyword">final</span> Filter f = filter;</span><br><span class="line">        <span class="keyword">if</span> (f <span class="keyword">instanceof</span> InitializableFilter) &#123;</span><br><span class="line">            ((InitializableFilter) f).init(lastProvider);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">final</span> Provider&lt;T&gt; lp = lastProvider;</span><br><span class="line">        lastProvider = <span class="keyword">new</span> Provider&lt;T&gt;() &#123; ➌</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> Response <span class="title">call</span><span class="params">(Request request)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> f.filter(lp, request);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//SKIP</span></span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> lastProvider;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>➊ 这里其实是老朋友了 <code>SPI</code> 去读取了 <code>Filter</code> 的实现<br>➋ 遍历每一个 Filter 让他们串联起来<br>➌ 未每个Filter 创建一个 匿名的 <code>Provider</code> 让他们变成一个 <code>Chain</code></p>
+<p><img src="https://s1.ax1x.com/2018/07/05/PVz3Yd.png" alt="Provider-Chain"></p>
+<p><div style="width:100%; overflow-y:scroll;" id="diagram2"></div></p>
+<script>
+    var data2 =
+    ['Title: Motan启动流程',
+     'ServiceConfig->ConfigHandler: 1. export',
+     'ConfigHandler->ConfigHandler: 2. 获得Protocol实现',
+     'ConfigHandler->ConfigHandler: 3. Protocol 创建 Provider',
+     'ConfigHandler->ProtocolFilterDecorator: 4. 构建Protocol Chain',
+     'ConfigHandler->Protocol: 5. export',
+     'ConfigHandler->RegistryFactory: 6. register',
+    ].join('\n');
+      var diagram2 = Diagram.parse(data2);
+      diagram2.drawSVG("diagram2", {theme: 'simple', scale: 0.5});
+</script>
+
+
+<h2 id="Motan-注册机制"><a href="#Motan-注册机制" class="headerlink" title="Motan 注册机制"></a>Motan 注册机制</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">(List&lt;URL&gt; registryUrls, URL serviceUrl)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (URL url : registryUrls) &#123;</span><br><span class="line">        <span class="comment">// 根据check参数的设置，register失败可能会抛异常，上层应该知晓</span></span><br><span class="line">        RegistryFactory registryFactory = ExtensionLoader.getExtensionLoader(RegistryFactory.class).getExtension(url.getProtocol()); ➊</span><br><span class="line">        Registry registry = registryFactory.getRegistry(url);</span><br><span class="line">        registry.register(serviceUrl); ➋</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>➊ 依然通过 <code>SPI</code> 获得 <code>RegistryFactory</code><br>➋ 根据 <code>URL</code> 获得 <code>Registry</code>并注册</p>
+<h2 id="export-接口"><a href="#export-接口" class="headerlink" title="export 接口"></a>export 接口</h2><p><code>com.weibo.api.motan.protocol.AbstractProtocol#export</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">Exporter&lt;T&gt; <span class="title">export</span><span class="params">(Provider&lt;T&gt; provider, URL url)</span> </span>&#123;</span><br><span class="line">    String protocolKey = MotanFrameworkUtil.getProtocolKey(url);</span><br><span class="line">    <span class="keyword">synchronized</span> (exporterMap) &#123;</span><br><span class="line">        Exporter&lt;T&gt; exporter = (Exporter&lt;T&gt;) exporterMap.get(protocolKey);</span><br><span class="line">        exporter = createExporter(provider, url); ➊</span><br><span class="line">        exporter.init(); ➋</span><br><span class="line"></span><br><span class="line">        exporterMap.put(protocolKey, exporter); ➌</span><br><span class="line">        <span class="keyword">return</span> exporter;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>➊ 这里将必要的数据传入创建一个 <code>Exporter</code><br>➋ 最终初始化的地方 <code>Exporter</code> 执行初始化行为<br>➌ <strong>敲黑板</strong> 这里这里将我们的 <code>protocolKey</code> 和 <code>exporter</code> 关联起来，也就是真实的 <code>Mapping</code> 关系</p>
+<p>如果不慎注意，我们会忽略这里，其实在 <code>createExporter</code>中 <code>Motan</code>做了相当多的事情。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">DefaultRpcExporter</span><span class="params">(Provider&lt;T&gt; provider, URL url, ConcurrentHashMap&lt;String, ProviderMessageRouter&gt; ipPort2RequestRouter,</span></span></span><br><span class="line"><span class="function"><span class="params">                              ConcurrentHashMap&lt;String, Exporter&lt;?&gt;&gt; exporterMap)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(provider, url);</span><br><span class="line">    <span class="keyword">this</span>.exporterMap = exporterMap;</span><br><span class="line">    <span class="keyword">this</span>.ipPort2RequestRouter = ipPort2RequestRouter;</span><br><span class="line"></span><br><span class="line">    ProviderMessageRouter requestRouter = initRequestRouter(url); ➊</span><br><span class="line">    endpointFactory =</span><br><span class="line">            ExtensionLoader.getExtensionLoader(EndpointFactory.class).getExtension(</span><br><span class="line">                    url.getParameter(URLParamType.endpointFactory.getName(), URLParamType.endpointFactory.getValue())); ➋</span><br><span class="line">    server = endpointFactory.createServer(url, requestRouter); ➌</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>➊ 根据 <code>url</code> 我们初始化了 <code>ProviderMessageRouter</code> 而 <code>ProviderMessageRouter</code> 是一个 <code>MessageHandler</code> 在后续的 <code>NettyServer</code> 会被使用到<br>➋ 老朋友的 <code>SPI</code><br>➌ 这里的 <code>server</code> 我们可以发现 只有一个的 <code>NettyServer</code> 实现，想必是为了后续可以支持多种 <code>Web</code> 框架</p>
+<p>在  <code>createServer</code> 的时候还会 构造 <code>Codec</code>，也是一个拓展点。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//com.weibo.api.motan.transport.AbstractServer#AbstractServer(com.weibo.api.motan.rpc.URL)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">AbstractServer</span><span class="params">(URL url)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.url = url;</span><br><span class="line">    <span class="keyword">this</span>.codec =</span><br><span class="line">            ExtensionLoader.getExtensionLoader(Codec.class).getExtension(</span><br><span class="line">                    url.getParameter(URLParamType.codec.getName(), URLParamType.codec.getValue()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里我们发现 我们最终操作的是<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>;  <span class="comment">// 初始化</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span></span>; <span class="comment">// 销毁</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isAvailable</span><span class="params">()</span></span>; <span class="comment">// 是否可用</span></span><br><span class="line">    <span class="function">String <span class="title">desc</span><span class="params">()</span></span>; <span class="comment">//描述信息</span></span><br><span class="line">    <span class="function">URL <span class="title">getUrl</span><span class="params">()</span></span>; <span class="comment">// 访问URL</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>而通过Debug发现我们知道我们最终调用的地方是<br><code>com.weibo.api.motan.protocol.rpc.DefaultRpcExporter#doInit</code><br>我们发现很简单只做了一件事情<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">doInit</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> server.open();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>就在 <code>Open</code> 函数中已经暴露了一切。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">open</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> minWorkerThread, maxWorkerThread;</span><br><span class="line">    standardThreadExecutor = (standardThreadExecutor != <span class="keyword">null</span> &amp;&amp; !standardThreadExecutor.isShutdown()) ? standardThreadExecutor</span><br><span class="line">            : <span class="keyword">new</span> StandardThreadExecutor(minWorkerThread, maxWorkerThread, workerQueueSize, <span class="keyword">new</span> DefaultThreadFactory(<span class="string">"NettyServer-"</span> + url.getServerPortStr(), <span class="keyword">true</span>));</span><br><span class="line">    standardThreadExecutor.prestartAllCoreThreads(); ➊</span><br><span class="line"></span><br><span class="line">    ServerBootstrap serverBootstrap = <span class="keyword">new</span> ServerBootstrap();</span><br><span class="line">    serverBootstrap.group(bossGroup, workerGroup)</span><br><span class="line">            .channel(NioServerSocketChannel.class)</span><br><span class="line">            .childHandler(<span class="keyword">new</span> ChannelInitializer&lt;SocketChannel&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">initChannel</span><span class="params">(SocketChannel ch)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">                    ChannelPipeline pipeline = ch.pipeline();</span><br><span class="line">                    pipeline.addLast(<span class="string">"decoder"</span>, <span class="keyword">new</span> NettyDecoder(codec, NettyServer.<span class="keyword">this</span>, maxContentLength)); ➋</span><br><span class="line">                    pipeline.addLast(<span class="string">"encoder"</span>, <span class="keyword">new</span> NettyEncoder()); ➌</span><br><span class="line">                    pipeline.addLast(<span class="string">"handler"</span>, <span class="keyword">new</span> NettyChannelHandler(NettyServer.<span class="keyword">this</span>, messageHandler, standardThreadExecutor)); ➍</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;); </span><br><span class="line">    serverBootstrap.childOption(ChannelOption.TCP_NODELAY, <span class="keyword">true</span>);</span><br><span class="line">    serverBootstrap.childOption(ChannelOption.SO_KEEPALIVE, <span class="keyword">true</span>);</span><br><span class="line">    ChannelFuture channelFuture = serverBootstrap.bind(<span class="keyword">new</span> InetSocketAddress(url.getPort()));</span><br><span class="line">    channelFuture.syncUninterruptibly(); ➎</span><br><span class="line">    serverChannel = channelFuture.channel();</span><br><span class="line">    state = ChannelState.ALIVE;</span><br><span class="line">    StatsUtil.registryStatisticCallback(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">return</span> state.isAliveState(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>➊ 创建一个 <code>Work</code> 线程组<br>➋ 构造 <code>Netty</code> 的 <code>Decoder</code> 处理器，是一个 <code>ByteToMessageDecoder</code><br>➌ 构造 <code>Netty</code> 的 <code>Encoder</code> 处理器，是一个 <code>MessageToByteEncoder</code><br>➍ 实际上的工作 <code>Handler</code> 在这里，而<code>Handler</code> 又是我们在 <code>Exporter</code> 中的 <code>ProviderMessageRouter</code></p>
+<h2 id="启动顺序总结"><a href="#启动顺序总结" class="headerlink" title="启动顺序总结"></a>启动顺序总结</h2><p>阅读到此处，我们已经分析完成了关于 <code>Motan Server</code> 的启动流程</p>
+<p><div style="width:100%; overflow-y:scroll;" id="diagram3"></div></p>
+<script>
+    var data3 =
+    ['Title: Motan启动流程',
+     'ServiceConfig->ConfigHandler: 1. export',
+     'ConfigHandler->ConfigHandler: 2. 获得Protocol实现',
+     'ConfigHandler->ConfigHandler: 3. Protocol 创建 Provider',
+     'ConfigHandler->ProtocolFilterDecorator: 4. 构建Protocol Chain',
+     'ConfigHandler->Protocol: 5. export',
+     'Protocol->Exporter: 6. create',
+     'Exporter->Server: 7. create Server(Netty)',
+     'Exporter->Exporter: 8. init',
+     'Exporter->Exporter: 9. open Netty Server',
+     'ConfigHandler->RegistryFactory: 10. register',
+    ].join('\n');
+      var diagram3 = Diagram.parse(data3);
+      diagram3.drawSVG("diagram3", {theme: 'simple', scale: 0.5});
+</script>
+
+<p>我们回归下至今我们知道  <code>服务端</code></p>
+<ul>
+<li>protocol</li>
+<li>serialize</li>
+<li>transport<br>这三个模块是如何工作的，值得注意的正如架构图所示，我们最终在 <code>Netty</code> 暴露出来的是 <code>ProviderMessageRouter</code> 所以最终工作的是 <code>Provider</code> 对象，而 <code>Provider</code> 在 <code>Motan</code> 中被 <code>Protocol</code> 管理起来了，而在架构图上没有体现这一点。</li>
+</ul>
+<h2 id="Motan-Server-接受请求"><a href="#Motan-Server-接受请求" class="headerlink" title="Motan Server 接受请求"></a>Motan Server 接受请求</h2><p>在 <code>NettyChannelHandler</code> 中接受数据请求的<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//com.weibo.api.motan.transport.netty4.NettyChannelHandler#processRequest</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">processRequest</span><span class="params">(<span class="keyword">final</span> ChannelHandlerContext ctx, Request request)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">long</span> processStartTime = System.currentTimeMillis();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Object result;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            result = messageHandler.handle(channel, request); ➊</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">           <span class="comment">//SKIP</span></span><br><span class="line">        &#125;</span><br><span class="line">        DefaultResponse response; ➋</span><br><span class="line">        <span class="keyword">if</span> (result <span class="keyword">instanceof</span> DefaultResponse) &#123;</span><br><span class="line">            response = (DefaultResponse) result;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            response = <span class="keyword">new</span> DefaultResponse(result);</span><br><span class="line">        &#125;</span><br><span class="line">        response.setRequestId(request.getRequestId());</span><br><span class="line">        response.setProcessTime(System.currentTimeMillis() - processStartTime);</span><br><span class="line">        sendResponse(ctx, response); ➌</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        RpcContext.destroy();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>➊ 处理请求<br>➋ 包装成返回<br>➌ 响应请求</p>
+<p>而 <code>messageHandler</code> 即是我们传入的 <code>ProviderMessageRouter</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">handle</span><span class="params">(Channel channel, Object message)</span> </span>&#123;</span><br><span class="line">    Request request = (Request) message;</span><br><span class="line">    String serviceKey = MotanFrameworkUtil.getServiceKey(request);</span><br><span class="line">    Provider&lt;?&gt; provider = providers.get(serviceKey);</span><br><span class="line">    Method method = provider.lookupMethod(request.getMethodName(), request.getParamtersDesc());</span><br><span class="line">    fillParamDesc(request, method);</span><br><span class="line">    processLazyDeserialize(request, method);</span><br><span class="line">    <span class="keyword">return</span> call(request, provider);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">protected</span> Response <span class="title">call</span><span class="params">(Request request, Provider&lt;?&gt; provider)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> provider.call(request);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        DefaultResponse response = <span class="keyword">new</span> DefaultResponse();</span><br><span class="line">        response.setException(<span class="keyword">new</span> MotanBizException(<span class="string">"provider call process error"</span>, e));</span><br><span class="line">        <span class="keyword">return</span> response;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Call 的实现在 <code>Provider</code> 中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Response <span class="title">invoke</span><span class="params">(Request request)</span> </span>&#123;</span><br><span class="line">    DefaultResponse response = <span class="keyword">new</span> DefaultResponse();</span><br><span class="line">    Method method = lookupMethod(request.getMethodName(), request.getParamtersDesc());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Object value = method.invoke(proxyImpl, request.getArguments());</span><br><span class="line">        response.setValue(value);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">       <span class="comment">//SKIP</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (Throwable t) &#123;</span><br><span class="line">        <span class="comment">//SKIP</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 传递rpc版本和attachment信息方便不同rpc版本的codec使用。</span></span><br><span class="line">    response.setRpcProtocolVersion(request.getRpcProtocolVersion());</span><br><span class="line">    response.setAttachments(request.getAttachments());</span><br><span class="line">    <span class="keyword">return</span> response;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>处理消息这段代码非常的清晰也就是标准的 <code>Netty</code> 的处理流程，我们获得请求的的数据。</p>
+<h1 id="模块详解"><a href="#模块详解" class="headerlink" title="模块详解"></a>模块详解</h1><p>经过上文的的分析，我们已经对 <code>Motan</code> 的整体架构有了一些了解，我们下面的篇幅将对不同的具体模块进行分析。</p>
+<h2 id="Registry-模块详解"><a href="#Registry-模块详解" class="headerlink" title="Registry 模块详解"></a>Registry 模块详解</h2><p><img src="https://s1.ax1x.com/2018/07/08/PmGFN8.png" alt="Registry Interface"></p>
+<p>我们从图上可以看出来，<code>Registry</code> 提供的是 <code>注册</code> 和 <code>发现</code> 两个功能，废话不多说，我们去看看源码，因为 <code>Registry</code> 有多种实现，我挑选一个 <code>ZooKeeper</code> 的分析下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// com.weibo.api.motan.registry.support.AbstractRegistry#register</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">(URL url)</span> </span>&#123;</span><br><span class="line">    doRegister(removeUnnecessaryParmas(url.createCopy())); ➊</span><br><span class="line">    registeredServiceUrls.add(url);</span><br><span class="line">    <span class="comment">// available if heartbeat switcher already open</span></span><br><span class="line">    <span class="keyword">if</span> (MotanSwitcherUtil.isOpen(MotanConstants.REGISTRY_HEARTBEAT_SWITCHER)) &#123;</span><br><span class="line">        available(url);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>➊ 这里将URL注册到ZK之上，然后再下一行将 URL 缓存在本地。<br>而我们这里的 <code>URL</code> 是 <code>Motan</code> 自定义的格式如<br><code>motan://192.168.31.26:8002/top.yannxia.java.demo.motan.MotanDemoService?group=motan-demo-rpc</code><br>我们可以看出来它由 <code>协议部分(Motan)</code> <code>地址部分(192.168.31.26:8002)</code> <code>接口信息(top.yannxia.java.demo.motan.MotanDemoService)</code> <code>分组(group=motan-demo-rpc)</code> 构成</p>
+<p>那秘密也就是在 <code>doRegister</code> 函数了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doRegister</span><span class="params">(URL url)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        serverLock.lock();</span><br><span class="line">        <span class="comment">// 防止旧节点未正常注销</span></span><br><span class="line">        removeNode(url, ZkNodeType.AVAILABLE_SERVER);</span><br><span class="line">        removeNode(url, ZkNodeType.UNAVAILABLE_SERVER);</span><br><span class="line">        createNode(url, ZkNodeType.UNAVAILABLE_SERVER); ➊ </span><br><span class="line">    &#125; <span class="keyword">catch</span> (Throwable e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> MotanFrameworkException(String.format(<span class="string">"Failed to register %s to zookeeper(%s), cause: %s"</span>, url, getUrl(), e.getMessage()), e);</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        serverLock.unlock();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>➊ 前面2行也就是将原有的阶段删除，比如在异常的宕机过程，导致的数据问题。然后将这个URL在 <code>ZK</code>上创建一个新的节点。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">createNode</span><span class="params">(URL url, ZkNodeType nodeType)</span> </span>&#123;</span><br><span class="line">    String nodeTypePath = ZkUtils.toNodeTypePath(url, nodeType);</span><br><span class="line">    <span class="keyword">if</span> (!zkClient.exists(nodeTypePath)) &#123;</span><br><span class="line">        zkClient.createPersistent(nodeTypePath, <span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    zkClient.createEphemeral(ZkUtils.toNodePath(url, nodeType), url.toFullStr()); ➊</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>➊ 这样也很简单，只是将节点的信息在 <code>ZK</code> 创建出一个新的节点出来。</p>
+<p>但是 <strong>问题</strong> 来了，我们只是将自己的 <code>URL</code>注册到 <code>ZK</code> 上，我们怎么知道其他人注册的服务呢？</p>
+<p>这个秘密就在 <code>Cliet</code> 调用过程中的 <code>discoverService()</code> 中<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// com.weibo.api.motan.registry.zookeeper.ZookeeperRegistry#discoverService</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> List&lt;URL&gt; <span class="title">discoverService</span><span class="params">(URL url)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        String parentPath = ZkUtils.toNodeTypePath(url, ZkNodeType.AVAILABLE_SERVER);</span><br><span class="line">        List&lt;String&gt; currentChilds = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        <span class="keyword">if</span> (zkClient.exists(parentPath)) &#123;</span><br><span class="line">            currentChilds = zkClient.getChildren(parentPath); ➊</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nodeChildsToUrls(url, parentPath, currentChilds); ➋</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Throwable e) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>也没有什么太过于神奇的地方 ➊ 在这里通过 <code>ZK</code> 树形结构，获得父亲节点，在 ➋ 获得真正的URL地址，也就是我们注册到 <code>ZK</code> 上的那个URL值，其实拿到的是我们的 <code>Object</code> 的储存值，形如 <code>motan://192.168.31.26:8002/top.yannxia.java.demo.motan.MotanDemoService?protocol=motan&amp;application=motan&amp;refreshTimestamp=1531145421643&amp;id=motan&amp;nodeType=service&amp;export=motan:8002&amp;version=1.0&amp;group=motan-demo-rpc&amp;</code> 其中还包含了一些服务的元数据。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>本来想着把 <code>Motan</code> 都解读一遍，但是整体上来说 <code>Motan</code> 是毕竟成熟（架构很清晰） 的一个框架，大家自行阅读起来难度也不是很大，大部分的类都很少 <code>继承</code> 的过深，整体来说，<code>Motan</code>既满足了拓展性的要求，代码量也少，比较容易掌握。如果要打分，满分 100 分的话，<code>Motan</code> 也可以得 80 分以上，是一个值得初期学习的 <code>RPC</code> 框架。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://github.com/weibocom/motan/wiki/zh_userguide" target="_blank" rel="noopener">用户手册</a></li>
+</ul>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>
 
@@ -488,6 +646,35 @@
 
     
 
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请我喝杯咖啡吧！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wxpay.jpg" alt="yann.xia 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="yann.xia 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
@@ -869,7 +1056,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Motan"><span class="nav-number">1.</span> <span class="nav-text">Motan</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Montan架构"><span class="nav-number">1.1.</span> <span class="nav-text">Montan架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块概述"><span class="nav-number">1.2.</span> <span class="nav-text">模块概述</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Motan"><span class="nav-number">1.</span> <span class="nav-text">Motan</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Montan架构"><span class="nav-number">1.1.</span> <span class="nav-text">Montan架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块概述"><span class="nav-number">1.2.</span> <span class="nav-text">模块概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo-without-Spring"><span class="nav-number">1.3.</span> <span class="nav-text">Demo without Spring</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动分析"><span class="nav-number">2.</span> <span class="nav-text">启动分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#启动流程分析"><span class="nav-number">2.1.</span> <span class="nav-text">启动流程分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#课间补习-SPI"><span class="nav-number">2.2.</span> <span class="nav-text">课间补习 SPI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继续前进"><span class="nav-number">2.3.</span> <span class="nav-text">继续前进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Motan-Filter-机制"><span class="nav-number">2.4.</span> <span class="nav-text">Motan Filter 机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Motan-注册机制"><span class="nav-number">2.5.</span> <span class="nav-text">Motan 注册机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#export-接口"><span class="nav-number">2.6.</span> <span class="nav-text">export 接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动顺序总结"><span class="nav-number">2.7.</span> <span class="nav-text">启动顺序总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Motan-Server-接受请求"><span class="nav-number">2.8.</span> <span class="nav-text">Motan Server 接受请求</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块详解"><span class="nav-number">3.</span> <span class="nav-text">模块详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Registry-模块详解"><span class="nav-number">3.1.</span> <span class="nav-text">Registry 模块详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">3.2.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">3.3.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -890,7 +1077,7 @@ var jiathis_config={
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love" id="animate"> 
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Yann Xia</span>
@@ -905,7 +1092,7 @@ var jiathis_config={
 
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
 
 
 
@@ -994,32 +1181,32 @@ var jiathis_config={
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
 
 
 
@@ -1033,7 +1220,7 @@ var jiathis_config={
         this.page.url = 'http://blog.yannxia.top/2018/06/30/java/motan/motan/';
         this.page.identifier = '2018/06/30/java/motan/motan/';
         this.page.title = 'Motan源码分析';
-      };
+        };
       function loadComments () {
         var d = document, s = d.createElement('script');
         s.src = 'https://yann-blog.disqus.com/embed.js';
@@ -1088,7 +1275,7 @@ var jiathis_config={
   <script src="https://lib.baomitu.com/instantsearch.js/1.0.0/instantsearch.min.js"></script>
   
 
-  <script src="/js/src/algolia-search.js?v=6.1.0"></script>
+  <script src="/js/src/algolia-search.js?v=6.3.0"></script>
 
 
 
@@ -1222,6 +1409,74 @@ var jiathis_config={
   
 
   
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
 
 </body>
 </html>
