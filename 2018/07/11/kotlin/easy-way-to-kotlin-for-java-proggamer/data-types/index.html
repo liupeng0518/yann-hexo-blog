@@ -108,27 +108,26 @@
 
 
 
-  <meta name="description" content="Kotlin 是由 JetBrains 开发的一门编程语言, 也就是那个出品了一些列著名 IDE 比如 IntelliJ IDEA, PhpStorm, PyCharm, ReSharper的公司。 Kotlin 运行在 JVM 之上，并且可以可以编译成 JavaScript 和 机器码 （敲黑板）。  这是本片教程的第一章，我们先看看 Kotlin 的一些特性，让我们快速的了解 Kotlin">
+  <meta name="description" content="Kotlin 的第一个特点就是一门 静态类型 语言，所以先从如何在 Kotlin 中声明变量，Kotlin 如何推断变量的类型，以及 Kotlin 支持创建变量的基本数据类型开始我们的学习之旅。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="写给 Java 开发者的 Kotlin 教程 (1) - 概述">
-<meta property="og:url" content="http://blog.yannxia.top/2018/07/10/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-overview-installation-setup/index.html">
+<meta property="og:title" content="写给 Java 开发者的 Kotlin 教程 (3) - 数据类型">
+<meta property="og:url" content="http://blog.yannxia.top/2018/07/11/kotlin/easy-way-to-kotlin-for-java-proggamer/data-types/index.html">
 <meta property="og:site_name" content="Yann&#39;s Blog">
-<meta property="og:description" content="Kotlin 是由 JetBrains 开发的一门编程语言, 也就是那个出品了一些列著名 IDE 比如 IntelliJ IDEA, PhpStorm, PyCharm, ReSharper的公司。 Kotlin 运行在 JVM 之上，并且可以可以编译成 JavaScript 和 机器码 （敲黑板）。  这是本片教程的第一章，我们先看看 Kotlin 的一些特性，让我们快速的了解 Kotlin">
+<meta property="og:description" content="Kotlin 的第一个特点就是一门 静态类型 语言，所以先从如何在 Kotlin 中声明变量，Kotlin 如何推断变量的类型，以及 Kotlin 支持创建变量的基本数据类型开始我们的学习之旅。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://s1.ax1x.com/2018/07/10/PnH1S0.png">
-<meta property="og:image" content="https://s1.ax1x.com/2018/07/10/PnXZIe.png">
-<meta property="og:updated_time" content="2018-07-11T05:47:43.628Z">
+<meta property="og:image" content="https://s1.ax1x.com/2018/07/11/PuwrnO.png">
+<meta property="og:updated_time" content="2018-07-11T15:25:34.876Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="写给 Java 开发者的 Kotlin 教程 (1) - 概述">
-<meta name="twitter:description" content="Kotlin 是由 JetBrains 开发的一门编程语言, 也就是那个出品了一些列著名 IDE 比如 IntelliJ IDEA, PhpStorm, PyCharm, ReSharper的公司。 Kotlin 运行在 JVM 之上，并且可以可以编译成 JavaScript 和 机器码 （敲黑板）。  这是本片教程的第一章，我们先看看 Kotlin 的一些特性，让我们快速的了解 Kotlin">
-<meta name="twitter:image" content="https://s1.ax1x.com/2018/07/10/PnH1S0.png">
+<meta name="twitter:title" content="写给 Java 开发者的 Kotlin 教程 (3) - 数据类型">
+<meta name="twitter:description" content="Kotlin 的第一个特点就是一门 静态类型 语言，所以先从如何在 Kotlin 中声明变量，Kotlin 如何推断变量的类型，以及 Kotlin 支持创建变量的基本数据类型开始我们的学习之旅。">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/07/11/PuwrnO.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://blog.yannxia.top/2018/07/10/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-overview-installation-setup/"/>
+  <link rel="canonical" href="http://blog.yannxia.top/2018/07/11/kotlin/easy-way-to-kotlin-for-java-proggamer/data-types/"/>
 
 
 
@@ -138,7 +137,7 @@
   };
 </script>
 
-  <title>写给 Java 开发者的 Kotlin 教程 (1) - 概述 | Yann's Blog</title>
+  <title>写给 Java 开发者的 Kotlin 教程 (3) - 数据类型 | Yann's Blog</title>
   
 
 
@@ -352,7 +351,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2018/07/10/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-overview-installation-setup/">
+    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2018/07/11/kotlin/easy-way-to-kotlin-for-java-proggamer/data-types/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yann.xia">
@@ -369,7 +368,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">写给 Java 开发者的 Kotlin 教程 (1) - 概述
+          <h2 class="post-title" itemprop="name headline">写给 Java 开发者的 Kotlin 教程 (3) - 数据类型
               
             
           </h2>
@@ -394,24 +393,12 @@
                 
               
 
-              <time title="创建时间：2018-07-10 21:00:48" itemprop="dateCreated datePublished" datetime="2018-07-10T21:00:48+08:00">2018-07-10</time>
+              <time title="创建时间：2018-07-11 13:52:11 / 修改时间：23:25:34" itemprop="dateCreated datePublished" datetime="2018-07-11T13:52:11+08:00">2018-07-11</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-07-11 13:47:43" itemprop="dateModified" datetime="2018-07-11T13:47:43+08:00">2018-07-11</time>
               
             
           </span>
@@ -449,7 +436,7 @@
 
           
           
-             <span id="/2018/07/10/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-overview-installation-setup/" class="leancloud_visitors" data-flag-title="写给 Java 开发者的 Kotlin 教程 (1) - 概述">
+             <span id="/2018/07/11/kotlin/easy-way-to-kotlin-for-java-proggamer/data-types/" class="leancloud_visitors" data-flag-title="写给 Java 开发者的 Kotlin 教程 (3) - 数据类型">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -480,48 +467,89 @@
       
 
       
-        <p><img src="https://s1.ax1x.com/2018/07/10/PnH1S0.png" alt="start"></p>
-<p><code>Kotlin</code> 是由 <code>JetBrains</code> 开发的一门编程语言, 也就是那个出品了一些列著名 <code>IDE</code> 比如 <code>IntelliJ IDEA</code>, <code>PhpStorm</code>, <code>PyCharm</code>, <code>ReSharper</code>的公司。</p>
-<p><code>Kotlin</code> 运行在 JVM 之上，并且可以可以编译成 <code>JavaScript</code> 和 <code>机器码</code> （敲黑板）。 </p>
-<p>这是本片教程的第一章，我们先看看 <code>Kotlin</code> 的一些特性，让我们快速的了解 <code>Kotlin</code> 语言的特点。</p>
+        <p><img src="https://s1.ax1x.com/2018/07/11/PuwrnO.png" alt="banner"></p>
+<p><code>Kotlin</code> 的第一个特点就是一门 <a href="#参考文献"><code>静态类型</code></a> 语言，所以先从如何在 <code>Kotlin</code> 中声明变量，<code>Kotlin</code> 如何推断变量的类型，以及 <code>Kotlin</code> 支持创建变量的基本数据类型开始我们的学习之旅。</p>
 <a id="more"></a>
-<h2 id="Kotlin-特点"><a href="#Kotlin-特点" class="headerlink" title="Kotlin 特点"></a>Kotlin 特点</h2><h3 id="静态类型"><a href="#静态类型" class="headerlink" title="静态类型"></a>静态类型</h3><p><code>Kotlin</code> 是一种静态类型编程语言。这意味着每个变量和表达式的类型在编译时都是已知的。静态类型的优点是编译器可以在编译时自行验证对象的方法调用和属性访问，并防止在运行时出现的许多微不足道的错误。虽然Kotlin是一种静态类型语言，但它并不要求明确指定您声明的每个变量的类型。大多数情况下，Kotlin可以从初始化表达式或周围的上下文推断变量的类型，也就是 <strong>类型推断</strong> 。</p>
-<h3 id="简明"><a href="#简明" class="headerlink" title="简明"></a>简明</h3><p><code>Kotlin</code> 很简洁。减少了在其他OOP语言（如Java）中一直编写的样板代码。（虽然java也有 <code>Lombok</code>，但是依然存在一些不太方便的问题比如 <code>Builder</code> 的继承）<br>例如，可以在一行中创建一个包含getter，setters，equals()，hashCode() 和 toString() 方法的POJO类</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>(<span class="keyword">val</span> name: String, <span class="keyword">val</span> email: String, <span class="keyword">val</span> country: String)</span><br></pre></td></tr></table></figure>
-<h3 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h3><p><code>Kotlin</code> 通过支持可空性作为其类型系统的一部分来避免 <code>NullPointerException</code><br>例如：<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">"Hello, World"</span>    <span class="comment">// 非空类型</span></span><br><span class="line">str = <span class="literal">null</span> <span class="comment">// 编译错误</span></span><br></pre></td></tr></table></figure></p>
-<p>如果你想要储存 <code>null</code> 值，那必须申明的时候明确指出<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String nullableStr? = <span class="literal">null</span></span><br></pre></td></tr></table></figure></p>
-<p>由于 <code>Kotlin</code> 知道哪些变量可以为空，哪些变量不可为，因此它可以在编译时检测和禁止不安全的调用，否则会在运行时导致<code>NullPointerException</code> (<code>JDK8 - Optional</code> 同样解决这个问题，不过并没有编译器上解决)</p>
-<h3 id="明确"><a href="#明确" class="headerlink" title="明确"></a>明确</h3><p><code>Kotlin</code> 是明确的。显性声明被认为是一件好事。<br>比如</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h3 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>Bits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Double</td>
+<td>64</td>
+</tr>
+<tr>
+<td>Float</td>
+<td>32</td>
+</tr>
+<tr>
+<td>Long</td>
+<td>64</td>
+</tr>
+<tr>
+<td>Int</td>
+<td>32</td>
+</tr>
+<tr>
+<td>Short</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Byte</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<p><strong>敲黑板：</strong> 字符类型在 <code>Kotlin</code> 不是 <code>Number类型</code></p>
+<h4 id="显式转换"><a href="#显式转换" class="headerlink" title="显式转换"></a>显式转换</h4><p>我们先看一个例子，再来理解这个特性</p>
+<div class="tabs" id="explicit-conversions"><ul class="nav-tabs"><li class="tab active"><a href="#explicit-conversions-1">Kotlin</a></li><li class="tab"><a href="#explicit-conversions-2">Java</a></li></ul><div class="tab-content"><div class="tab-pane active" id="explicit-conversions-1"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> b: <span class="built_in">Byte</span> = <span class="number">1</span> </span><br><span class="line"><span class="keyword">val</span> i: <span class="built_in">Int</span> = b <span class="comment">// 编译错误</span></span><br></pre></td></tr></table></figure>
+</div><div class="tab-pane" id="explicit-conversions-2"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">byte</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> b = a; <span class="comment">//OK</span></span><br></pre></td></tr></table></figure>
+</div></div></div>
+<p><code>Kotlin</code> 提供一系列的数据转换的函数，如下：</p>
 <ul>
-<li>Kotlin不允许隐式类型转换，例如，int为long，或float为double。它提供了像toLong（）和toDouble（）这样的方法来显式地这样做。</li>
-<li>默认情况下，Kotlin中的所有类都是 <code>final</code>（不可继承）。您需要将类显式标记为 <code>open</code> 以允许其他类继承它。同样，默认情况下，类的所有属性和成员函数都是 <code>final</code> 。您需要将函数或属性显式标记为打开，以允许子类覆盖它。</li>
-<li>如果要覆盖父类函数或属性，则需要使用 <code>override</code> 修饰符显式注释它。</li>
+<li>toByte(): Byte</li>
+<li>toShort(): Short</li>
+<li>toInt(): Int</li>
+<li>toLong(): Long</li>
+<li>toFloat(): Float</li>
+<li>toDouble(): Double</li>
+<li>toChar(): Char</li>
 </ul>
-<h3 id="与Java完全交互"><a href="#与Java完全交互" class="headerlink" title="与Java完全交互"></a>与Java完全交互</h3><p><code>Kotlin</code> 与 <code>Java</code> 可以互相操作。可以轻松地从Kotlin访问Java代码，反之亦然。</p>
-<h3 id="IDEA友好"><a href="#IDEA友好" class="headerlink" title="IDEA友好"></a>IDEA友好</h3><p><code>Kotlin</code> 开创了 <code>IDEA</code> 先行的先例，在诞生之初就拥有良好的开发工具链。</p>
-<h3 id="全栈式"><a href="#全栈式" class="headerlink" title="全栈式"></a>全栈式</h3><p>kotlin是一门真正全栈式的编程语言，可以开发web，Socket，安卓，js，NativeApp等。</p>
-<h3 id="免费-amp-开源"><a href="#免费-amp-开源" class="headerlink" title="免费&amp;开源"></a>免费&amp;开源</h3><p>天下有免费的馅饼。</p>
-<h2 id="安装-Kotlin"><a href="#安装-Kotlin" class="headerlink" title="安装 Kotlin"></a>安装 Kotlin</h2><h3 id="单独安装-Kotlin-编译器"><a href="#单独安装-Kotlin-编译器" class="headerlink" title="单独安装 Kotlin 编译器"></a>单独安装 Kotlin 编译器</h3><ol>
-<li>去 <a href="https://github.com/JetBrains/kotlin/releases/latest" target="_blank" rel="noopener">kotlin releases</a> 下载最近的压缩包</li>
-<li>解压缩下载的kotlin-compiler-x.x.x.zip文件</li>
-<li>将解压后的路径/bin 添加到PATH变量中</li>
-<li>验证下 kotlinc</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Welcome to Kotlin version 1.2.51 (JRE 1.8.0_162-ea-b01)</span><br><span class="line">Type :<span class="built_in">help</span> <span class="keyword">for</span> <span class="built_in">help</span>, :quit <span class="keyword">for</span> quit</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="为-IntelliJ-IDEA-安装-Kotlin"><a href="#为-IntelliJ-IDEA-安装-Kotlin" class="headerlink" title="为 IntelliJ IDEA 安装 Kotlin"></a>为 IntelliJ IDEA 安装 Kotlin</h3><p>新版本的  <code>IntelliJ IDEA</code> 都已经支持了 <code>Kotlin</code>，我们在创建项目的时候记得勾选 <code>Kotlin</code> 即可。</p>
-<h3 id="为-Eclipse-安装-Kotlin"><a href="#为-Eclipse-安装-Kotlin" class="headerlink" title="为 Eclipse 安装 Kotlin"></a>为 Eclipse 安装 Kotlin</h3><ol>
-<li><p>打开 <code>Eclipse Marketplace</code> 并搜索 <code>Kotlin</code><br><img src="https://s1.ax1x.com/2018/07/10/PnXZIe.png" alt="x"></p>
-</li>
-<li><p>安装并重启 <code>Eclipse</code></p>
-</li>
-<li>创建项目选择 <code>Kotlin</code> 即可</li>
-</ol>
-<h3 id="Hello-Kotlin"><a href="#Hello-Kotlin" class="headerlink" title="Hello Kotlin"></a>Hello Kotlin</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">    println(<span class="string">"Hello, Kotlin!"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>用 <code>Hello Kotlin</code> 结束这一个介绍的教程，希望大家在后续的课程中玩的开心, have fun。</p>
+<h3 id="算术操作"><a href="#算术操作" class="headerlink" title="算术操作"></a>算术操作</h3><p><code>Kotlin</code> 支持标准的 <code>算术操作</code> 比如 <code>左移</code> <code>右移</code> 和 <code>Java</code> 不同的 <code>Kotlin</code> 认为这些也是标准的函数<br>举个例子</p>
+<div class="tabs" id="operations"><ul class="nav-tabs"><li class="tab active"><a href="#operations-1">Kotlin</a></li><li class="tab"><a href="#operations-2">Java</a></li></ul><div class="tab-content"><div class="tab-pane active" id="operations-1"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> x = (<span class="number">1</span> shl <span class="number">2</span>) and <span class="number">0x000FF000</span></span><br><span class="line"><span class="comment">//或者是</span></span><br><span class="line"><span class="keyword">val</span> x = <span class="number">1.</span>shl(<span class="number">2</span>).and(<span class="number">0x000FF000</span>)</span><br></pre></td></tr></table></figure>
+</div><div class="tab-pane" id="operations-2"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x = <span class="number">1</span> &lt;&lt; <span class="number">2</span> &amp; <span class="number">0x000FF000</span>;</span><br></pre></td></tr></table></figure>
+</div></div></div>
+<ul>
+<li>shl(bits) – 有符号左移 (Java’s &lt;&lt;)</li>
+<li>shr(bits) – 有符号右移 (Java’s &gt;&gt;)</li>
+<li>ushr(bits) – 无符号右移 (Java’s &gt;&gt;&gt;)</li>
+<li>and(bits) – 与操作</li>
+<li>or(bits) – 或操作 </li>
+<li>xor(bits) – 异或操作 </li>
+<li>inv() –  反转操作</li>
+</ul>
+<p>好奇的你，肯定想问为什么可以写成 <code>val x = (1 shl 2) and 0x000FF000</code> 这样的语法，其实这个在很多语言中也有<br>也就是所谓的 <code>中缀表达式</code> 这里的内容会在 <code>函数</code> 中细说。</p>
+<h2 id="字符类型"><a href="#字符类型" class="headerlink" title="字符类型"></a>字符类型</h2><p>字符文字用单引号括起：如 ‘1’。可以使用反斜杠转义特殊字符。支持以下转义序列：<code>\t</code>，<code>\b</code>，<code>\n</code>，<code>\r</code>，<code>\</code>，<code>\&quot;</code>，<code>\\</code>和<code>\$</code>。要对其他字符进行编码，需要使用Unicode转义序列语法：<code>&#39;\uFF00&#39;</code></p>
+<h2 id="数组类型"><a href="#数组类型" class="headerlink" title="数组类型"></a>数组类型</h2><p>在 <code>Kotlin</code> 将java中的数据转换为了 <code>Array</code> 类<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Array</span>&lt;<span class="type">T</span>&gt; <span class="keyword">private</span> <span class="keyword">constructor</span></span>() &#123;</span><br><span class="line">    <span class="keyword">val</span> size: <span class="built_in">Int</span></span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">get</span><span class="params">(index: <span class="type">Int</span>)</span></span>: T</span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">set</span><span class="params">(index: <span class="type">Int</span>, value: <span class="type">T</span>)</span></span>: <span class="built_in">Unit</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">iterator</span><span class="params">()</span></span>: Iterator&lt;T&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>Kotlin</code> 创建一个数组提供一些列简单的函数来帮助我们创建数组，比如<br><div class="tabs" id="array"><ul class="nav-tabs"><li class="tab active"><a href="#array-1">Kotlin</a></li><li class="tab"><a href="#array-2">Java</a></li></ul><div class="tab-content"><div class="tab-pane active" id="array-1"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> x = arrayOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="comment">// 构造函数 创建一个 Array&lt;String&gt; 初始化为 [“0”, “1”, “4”, “9”, “16”]</span></span><br><span class="line"><span class="keyword">val</span> asc = Array(<span class="number">5</span>, &#123; i -&gt; (i * i).toString() &#125;)</span><br></pre></td></tr></table></figure>
+</div><div class="tab-pane" id="array-2"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br></pre></td></tr></table></figure>
+</div></div></div></p>
+<p>除此之外 <code>Kotlin</code> 为 <code>Array</code> 增加了更多的方便操作的函数。举个例子</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xx = arrayOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">xx = xx.plus(<span class="number">5</span>) <span class="comment">//增加一个元素在最后</span></span><br><span class="line">xx = xx.copyOfRange(<span class="number">0</span>, <span class="number">2</span>)<span class="comment">//拷贝 0 - 2 下标的元素</span></span><br></pre></td></tr></table></figure>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="字符串字面值"><a href="#字符串字面值" class="headerlink" title="字符串字面值"></a>字符串字面值</h3><p>创建一个单行的字符串 <code>s</code> 这个和java一样。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> s = <span class="string">"Hello, world!\n"</span></span><br></pre></td></tr></table></figure></p>
+<p>但是 <code>Kotlin</code> 支持多行 <code>String</code></p>
+<div class="tabs" id="multie-string"><ul class="nav-tabs"><li class="tab active"><a href="#multie-string-1">Kotlin</a></li><li class="tab"><a href="#multie-string-2">Java</a></li></ul><div class="tab-content"><div class="tab-pane active" id="multie-string-1"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> text = <span class="string">“””</span></span><br><span class="line"><span class="string">    select * from users</span></span><br><span class="line"><span class="string">    where</span></span><br><span class="line"><span class="string">      username = ‘jack’</span></span><br><span class="line"><span class="string">“””</span></span><br></pre></td></tr></table></figure>
+</div><div class="tab-pane" id="multie-string-2"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String text = <span class="string">“select * from users\n”</span> + </span><br><span class="line">    <span class="string">“where\n”</span> +  </span><br><span class="line">    <span class="string">“username = ‘jack’”</span></span><br></pre></td></tr></table></figure>
+</div></div></div>
+<p>这个特性在我们需要输出比较复杂的 <code>Sql</code>或者是多行文本的情况下是极为方便的。</p>
+<h3 id="字符串模板"><a href="#字符串模板" class="headerlink" title="字符串模板"></a>字符串模板</h3><p>字符串可以包含模板表达式 ，即一些小段代码，会求值并把结果合并到字符串中。 模板表达式以美元符（$）开头，由一个简单的名字构成:<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> i = <span class="number">10</span></span><br><span class="line">println(<span class="string">"i = <span class="variable">$i</span>"</span>) <span class="comment">// 输出“i = 10”</span></span><br></pre></td></tr></table></figure></p>
+<p>或者用花括号括起来的任意表达式<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> s = <span class="string">"abc"</span></span><br><span class="line">println(<span class="string">"<span class="variable">$s</span>.length is <span class="subst">$&#123;s.length&#125;</span>"</span>) <span class="comment">// 输出“abc.length is 3”</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
-<li><a href="https://www.callicoder.com/kotlin-overview-installation-setup/" target="_blank" rel="noopener">kotlin-overview-installation-setup</a></li>
-<li><a href="http://blog.teamtreehouse.com/absolute-beginners-guide-kotlin" target="_blank" rel="noopener">absolute-beginners-guide-kotlin</a></li>
-<li><a href="https://www.tutorialkart.com/kotlin-tutorial/" target="_blank" rel="noopener">Kotlin Tutorial</a></li>
+<li><a href="https://www.zhihu.com/question/19918532/answer/21647195" target="_blank" rel="noopener">弱类型、强类型、动态类型、静态类型语言的区别是什么</a></li>
 </ul>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
@@ -579,8 +607,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/30/java/motan/motan/" rel="next" title="Motan源码分析">
-                <i class="fa fa-chevron-left"></i> Motan源码分析
+              <a href="/2018/07/10/kotlin/easy-way-to-kotlin-for-java-proggamer/basic-syntax/" rel="next" title="写给 Java 开发者的 Kotlin 教程 (2) - 基础语法">
+                <i class="fa fa-chevron-left"></i> 写给 Java 开发者的 Kotlin 教程 (2) - 基础语法
               </a>
             
           </div>
@@ -588,10 +616,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/10/kotlin/easy-way-to-kotlin-for-java-proggamer/basic-syntax/" rel="prev" title="写给 Java 开发者的 Kotlin 教程 (2) - 基础语法">
-                写给 Java 开发者的 Kotlin 教程 (2) - 基础语法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -705,7 +729,7 @@ var jiathis_config={
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -953,7 +977,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Kotlin-特点"><span class="nav-number">1.</span> <span class="nav-text">Kotlin 特点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#静态类型"><span class="nav-number">1.1.</span> <span class="nav-text">静态类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简明"><span class="nav-number">1.2.</span> <span class="nav-text">简明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全"><span class="nav-number">1.3.</span> <span class="nav-text">安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#明确"><span class="nav-number">1.4.</span> <span class="nav-text">明确</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与Java完全交互"><span class="nav-number">1.5.</span> <span class="nav-text">与Java完全交互</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IDEA友好"><span class="nav-number">1.6.</span> <span class="nav-text">IDEA友好</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全栈式"><span class="nav-number">1.7.</span> <span class="nav-text">全栈式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#免费-amp-开源"><span class="nav-number">1.8.</span> <span class="nav-text">免费&amp;开源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Kotlin"><span class="nav-number">2.</span> <span class="nav-text">安装 Kotlin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单独安装-Kotlin-编译器"><span class="nav-number">2.1.</span> <span class="nav-text">单独安装 Kotlin 编译器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为-IntelliJ-IDEA-安装-Kotlin"><span class="nav-number">2.2.</span> <span class="nav-text">为 IntelliJ IDEA 安装 Kotlin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为-Eclipse-安装-Kotlin"><span class="nav-number">2.3.</span> <span class="nav-text">为 Eclipse 安装 Kotlin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hello-Kotlin"><span class="nav-number">2.4.</span> <span class="nav-text">Hello Kotlin</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">3.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">1.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数字类型"><span class="nav-number">1.1.</span> <span class="nav-text">数字类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#显式转换"><span class="nav-number">1.1.1.</span> <span class="nav-text">显式转换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算术操作"><span class="nav-number">1.2.</span> <span class="nav-text">算术操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符类型"><span class="nav-number">2.</span> <span class="nav-text">字符类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组类型"><span class="nav-number">3.</span> <span class="nav-text">数组类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">4.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串字面值"><span class="nav-number">4.1.</span> <span class="nav-text">字符串字面值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串模板"><span class="nav-number">4.2.</span> <span class="nav-text">字符串模板</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
@@ -1114,9 +1138,9 @@ var jiathis_config={
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://blog.yannxia.top/2018/07/10/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-overview-installation-setup/';
-        this.page.identifier = '2018/07/10/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-overview-installation-setup/';
-        this.page.title = '写给 Java 开发者的 Kotlin 教程 (1) - 概述';
+        this.page.url = 'http://blog.yannxia.top/2018/07/11/kotlin/easy-way-to-kotlin-for-java-proggamer/data-types/';
+        this.page.identifier = '2018/07/11/kotlin/easy-way-to-kotlin-for-java-proggamer/data-types/';
+        this.page.title = '写给 Java 开发者的 Kotlin 教程 (3) - 数据类型';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

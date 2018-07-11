@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<link href="https://lib.baomitu.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=6.3.0">
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'SLJ0R87CAH',
+      apiKey: 'fd4f2896d73497ea343ec5d504a06bb4',
+      indexName: 'yann_blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Kotlin 是由 JetBrains 开发的一门编程语言, 也就是那个出品了一些列著名 IDE 比如 IntelliJ IDEA, PhpStorm, PyCharm, ReSharper的公司。 Kotlin 运行在 JVM 之上，并且可以可以编译成 JavaScript 和 机器码 （敲黑板）。  这是本片教程的第一章，我们先看看 Kotlin 的一些特性，让我们快速的了解 Kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="写给 Java 开发者的 Kotlin 教程 (1) - 概述">
+<meta property="og:url" content="http://blog.yannxia.top/2018/07/09/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-overview-installation-setup/index.html">
+<meta property="og:site_name" content="Yann&#39;s Blog">
+<meta property="og:description" content="Kotlin 是由 JetBrains 开发的一门编程语言, 也就是那个出品了一些列著名 IDE 比如 IntelliJ IDEA, PhpStorm, PyCharm, ReSharper的公司。 Kotlin 运行在 JVM 之上，并且可以可以编译成 JavaScript 和 机器码 （敲黑板）。  这是本片教程的第一章，我们先看看 Kotlin 的一些特性，让我们快速的了解 Kotlin">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/07/10/PnH1S0.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/07/10/PnXZIe.png">
+<meta property="og:updated_time" content="2018-07-11T13:58:34.266Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="写给 Java 开发者的 Kotlin 教程 (1) - 概述">
+<meta name="twitter:description" content="Kotlin 是由 JetBrains 开发的一门编程语言, 也就是那个出品了一些列著名 IDE 比如 IntelliJ IDEA, PhpStorm, PyCharm, ReSharper的公司。 Kotlin 运行在 JVM 之上，并且可以可以编译成 JavaScript 和 机器码 （敲黑板）。  这是本片教程的第一章，我们先看看 Kotlin 的一些特性，让我们快速的了解 Kotlin">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/07/10/PnH1S0.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.yannxia.top/2018/07/09/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-overview-installation-setup/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>写给 Java 开发者的 Kotlin 教程 (1) - 概述 | Yann's Blog</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2b9a42875b7d709260d7a35c174566ba";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yann's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-百科">
+    <a href="http:/wiki.yannxia.top" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-wikipedia-w"></i> <br />百科</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-计划">
+    <a href="/plan/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-paper-plane"></i> <br />计划</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2018/07/09/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-overview-installation-setup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yann.xia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/Logo-2018.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yann's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">写给 Java 开发者的 Kotlin 教程 (1) - 概述
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-09 21:00:48" itemprop="dateCreated datePublished" datetime="2018-07-09T21:00:48+08:00">2018-07-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-07-11 21:58:34" itemprop="dateModified" datetime="2018-07-11T21:58:34+08:00">2018-07-11</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/kotlin/" itemprop="url" rel="index"><span itemprop="name">kotlin</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/kotlin/easy-way-to-kotlin-for-java-programer/" itemprop="url" rel="index"><span itemprop="name">easy-way-to-kotlin-for-java-programer</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/07/09/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-overview-installation-setup/" class="leancloud_visitors" data-flag-title="写给 Java 开发者的 Kotlin 教程 (1) - 概述">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://s1.ax1x.com/2018/07/10/PnH1S0.png" alt="start"></p>
+<p><code>Kotlin</code> 是由 <code>JetBrains</code> 开发的一门编程语言, 也就是那个出品了一些列著名 <code>IDE</code> 比如 <code>IntelliJ IDEA</code>, <code>PhpStorm</code>, <code>PyCharm</code>, <code>ReSharper</code>的公司。</p>
+<p><code>Kotlin</code> 运行在 JVM 之上，并且可以可以编译成 <code>JavaScript</code> 和 <code>机器码</code> （敲黑板）。 </p>
+<p>这是本片教程的第一章，我们先看看 <code>Kotlin</code> 的一些特性，让我们快速的了解 <code>Kotlin</code> 语言的特点。</p>
+<a id="more"></a>
+<h2 id="Kotlin-特点"><a href="#Kotlin-特点" class="headerlink" title="Kotlin 特点"></a>Kotlin 特点</h2><h3 id="静态类型"><a href="#静态类型" class="headerlink" title="静态类型"></a>静态类型</h3><p><code>Kotlin</code> 是一种静态类型编程语言。这意味着每个变量和表达式的类型在编译时都是已知的。静态类型的优点是编译器可以在编译时自行验证对象的方法调用和属性访问，并防止在运行时出现的许多微不足道的错误。虽然Kotlin是一种静态类型语言，但它并不要求明确指定您声明的每个变量的类型。大多数情况下，Kotlin可以从初始化表达式或周围的上下文推断变量的类型，也就是 <strong>类型推断</strong> 。</p>
+<h3 id="简明"><a href="#简明" class="headerlink" title="简明"></a>简明</h3><p><code>Kotlin</code> 很简洁。减少了在其他OOP语言（如Java）中一直编写的样板代码。（虽然java也有 <code>Lombok</code>，但是依然存在一些不太方便的问题比如 <code>Builder</code> 的继承）<br>例如，可以在一行中创建一个包含getter，setters，equals()，hashCode() 和 toString() 方法的POJO类</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>(<span class="keyword">val</span> name: String, <span class="keyword">val</span> email: String, <span class="keyword">val</span> country: String)</span><br></pre></td></tr></table></figure>
+<h3 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h3><p><code>Kotlin</code> 通过支持可空性作为其类型系统的一部分来避免 <code>NullPointerException</code><br>例如：<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">"Hello, World"</span>    <span class="comment">// 非空类型</span></span><br><span class="line">str = <span class="literal">null</span> <span class="comment">// 编译错误</span></span><br></pre></td></tr></table></figure></p>
+<p>如果你想要储存 <code>null</code> 值，那必须申明的时候明确指出<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String nullableStr? = <span class="literal">null</span></span><br></pre></td></tr></table></figure></p>
+<p>由于 <code>Kotlin</code> 知道哪些变量可以为空，哪些变量不可为，因此它可以在编译时检测和禁止不安全的调用，否则会在运行时导致<code>NullPointerException</code> (<code>JDK8 - Optional</code> 同样解决这个问题，不过并没有编译器上解决)</p>
+<h3 id="明确"><a href="#明确" class="headerlink" title="明确"></a>明确</h3><p><code>Kotlin</code> 是明确的。显性声明被认为是一件好事。<br>比如</p>
+<ul>
+<li>Kotlin不允许隐式类型转换，例如，int为long，或float为double。它提供了像toLong() 和toDouble() 这样的方法来显式地这样做。</li>
+<li>默认情况下，Kotlin中的所有类都是 <code>final</code>（不可继承）。您需要将类显式标记为 <code>open</code> 以允许其他类继承它。同样，默认情况下，类的所有属性和成员函数都是 <code>final</code> 。您需要将函数或属性显式标记为打开，以允许子类覆盖它。</li>
+<li>如果要覆盖父类函数或属性，则需要使用 <code>override</code> 修饰符显式注释它。</li>
+</ul>
+<h3 id="与Java完全交互"><a href="#与Java完全交互" class="headerlink" title="与Java完全交互"></a>与Java完全交互</h3><p><code>Kotlin</code> 与 <code>Java</code> 可以互相操作。可以轻松地从Kotlin访问Java代码，反之亦然。</p>
+<h3 id="IDEA友好"><a href="#IDEA友好" class="headerlink" title="IDEA友好"></a>IDEA友好</h3><p><code>Kotlin</code> 开创了 <code>IDEA</code> 先行的先例，在诞生之初就拥有良好的开发工具链。</p>
+<h3 id="全栈式"><a href="#全栈式" class="headerlink" title="全栈式"></a>全栈式</h3><p>kotlin是一门真正全栈式的编程语言，可以开发web，Socket，安卓，js，NativeApp等。</p>
+<h3 id="免费-amp-开源"><a href="#免费-amp-开源" class="headerlink" title="免费&amp;开源"></a>免费&amp;开源</h3><p>天下有免费的馅饼。</p>
+<h2 id="安装-Kotlin"><a href="#安装-Kotlin" class="headerlink" title="安装 Kotlin"></a>安装 Kotlin</h2><h3 id="单独安装-Kotlin-编译器"><a href="#单独安装-Kotlin-编译器" class="headerlink" title="单独安装 Kotlin 编译器"></a>单独安装 Kotlin 编译器</h3><ol>
+<li>去 <a href="https://github.com/JetBrains/kotlin/releases/latest" target="_blank" rel="noopener">kotlin releases</a> 下载最近的压缩包</li>
+<li>解压缩下载的kotlin-compiler-x.x.x.zip文件</li>
+<li>将解压后的路径/bin 添加到PATH变量中</li>
+<li>验证下 kotlinc</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Welcome to Kotlin version 1.2.51 (JRE 1.8.0_162-ea-b01)</span><br><span class="line">Type :<span class="built_in">help</span> <span class="keyword">for</span> <span class="built_in">help</span>, :quit <span class="keyword">for</span> quit</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="为-IntelliJ-IDEA-安装-Kotlin"><a href="#为-IntelliJ-IDEA-安装-Kotlin" class="headerlink" title="为 IntelliJ IDEA 安装 Kotlin"></a>为 IntelliJ IDEA 安装 Kotlin</h3><p>新版本的  <code>IntelliJ IDEA</code> 都已经支持了 <code>Kotlin</code>，我们在创建项目的时候记得勾选 <code>Kotlin</code> 即可。</p>
+<h3 id="为-Eclipse-安装-Kotlin"><a href="#为-Eclipse-安装-Kotlin" class="headerlink" title="为 Eclipse 安装 Kotlin"></a>为 Eclipse 安装 Kotlin</h3><ol>
+<li><p>打开 <code>Eclipse Marketplace</code> 并搜索 <code>Kotlin</code><br><img src="https://s1.ax1x.com/2018/07/10/PnXZIe.png" alt="x"></p>
+</li>
+<li><p>安装并重启 <code>Eclipse</code></p>
+</li>
+<li>创建项目选择 <code>Kotlin</code> 即可</li>
+</ol>
+<h3 id="Hello-Kotlin"><a href="#Hello-Kotlin" class="headerlink" title="Hello Kotlin"></a>Hello Kotlin</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">    println(<span class="string">"Hello, Kotlin!"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用 <code>Hello Kotlin</code> 结束这一个介绍的教程，希望大家在后续的课程中玩的开心, have fun。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a href="https://www.callicoder.com/kotlin-overview-installation-setup/" target="_blank" rel="noopener">kotlin-overview-installation-setup</a></li>
+<li><a href="http://blog.teamtreehouse.com/absolute-beginners-guide-kotlin" target="_blank" rel="noopener">absolute-beginners-guide-kotlin</a></li>
+<li><a href="https://www.tutorialkart.com/kotlin-tutorial/" target="_blank" rel="noopener">Kotlin Tutorial</a></li>
+</ul>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请我喝杯咖啡吧！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wxpay.jpg" alt="yann.xia 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="yann.xia 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/30/java/motan/motan/" rel="next" title="Motan源码分析">
+                <i class="fa fa-chevron-left"></i> Motan源码分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/10/kotlin/easy-way-to-kotlin-for-java-proggamer/basic-syntax/" rel="prev" title="写给 Java 开发者的 Kotlin 教程 (2) - 基础语法">
+                写给 Java 开发者的 Kotlin 教程 (2) - 基础语法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2122379" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/Logo-2018.png"
+                alt="yann.xia" />
+            
+              <p class="site-author-name" itemprop="name">yann.xia</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/yannxia" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/yann.xia" target="_blank" title="ZhiHu" rel="external nofollow"><i class="fa fa-fw fa-bomb"></i>ZhiHu</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                小伙伴の博客
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://sakeven.me/" title="Sakeven" target="_blank">Sakeven</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://reficul.io/" title="Reficul" target="_blank">Reficul</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.tomwei7.com/" title="Tomwei" target="_blank">Tomwei</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.jinwei.me" title="Jinwei" target="_blank">Jinwei</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://renlulu.github.io/" title="Renlulu" target="_blank">Renlulu</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://justjjy.com/" title="JJY" target="_blank">JJY</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhyee.top" title="Zhyee" target="_blank">Zhyee</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.ihypo.net" title="Hypo" target="_blank">Hypo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.heytaoge.com/" title="Taoge" target="_blank">Taoge</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.hdls.me/" title="海的澜色" target="_blank">海的澜色</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Kotlin-特点"><span class="nav-number">1.</span> <span class="nav-text">Kotlin 特点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#静态类型"><span class="nav-number">1.1.</span> <span class="nav-text">静态类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简明"><span class="nav-number">1.2.</span> <span class="nav-text">简明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全"><span class="nav-number">1.3.</span> <span class="nav-text">安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#明确"><span class="nav-number">1.4.</span> <span class="nav-text">明确</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与Java完全交互"><span class="nav-number">1.5.</span> <span class="nav-text">与Java完全交互</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IDEA友好"><span class="nav-number">1.6.</span> <span class="nav-text">IDEA友好</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全栈式"><span class="nav-number">1.7.</span> <span class="nav-text">全栈式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#免费-amp-开源"><span class="nav-number">1.8.</span> <span class="nav-text">免费&amp;开源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Kotlin"><span class="nav-number">2.</span> <span class="nav-text">安装 Kotlin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单独安装-Kotlin-编译器"><span class="nav-number">2.1.</span> <span class="nav-text">单独安装 Kotlin 编译器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为-IntelliJ-IDEA-安装-Kotlin"><span class="nav-number">2.2.</span> <span class="nav-text">为 IntelliJ IDEA 安装 Kotlin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为-Eclipse-安装-Kotlin"><span class="nav-number">2.3.</span> <span class="nav-text">为 Eclipse 安装 Kotlin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hello-Kotlin"><span class="nav-number">2.4.</span> <span class="nav-text">Hello Kotlin</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">3.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yann Xia</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="https://lib.baomitu.com/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://lib.baomitu.com/velocity/1.2.1/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://lib.baomitu.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://blog.yannxia.top/2018/07/09/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-overview-installation-setup/';
+        this.page.identifier = '2018/07/09/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-overview-installation-setup/';
+        this.page.title = '写给 Java 开发者的 Kotlin 教程 (1) - 概述';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://yann-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+    
+  
+  <link rel="stylesheet" href="https://lib.baomitu.com/instantsearch.js/1.0.0/instantsearch.min.css">
+
+  
+  
+    
+  
+  <script src="https://lib.baomitu.com/instantsearch.js/1.0.0/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.3.0"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("KPHj3vsvOqeV377r9yw1DdLl-gzGzoHsz", "wGzWlWVU3AFfxa6TgF2BadlD");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+</body>
+</html>
