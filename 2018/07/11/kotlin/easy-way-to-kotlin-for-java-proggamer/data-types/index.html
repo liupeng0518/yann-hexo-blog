@@ -50,6 +50,12 @@
 
 
 
+  
+  
+    
+  
+  <link href="https://lib.baomitu.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
 
 
 
@@ -87,7 +93,7 @@
     scheme: 'Gemini',
     version: '6.3.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
+    fancybox: true,
     fastclick: false,
     lazyload: false,
     tabs: true,
@@ -116,7 +122,7 @@
 <meta property="og:description" content="Kotlin 的第一个特点就是一门 静态类型 语言，所以先从如何在 Kotlin 中声明变量，Kotlin 如何推断变量的类型，以及 Kotlin 支持创建变量的基本数据类型开始我们的学习之旅。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://s1.ax1x.com/2018/07/11/PuwrnO.png">
-<meta property="og:updated_time" content="2018-07-11T23:48:01.673Z">
+<meta property="og:updated_time" content="2018-07-12T00:22:47.905Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="写给 Java 开发者的 Kotlin 教程 (3) - 数据类型">
 <meta name="twitter:description" content="Kotlin 的第一个特点就是一门 静态类型 语言，所以先从如何在 Kotlin 中声明变量，Kotlin 如何推断变量的类型，以及 Kotlin 支持创建变量的基本数据类型开始我们的学习之旅。">
@@ -410,7 +416,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-12 07:48:01" itemprop="dateModified" datetime="2018-07-12T07:48:01+08:00">2018-07-12</time>
+                <time title="修改时间：2018-07-12 08:22:47" itemprop="dateModified" datetime="2018-07-12T08:22:47+08:00">2018-07-12</time>
               
             
           </span>
@@ -611,7 +617,10 @@
 <h3 id="字符串模板"><a href="#字符串模板" class="headerlink" title="字符串模板"></a>字符串模板</h3><p>字符串可以包含模板表达式 ，即一些小段代码，会求值并把结果合并到字符串中。 模板表达式以美元符（$）开头，由一个简单的名字构成:<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> i = <span class="number">10</span></span><br><span class="line">println(<span class="string">"i = <span class="variable">$i</span>"</span>) <span class="comment">// 输出“i = 10”</span></span><br></pre></td></tr></table></figure></p>
 <p>或者用花括号括起来的任意表达式<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> s = <span class="string">"abc"</span></span><br><span class="line">println(<span class="string">"<span class="variable">$s</span>.length is <span class="subst">$&#123;s.length&#125;</span>"</span>) <span class="comment">// 输出“abc.length is 3”</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>参考官方文档中还有 <code>Boolean</code> 与 <code>Char</code> 类型，这两个类型和 Java 是极为接近就不多做阐述。</p>
-<p>而且我们从文中，我们可以发现，<code>Kotlin</code> 不存在 <code>Java</code> 中的 原始数据类型和包装数据类型，不存在 <code>int Integer</code><br><code>long Long</code> <code>byte Byte</code> 的关系，也算是去除了 <code>Java</code> 中不太 OOP的一部分。</p>
+<p>而且我们从文中，我们可以发现，<code>Kotlin</code> 不存在 <code>Java</code> 中的 原始数据类型和包装数据类型，不存在 <code>int Integer</code> <code>long Long</code> <code>byte Byte</code> 的关系，也算是去除了 <code>Java</code> 中不太 <code>OOP</code> 的一部分。</p>
+<h2 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><ul>
+<li>Q: 执行位运算的执行顺序<br>A: 中缀函数调用的优先级低于算术操作符、类型转换以及 rangeTo 操作符，但是高于布尔操作符 &amp;&amp; 与 ||、is- 与 in- 检测以及其他一些操作符，所以 <code>1 shl 2 + 3  === 1 shl (2 + 3)</code> </li>
+</ul>
 <h2 id="参考文献-amp-课外阅读"><a href="#参考文献-amp-课外阅读" class="headerlink" title="参考文献 &amp; 课外阅读"></a>参考文献 &amp; 课外阅读</h2><ul>
 <li><a href="https://www.zhihu.com/question/19918532/answer/21647195" target="_blank" rel="noopener">弱类型、强类型、动态类型、静态类型语言的区别是什么</a></li>
 <li><a href="https://www.callicoder.com/kotlin-operators/" target="_blank" rel="noopener">Kotlin Operators with Examples</a></li>
@@ -682,6 +691,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/12/kotlin/easy-way-to-kotlin-for-java-proggamer/control-flow/" rel="prev" title="写给 Java 开发者的 Kotlin 教程 (4) - 控制流表达式">
+                写给 Java 开发者的 Kotlin 教程 (4) - 控制流表达式 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -795,7 +808,7 @@ var jiathis_config={
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -880,7 +893,11 @@ var jiathis_config={
                     
                       
                     
-                    <span class="site-state-item-count">36</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1043,7 +1060,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">1.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数字类型"><span class="nav-number">1.1.</span> <span class="nav-text">数字类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#显式转换"><span class="nav-number">1.1.1.</span> <span class="nav-text">显式转换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算术操作"><span class="nav-number">1.2.</span> <span class="nav-text">算术操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符类型"><span class="nav-number">2.</span> <span class="nav-text">字符类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组类型"><span class="nav-number">3.</span> <span class="nav-text">数组类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">4.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串字面值"><span class="nav-number">4.1.</span> <span class="nav-text">字符串字面值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串模板"><span class="nav-number">4.2.</span> <span class="nav-text">字符串模板</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献-amp-课外阅读"><span class="nav-number">6.</span> <span class="nav-text">参考文献 &amp; 课外阅读</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">1.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数字类型"><span class="nav-number">1.1.</span> <span class="nav-text">数字类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#显式转换"><span class="nav-number">1.1.1.</span> <span class="nav-text">显式转换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算术操作"><span class="nav-number">1.2.</span> <span class="nav-text">算术操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符类型"><span class="nav-number">2.</span> <span class="nav-text">字符类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组类型"><span class="nav-number">3.</span> <span class="nav-text">数组类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">4.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串字面值"><span class="nav-number">4.1.</span> <span class="nav-text">字符串字面值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串模板"><span class="nav-number">4.2.</span> <span class="nav-text">字符串模板</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q-amp-A"><span class="nav-number">6.</span> <span class="nav-text">Q&amp;A</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献-amp-课外阅读"><span class="nav-number">7.</span> <span class="nav-text">参考文献 &amp; 课外阅读</span></a></li></ol></div>
             
 
           </div>
@@ -1135,6 +1152,8 @@ var jiathis_config={
 
 
 
+  
+
 
 
 
@@ -1162,6 +1181,11 @@ var jiathis_config={
   
   
     <script type="text/javascript" src="https://lib.baomitu.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://lib.baomitu.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>
   
 
 

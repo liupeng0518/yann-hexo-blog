@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://lib.baomitu.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+  
+
+<link href="https://lib.baomitu.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=6.3.0">
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'SLJ0R87CAH',
+      apiKey: 'fd4f2896d73497ea343ec5d504a06bb4',
+      indexName: 'yann_blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Gradle 是一种构建工具，它抛弃了基于XML的构建脚本，取而代之的是采用一种基于 Groovy（现在也支持 Kotlin）的内部领域特定语言。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gradle 简易入门教程">
+<meta property="og:url" content="http://blog.yannxia.top/2018/07/14/gradle/easy-to-gradle/index.html">
+<meta property="og:site_name" content="Yann&#39;s Blog">
+<meta property="og:description" content="Gradle 是一种构建工具，它抛弃了基于XML的构建脚本，取而代之的是采用一种基于 Groovy（现在也支持 Kotlin）的内部领域特定语言。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/07/14/PMCmKe.png">
+<meta property="og:image" content="https://docs.gradle.org/current/userguide/img/javaPluginTasks.png">
+<meta property="og:image" content="https://docs.gradle.org/current/userguide/img/dependency-management-dependencies-to-modules.png">
+<meta property="og:image" content="https://docs.gradle.org/current/userguide/img/wrapper-workflow.png">
+<meta property="og:updated_time" content="2018-07-14T03:06:56.642Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gradle 简易入门教程">
+<meta name="twitter:description" content="Gradle 是一种构建工具，它抛弃了基于XML的构建脚本，取而代之的是采用一种基于 Groovy（现在也支持 Kotlin）的内部领域特定语言。">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/07/14/PMCmKe.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.yannxia.top/2018/07/14/gradle/easy-to-gradle/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Gradle 简易入门教程 | Yann's Blog</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2b9a42875b7d709260d7a35c174566ba";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yann's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-百科">
+    <a href="http:/wiki.yannxia.top" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-wikipedia-w"></i> <br />百科</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-计划">
+    <a href="/plan/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-paper-plane"></i> <br />计划</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2018/07/14/gradle/easy-to-gradle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yann.xia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/Logo-2018.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yann's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Gradle 简易入门教程
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-14 08:40:48 / 修改时间：11:06:56" itemprop="dateCreated datePublished" datetime="2018-07-14T08:40:48+08:00">2018-07-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/buildtool/" itemprop="url" rel="index"><span itemprop="name">buildtool</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/buildtool/gradle/" itemprop="url" rel="index"><span itemprop="name">gradle</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/07/14/gradle/easy-to-gradle/" class="leancloud_visitors" data-flag-title="Gradle 简易入门教程">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><code>Gradle</code> 是一种构建工具，它抛弃了基于XML的构建脚本，取而代之的是采用一种基于 <code>Groovy</code>（现在也支持 <code>Kotlin</code>）的内部领域特定语言。</p>
+<a id="more"></a>
+<h2 id="Gradle-特点"><a href="#Gradle-特点" class="headerlink" title="Gradle 特点"></a>Gradle 特点</h2><ol>
+<li>Gradle是很成熟的技术，可以处理大规模构建     </li>
+<li>Gradle对多语言、多平台支持性更好</li>
+<li>Gradle关注在构建效率上</li>
+<li>Gradle发布很频繁，重要feature开发计划透明化</li>
+<li>Gradle社区很活跃，并且增加迅速</li>
+</ol>
+<h2 id="安装Gradle"><a href="#安装Gradle" class="headerlink" title="安装Gradle"></a>安装Gradle</h2><ul>
+<li>从 <a href="https://gradle.org/install/" target="_blank" rel="noopener">这个页面</a> 下载二进制文件。</li>
+<li>解压Zip文件，加入环境变量（在PATH中加入GRADLE_HOME/bin目录）</li>
+</ul>
+<p>如果在安装过程中遇到问题，可以进一步查看官方的 <a href="https://gradle.org/install/" target="_blank" rel="noopener">安装指南</a>。<br>最后验证一下 <code>Gradle</code> 是否工作正常</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">gradle -v</span><br><span class="line">------------------------------------------------------------</span><br><span class="line">Gradle 4.2.1</span><br><span class="line">------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">Build time:   2017-10-02 15:36:21 UTC</span><br><span class="line">Revision:     a88ebd6be7840c2e59ae4782eb0f27fbe3405ddf</span><br><span class="line"></span><br><span class="line">Groovy:       2.4.12</span><br><span class="line">Ant:          Apache Ant(TM) version 1.9.6 compiled on June 29 2015</span><br><span class="line">JVM:          1.8.0_162-ea (Oracle Corporation 25.162-b01)</span><br><span class="line">OS:           Mac OS X 10.13.5 x86_64</span><br></pre></td></tr></table></figure>
+<h2 id="Gradle-快速体验"><a href="#Gradle-快速体验" class="headerlink" title="Gradle 快速体验"></a>Gradle 快速体验</h2><h3 id="初始化一个项目"><a href="#初始化一个项目" class="headerlink" title="初始化一个项目"></a>初始化一个项目</h3><ul>
+<li><p>创建一个 <code>demo</code> 目录</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">❯ mkdir gradle-demo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创始化 <code>Gradle</code> 项目</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">❯ gradle init </span><br><span class="line">Starting a Gradle Daemon (subsequent builds will be faster)</span><br><span class="line"></span><br><span class="line">BUILD SUCCESSFUL <span class="keyword">in</span> 3s</span><br><span class="line">2 actionable tasks: 2 executed</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Gradle-目录结构"><a href="#Gradle-目录结构" class="headerlink" title="Gradle 目录结构"></a>Gradle 目录结构</h3><p>我们看看上一步我们生成了什么文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">├── build.gradle  ❶</span><br><span class="line">├── gradle</span><br><span class="line">│   └── wrapper</span><br><span class="line">│       ├── gradle-wrapper.jar    ➋</span><br><span class="line">│       └── gradle-wrapper.properties  ➌</span><br><span class="line">├── gradlew    ➍</span><br><span class="line">├── gradlew.bat  ➎</span><br><span class="line">└── settings.gradle  ➏</span><br></pre></td></tr></table></figure>
+<p>❶ 当前项目的配置脚本<br>➋ <code>Gradle Wrapper</code> 的执行jar包（后续介绍）<br>➌ <code>Gradle Wrapper</code> 的配置文件<br>➍ <code>Gradle Wrapper</code> Unix 系执行脚本<br>➎ <code>Gradle Wrapper</code> Windows 系执行脚本<br>➏ 项目脚本设置</p>
+<h3 id="创建一个-Task"><a href="#创建一个-Task" class="headerlink" title="创建一个 Task"></a>创建一个 Task</h3><p><code>Gradle</code>提供了用于通过基于<code>Groovy</code>或<code>Kotlin</code>的DSL创建和配置。项目包括一组<code>Task</code>，每个<code>Task</code>执行一些基本操作。</p>
+<ul>
+<li>创建一个目录叫 <code>src</code></li>
+<li>在<code>src</code>目录创建一个 <code>myfile.txt</code></li>
+<li>在构建文件中定义一个名为Copy的类型 <code>Task</code> ，该任务将src目录复制到名为dest的新目录</li>
+</ul>
+<div class="tabs" id="create-task"><ul class="nav-tabs"><li class="tab active"><a href="#create-task-1">Groovy</a></li><li class="tab"><a href="#create-task-2">Kotlin</a></li></ul><div class="tab-content"><div class="tab-pane active" id="create-task-1"><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">task copy(<span class="string">type:</span> Copy, <span class="string">group:</span> <span class="string">“Custom”</span>, <span class="string">description:</span> <span class="string">“Copies sources to the dest directory”</span>) &#123;</span><br><span class="line">    from <span class="string">“src”</span></span><br><span class="line">    into <span class="string">“dest”</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div><div class="tab-pane" id="create-task-2"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tasks.create&lt;Copy&gt;(<span class="string">“copy”</span>) &#123;</span><br><span class="line">    description = <span class="string">“Copies sources to the dest directory”</span></span><br><span class="line">    group = <span class="string">“Custom”</span></span><br><span class="line"></span><br><span class="line">    from(<span class="string">“src”</span>)</span><br><span class="line">    into(<span class="string">“dest”</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div></div></div>
+<p><code>group</code> 和 <code>description</code> 是自定义的任意值。现在让我们执行这个 <code>task</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">❯ ./gradlew copy</span><br><span class="line">&gt; Task :copy</span><br><span class="line"></span><br><span class="line">BUILD SUCCESSFUL <span class="keyword">in</span> 0s</span><br><span class="line">1 actionable task: 1 executed</span><br></pre></td></tr></table></figure>
+<p>再一次 <code>ls</code> 我们就可以看见 <code>gradle</code> 为我们创建了一个新的 <code>dest</code> 目录并且将 文件复制进去</p>
+<h2 id="Gradle-Task"><a href="#Gradle-Task" class="headerlink" title="Gradle Task"></a>Gradle Task</h2><p>在<code>Gradle</code>中，有两个基本概念：项目和任务。</p>
+<ul>
+<li>项目是指我们的构建产物（比如Jar包）或实施产物（将应用程序部署到生产环境）一个项目包含一个或多个任务。</li>
+<li>任务是指不可分的最小工作单元，执行构建工作（比如编译项目或执行测试）。<br><img src="https://s1.ax1x.com/2018/07/14/PMCmKe.png" alt=""></li>
+</ul>
+<p>在项目目录中的 <code>build.gradle</code> 指定了一个项目和它的任务。</p>
+<h3 id="Task-执行顺序"><a href="#Task-执行顺序" class="headerlink" title="Task 执行顺序"></a>Task 执行顺序</h3><p>任务可能依赖于其他任务，或者可能被安排为始终在另一个任务之后运行。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">project(<span class="string">'projectA'</span>) &#123;</span><br><span class="line">    task taskX(<span class="string">dependsOn:</span> <span class="string">':projectB:taskY'</span>) &#123;</span><br><span class="line">        doLast &#123;</span><br><span class="line">            println <span class="string">'taskX'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">project(<span class="string">'projectB'</span>) &#123;</span><br><span class="line">    task taskY &#123;</span><br><span class="line">        doLast &#123;</span><br><span class="line">            println <span class="string">'taskY'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; gradle -q taskX</span><br><span class="line">taskY</span><br><span class="line">taskX  // taskx 在 y 之后</span><br></pre></td></tr></table></figure>
+<p>我们可以用 <code>dependsOn</code> 让我们的 <code>Task</code> 有顺序的运行起来<br><a href="https://docs.gradle.org/current/dsl/org.gradle.api.Task.html" target="_blank" rel="noopener">Task 文档</a></p>
+<h2 id="Gradle-插件"><a href="#Gradle-插件" class="headerlink" title="Gradle 插件"></a>Gradle 插件</h2><p>看到这里，如果每一件事情我们都需要写 <code>Task</code> 岂不是会累死，而且很多功能是可以被复用的，所以<code>Gradle</code> 提供一个 <code>插件</code> 功能，<code>Gradle</code> 默认就内置了大量的插件，比如在 <code>base</code> 中有一系列的功能。</p>
+<div class="tabs" id="plugin"><ul class="nav-tabs"><li class="tab active"><a href="#plugin-1">Groovy  build.gradle</a></li><li class="tab"><a href="#plugin-2">Kotlin build.gradle.kts</a></li></ul><div class="tab-content"><div class="tab-pane active" id="plugin-1"><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id <span class="string">“base”</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div><div class="tab-pane" id="plugin-2"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id(<span class="string">“base”</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div></div></div>
+<p>这个时候我们就可以利用一些额外的 <code>Task</code>，举个例子，我们要把一个目录中的东西都打成一个 <code>ZIP</code> 压缩包。<br><div class="tabs" id="zip"><ul class="nav-tabs"><li class="tab active"><a href="#zip-1">Groovy  build.gradle</a></li><li class="tab"><a href="#zip-2">Kotlin build.gradle.kts</a></li></ul><div class="tab-content"><div class="tab-pane active" id="zip-1"><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">task zip(<span class="string">type:</span> Zip, <span class="string">group:</span> <span class="string">“Archive”</span>, <span class="string">description:</span> <span class="string">“Archives sources in a zip file”</span>) &#123;</span><br><span class="line">    from <span class="string">“src”</span></span><br><span class="line">    setArchiveName <span class="string">“basic-demo-1.0.zip”</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div><div class="tab-pane" id="zip-2"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tasks.create&lt;Zip&gt;(<span class="string">“zip”</span>) &#123;</span><br><span class="line">    description = <span class="string">“Archives sources in a zip file”</span></span><br><span class="line">    group = <span class="string">“Archive”</span></span><br><span class="line"></span><br><span class="line">    from(<span class="string">“src”</span>)</span><br><span class="line">    setArchiveName(<span class="string">“basic-demo-1.0.zip”</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div></div></div></p>
+<p><code>Gradle</code> 的设计理念是</p>
+<ul>
+<li>在项目中添加新任务</li>
+<li>为新加入的任务提供默认配置，这个默认配置会在项目中注入新的约定（如源文件位置）。</li>
+<li>加入新的属性，可以覆盖插件的默认配置属性。</li>
+<li>为项目加入新的依赖。</li>
+</ul>
+<h3 id="Gradle-Java"><a href="#Gradle-Java" class="headerlink" title="Gradle Java"></a>Gradle Java</h3><p><code>Gradle</code> 内置了 <code>Java</code> 插件，Java插件将Java编译以及测试和捆绑功能添加到项目中。它是许多其他Gradle插件的基础。<br>如果我们需要使用 <code>Java</code> 插件 修改 <code>build.gradle</code></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id <span class="string">'java'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一旦导入了 Java 插件，就会有一系列的默认的配置值，并且会导入大量的 <code>Task</code></p>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>compileJava(type: JavaCompile)</td>
+<td>Java 编译</td>
+</tr>
+<tr>
+<td>processResources(type: Copy)</td>
+<td>拷贝 Resources 资源</td>
+</tr>
+<tr>
+<td>classes(type: Task)</td>
+<td>组装 Java 类</td>
+</tr>
+<tr>
+<td>compileTestJava(type: JavaCompile)</td>
+<td>Java Test 编译</td>
+</tr>
+<tr>
+<td>processTestResources(type: Copy)</td>
+<td>拷贝 Test Resources 资源</td>
+</tr>
+<tr>
+<td>testClasses(type: Task)</td>
+<td>组装 Test 类</td>
+</tr>
+<tr>
+<td>jar(type: Jar)</td>
+<td>合成Jar包</td>
+</tr>
+<tr>
+<td>javadoc(type: Javadoc)</td>
+<td>生成 doc 文档 </td>
+</tr>
+<tr>
+<td>test(type: Test)</td>
+<td>运行测试</td>
+</tr>
+<tr>
+<td>uploadArchives(type: Upload)</td>
+<td>上传 jar 到仓库</td>
+</tr>
+<tr>
+<td>clean(type: Delete)</td>
+<td>clean</td>
+</tr>
+</tbody>
+</table>
+<p>我们从这些 <code>Task</code> 名字就可以看出来他们分别作作了， 和其他的设计理念类型，在 <code>Task</code> 也会嵌入一些生命周期，其实原理也就是我们之前看的执行顺序。<a href="https://docs.gradle.org/current/userguide/java_plugin.html#_lifecycle_tasks" target="_blank" rel="noopener">Java Lifecycle</a></p>
+<p><img src="https://docs.gradle.org/current/userguide/img/javaPluginTasks.png" alt="JavaPluginTasks"></p>
+<h3 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h3><p><a href="https://plugins.gradle.org/" target="_blank" rel="noopener">Gradle插件仓库</a></p>
+<h2 id="Gradle-依赖管理"><a href="#Gradle-依赖管理" class="headerlink" title="Gradle 依赖管理"></a>Gradle 依赖管理</h2><p>先盗取一张官方的图<br><img src="https://docs.gradle.org/current/userguide/img/dependency-management-dependencies-to-modules.png" alt=""></p>
+<p>和 <code>Maven</code> 类似，<code>Gradle</code> 也会将依赖缓冲在本地中，方便在无网的环境使用，和依赖管理相关的有两个参数，举个例子。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">    mavenCentral() <span class="comment">// 定义仓库</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    compile <span class="string">'org.springframework:spring-web:5.0.2.RELEASE'</span> <span class="comment">// 定义依赖</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Gradle支持以下仓库格式：</p>
+<ul>
+<li>Ivy仓库</li>
+<li>Maven仓库</li>
+<li>Flat directory仓库</li>
+</ul>
+<h3 id="lvy仓库"><a href="#lvy仓库" class="headerlink" title="lvy仓库"></a>lvy仓库</h3><p>我们可以通过URL地址或本地文件系统地址，将Ivy仓库加入到我们的构建中。<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">    ivy &#123;</span><br><span class="line">        url <span class="string">"http://ivy.petrikainulainen.net/repo"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//或者是本地</span></span><br><span class="line">repositories &#123;</span><br><span class="line">    ivy &#123;       </span><br><span class="line">        url <span class="string">"../ivy-repo"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Maven仓库"><a href="#Maven仓库" class="headerlink" title="Maven仓库"></a>Maven仓库</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">    maven &#123;</span><br><span class="line">        url <span class="string">"http://maven.petrikainulainen.net/repo"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在加入Maven仓库时，Gradle提供了三种“别名”供我们使用，它们分别是</p>
+<ul>
+<li><code>mavenCentral()</code>别名，表示依赖是从Central Maven 2 仓库中获取的。</li>
+<li><code>jcenter()</code>别名，表示依赖是从Bintary’s JCenter Maven 仓库中获取的。</li>
+<li><code>mavenLocal()</code>别名，表示依赖是从本地的Maven仓库中获取的。</li>
+</ul>
+<h3 id="Flat-Directory仓库"><a href="#Flat-Directory仓库" class="headerlink" title="Flat Directory仓库"></a>Flat Directory仓库</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">    flatDir &#123;</span><br><span class="line">        dirs <span class="string">'lib'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//多个仓库</span></span><br><span class="line">repositories &#123;</span><br><span class="line">    flatDir &#123;</span><br><span class="line">        dirs <span class="string">'libA'</span>, <span class="string">'libB'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="依赖管理"><a href="#依赖管理" class="headerlink" title="依赖管理"></a>依赖管理</h3><p>在配置完项目仓库后，我们可以声明其中的依赖，首先 <code>Java</code> 插件指定了若干依赖配置项</p>
+<ul>
+<li><code>compile</code> 配置项中的依赖是依赖必须的。</li>
+<li><code>runtime</code> 配置项中包含的依赖在运行时是必须的。</li>
+<li><code>testCompile</code> 配置项中包含的依赖在编译项目的测试代码时是必须的。</li>
+<li><code>testRuntime</code> 配置项中包含的依赖在运行测试代码时是必须的。</li>
+</ul>
+<p>在 <code>Gradle</code> 最新版本中更是增加 </p>
+<ul>
+<li><code>implementation</code> 配置项中的实现类</li>
+<li><code>api</code> 配置项中的暴露API</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    api <span class="string">'commons-httpclient:commons-httpclient:3.1'</span></span><br><span class="line">    implementation <span class="string">'org.apache.commons:commons-lang3:3.5'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="声明项目依赖"><a href="#声明项目依赖" class="headerlink" title="声明项目依赖"></a>声明项目依赖</h4><p>最普遍的依赖称为外部依赖，这些依赖存放在外部仓库中。一个外部依赖可以由以下属性指定：</p>
+<ul>
+<li><code>group</code>属性指定依赖的分组（在<code>Maven</code>中，就是<code>groupId</code>）</li>
+<li><code>name</code>属性指定依赖的名称（在<code>Maven</code>中，就是<code>artifactId</code>）</li>
+<li><code>version</code>属性指定外部依赖的版本（在<code>Maven</code>中，就是<code>version</code>）</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    compile <span class="string">group:</span> <span class="string">'foo'</span>, <span class="string">name:</span> <span class="string">'foo'</span>, <span class="string">version:</span> <span class="string">'0.1'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 我们也可以合并到一起去</span></span><br><span class="line">dependencies &#123;</span><br><span class="line">    compile <span class="string">'foo:foo:0.1'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="声明项目文件依赖"><a href="#声明项目文件依赖" class="headerlink" title="声明项目文件依赖"></a>声明项目文件依赖</h4><p>我们如何依赖本地的一些 <code>jar</code> 呢，正确的操作是如下<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    compile files(<span class="string">'libs/commons-lang.jar'</span>, <span class="string">'libs/log4j.jar'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="声明依赖排除项目"><a href="#声明依赖排除项目" class="headerlink" title="声明依赖排除项目"></a>声明依赖排除项目</h4><p>我们都知道在 <code>Maven</code>中我们有<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>sample.ProjectB<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>Project-B<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>而在 <code>Gradle</code> 中，我们可以这么做。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">compile(<span class="string">'com.example.m:m:1.0'</span>) &#123;</span><br><span class="line">    exclude <span class="string">group:</span> <span class="string">'org.unwanted'</span>, <span class="string">module:</span> <span class="string">'x </span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Gradle-与-Kotlin"><a href="#Gradle-与-Kotlin" class="headerlink" title="Gradle 与 Kotlin"></a>Gradle 与 Kotlin</h2><p>我们想要在 <code>gradle</code> 中增加 <code>kotlin</code> 非常的简单，仅仅需要在 <code>build.gradle</code> 增加<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">     id <span class="string">"org.jetbrains.kotlin.jvm"</span> version <span class="string">"x.x.xx"</span> <span class="comment">// 增加插件</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">  compile <span class="string">"org.jetbrains.kotlin:kotlin-stdlib:x.xx.xx"</span> <span class="comment">// 增加依赖</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>大功告成，对了，默认的 <code>Kotlin</code> 的源码路径是 <code>src/main/kotlin</code>, 测试源码是 <code>src/text/kotlin</code> 如果需要修改可以使用 </p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sourceSets &#123;</span><br><span class="line">    main.kotlin.srcDirs += <span class="string">'src/main/myKotlin'</span></span><br><span class="line">    main.java.srcDirs += <span class="string">'src/main/myJava'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="Gradle-Wrapper"><a href="#Gradle-Wrapper" class="headerlink" title="Gradle Wrapper"></a>Gradle Wrapper</h3><p><code>Gradle Wrapper</code> 做了三件事情</p>
+<ul>
+<li>解析参数传入 gradlew</li>
+<li>安装正确的 <code>Gradle</code> 版本</li>
+<li>调用 <code>Gradle</code> 执行命令</li>
+</ul>
+<p>Ops，<code>Gradle Wrapper</code> 为什么还需要安装 <code>Gradle</code>，我们在用 <code>Maven</code> 都知道，我们需要自己先安装好一个 <code>Maven</code>版本，因为 <code>Maven</code> 发展多年，现在已经稳定，已经不存在很多个版本并存的现状了，但是我们依然需要去在每个机器上去安装，那我什么我们不能在自己的 <code>构建脚本</code> 中就指定我们的构建工具呢？<br>所以我们在 <code>wrapper/gradle-wrapper.properties</code> 中就可以发现 <code>distributionUrl=https\://services.gradle.org/distributions/gradle-4.2.1-bin.zip</code> 这里也就是定义了我们的gradle所使用的版本。<br><img src="https://docs.gradle.org/current/userguide/img/wrapper-workflow.png" alt="wrapper-workflow"></p>
+<h2 id="Gradle-In-Real-World"><a href="#Gradle-In-Real-World" class="headerlink" title="Gradle In Real World"></a>Gradle In Real World</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一堆基础插件</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'java'</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'maven'</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">"jacoco"</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'checkstyle'</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'pmd'</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'findbugs'</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'eclipse'</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'idea'</span></span><br><span class="line"><span class="comment">// 定义项目属性</span></span><br><span class="line">group = <span class="string">'Common'</span></span><br><span class="line">version = <span class="string">'1.0.0'</span></span><br><span class="line">description = <span class="string">"""Giant common library"""</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义依赖仓库</span></span><br><span class="line">repositories &#123;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 额外增加source path</span></span><br><span class="line">sourceSets &#123;</span><br><span class="line">    main &#123;</span><br><span class="line">        resources &#123;</span><br><span class="line">            srcDir <span class="string">"src/main/profiles/$&#123;profile&#125;"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// project依赖</span></span><br><span class="line">dependencies &#123;</span><br><span class="line">    compile <span class="string">'ch.qos.logback:logback-core:1.0.13'</span></span><br><span class="line">    compile <span class="string">'ch.qos.logback:logback-classic:1.0.13'</span></span><br><span class="line">    compile <span class="string">'ch.qos.logback:logback-access:1.0.13'</span></span><br><span class="line">    compile <span class="string">'commons-io:commons-io:2.0.1'</span></span><br><span class="line">    compile <span class="string">'commons-lang:commons-lang:2.6'</span></span><br><span class="line">    compile <span class="string">'joda-time:joda-time:1.6.2'</span></span><br><span class="line">    compile <span class="string">'org.testng:testng:6.8.7'</span></span><br><span class="line">    compile <span class="string">'com.googlecode.jmockit:jmockit:1.5'</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// task配置</span></span><br><span class="line">checkstyle &#123;</span><br><span class="line">    ignoreFailures = <span class="literal">true</span></span><br><span class="line">    sourceSets = [sourceSets.main]</span><br><span class="line">&#125;</span><br><span class="line">findbugs &#123;</span><br><span class="line">    ignoreFailures = <span class="literal">true</span></span><br><span class="line">    sourceSets = [sourceSets.main]</span><br><span class="line">&#125;</span><br><span class="line">pmd &#123;</span><br><span class="line">    ruleSets = [<span class="string">"basic"</span>, <span class="string">"braces"</span>, <span class="string">"design"</span>]</span><br><span class="line">    ignoreFailures = <span class="literal">true</span></span><br><span class="line">    sourceSets = [sourceSets.main]</span><br><span class="line">&#125;</span><br><span class="line">jacocoTestReport &#123;</span><br><span class="line">    reports &#123;</span><br><span class="line">        xml.enabled <span class="literal">true</span></span><br><span class="line">        html.enabled <span class="literal">true</span></span><br><span class="line">        csv.enabled <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    sourceSets sourceSets.main</span><br><span class="line">&#125;</span><br><span class="line">tasks.withType(Compile) &#123;</span><br><span class="line">    options.encoding = <span class="string">"UTF-8"</span></span><br><span class="line">&#125;</span><br><span class="line">test &#123;</span><br><span class="line">    useTestNG()</span><br><span class="line">    jacoco &#123;</span><br><span class="line">        excludes = [<span class="string">"org.*"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Gradle-常用指令"><a href="#Gradle-常用指令" class="headerlink" title="Gradle 常用指令"></a>Gradle 常用指令</h2><h3 id="枚列所有可用任务"><a href="#枚列所有可用任务" class="headerlink" title="枚列所有可用任务"></a>枚列所有可用任务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">❯ gradle tasks</span><br><span class="line"></span><br><span class="line">------------------------------------------------------------</span><br><span class="line">All tasks runnable from root project</span><br><span class="line">------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">Archive tasks</span><br><span class="line">-------------</span><br><span class="line">zip - Archives sources <span class="keyword">in</span> a zip file</span><br><span class="line"></span><br><span class="line">Build tasks</span><br><span class="line">-----------</span><br><span class="line">assemble - Assembles the outputs of this project.</span><br><span class="line">build - Assembles and tests this project.</span><br><span class="line">clean - Deletes the build directory.</span><br></pre></td></tr></table></figure>
+<h3 id="构建配置属性"><a href="#构建配置属性" class="headerlink" title="构建配置属性"></a>构建配置属性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">❯ gradle properties</span><br></pre></td></tr></table></figure>
+<h3 id="显示构建详情"><a href="#显示构建详情" class="headerlink" title="显示构建详情"></a>显示构建详情</h3><p>在 <code>build.gradle</code> 设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logging.level = LogLevel.DEBUG</span><br></pre></td></tr></table></figure></p>
+<p>或者在运行的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">❯ gradle build --stacktrace</span><br></pre></td></tr></table></figure></p>
+<h2 id="参考资料-amp-推荐文档"><a href="#参考资料-amp-推荐文档" class="headerlink" title="参考资料 &amp; 推荐文档"></a>参考资料 &amp; 推荐文档</h2><ul>
+<li><a href="http://blog.jobbole.com/71999/" target="_blank" rel="noopener">Gradle入门教程</a></li>
+<li><a href="https://www.jianshu.com/p/00d5469e25e7" target="_blank" rel="noopener">Gradle介绍</a></li>
+<li><a href="https://guides.gradle.org/creating-new-gradle-builds/" target="_blank" rel="noopener">官方教材</a></li>
+</ul>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请我喝杯咖啡吧！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wxpay.jpg" alt="yann.xia 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="yann.xia 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/12/kotlin/easy-way-to-kotlin-for-java-proggamer/control-flow/" rel="next" title="写给 Java 开发者的 Kotlin 教程 (4) - 控制流表达式">
+                <i class="fa fa-chevron-left"></i> 写给 Java 开发者的 Kotlin 教程 (4) - 控制流表达式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2122379" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/Logo-2018.png"
+                alt="yann.xia" />
+            
+              <p class="site-author-name" itemprop="name">yann.xia</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/yannxia" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/yann.xia" target="_blank" title="ZhiHu" rel="external nofollow"><i class="fa fa-fw fa-bomb"></i>ZhiHu</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                小伙伴の博客
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://sakeven.me/" title="Sakeven" target="_blank">Sakeven</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://reficul.io/" title="Reficul" target="_blank">Reficul</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.tomwei7.com/" title="Tomwei" target="_blank">Tomwei</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.jinwei.me" title="Jinwei" target="_blank">Jinwei</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://renlulu.github.io/" title="Renlulu" target="_blank">Renlulu</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://justjjy.com/" title="JJY" target="_blank">JJY</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhyee.top" title="Zhyee" target="_blank">Zhyee</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.ihypo.net" title="Hypo" target="_blank">Hypo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.heytaoge.com/" title="Taoge" target="_blank">Taoge</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.hdls.me/" title="海的澜色" target="_blank">海的澜色</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle-特点"><span class="nav-number">1.</span> <span class="nav-text">Gradle 特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Gradle"><span class="nav-number">2.</span> <span class="nav-text">安装Gradle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle-快速体验"><span class="nav-number">3.</span> <span class="nav-text">Gradle 快速体验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化一个项目"><span class="nav-number">3.1.</span> <span class="nav-text">初始化一个项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradle-目录结构"><span class="nav-number">3.2.</span> <span class="nav-text">Gradle 目录结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个-Task"><span class="nav-number">3.3.</span> <span class="nav-text">创建一个 Task</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle-Task"><span class="nav-number">4.</span> <span class="nav-text">Gradle Task</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Task-执行顺序"><span class="nav-number">4.1.</span> <span class="nav-text">Task 执行顺序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle-插件"><span class="nav-number">5.</span> <span class="nav-text">Gradle 插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradle-Java"><span class="nav-number">5.1.</span> <span class="nav-text">Gradle Java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源"><span class="nav-number">5.2.</span> <span class="nav-text">资源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle-依赖管理"><span class="nav-number">6.</span> <span class="nav-text">Gradle 依赖管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lvy仓库"><span class="nav-number">6.1.</span> <span class="nav-text">lvy仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven仓库"><span class="nav-number">6.2.</span> <span class="nav-text">Maven仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flat-Directory仓库"><span class="nav-number">6.3.</span> <span class="nav-text">Flat Directory仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖管理"><span class="nav-number">6.4.</span> <span class="nav-text">依赖管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#声明项目依赖"><span class="nav-number">6.4.1.</span> <span class="nav-text">声明项目依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#声明项目文件依赖"><span class="nav-number">6.4.2.</span> <span class="nav-text">声明项目文件依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#声明依赖排除项目"><span class="nav-number">6.4.3.</span> <span class="nav-text">声明依赖排除项目</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle-与-Kotlin"><span class="nav-number">7.</span> <span class="nav-text">Gradle 与 Kotlin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">8.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradle-Wrapper"><span class="nav-number">8.1.</span> <span class="nav-text">Gradle Wrapper</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle-In-Real-World"><span class="nav-number">9.</span> <span class="nav-text">Gradle In Real World</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle-常用指令"><span class="nav-number">10.</span> <span class="nav-text">Gradle 常用指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#枚列所有可用任务"><span class="nav-number">10.1.</span> <span class="nav-text">枚列所有可用任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建配置属性"><span class="nav-number">10.2.</span> <span class="nav-text">构建配置属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示构建详情"><span class="nav-number">10.3.</span> <span class="nav-text">显示构建详情</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料-amp-推荐文档"><span class="nav-number">11.</span> <span class="nav-text">参考资料 &amp; 推荐文档</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yann Xia</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="https://lib.baomitu.com/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://lib.baomitu.com/velocity/1.2.1/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://lib.baomitu.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://lib.baomitu.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://blog.yannxia.top/2018/07/14/gradle/easy-to-gradle/';
+        this.page.identifier = '2018/07/14/gradle/easy-to-gradle/';
+        this.page.title = 'Gradle 简易入门教程';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://yann-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+    
+  
+  <link rel="stylesheet" href="https://lib.baomitu.com/instantsearch.js/1.0.0/instantsearch.min.css">
+
+  
+  
+    
+  
+  <script src="https://lib.baomitu.com/instantsearch.js/1.0.0/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.3.0"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("KPHj3vsvOqeV377r9yw1DdLl-gzGzoHsz", "wGzWlWVU3AFfxa6TgF2BadlD");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+</body>
+</html>
