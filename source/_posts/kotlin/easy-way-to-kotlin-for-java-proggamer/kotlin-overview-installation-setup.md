@@ -1,6 +1,6 @@
 ---
 title:  写给 Java 开发者的 Kotlin 教程 (1) - 概述
-date: 2018-07-10 21:00:48
+date: 2018-07-09 21:00:48
 tags:
 toc: true
 categories: ["kotlin", "easy-way-to-kotlin-for-java-programer"]
@@ -48,7 +48,7 @@ String nullableStr? = null
 ### 明确
 `Kotlin` 是明确的。显性声明被认为是一件好事。
 比如
-- Kotlin不允许隐式类型转换，例如，int为long，或float为double。它提供了像toLong（）和toDouble（）这样的方法来显式地这样做。
+- Kotlin不允许隐式类型转换，例如，int为long，或float为double。它提供了像toLong() 和toDouble() 这样的方法来显式地这样做。
 - 默认情况下，Kotlin中的所有类都是 `final`（不可继承）。您需要将类显式标记为 `open` 以允许其他类继承它。同样，默认情况下，类的所有属性和成员函数都是 `final` 。您需要将函数或属性显式标记为打开，以允许子类覆盖它。
 - 如果要覆盖父类函数或属性，则需要使用 `override` 修饰符显式注释它。
 

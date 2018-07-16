@@ -27,7 +27,7 @@ categories:
         .pause(500)
         .options({ speed: 45 })
         .break()
-        .type('我叫夏岩，茫茫程序员海洋中的微不足道的一枚。')
+        .type('我叫夏岩，<del>失败</del> 软件工程师一枚。')
         .pause(500)
         .options({ speed: 45 })
         .break()
@@ -51,6 +51,9 @@ categories:
         .type('除此之外请 ALT + ← / Command + W')
         .break()
         .type(':) See you..')
+        .pause(5000)
+        .break()
+        .type('耐心的你想必不简单')
         .break()
         .type('如果是猎头/HR小姐姐 <a href="http://blog.yannxia.top/about/夏岩的简历.pdf">你的要在这里哦！</a>')
 </script>
