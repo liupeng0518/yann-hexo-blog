@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://lib.baomitu.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+  
+
+<link href="https://lib.baomitu.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=6.3.0">
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'SLJ0R87CAH',
+      apiKey: 'fd4f2896d73497ea343ec5d504a06bb4',
+      indexName: 'yann_blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Kotlin 的类型系统旨在消除来自代码空引用的危险,许多编程语言（包括 Java）中最常见的陷阱之一，就是访问空引用的成员会导致空引用异常。在 Java 中，这等同于 NullPointerException 或简称 NPE 。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="写给 Java 开发者的 Kotlin 教程 (5) - Null对象与类型安全">
+<meta property="og:url" content="http://blog.yannxia.top/2018/07/17/kotlin/easy-way-to-kotlin-for-java-proggamer/null-type/index.html">
+<meta property="og:site_name" content="Yann&#39;s Blog">
+<meta property="og:description" content="Kotlin 的类型系统旨在消除来自代码空引用的危险,许多编程语言（包括 Java）中最常见的陷阱之一，就是访问空引用的成员会导致空引用异常。在 Java 中，这等同于 NullPointerException 或简称 NPE 。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/07/17/PlWoad.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/07/17/PlWqRP.md.png">
+<meta property="og:updated_time" content="2018-07-17T13:21:45.564Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="写给 Java 开发者的 Kotlin 教程 (5) - Null对象与类型安全">
+<meta name="twitter:description" content="Kotlin 的类型系统旨在消除来自代码空引用的危险,许多编程语言（包括 Java）中最常见的陷阱之一，就是访问空引用的成员会导致空引用异常。在 Java 中，这等同于 NullPointerException 或简称 NPE 。">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/07/17/PlWoad.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.yannxia.top/2018/07/17/kotlin/easy-way-to-kotlin-for-java-proggamer/null-type/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>写给 Java 开发者的 Kotlin 教程 (5) - Null对象与类型安全 | Yann's Blog</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2b9a42875b7d709260d7a35c174566ba";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yann's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-百科">
+    <a href="http:/wiki.yannxia.top" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-wikipedia-w"></i> <br />百科</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-计划">
+    <a href="/plan/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-paper-plane"></i> <br />计划</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2018/07/17/kotlin/easy-way-to-kotlin-for-java-proggamer/null-type/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yann.xia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/Logo-2018.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yann's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">写给 Java 开发者的 Kotlin 教程 (5) - Null对象与类型安全
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-17 21:00:48 / 修改时间：21:21:45" itemprop="dateCreated datePublished" datetime="2018-07-17T21:00:48+08:00">2018-07-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/kotlin/" itemprop="url" rel="index"><span itemprop="name">kotlin</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/kotlin/easy-way-to-kotlin-for-java-programer/" itemprop="url" rel="index"><span itemprop="name">easy-way-to-kotlin-for-java-programer</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/07/17/kotlin/easy-way-to-kotlin-for-java-proggamer/null-type/" class="leancloud_visitors" data-flag-title="写给 Java 开发者的 Kotlin 教程 (5) - Null对象与类型安全">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://s1.ax1x.com/2018/07/17/PlWoad.png" alt="banner"></p>
+<p>Kotlin 的类型系统旨在消除来自代码空引用的危险,许多编程语言（包括 <code>Java</code>）中最常见的陷阱之一，就是访问空引用的成员会导致空引用异常。在 <code>Java</code> 中，这等同于 <code>NullPointerException</code> 或简称 <code>NPE</code> 。</p>
+<a id="more"></a>
+<h2 id="一件趣事"><a href="#一件趣事" class="headerlink" title="一件趣事"></a>一件趣事</h2><blockquote>
+<p>“我把 Null 引用称为自己的十亿美元错误。它的发明是在1965 年，那时我用一个面向对象语言( ALGOL W )设计了第一个全面的引用类型系统。我的目的是确保所有引用的使用都是绝对安全的，编译器会自动进行检查。但是我未能抵御住诱惑，加入了Null引用，仅仅是因为实现起来非常容易。它导致了数不清的错误、漏洞和系统崩溃，可能在之后 40 年中造成了十亿美元的损失。近年来，大家开始使用各种程序分析程序，比如微软的 PREfix 和 PREfast 来检查引用，如果存在为非 Null 的风险时就提出警告。更新的程序设计语言比如 Spec# 已经引入了非 Null 引用的声明。这正是我在1965年拒绝的解决方案。”<br>—— 《Null References: The Billion Dollar Mistake》托尼·霍尔（Tony Hoare），图灵奖得主</p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2018/07/17/PlWqRP.md.png" alt=""></p>
+<h2 id="Null的错误"><a href="#Null的错误" class="headerlink" title="Null的错误"></a>Null的错误</h2><p>简单来说：NULL 是一个不是值的值，而它现在有很多名字：NULL、nil、null、None、Nothing、Nil 和 nullptr。每种语言都有自己的细微差别。<code>Null</code> 有很多缺点，我们细数下罪状。</p>
+<h3 id="类型检测失败"><a href="#类型检测失败" class="headerlink" title="类型检测失败"></a>类型检测失败</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">length</span><span class="params">(String input)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> input.Length();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 Java 中，如果我编写 x.Length()，编译器会检查 x 的类型。如果 x 是一个 String，那么类型检查成功；</p>
+<p>如果 x 是一个 Socket，那么类型检查失败，编译时检查存在一个致命缺陷：任何引用都可以是 null，而调用一个 null 对象的方法会产生一个 NullPointerException。</p>
+<p>所以 <code>null.Length()</code> 会抛出一个 <code>NullPointerException</code> 而和原本的类型系统冲突，因为 <code>NULL</code> 超出了类型检查的范围。越过类型检查，运行时会给你一个巨大的惊喜。解决这种问题我们一般会选择 <code>入参检测</code> 来让错误尽早的暴露出来。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">length</span><span class="params">(String input)</span></span>&#123;</span><br><span class="line">    Validate.nonNull(input, <span class="string">"input must be not null"</span>);</span><br><span class="line">    <span class="keyword">return</span> input.Length();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="NULL-是一个特例"><a href="#NULL-是一个特例" class="headerlink" title="NULL 是一个特例"></a>NULL 是一个特例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">UserVo <span class="title">getUser</span><span class="params">(Long id)</span></span>&#123;</span><br><span class="line">    <span class="comment">//略</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这个函数定义中，返回值会有三种可能 <code>UserVo</code> <code>null</code> <code>Expection</code>， 而我们在 获取 <code>null</code> 值的时候，我们不知道是因为 <code>ID</code> 不对，还是其他其他问题，甚至于在实践阶段，我们可能赋予 <code>null</code>返回是一个特殊的情况，在外部应该给予处理。</p>
+<p>除此之外 <code>Null</code>还有</p>
+<ul>
+<li><code>NULL</code> 难以调试</li>
+<li><code>NULL</code> 使我们需要进行大量的 <code>IF</code> 判断</li>
+<li><code>NULL</code> 存储在数据结构中，导致数据意义失效</li>
+</ul>
+<h2 id="Kotlin-解决之道"><a href="#Kotlin-解决之道" class="headerlink" title="Kotlin 解决之道"></a>Kotlin 解决之道</h2><p>在 <code>Java 1.8</code> 之前我们使用使用 <code>Guava</code> 的 <code>Optional</code> 对，<code>1.8</code> 之后我们使用内置数据结构。<br>在 <code>Kotlin</code> 中，我们使用 <code>类型系统</code> 来帮助我们。</p>
+<div class="tabs" id="null"><ul class="nav-tabs"><li class="tab active"><a href="#null-1">nonNull</a></li><li class="tab"><a href="#null-2">nullable</a></li></ul><div class="tab-content"><div class="tab-pane active" id="null-1"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a: String = <span class="string">“abc”</span></span><br><span class="line">a = <span class="literal">null</span> <span class="comment">// 编译错误</span></span><br></pre></td></tr></table></figure>
+</div><div class="tab-pane" id="null-2"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b: String? = <span class="string">“abc”</span></span><br><span class="line">b = <span class="literal">null</span> <span class="comment">// ok</span></span><br></pre></td></tr></table></figure>
+</div></div></div>
+<p>看出来了吗？我们使用 <code>类型系统</code> 区分一个引用可以为 null 还是不能容纳。这个时候我们如果访问其中的函数或变量<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b: String? = <span class="string">"abc"</span></span><br><span class="line"><span class="keyword">val</span> l = b.length <span class="comment">// 错误：变量“b”可能为空</span></span><br></pre></td></tr></table></figure></p>
+<p>那我们如何去访问这个对象的函数呢？有以下几种方式</p>
+<h3 id="在条件中检查-null"><a href="#在条件中检查-null" class="headerlink" title="在条件中检查 null"></a>在条件中检查 null</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b: String? = <span class="string">"abc"</span></span><br><span class="line"><span class="keyword">val</span> l = <span class="keyword">if</span> (b != <span class="literal">null</span>) b.length <span class="keyword">else</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
+<h3 id="安全调用"><a href="#安全调用" class="headerlink" title="安全调用"></a>安全调用</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b: String? = <span class="string">"abc"</span></span><br><span class="line">b?.length</span><br></pre></td></tr></table></figure>
+<p>这里需要注意 如果 <code>b</code> 非空，就返回 <code>b.length</code>，否则返回 <code>null</code>，这个表达式的返回值是 <code>Int?</code> 类型。<br>而且我们可以采用 <code>链式调用</code><br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bob?.department?.head?.name</span><br></pre></td></tr></table></figure></p>
+<h3 id="Elvis-操作符"><a href="#Elvis-操作符" class="headerlink" title="Elvis 操作符"></a>Elvis 操作符</h3><p>我们都在 <code>Optional</code> 对象往往有这种的操作<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;String&gt; someOpt;</span><br><span class="line">String unwrap = someOpt.orElse(<span class="string">"Default"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>而在 <code>Kotlin</code> 我们可以如下操作<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> l = b?.length ?: <span class="number">-1</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="操作符"><a href="#操作符" class="headerlink" title="!! 操作符"></a>!! 操作符</h2><p>非空断言运算符（!!）将任何值转换为非空类型<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> l = b!!.length  <span class="comment">//如果 b 为空，就会抛出一个 NPE 异常</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h3><p>在大量的第三类库中 </p>
+<ul>
+<li><code>Guava</code> 宣称在 <code>95%</code> 的代码处没有 <code>null</code></li>
+<li><code>Lombok</code> 有一个注解 <code>@Nonull</code> 可以在生成代码中检测是否为空</li>
+<li><code>Spring JPA</code> 在 <code>Reposity</code> 定义中全面支持 <code>Optional</code> </li>
+</ul>
+<p><code>Nonull</code> 设计已经算是在 <code>Java</code> 领域非常成功的设计了，希望大家早日上船。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a href="http://blog.jobbole.com/93667/" target="_blank" rel="noopener">计算机科学中的最严重错误，造成十亿美元损失</a></li>
+<li><a href="https://hltj.gitbooks.io/kotlin-reference-chinese/content/txt/null-safety.html" target="_blank" rel="noopener">null-safety</a></li>
+<li><a href="http://www.baeldung.com/java-optional" target="_blank" rel="noopener">java-optional</a></li>
+</ul>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请我喝杯咖啡吧！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wxpay.jpg" alt="yann.xia 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="yann.xia 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/14/gradle/easy-to-gradle/" rel="next" title="Gradle 简易入门教程">
+                <i class="fa fa-chevron-left"></i> Gradle 简易入门教程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2122379" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/Logo-2018.png"
+                alt="yann.xia" />
+            
+              <p class="site-author-name" itemprop="name">yann.xia</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">41</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/yannxia" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/yann.xia" target="_blank" title="ZhiHu" rel="external nofollow"><i class="fa fa-fw fa-bomb"></i>ZhiHu</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                小伙伴の博客
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://sakeven.me/" title="Sakeven" target="_blank">Sakeven</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://reficul.io/" title="Reficul" target="_blank">Reficul</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.tomwei7.com/" title="Tomwei" target="_blank">Tomwei</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.jinwei.me" title="Jinwei" target="_blank">Jinwei</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://renlulu.github.io/" title="Renlulu" target="_blank">Renlulu</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://justjjy.com/" title="JJY" target="_blank">JJY</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhyee.top" title="Zhyee" target="_blank">Zhyee</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.ihypo.net" title="Hypo" target="_blank">Hypo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.heytaoge.com/" title="Taoge" target="_blank">Taoge</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.hdls.me/" title="海的澜色" target="_blank">海的澜色</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一件趣事"><span class="nav-number">1.</span> <span class="nav-text">一件趣事</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Null的错误"><span class="nav-number">2.</span> <span class="nav-text">Null的错误</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类型检测失败"><span class="nav-number">2.1.</span> <span class="nav-text">类型检测失败</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NULL-是一个特例"><span class="nav-number">2.2.</span> <span class="nav-text">NULL 是一个特例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kotlin-解决之道"><span class="nav-number">3.</span> <span class="nav-text">Kotlin 解决之道</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在条件中检查-null"><span class="nav-number">3.1.</span> <span class="nav-text">在条件中检查 null</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全调用"><span class="nav-number">3.2.</span> <span class="nav-text">安全调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elvis-操作符"><span class="nav-number">3.3.</span> <span class="nav-text">Elvis 操作符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作符"><span class="nav-number">4.</span> <span class="nav-text">!! 操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题外话"><span class="nav-number">4.1.</span> <span class="nav-text">题外话</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yann Xia</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="https://lib.baomitu.com/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://lib.baomitu.com/velocity/1.2.1/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://lib.baomitu.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://lib.baomitu.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://blog.yannxia.top/2018/07/17/kotlin/easy-way-to-kotlin-for-java-proggamer/null-type/';
+        this.page.identifier = '2018/07/17/kotlin/easy-way-to-kotlin-for-java-proggamer/null-type/';
+        this.page.title = '写给 Java 开发者的 Kotlin 教程 (5) - Null对象与类型安全';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://yann-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+    
+  
+  <link rel="stylesheet" href="https://lib.baomitu.com/instantsearch.js/1.0.0/instantsearch.min.css">
+
+  
+  
+    
+  
+  <script src="https://lib.baomitu.com/instantsearch.js/1.0.0/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.3.0"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("KPHj3vsvOqeV377r9yw1DdLl-gzGzoHsz", "wGzWlWVU3AFfxa6TgF2BadlD");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+</body>
+</html>
