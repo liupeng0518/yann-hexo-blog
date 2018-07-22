@@ -1,5 +1,5 @@
+http://blog.yannxia.top/2018/07/22/kotlin/easy-way-to-kotlin-for-java-proggamer/functions/
 http://blog.yannxia.top/2018/07/17/kotlin/easy-way-to-kotlin-for-java-proggamer/null-type/
 http://blog.yannxia.top/2018/07/14/gradle/easy-to-gradle/
 http://blog.yannxia.top/2018/07/12/kotlin/easy-way-to-kotlin-for-java-proggamer/control-flow/
 http://blog.yannxia.top/2018/07/11/kotlin/easy-way-to-kotlin-for-java-proggamer/data-types/
-http://blog.yannxia.top/2018/07/10/kotlin/easy-way-to-kotlin-for-java-proggamer/basic-syntax/
