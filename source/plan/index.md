@@ -8,6 +8,7 @@ date: 2018-04-19 18:43:42
 ## Plan
 - Easy way to learn kotlin for java proggammer ⇦
 - Akka 源码解读
+- ProjectReactor 与 事务
 
 ## Done
 - TCP/IP Illustrated Vol.1 ✔
@@ -59,6 +60,12 @@ date: 2018-04-19 18:43:42
                 "endDate": "2018,7,9",
                 "headline": "Motan源码解析",
                 "text": "<p>源码分析暂停一下，完成我的Kotlin教程</p>"
+            },
+            {
+                "startDate": "2018,07,09",
+                // "endDate": "2018,7,9",
+                "headline": "写给 Java 开发者的 Kotlin 教程",
+                "text": "<p>开始 《写给 Java 开发者的 Kotlin 教程》 不知道什么时候才能完成</p>"
             }]
             }
         }
