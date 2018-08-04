@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.yannxia.top/2018/08/03/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-basic/</loc>
+    
+    <lastmod>2018-08-04T03:13:02.081Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.yannxia.top/2018/07/25/kotlin/easy-way-to-kotlin-for-java-proggamer/functions-advance/</loc>
     
     <lastmod>2018-07-27T13:54:25.226Z</lastmod>
@@ -212,14 +219,14 @@
   </url>
   
   <url>
-    <loc>http://blog.yannxia.top/tags/index.html</loc>
+    <loc>http://blog.yannxia.top/categories/index.html</loc>
     
     <lastmod>2018-04-18T07:34:08.724Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.yannxia.top/categories/index.html</loc>
+    <loc>http://blog.yannxia.top/tags/index.html</loc>
     
     <lastmod>2018-04-18T07:34:08.724Z</lastmod>
     
