@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.yannxia.top/2018/08/13/other/swagger/</loc>
+    
+    <lastmod>2018-08-14T10:42:15.296Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.yannxia.top/2018/08/07/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-class-with-properties/</loc>
+    
+    <lastmod>2018-08-13T14:00:05.193Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.yannxia.top/2018/08/03/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-basic/</loc>
     
-    <lastmod>2018-08-04T03:21:10.956Z</lastmod>
+    <lastmod>2018-08-07T14:44:32.956Z</lastmod>
     
   </url>
   

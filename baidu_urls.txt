@@ -1,5 +1,5 @@
+http://blog.yannxia.top/2018/08/13/other/swagger/
+http://blog.yannxia.top/2018/08/07/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-class-with-properties/
 http://blog.yannxia.top/2018/08/03/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-basic/
 http://blog.yannxia.top/2018/07/25/kotlin/easy-way-to-kotlin-for-java-proggamer/functions-advance/
 http://blog.yannxia.top/2018/07/22/kotlin/easy-way-to-kotlin-for-java-proggamer/functions/
-http://blog.yannxia.top/2018/07/17/kotlin/easy-way-to-kotlin-for-java-proggamer/null-type/
-http://blog.yannxia.top/2018/07/14/gradle/easy-to-gradle/
