@@ -1,0 +1,145 @@
+layout: false
+
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>写给 Java 开发者的 Kotlin 教程 (4) - 控制流表达式</title>
+
+	<link href="https://lib.baomitu.com/reveal.js/3.7.0/css/reveal.css" rel="stylesheet">
+	<link href="https://lib.baomitu.com/reveal.js/3.7.0/css/theme/black.css" rel="stylesheet">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link href="https://lib.baomitu.com/reveal.js/3.7.0/lib/css/zenburn.css" rel="stylesheet">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ?
+			'https://lib.baomitu.com/reveal.js/3.7.0/css/print/pdf.min.css' :
+			'https://lib.baomitu.com/reveal.js/3.7.0/css/print/paper.min.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<style type="text/css">
+		.left {
+			left: -8.33%;
+			text-align: left;
+			float: left;
+			width: 50%;
+			z-index: -10;
+		}
+
+		.right {
+			left: 31.25%;
+			top: 75px;
+			float: right;
+			text-align: right;
+			z-index: -10;
+			width: 50%;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<section id="0">
+				<img src="https://s1.ax1x.com/2018/07/12/Pu28Re.png">
+			</section>
+
+			<section id="1">
+				<h1>IF代码块</h1>
+				<pre><code data-trim data-noescape>
+				val max = if (a > b) {
+					print("Choose a")
+					a
+				} else {
+					print("Choose b")
+					b
+				}</code></pre>
+				<p>`Kotlin` 和 `Java` 不同之处在于 `if` 的分支可以是代码块，`最后的表达式`作为该块的值，如示例代码中的 `a` 和 `b`。</p>
+			</section>
+
+			<section id="2">
+				<h1>When</h1>
+				<pre><code data-trim data-noescape>
+				when (x) {
+					1 -> print("x == 1")
+					2 -> print("x == 2")
+					else -> { // 注意这个块
+						print("x is neither 1 nor 2")
+					}
+				}</code></pre>
+				<p>`when` 将它的参数和所有的分支条件
+					<strong>顺序</strong> 比较，直到某个分支满足条件，如果其他分支都不满足条件将会求值 `else` 分支。</p>
+			</section>
+
+			<section id="3">
+				<h1>When in Range</h1>
+				<p>甚至可以是在一个 `Range` 内</p>
+				<pre><code data-trim data-noescape>
+				var dayOfMonth = 5
+				when(dayOfMonth) {
+					in 1..7 -> println("We're in the first Week of the Month")
+					!in 15..21 -> println("We're not in the third week of the Month")
+					else -> println("none of the above")
+				}</code></pre>
+			</section>
+
+			<section id="4">
+				<h1>其他</h1>
+				<ul>
+					<li>for 循环</li>
+					<li>while 循环</li>
+					<li>do...while</li>
+				</ul>
+			</section>
+		</div>
+	</div>
+
+	<script src="https://lib.baomitu.com/reveal.js/3.7.0/lib/js/head.min.js"></script>
+	<script src="https://lib.baomitu.com/reveal.js/3.7.0/js/reveal.min.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+				dependencies: [{
+						src: 'https://lib.baomitu.com/reveal.js/3.7.0/plugin/markdown/marked.js'
+					},
+					{
+						src: 'https://lib.baomitu.com/reveal.js/3.7.0/plugin/markdown/markdown.min.js'
+					},
+					{
+						src: 'https://lib.baomitu.com/reveal.js/3.7.0/plugin/notes/notes.min.js',
+						async: true
+					},
+					{
+						src: 'https://lib.baomitu.com/reveal.js/3.7.0/plugin/highlight/highlight.min.js',
+						async: true,
+						callback: function () {
+							hljs.initHighlightingOnLoad();
+						}
+					},
+				],
+				width: "90%",
+				height: "90%",
+				margin: 0,
+				minScale: 1,
+				maxScale: 1
+			},
+
+		);
+	</script>
+</body>
+
+</html>
