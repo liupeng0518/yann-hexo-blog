@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.yannxia.top/2018/08/17/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-best-practices/</loc>
+    
+    <lastmod>2018-08-17T09:29:10.035Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.yannxia.top/2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-omissions/</loc>
     
-    <lastmod>2018-08-17T05:39:27.287Z</lastmod>
+    <lastmod>2018-08-17T08:47:15.958Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.yannxia.top/2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-object/</loc>
+    
+    <lastmod>2018-08-17T08:41:25.075Z</lastmod>
     
   </url>
   
