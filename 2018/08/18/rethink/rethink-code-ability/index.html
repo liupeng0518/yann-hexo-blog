@@ -114,33 +114,24 @@
 
 
 
-  <meta name="description" content="笔者在 2017.12 - 至今（2018.8）都沉浸在 微服务治理平台 的 网关 这个组件的构造之上，恰逢系统更新到 1.2 著此作为反思。  此处的网关指的是七层的 API 网关">
+  <meta name="description" content="我认为编程上有几种类型的问题  第一种是本源性的问题，比如 算法 ，明确性问题，有专业的科研从业者。 第二种是现实生活中的，输入的条件是不稳定的，外部因素也一直在变化。 第三类是技能无关的技能，比如团队的调节，团队目标的确定等。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Gateway版本迭代反思">
-<meta property="og:url" content="http://blog.yannxia.top/2018/08/15/rethink/rethink-in-gateway/index.html">
+<meta property="og:title" content="关于编程能力的反思">
+<meta property="og:url" content="http://blog.yannxia.top/2018/08/18/rethink/rethink-code-ability/index.html">
 <meta property="og:site_name" content="Yann&#39;s Blog">
-<meta property="og:description" content="笔者在 2017.12 - 至今（2018.8）都沉浸在 微服务治理平台 的 网关 这个组件的构造之上，恰逢系统更新到 1.2 著此作为反思。  此处的网关指的是七层的 API 网关">
+<meta property="og:description" content="我认为编程上有几种类型的问题  第一种是本源性的问题，比如 算法 ，明确性问题，有专业的科研从业者。 第二种是现实生活中的，输入的条件是不稳定的，外部因素也一直在变化。 第三类是技能无关的技能，比如团队的调节，团队目标的确定等。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://s1.ax1x.com/2018/08/15/PRero4.png">
-<meta property="og:image" content="https://s1.ax1x.com/2018/08/15/PReO6P.png">
-<meta property="og:image" content="https://s1.ax1x.com/2018/08/15/PRuAdU.png">
-<meta property="og:image" content="https://s1.ax1x.com/2018/08/15/PRnWVO.png">
-<meta property="og:image" content="http://i1.bvimg.com/596754/6a0e6f920fa9177b.png">
-<meta property="og:image" content="http://i2.bvimg.com/596754/0a69ee94fd3bc281.png">
-<meta property="og:image" content="http://i2.bvimg.com/596754/df1991fdcf2a17e1.png">
-<meta property="og:image" content="http://i2.bvimg.com/596754/a69f8b261cd3c627.png">
-<meta property="og:updated_time" content="2018-08-15T12:35:23.712Z">
+<meta property="og:updated_time" content="2018-08-19T09:15:23.351Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gateway版本迭代反思">
-<meta name="twitter:description" content="笔者在 2017.12 - 至今（2018.8）都沉浸在 微服务治理平台 的 网关 这个组件的构造之上，恰逢系统更新到 1.2 著此作为反思。  此处的网关指的是七层的 API 网关">
-<meta name="twitter:image" content="https://s1.ax1x.com/2018/08/15/PRero4.png">
+<meta name="twitter:title" content="关于编程能力的反思">
+<meta name="twitter:description" content="我认为编程上有几种类型的问题  第一种是本源性的问题，比如 算法 ，明确性问题，有专业的科研从业者。 第二种是现实生活中的，输入的条件是不稳定的，外部因素也一直在变化。 第三类是技能无关的技能，比如团队的调节，团队目标的确定等。">
 
 
 
 
 
 
-  <link rel="canonical" href="http://blog.yannxia.top/2018/08/15/rethink/rethink-in-gateway/"/>
+  <link rel="canonical" href="http://blog.yannxia.top/2018/08/18/rethink/rethink-code-ability/"/>
 
 
 
@@ -150,7 +141,7 @@
   };
 </script>
 
-  <title>Gateway版本迭代反思 | Yann's Blog</title>
+  <title>关于编程能力的反思 | Yann's Blog</title>
   
 
 
@@ -364,7 +355,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2018/08/15/rethink/rethink-in-gateway/">
+    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2018/08/18/rethink/rethink-code-ability/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yann.xia">
@@ -381,7 +372,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Gateway版本迭代反思
+          <h2 class="post-title" itemprop="name headline">关于编程能力的反思
               
             
           </h2>
@@ -406,12 +397,24 @@
                 
               
 
-              <time title="创建时间：2018-08-15 17:00:48 / 修改时间：20:35:23" itemprop="dateCreated datePublished" datetime="2018-08-15T17:00:48+08:00">2018-08-15</time>
+              <time title="创建时间：2018-08-18 18:00:48" itemprop="dateCreated datePublished" datetime="2018-08-18T18:00:48+08:00">2018-08-18</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-19 17:15:23" itemprop="dateModified" datetime="2018-08-19T17:15:23+08:00">2018-08-19</time>
               
             
           </span>
@@ -428,14 +431,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/gateway/" itemprop="url" rel="index"><span itemprop="name">gateway</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/rethink/" itemprop="url" rel="index"><span itemprop="name">rethink</span></a></span>
 
                 
                 
@@ -449,7 +445,7 @@
 
           
           
-             <span id="/2018/08/15/rethink/rethink-in-gateway/" class="leancloud_visitors" data-flag-title="Gateway版本迭代反思">
+             <span id="/2018/08/18/rethink/rethink-code-ability/" class="leancloud_visitors" data-flag-title="关于编程能力的反思">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -480,45 +476,36 @@
       
 
       
-        <p>笔者在 2017.12 - 至今（2018.8）都沉浸在 <code>微服务治理平台</code> 的 <code>网关</code> 这个组件的构造之上，恰逢系统更新到 <code>1.2</code> 著此作为反思。</p>
-<blockquote>
-<p>此处的网关指的是七层的 API 网关</p>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2018/08/15/PRero4.png" alt="banner"></p>
-<a id="more"></a>
-<h2 id="0-99-时期"><a href="#0-99-时期" class="headerlink" title="0.99 时期"></a>0.99 时期</h2><p>2017年底的时候，随着公司的咨询业务开展以及<code>微服务</code>的流行起来，我们隐约的摸到了大多数的公司仅仅使用<code>SpringCloud</code>的<code>Zuul</code>作为唯一的外置的<code>API网关</code>是不够的，其中又涉及到大量的相同类似的功能，我们因此萌生了开发一个开箱即用的网关的想法，这个项目在12月的时候正式开始启动。</p>
-<p>当时作为流行的是 <code>Spring Cloud Netflix Zuul</code>，直至今日都是作为流行的选择之一。<code>Zuul</code> 的编程模型也足够简单，我们也在之上为不同的企业做了多套的方案，是成熟可靠的选择。<br><img src="https://s1.ax1x.com/2018/08/15/PReO6P.png" alt="Zuul"></p>
-<p>不过当时，我们已经成功的使用 <code>Netty</code> 给 <code>东风汽车</code> 新能源项目做了一套接入的网关，<code>Netty</code>的稳定性和高性能非常的吸引我们，当时也有基于<code>Netty</code>的高性能的  <code>Web框架</code> <a href="https://vertx.io/" target="_blank" rel="noopener"><code>vertx</code></a> ，这里涉及到最为重要的就是 <code>NIO</code> 与 <code>BIO</code> 之间的比较。如果能够基于 <code>Netty</code> 的 <code>Reactor</code> 的模型，可以提高大量的吞吐量。</p>
-<p><img src="https://s1.ax1x.com/2018/08/15/PRuAdU.png" alt="Netty Reactor"></p>
-<p>所以我们决定不基于 <code>Zuul</code>的编程模型，做一套可以同时在 <code>Zuul</code> 与 <code>Vertx</code> 运行的框架。在开发的过程中，我们借鉴了 <code>Netty</code> 的 <code>Pipeline</code> 机制，做了一套流水线。<br><img src="https://s1.ax1x.com/2018/08/15/PRnWVO.png" alt="Pipeline"></p>
-<p>在物理架构上，我们将 <code>管理端</code> 与 <code>运行端</code> 进行了分离。这样的架构可以保证，<code>运行端</code> 的性能足够好，并且不会因为暴露出一些非必要的请求地址给外部用户。<br><img src="http://i1.bvimg.com/596754/6a0e6f920fa9177b.png" alt="架构图"></p>
-<p>然后将系统划分为了这么几个模块：</p>
-<ul>
-<li><code>端点</code>：提供对外暴露接口的能力</li>
-<li><code>路由</code>：路由转发能力</li>
-<li><code>流控</code>：控制对外接口的转发速度</li>
-<li><code>安全</code>：鉴权相关的能力</li>
-<li><code>缓存</code>：提供系统的缓存服务</li>
-</ul>
-<h3 id="不足之处"><a href="#不足之处" class="headerlink" title="不足之处"></a>不足之处</h3><ol>
-<li>因为为了兼容 <code>Zuul</code> 我们整个编程模型，在 <code>Redis</code> 读写 和 <code>Request Body</code> 读写方都是同步阻塞的。所以整体线程模型会是这样的:<br> <img src="http://i2.bvimg.com/596754/0a69ee94fd3bc281.png" alt="0.99"><br> 我们不得不在网关处持有大量的线程，这样对于网关的性能来说是一个致命的伤。</li>
-<li>Redis的读取我们的用了 <a href="https://github.com/redisson/redisson/" target="_blank" rel="noopener">Redisson</a>，当时 Redisson 不支持 Reactive的编程模型，所以的行为是阻塞的，除此之外还有一点很可惜，<code>Redisson</code> 存储到Redis的数据往往是非精简的，导致读取数据大小太大这是一个优化点</li>
+        <p>我认为编程上有几种类型的问题</p>
+<ol>
+<li>第一种是本源性的问题，比如 <strong>算法</strong> ，明确性问题，有专业的科研从业者。</li>
+<li>第二种是现实生活中的，输入的条件是不稳定的，外部因素也一直在变化。</li>
+<li>第三类是技能无关的技能，比如团队的调节，团队目标的确定等。</li>
 </ol>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在 0.99 版本完成的时候，因为有两个运行端版本共存，一个是 <code>Vertx</code> 和 <code>Zuul</code>，当时为了兼容 <code>Vertx</code> 做了一系列的  <code>Facede</code>项目，后来被证明都是徒劳的，不过当时已经完成了网关的动态化的需求，整体的性能在测试的过程中持平<code>Zuul</code>，性能损耗不大。</p>
-<h2 id="1-0-1-1-时期"><a href="#1-0-1-1-时期" class="headerlink" title="1.0 - 1.1 时期"></a>1.0 - 1.1 时期</h2><p>这个时期，随着 <code>Spring 5</code> GA，我们也作为第一批吃螃蟹的，我们将网关的底层基座直接切换到了 <code>SpringWebFlux</code>之上，依然可以借力于 <code>Spring Cloud</code> 的生态组件，我们将<code>Vertx</code>的支持放弃，既然<code>Spring</code> 都有了 <code>Netty</code> 的运行时，我们整个业务体系都在<code>Spring</code>上，就没必要投入更多的人力去维护<code>Vertx</code>。<br>这个阶段，我们尝试使用 <code>WebFlux</code>作为网关的基座，这是非常痛苦的阵痛期，有几个问题：</p>
+<a id="more"></a>
+<h2 id="技能精细化"><a href="#技能精细化" class="headerlink" title="技能精细化"></a>技能精细化</h2><p>这个也很像是在FP的编程代码里面，有一些东西它的输入是稳定的，得到的结果也是完全的自包含的被称之为 <code>PURE</code> 的，但是在我们生活的世界不是 <code>PURE</code> 的。</p>
+<p>人类因为自己的寿命和思维的限制，人类的发展强依赖于分工，在 <a href="http://www.eywedu.net/guofulun/Test004.htm" target="_blank" rel="noopener">&lt;国富论&gt;</a> 里面也是有类似的理念</p>
+<blockquote>
+<p>人们天赋才能的差异，实际上并不象我们所成觉的那么大。人们壮年时在不同职业上表现出来的极不相同的才能，在多数场合，与其说是分工的原因，倒不如说是分工的结果。</p>
+</blockquote>
+<p>所以在职业发展的后期，如果依然依靠的是 <code>技能</code> 作为自己的生活手段，那我们这个时候所能够做的事情，就会变成精细化。比如</p>
 <ul>
-<li><code>Pipeline</code> 设计不满足 <code>reactive</code> 编程的需要</li>
-<li><code>webflux</code> 本身的缺陷</li>
+<li>KV内存数据设计</li>
+<li>Oracle数据库运维优化</li>
+<li>保险业务模型分拆</li>
 </ul>
-<p><code>webflux</code> 5.0.0 版本，不仅仅在 <code>ServerExchange</code> 中缺少 <code>RemoteIP</code>，而且无法强制的关闭 <code>CORS</code> 的处理，这些细小的问题却要花上不少的时间去做一些<code>魔改</code>。</p>
-<p>最后在 1.1 完成后，整个系统的架构变成了 <code>Input Reactive</code> 和 <code>Output Reactive</code>，但是由于pipeline的处理流程还是阻塞的，导致系统依然存在较大的IO瓶颈。</p>
-<p><img src="http://i2.bvimg.com/596754/df1991fdcf2a17e1.png" alt=""></p>
-<h2 id="1-2-时期"><a href="#1-2-时期" class="headerlink" title="1.2 时期"></a>1.2 时期</h2><p>在 <code>1.2</code> 的重构目标就是去除复杂的 <code>Pipeline</code> 机制，我们可以利用更为完善的 <code>projectreactor</code> 进行流程的控制，这个 <code>Reactive</code> 的编程库足够好也更为的通用。所以在这个阶段，我们将之前的 <code>Pipeline</code> 中的 <code>Stage</code> 概念替换为了 <code>Handler</code> 在系统中保留了之前经过验证的简单又可靠的概念。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ReactiveHandler</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">Function</span>&lt;<span class="title">T</span>, <span class="title">Mono</span>&lt;<span class="title">T</span>&gt;&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Nonnull</span></span><br><span class="line">    <span class="function">Mono&lt;T&gt; <span class="title">handle</span><span class="params">(T httpExchange)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> Mono&lt;T&gt; <span class="title">apply</span><span class="params">(T t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> handle(t);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>我们使用单一的处理抽象，结合 <code>Projectreactor</code> 的 <code>Mono</code> 可以达到以前的 <code>Pipeline</code> 的效果。</p>
-<p>在这个阶段，我们完成了项目的全<code>响应式</code>:<br><img src="http://i2.bvimg.com/596754/a69f8b261cd3c627.png" alt="reactive"></p>
-<h3 id="启迪"><a href="#启迪" class="headerlink" title="启迪"></a>启迪</h3><p>过度设计是万恶之源，一点都不为过，<code>Pipeline</code> 的设计太过于超前也并不实用，导致在 <code>1.1</code> 时期增加一个功能非常的困难，<code>Pipeline</code> 的编程模型并非是<code>响应式</code>的，所以在我们底层的编程模型变化之后，直接就判处了死刑。</p>
-<h3 id="展望"><a href="#展望" class="headerlink" title="展望"></a>展望</h3><p>现在的流控方式还是基于集中化的<code>Redis</code>这个在极大规模的请求情况下，依然会存在性能的瓶颈，我们在后续的开发增加独立的高性能的内存模式，将限流器可以进行配置化。</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+<p>这个时候，我们每个人的技能会变成一方面专精，其他方面会至少及格，但是一个人没有办法可以解决<code>所有类型</code>的问题，所有你必须要在不同的问题解决之道之间要有选择。所以你需要不断的解决更难的问题的时候，你就必然会导致你的解决问题的范围是 <code>窄化</code>。但是这种 <code>窄化</code> 也不是一个缺点，我们在生活的时时刻刻都是在不断的进行 <code>取舍</code>。</p>
+<h2 id="关于不同的问题"><a href="#关于不同的问题" class="headerlink" title="关于不同的问题"></a>关于不同的问题</h2><p>核心的本质上，作为一个被<code>别人需要（有帮助的）</code>的人，<code>解决问题的能力</code> 才是核心，因为我们每个人都依赖于上下游。<br>上游可能是我们依赖的开源项目，亦或者是一个内部组件，下游是我们构建的产品，我们就是一个关键的连接点。</p>
+<p>针对不一样的问题，我们的手段也是不一样的，</p>
+<ul>
+<li>比如我们针对 <code>稳定的算法</code> 问题，我们所能做的事情就是学习现在已经最成熟的方法，明白每一个算法的优点和缺点。</li>
+<li>又比如针对 <code>稳定的技术</code> 问题，我们所能做的就是选择正确的技术框架，选择被实践过的成功范式。<br>而对于 <code>不稳定输入</code> 的现实问题，我们能做的是在将问题分解，获得尽可能稳定的输入，针对稳定的部分我们就像是知道一道有解的题目（当然也需要广阔的<code>阅历</code>），而其他不稳定部分，我们依然需要控制<code>复杂</code>度，使用恰当的方式和精力投入解决这部分的问题。</li>
+</ul>
+<h2 id="技能高贱之分"><a href="#技能高贱之分" class="headerlink" title="技能高贱之分"></a>技能高贱之分</h2><p>在以前我们就听说过，卖原子弹的不如卖茶叶蛋的，这个算是一个经济导向的一种高贱之分，但是现在的技术圈依然有这样的分别，比如后端觉得前端不高级，后端搞大数据的看不起搞业务的，搞AI又看不起大数据。这个的诞生的原因是因为，我之前说的我们大部分评价一个工种的高端与否一来依靠一些简单的社会价值划定（比如工资）二来就看这个行业的入门的门槛。入门的门槛往往就是在第一类的问题，而我们往往忽略了第二类，鄙视第三类的问题。我们在毕业入职公司的都喜欢考算法题，而第二类的问题我们在工作之后才能慢慢的发现这个技能的重要性，而对于第三类的问题，我们甚至会觉得技术管理人是编程无能的，实际从我的观察看来，技术管理人往往会编程更为的复杂，时时刻刻需要面对的是一直处于变化之中的世界。</p>
+<h2 id="有价值的程序员"><a href="#有价值的程序员" class="headerlink" title="有价值的程序员"></a>有价值的程序员</h2><p>并不是说写不出一个操作系统的程序员就是毫无价值的，拿一个餐饮行业打个比方，外面千千万万的苍蝇馆，虽然味道不怎么样，但是这些才是正常人填饱肚子的第一选择，程序员的价值也是如此，在一个学习的过程中，我们首先要贡献出自己的价值出来，在既有的技能条件下，将自己手上的事情做好，然后然后不断的提高自己才是正途，实际上往往会有一些不切实地的幻觉，比如想成为这件事情只有我能做，而别人不能做，这样的人很少，大部分的时候，我们都选择<code>效能最高</code>的方式，可能是最为熟悉这方面的事情，而并非是只有你能做，保持<code>学徒</code>的心态，谦卑前行。</p>
+<hr>
+<p>最终最为重要的事情是保护好自己的身体，编程技能会过时，唯一不变的，你需要的是依靠的是自己强健的体魄和坚忍的毅力去完成你所想的一切，多锻炼，健康饮食，毕竟能够笑到最后的才是赢家。</p>
+<p align="right">于 厦门 ● 观音山</p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
     </div>
 
@@ -574,8 +561,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-omissions/" rel="next" title="写给 Java 开发者的 Kotlin 教程 (12) - 拾遗">
-                <i class="fa fa-chevron-left"></i> 写给 Java 开发者的 Kotlin 教程 (12) - 拾遗
+              <a href="/2018/08/17/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-best-practices/" rel="next" title="写给 Java 开发者的 Kotlin 教程 (13) - 最佳实践">
+                <i class="fa fa-chevron-left"></i> 写给 Java 开发者的 Kotlin 教程 (13) - 最佳实践
               </a>
             
           </div>
@@ -583,10 +570,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/17/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-best-practices/" rel="prev" title="写给 Java 开发者的 Kotlin 教程 (13) - 最佳实践">
-                写给 Java 开发者的 Kotlin 教程 (13) - 最佳实践 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -962,7 +945,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-99-时期"><span class="nav-number">1.</span> <span class="nav-text">0.99 时期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不足之处"><span class="nav-number">1.1.</span> <span class="nav-text">不足之处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.2.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-0-1-1-时期"><span class="nav-number">2.</span> <span class="nav-text">1.0 - 1.1 时期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-时期"><span class="nav-number">3.</span> <span class="nav-text">1.2 时期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启迪"><span class="nav-number">3.1.</span> <span class="nav-text">启迪</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#展望"><span class="nav-number">3.2.</span> <span class="nav-text">展望</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#技能精细化"><span class="nav-number">1.</span> <span class="nav-text">技能精细化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于不同的问题"><span class="nav-number">2.</span> <span class="nav-text">关于不同的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技能高贱之分"><span class="nav-number">3.</span> <span class="nav-text">技能高贱之分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有价值的程序员"><span class="nav-number">4.</span> <span class="nav-text">有价值的程序员</span></a></li></ol></div>
             
 
           </div>
@@ -1130,9 +1113,9 @@ var jiathis_config={
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://blog.yannxia.top/2018/08/15/rethink/rethink-in-gateway/';
-        this.page.identifier = '2018/08/15/rethink/rethink-in-gateway/';
-        this.page.title = 'Gateway版本迭代反思';
+        this.page.url = 'http://blog.yannxia.top/2018/08/18/rethink/rethink-code-ability/';
+        this.page.identifier = '2018/08/18/rethink/rethink-code-ability/';
+        this.page.title = '关于编程能力的反思';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
