@@ -1,0 +1,222 @@
+layout: false
+
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>写给 Java 开发者的 Kotlin 教程 (2) - 基础语法</title>
+
+	<link href="https://lib.baomitu.com/reveal.js/3.7.0/css/reveal.css" rel="stylesheet">
+	<link href="https://lib.baomitu.com/reveal.js/3.7.0/css/theme/black.css" rel="stylesheet">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link href="https://lib.baomitu.com/reveal.js/3.7.0/lib/css/zenburn.css" rel="stylesheet">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ?
+			'https://lib.baomitu.com/reveal.js/3.7.0/css/print/pdf.min.css' :
+			'https://lib.baomitu.com/reveal.js/3.7.0/css/print/paper.min.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<style type="text/css">
+		.left {
+			left: -8.33%;
+			text-align: left;
+			float: left;
+			width: 50%;
+			z-index: -10;
+		}
+
+		.right {
+			left: 31.25%;
+			top: 75px;
+			float: right;
+			text-align: right;
+			z-index: -10;
+			width: 50%;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<section id="0">
+				<img src="https://s1.ax1x.com/2018/07/11/PuwrnO.png">
+			</section>
+
+			<section id="1">
+				<h1>数字类型</h1>
+				<table>
+					<tr>
+						<th>类型</th>
+						<th>Bits</th>
+					</tr>
+					<tr>
+						<td>Double</td>
+						<td>64</td>
+					</tr>
+					<tr>
+						<td>Float</td>
+						<td>32</td>
+					</tr>
+					<tr>
+						<td>Long</td>
+						<td>64</td>
+					</tr>
+					<tr>
+						<td>Int</td>
+						<td>32</td>
+					</tr>
+					<tr>
+						<td>Short</td>
+						<td>16</td>
+					</tr>
+					<tr>
+						<td>Byte</td>
+						<td>8</td>
+					</tr>
+				</table>
+			</section>
+
+			<section id="2">
+				<h1>显式转换</h1>
+				<pre><code data-trim data-noescape>
+				# -- Kotlin --
+				val b: Byte = 1 
+				val i: Int = b // 编译错误</code></pre>
+				<pre><code data-trim data-noescape>
+				# -- java --
+				byte a = 1;
+				int b = a; //OK</code></pre>
+			</section>
+
+			<section id="3">
+				<h1>显式转换</h1>
+				<p>
+					<strong>Kotlin</strong> 提供一系列的数据转换的函数
+					<ul>
+						<li>toByte(): Byte</li>
+						<li>toShort(): Short</li>
+						<li>toInt(): Int</li>
+						<li>toLong(): Long</li>
+						<li>toFloat(): Float</li>
+						<li>toDouble(): Double</li>
+						<li>toChar(): Char</li>
+					</ul>
+				</p>
+			</section>
+
+			<section id="4">
+				<h1>字符类型</h1>
+				<div>
+					字符文字用单引号括起：如 '1'。可以使用反斜杠转义特殊字符。支持以下转义序列：`\t`，`\b`，`\n`，`\r`，`\`，`\"`，`\\`和`\$`。要对其他字符进行编码，需要使用Unicode转义序列语法：`'\uFF00'`
+				</div>
+			</section>
+
+			<section id="5">
+				<h1>数组类型</h1>
+				<div>在 Kotlin 将java中的数据转换为了 Array 类</div>
+				<div>
+					<pre><code data-trim data-noescape>
+					class Array<T> private constructor() {
+						val size: Int
+						operator fun get(index: Int): T
+						operator fun set(index: Int, value: T): Unit
+					
+						operator fun iterator(): Iterator<T>
+					}</code></pre>
+				</div>
+
+			</section>
+
+			<section id="6">
+				<h1>数组类型</h1>
+				<p>`Kotlin` 创建一个数组提供一些列简单的函数来帮助我们创建数组，比如</p>
+				<pre><code data-trim data-noescape>
+				// -- Kotlin --
+				val x = arrayOf(1, 2, 3)
+				// 构造函数 创建一个 Array<String> 初始化为 ["0", "1", "4", "9", "16"]
+				val asc = Array(5, { i -> (i * i).toString() })</code></pre>
+				<p>除此之外 `Kotlin` 为 `Array` 增加了更多的方便操作的函数。举个例子</p>
+				<pre><code data-trim data-noescape>
+				// -- Kotlin --
+				var xx = arrayOf(1, 2, 3, 4)
+				xx = xx.plus(5) //增加一个元素在最后
+				xx = xx.copyOfRange(0, 2)//拷贝 0 - 2 下标的元素</code></pre>
+			</section>
+
+			<section id="7">
+				<h1>字符串字面值</h1>
+				<p></p>
+				<pre><code data-trim data-noescape>
+				val s = "Hello, world!\n"</code></pre>
+				<p>但是 Kotlin 支持多行 String</p>
+				<pre><code data-trim data-noescape>
+				val text = """
+					select * from users
+					where
+						username = 'jack'
+				"""
+				</code></pre>
+			</section>
+
+			<section id="8">
+				<h1>小结</h1>
+				<p>参考官方文档中还有 `Boolean` 与 `Char` 类型，
+				这两个类型和 Java 是极为接近就不多做阐述。
+				`Kotlin` 不存在 `Java` 中的 原始数据类型和包装数据类型，
+				不存在 `int Integer` `long Long` `byte Byte` 的关系，
+				也算是去除了 `Java` 中不太 `OOP` 的一部分。</p>
+			</section>
+		</div>
+	</div>
+
+	<script src="https://lib.baomitu.com/reveal.js/3.7.0/lib/js/head.min.js"></script>
+	<script src="https://lib.baomitu.com/reveal.js/3.7.0/js/reveal.min.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+				dependencies: [{
+						src: 'https://lib.baomitu.com/reveal.js/3.7.0/plugin/markdown/marked.js'
+					},
+					{
+						src: 'https://lib.baomitu.com/reveal.js/3.7.0/plugin/markdown/markdown.min.js'
+					},
+					{
+						src: 'https://lib.baomitu.com/reveal.js/3.7.0/plugin/notes/notes.min.js',
+						async: true
+					},
+					{
+						src: 'https://lib.baomitu.com/reveal.js/3.7.0/plugin/highlight/highlight.min.js',
+						async: true,
+						callback: function () {
+							hljs.initHighlightingOnLoad();
+						}
+					},
+				],
+				width: "90%",
+				height: "90%",
+				margin: 0,
+				minScale: 1,
+				maxScale: 1
+			},
+
+		);
+	</script>
+</body>
+
+</html>

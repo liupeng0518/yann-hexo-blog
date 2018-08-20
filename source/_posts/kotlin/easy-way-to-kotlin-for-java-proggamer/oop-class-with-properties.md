@@ -160,8 +160,29 @@ public class MyTest {
 ```
 
 ## 数据类
+我们经常创建一些只保存数据的 POJO 类，形如：
+```java
+class Point {
+    private double x;
+    private double y;
+	public double getX() { return x; }
+    public double getY() { return y; }
+    public void setX(double v) { x = v; }
+    public void setY(double v) { y = v; }
+    public boolean equals(Object other) {...}
+}
+```
+这样的类 `Get` 和 `Set` 方式是冗余的，`Kotlin`对其进行了优化。我们可以使用 `data` 关键字进行简化。
+```kotlin
+data class User(val name: String, val age: Int)
+```
 
+编译器自动从主构造函数中声明的所有属性推导出函数：
 
+- equals()/hashCode() 函数
+- toString() 函数
+- componentN() 解构函数（后续说明）
+- copy() 拷贝函数
 
 ## 参考资料
 - [属性和字段](https://www.kotlincn.net/docs/reference/properties.html)

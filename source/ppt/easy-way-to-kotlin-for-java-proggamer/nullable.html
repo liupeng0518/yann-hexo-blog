@@ -1,0 +1,190 @@
+layout: false
+
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>写给 Java 开发者的 Kotlin 教程 (5) - Null对象与类型安全</title>
+
+	<link href="https://lib.baomitu.com/reveal.js/3.7.0/css/reveal.css" rel="stylesheet">
+	<link href="https://lib.baomitu.com/reveal.js/3.7.0/css/theme/black.css" rel="stylesheet">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link href="https://lib.baomitu.com/reveal.js/3.7.0/lib/css/zenburn.css" rel="stylesheet">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ?
+			'https://lib.baomitu.com/reveal.js/3.7.0/css/print/pdf.min.css' :
+			'https://lib.baomitu.com/reveal.js/3.7.0/css/print/paper.min.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<style type="text/css">
+		.left {
+			left: -8.33%;
+			text-align: left;
+			float: left;
+			width: 50%;
+			z-index: -10;
+		}
+
+		.right {
+			left: 31.25%;
+			top: 75px;
+			float: right;
+			text-align: right;
+			z-index: -10;
+			width: 50%;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<section id="0">
+				<img src="https://s1.ax1x.com/2018/07/17/PlWoad.png">
+			</section>
+
+			<section>
+				<p>
+					Kotlin 的类型系统旨在消除来自代码空引用的危险,许多编程语言（包括 `Java`）中最常见的陷阱之一，就是访问空引用的成员会导致空引用异常。在 `Java` 中，这等同于 `NullPointerException` 或简称 `NPE`
+					。
+				</p>
+			</section>
+
+			<section id="1">
+				<h1>类型检测失败</h1>
+				<pre><code data-trim data-noescape>
+				// -- java ---
+				int length(String input){
+					return input.Length();
+				}</code></pre>
+				<p>在 Java 中，如果我编写 x.Length()，编译器会检查 x 的类型。如果 x 是一个 String，那么类型检查成功</p>
+				<p>编译时检查存在一个致命缺陷：任何引用都可以是 null，而调用一个 null 对象的方法会产生一个 NullPointerException。 所以 `null.Length()` 会抛出一个 `NullPointerException`
+					而和原本的类型系统冲突，因为 `NULL` 超出了类型检查的范围。越过类型检查，运行时会给你一个巨大的惊喜。解决这种问题我们一般会选择 `入参检测` 来让错误尽早的暴露出来。</p>
+			</section>
+
+			<section id="2">
+				<h1>正确的做法</h1>
+				<pre><code data-trim data-noescape>
+				// -- java ---
+				int length(String input){
+					Validate.nonNull(input, "input must be not null");
+					return input.Length();
+				}</code></pre>
+			</section>
+
+			<section id="3">
+				<h1>NULL 是一个特例</h1>
+				<pre><code data-trim data-noescape>
+				// -- java --
+				UserVo getUser(Long id){
+					//略
+				}</code></pre>
+				<p>在这个函数定义中，返回值会有三种可能 `UserVo` `null` `Expection`， 而我们在 获取 `null` 值的时候，我们不知道是因为 `ID` 不对，还是其他其他问题，甚至于在实践阶段，我们可能赋予 `null`返回是一个特殊的情况，在外部应该给予处理。</p>
+			</section>
+
+			<section id="4">
+				<h1>Kotlin 解决之道</h1>
+				<p>在 `Java 1.8` 之前我们使用使用 `Guava` 的 `Optional` 对，`1.8` 之后我们使用内置数据结构。</p>
+				<p>在 `Kotlin` 中，我们使用 `类型系统` 来帮助我们。</p>
+				<pre><code data-trim data-noescape>
+				var a: String = "abc"
+				a = null // 编译错误</code></pre>
+				<pre><code data-trim data-noescape>
+				var b: String? = "abc"
+				b = null // ok</code></pre>
+			</section>
+
+			<section id="5">
+				<h1>在条件中检查 null</h1>
+				<pre><code data-trim data-noescape>
+				var b: String? = "abc"
+				val l = if (b != null) b.length else -1</code></pre>
+			</section>
+
+			<section id="5">
+				<h1>安全调用</h1>
+				<pre><code data-trim data-noescape>
+				var b: String? = "abc"
+				b?.length</code></pre>
+				<p>支持链式调用</p>
+				<pre><code data-trim data-noescape>
+				bob?.department?.head?.name</code></pre>
+			</section>
+			<section id="6">
+				<h1>Elvis 操作符</h1>
+				<pre><code data-trim data-noescape>
+					// -- java ---
+					Optional<String> someOpt;
+					String unwrap = someOpt.orElse("Default");</code></pre>
+				<p>在 Kotlin 中</p>
+				<pre><code data-trim data-noescape>
+					val l = b?.length ?: -1</code></pre>
+			</section>
+
+			<section id="7">
+				<h1>!! 操作符</h1>
+				<pre><code data-trim data-noescape>
+					val l = b!!.length  //如果 b 为空，就会抛出一个 NPE 异常</code></pre>
+			</section>
+
+			<section id="8">
+				<h1>题外话</h1>
+				<ul>
+					<li>`Guava` 宣称在 `95%` 的代码处没有 `null`</li>
+					<li>`Lombok` 有一个注解 `@Nonull` 可以在生成代码中检测是否为空</li>
+					<li>`Spring JPA` 在 `Reposity` 定义中全面支持 `Optional` </li>
+				</ul>
+			</section>
+		</div>
+	</div>
+
+	<script src="https://lib.baomitu.com/reveal.js/3.7.0/lib/js/head.min.js"></script>
+	<script src="https://lib.baomitu.com/reveal.js/3.7.0/js/reveal.min.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+				dependencies: [{
+						src: 'https://lib.baomitu.com/reveal.js/3.7.0/plugin/markdown/marked.js'
+					},
+					{
+						src: 'https://lib.baomitu.com/reveal.js/3.7.0/plugin/markdown/markdown.min.js'
+					},
+					{
+						src: 'https://lib.baomitu.com/reveal.js/3.7.0/plugin/notes/notes.min.js',
+						async: true
+					},
+					{
+						src: 'https://lib.baomitu.com/reveal.js/3.7.0/plugin/highlight/highlight.min.js',
+						async: true,
+						callback: function () {
+							hljs.initHighlightingOnLoad();
+						}
+					},
+				],
+				width: "90%",
+				height: "90%",
+				margin: 0,
+				minScale: 1,
+				maxScale: 1
+			},
+
+		);
+	</script>
+</body>
+
+</html>

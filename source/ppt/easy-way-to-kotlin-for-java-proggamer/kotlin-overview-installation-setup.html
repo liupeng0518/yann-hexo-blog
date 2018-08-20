@@ -1,0 +1,133 @@
+layout: false
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>写给 Java 开发者的 Kotlin 教程 (1) - 概述</title>
+
+	<link href="https://lib.baomitu.com/reveal.js/3.7.0/css/reveal.css" rel="stylesheet">
+	<link href="https://lib.baomitu.com/reveal.js/3.7.0/css/theme/black.css" rel="stylesheet">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link href="https://lib.baomitu.com/reveal.js/3.7.0/lib/css/zenburn.css" rel="stylesheet">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ?
+			'https://lib.baomitu.com/reveal.js/3.7.0/css/print/pdf.min.css' :
+			'https://lib.baomitu.com/reveal.js/3.7.0/css/print/paper.min.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<section id="1" data-markdown>
+				<textarea data-template>
+					![start](https://s1.ax1x.com/2018/07/10/PnH1S0.png)
+				</textarea>
+			</section>
+
+			<section id="2" data-markdown>
+				<textarea data-template>
+					`Kotlin` 是由 `JetBrains` 开发的一门编程语言, 也就是那个出品了一些列著名 `IDE` 比如 `IntelliJ IDEA`, `PhpStorm`, `PyCharm`, `ReSharper`的公司。
+				</textarea>
+			</section>
+
+			<section id="3" data-markdown>
+				<textarea data-template>
+					<h1>Kotlin 特点</h1>
+				</textarea>
+			</section>
+
+			<section id="4">
+				<h1>简明</h1>
+				一行中创建一个包含getter，setters，equals()，hashCode() 和 toString() 方法的POJO类
+				<pre><code data-trim data-noescape>data class User(val name: String, val email: String)</code></pre>
+			</section>
+
+			<section id="5">
+				<h1>安全</h1>
+				<strong>Kotlin</strong> 通过支持可空性作为其类型系统的一部分来避免
+				<strong>NullPointerException</strong>
+				<pre><code data-trim data-noescape>
+						String str = "Hello, World"    // 非空类型
+						str = null // 编译错误</code></pre>
+				<p>如果你想要储存 `null` 值，那必须申明的时候明确指出</p>
+				<pre><code data-trim data-noescape>
+						String nullableStr? = null</code></pre>
+			</section>
+
+			<section id="6">
+				<h1>明确</h1>
+				<strong>Kotlin</strong> 是明确的。显性声明被认为是一件好事。
+				<ul>
+					<li>Kotlin不允许隐式类型转换，例如，int为long，或float为double。它提供了像toLong() 和toDouble() 这样的方法来显式地这样做。</li>
+					<li>默认情况下，Kotlin中的所有类都是
+						<strong>final</strong>（不可继承）。您需要将类显式标记为
+						<strong>open</strong> 以允许其他类继承它。同样，默认情况下，类的所有属性和成员函数都是 `final` 。您需要将函数或属性显式标记为打开，以允许子类覆盖它。</li>
+					<li>如果要覆盖父类函数或属性，则需要使用
+						<strong>override</strong> 修饰符显式注释它。</li>
+				</ul>
+			</section>
+
+			<section id="7">
+				<h1>其他</h1>
+				<ul>
+					<li>与Java完全交互</li>
+					<li>IDEA友好</li>
+					<li>全栈式</li>
+					<li>免费&开源</li>
+				</ul>
+			</section>
+
+
+		</div>
+	</div>
+
+	<script src="https://lib.baomitu.com/reveal.js/3.7.0/lib/js/head.min.js"></script>
+	<script src="https://lib.baomitu.com/reveal.js/3.7.0/js/reveal.min.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+				dependencies: [{
+						src: 'https://lib.baomitu.com/reveal.js/3.7.0/plugin/markdown/marked.js'
+					},
+					{
+						src: 'https://lib.baomitu.com/reveal.js/3.7.0/plugin/markdown/markdown.min.js'
+					},
+					{
+						src: 'https://lib.baomitu.com/reveal.js/3.7.0/plugin/notes/notes.min.js',
+						async: true
+					},
+					{
+						src: 'https://lib.baomitu.com/reveal.js/3.7.0/plugin/highlight/highlight.min.js',
+						async: true,
+						callback: function () {
+							hljs.initHighlightingOnLoad();
+						}
+					},
+				],
+				width: "90%",
+				height: "90%",
+				margin: 0,
+				minScale: 1,
+				maxScale: 1
+			},
+
+		);
+	</script>
+</body>
+
+</html>

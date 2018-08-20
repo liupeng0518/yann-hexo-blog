@@ -177,6 +177,17 @@ val s = "abc"
 println("$s.length is ${s.length}") // 输出“abc.length is 3”
 ```
 
+### 类型别名
+类型别名可以为已有的类型提供替代的名称. 如果类型名称太长, 你可以指定一个更短的名称, 然后使用新的名称。
+```kotlin
+typealias NodeSet = Set<Network.Node>
+typealias FileTable<K> = MutableMap<K, MutableList<File>>
+```
+
+### 常量
+```kotlin
+const val SUBSYSTEM_DEPRECATED: String = "This subsystem is deprecated"
+```
 ## 小结
 参考官方文档中还有 `Boolean` 与 `Char` 类型，这两个类型和 Java 是极为接近就不多做阐述。
 

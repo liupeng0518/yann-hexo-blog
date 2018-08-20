@@ -1,0 +1,328 @@
+layout: false
+
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>写给 Java 开发者的 Kotlin 教程 (2) - 基础语法</title>
+
+	<link href="https://lib.baomitu.com/reveal.js/3.7.0/css/reveal.css" rel="stylesheet">
+	<link href="https://lib.baomitu.com/reveal.js/3.7.0/css/theme/black.css" rel="stylesheet">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link href="https://lib.baomitu.com/reveal.js/3.7.0/lib/css/zenburn.css" rel="stylesheet">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ?
+			'https://lib.baomitu.com/reveal.js/3.7.0/css/print/pdf.min.css' :
+			'https://lib.baomitu.com/reveal.js/3.7.0/css/print/paper.min.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<style type="text/css">
+		.left {
+			left: -8.33%;
+			text-align: left;
+			float: left;
+			width: 50%;
+			z-index: -10;
+		}
+
+		.right {
+			left: 31.25%;
+			top: 75px;
+			float: right;
+			text-align: right;
+			z-index: -10;
+			width: 50%;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<section id="1" data-markdown>
+				<textarea data-template>
+					![start](https://s1.ax1x.com/2018/07/11/PuAzgf.png)
+				</textarea>
+			</section>
+
+			<section id="2">
+				<h1>包定义</h1>
+				<div class="left">
+					<pre><code data-trim data-noescape>
+					//Java
+					package my.demo
+					import java.util.*
+					// </code></pre>
+				</div>
+
+				<div class="right">
+					<pre><code data-trim data-noescape>
+					//Kotlin
+					package my.demo
+					import java.util.*
+					//和左边是一样的 </code></pre>
+				</div>
+				<p>
+					<strong>Kotlin</strong> 和
+					<strong>Java</strong> 不同之处在于，Kotlin 源文件可以任意放置在文件夹内，而 Java 不行。</p>
+			</section>
+
+			<section id="3">
+				<h1>函数定义</h1>
+				<div class="left">
+					<pre><code data-trim data-noescape>
+					// -- Java --
+					int sum(int a, int b) {
+						return a + b;
+					}</code></pre>
+				</div>
+
+				<div class="right">
+					<pre><code data-trim data-noescape>
+					// -- Kotlin --
+					fun sum(a: Int, b: Int): Int {
+						return a + b
+					} </code></pre>
+				</div>
+				<p>
+					<strong>Kotlin</strong> 更注重代码的可读性，
+					<strong>变量名</strong> 在
+					<strong>变量类型</strong> 之前，返回值在函数声明的最后。</p>
+			</section>
+
+			<section id="4">
+				<h1>变量定义</h1>
+				<div style="height: 200px;">
+					<div class="left">
+						<pre><code data-trim data-noescape>
+						// -- Kotlin --
+						val a: Int = 1  // 立即赋值
+						val b = 2   // `Int` 类型被推导而来
+						val c: Int  // 声明而无赋值
+						c = 3       // 延迟赋值</code></pre>
+					</div>
+					<div class="right">
+						<pre><code data-trim data-noescape>
+						// -- Java --
+						final int a = 1;
+						final int b;
+						var a = 20; //lombok or jdk10
+						b = 1;</code></pre>
+					</div>
+				</div>
+
+				<div>
+					`Kotlin` 拥有更强的 `类型推导能力`，
+				</div>
+			</section>
+
+			<section id="5">
+				<h1>注释</h1>
+				<div>和 `Java` `Javascript` 都是一样的，唯一不同的是 `Kotlin` 的注释是允许嵌套的。</div>
+				<div>
+					<div class="left">
+						<pre><code data-trim data-noescape>
+						// -- Kotlin --
+						// This is an end-of-line comment
+						/* This is a block comment
+						on multiple lines. */</code></pre>
+					</div>
+					<div class="right">
+						<pre><code data-trim data-noescape>
+						// -- Kotlin 注释嵌套 --
+						/*
+							/*
+								/*
+								nest comment
+								*/
+							*/
+						*/</code></pre>
+					</div>
+				</div>
+			</section>
+
+			<section id="6">
+				<h1>String 模版</h1>
+				<pre><code data-trim data-noescape>
+				// -- Kotlin --
+				var a = 1
+				val s1 = "a is $a"  // 简单映射
+
+				a = 2
+				val s2 = "${s1.replace("is", "was")}, but now is $a" // 复杂表达式嵌入</code></pre>
+				<pre><code data-trim data-noescape>
+				// -- Java --
+				int a = 1;
+				String s1 = String.format("a is %d",a);
+				String s2 = String.format("%s, but now is %a", s1.replace("is", "was"), a);</code></pre>
+			</section>
+
+			<section id="7">
+				<h1>简化IF表达式</h1>
+				<pre><code data-trim data-noescape>
+				// -- Kotlin --
+				fun maxOf(a: Int, b: Int) = if (a > b) a else b </code></pre>
+				<pre><code data-trim data-noescape>
+				// -- Java --
+				int maxOf(int a, int b) {
+					if (a > b) {
+						return a;
+					} else {
+						return b;
+					}
+				}</code></pre>
+			</section>
+
+			<section id="8">
+				<h1>可空类型</h1>
+				<p>`Kotlin` 当值可能为 `null` 时，必须将引用显式标记为可为空。</p>
+				<pre><code data-trim data-noescape>
+				// -- Kotlin --
+				fun parseInt(str: String): Int? {
+					// 任何Int 或者 null
+				}
+				
+				fun parseInt(str: String): Int {
+					// 任何Int 不可能为 null
+				}</code></pre>
+				<pre><code data-trim data-noescape>
+				// -- Java --
+				Integer paserInt(String input){
+					// 无法判断
+				}</code></pre>
+			</section>
+
+			<section id="9">
+				<h1>可空类型 2 </h1>
+				<pre><code data-trim data-noescape>
+				// -- Kotlin --
+				fun printProduct(arg1: String, arg2: String) {
+					val x = parseInt(arg1)
+					val y = parseInt(arg2)
+				
+					// 使用 x 和 y 之前必须进行 非空判断
+					if (x != null && y != null) {
+						// x and y are automatically cast to non-nullable after null check
+						println(x * y)
+					}
+					else {
+						println("either '$arg1' or '$arg2' is not a number")
+					}
+				}</code></pre>
+			</section>
+			<section id="ten">
+				<h1>类型检查与自动转换</h1>
+				<pre><code data-trim data-noescape>
+				// -- Kotlin --
+				fun getStringLength(obj: Any): Int? {
+					if (obj is String) {
+						// `obj` 被自动转行成了  `String`
+						return obj.length
+					}
+					return null
+				}}</code></pre>
+				<pre><code data-trim data-noescape>
+				// -- Java --
+				Integer getStringLength(Object obj) {
+					if (obj instanceof String) {
+						return ((String) obj).length();
+					}
+					return null;
+				}</code></pre>
+			</section>
+			<section id="eleven">
+				<h1>Range</h1>
+				<pre><code data-trim data-noescape>
+					// -- Kotlin --
+					val x = 10
+					val y = 9
+					if (x in 1..y+1) {
+						println("fits in range")
+					}
+
+					for (x in 1..10 step 2) {
+						print(x)
+					}
+					println()
+					for (x in 9 downTo 0 step 3) {
+						print(x)
+					}</code></pre>
+				<pre><code data-trim data-noescape>
+					// -- Java --
+					for(int i = 0 ;i < 9;i++){
+						System.out.println(i);            
+					}</code></pre>
+			</section>
+			<section id="twelve">
+				<h1>When</h1>
+				<p>`when` 是一个增强的 `switch` 语法，尤其是在多态的情况下，尤为有用。</p>
+				<pre><code data-trim data-noescape>
+						// -- Kotlin --
+						when (obj) {
+							1          -> "One"
+							"Hello"    -> "Greeting"
+							is Long    -> "Long"
+							!is String -> "Not a string"
+							else       -> "Unknown"
+						}</code></pre>
+				<pre><code data-trim data-noescape>
+						// -- Java --
+						//switch & case 抱歉做不到</code></pre>
+			</section>
+
+
+
+
+		</div>
+	</div>
+
+	<script src="https://lib.baomitu.com/reveal.js/3.7.0/lib/js/head.min.js"></script>
+	<script src="https://lib.baomitu.com/reveal.js/3.7.0/js/reveal.min.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+				dependencies: [{
+						src: 'https://lib.baomitu.com/reveal.js/3.7.0/plugin/markdown/marked.js'
+					},
+					{
+						src: 'https://lib.baomitu.com/reveal.js/3.7.0/plugin/markdown/markdown.min.js'
+					},
+					{
+						src: 'https://lib.baomitu.com/reveal.js/3.7.0/plugin/notes/notes.min.js',
+						async: true
+					},
+					{
+						src: 'https://lib.baomitu.com/reveal.js/3.7.0/plugin/highlight/highlight.min.js',
+						async: true,
+						callback: function () {
+							hljs.initHighlightingOnLoad();
+						}
+					},
+				],
+				width: "90%",
+				height: "90%",
+				margin: 0,
+				minScale: 1,
+				maxScale: 1
+			},
+
+		);
+	</script>
+</body>
+
+</html>
