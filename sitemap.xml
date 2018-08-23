@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.yannxia.top/plan/index.html</loc>
+    
+    <lastmod>2018-08-23T09:41:25.741Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.yannxia.top/2018/08/18/rethink/rethink-code-ability/</loc>
     
     <lastmod>2018-08-19T09:15:23.351Z</lastmod>
@@ -75,13 +82,6 @@
     <loc>http://blog.yannxia.top/2018/08/03/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-basic/</loc>
     
     <lastmod>2018-08-07T14:44:32.956Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.yannxia.top/plan/index.html</loc>
-    
-    <lastmod>2018-07-24T23:58:03.450Z</lastmod>
     
   </url>
   

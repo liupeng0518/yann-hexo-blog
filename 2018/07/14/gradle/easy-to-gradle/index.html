@@ -510,9 +510,7 @@
 <li>在<code>src</code>目录创建一个 <code>myfile.txt</code></li>
 <li>在构建文件中定义一个名为Copy的类型 <code>Task</code> ，该任务将src目录复制到名为dest的新目录</li>
 </ul>
-<div class="tabs" id="create-task"><ul class="nav-tabs"><li class="tab active"><a href="#create-task-1">Groovy</a></li><li class="tab"><a href="#create-task-2">Kotlin</a></li></ul><div class="tab-content"><div class="tab-pane active" id="create-task-1"><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">task copy(<span class="string">type:</span> Copy, <span class="string">group:</span> <span class="string">“Custom”</span>, <span class="string">description:</span> <span class="string">“Copies sources to the dest directory”</span>) &#123;</span><br><span class="line">    from <span class="string">“src”</span></span><br><span class="line">    into <span class="string">“dest”</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</div><div class="tab-pane" id="create-task-2"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tasks.create&lt;Copy&gt;(<span class="string">“copy”</span>) &#123;</span><br><span class="line">    description = <span class="string">“Copies sources to the dest directory”</span></span><br><span class="line">    group = <span class="string">“Custom”</span></span><br><span class="line"></span><br><span class="line">    from(<span class="string">“src”</span>)</span><br><span class="line">    into(<span class="string">“dest”</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</div></div></div>
+<div class="tabs" id="create-task"><ul class="nav-tabs"><li class="tab active"><a href="#create-task-1">Groovy</a></li><li class="tab"><a href="#create-task-2">Kotlin</a></li></ul><div class="tab-content"><div class="tab-pane active" id="create-task-1"><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">task copy(<span class="string">type:</span> Copy, <span class="string">group:</span> <span class="string">“Custom”</span>, <span class="string">description:</span> <span class="string">“Copies sources to the dest directory”</span>) &#123;</span><br><span class="line">    from <span class="string">“src”</span></span><br><span class="line">    into <span class="string">“dest”</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="create-task-2"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tasks.create&lt;Copy&gt;(<span class="string">“copy”</span>) &#123;</span><br><span class="line">    description = <span class="string">“Copies sources to the dest directory”</span></span><br><span class="line">    group = <span class="string">“Custom”</span></span><br><span class="line"></span><br><span class="line">    from(<span class="string">“src”</span>)</span><br><span class="line">    into(<span class="string">“dest”</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></div></div>
 <p><code>group</code> 和 <code>description</code> 是自定义的任意值。现在让我们执行这个 <code>task</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">❯ ./gradlew copy</span><br><span class="line">&gt; Task :copy</span><br><span class="line"></span><br><span class="line">BUILD SUCCESSFUL <span class="keyword">in</span> 0s</span><br><span class="line">1 actionable task: 1 executed</span><br></pre></td></tr></table></figure>
 <p>再一次 <code>ls</code> 我们就可以看见 <code>gradle</code> 为我们创建了一个新的 <code>dest</code> 目录并且将 文件复制进去</p>
@@ -527,12 +525,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; gradle -q taskX</span><br><span class="line">taskY</span><br><span class="line">taskX  // taskx 在 y 之后</span><br></pre></td></tr></table></figure>
 <p>我们可以用 <code>dependsOn</code> 让我们的 <code>Task</code> 有顺序的运行起来<br><a href="https://docs.gradle.org/current/dsl/org.gradle.api.Task.html" target="_blank" rel="noopener">Task 文档</a></p>
 <h2 id="Gradle-插件"><a href="#Gradle-插件" class="headerlink" title="Gradle 插件"></a>Gradle 插件</h2><p>看到这里，如果每一件事情我们都需要写 <code>Task</code> 岂不是会累死，而且很多功能是可以被复用的，所以<code>Gradle</code> 提供一个 <code>插件</code> 功能，<code>Gradle</code> 默认就内置了大量的插件，比如在 <code>base</code> 中有一系列的功能。</p>
-<div class="tabs" id="plugin"><ul class="nav-tabs"><li class="tab active"><a href="#plugin-1">Groovy  build.gradle</a></li><li class="tab"><a href="#plugin-2">Kotlin build.gradle.kts</a></li></ul><div class="tab-content"><div class="tab-pane active" id="plugin-1"><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id <span class="string">“base”</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</div><div class="tab-pane" id="plugin-2"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id(<span class="string">“base”</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</div></div></div>
-<p>这个时候我们就可以利用一些额外的 <code>Task</code>，举个例子，我们要把一个目录中的东西都打成一个 <code>ZIP</code> 压缩包。<br><div class="tabs" id="zip"><ul class="nav-tabs"><li class="tab active"><a href="#zip-1">Groovy  build.gradle</a></li><li class="tab"><a href="#zip-2">Kotlin build.gradle.kts</a></li></ul><div class="tab-content"><div class="tab-pane active" id="zip-1"><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">task zip(<span class="string">type:</span> Zip, <span class="string">group:</span> <span class="string">“Archive”</span>, <span class="string">description:</span> <span class="string">“Archives sources in a zip file”</span>) &#123;</span><br><span class="line">    from <span class="string">“src”</span></span><br><span class="line">    setArchiveName <span class="string">“basic-demo-1.0.zip”</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</div><div class="tab-pane" id="zip-2"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tasks.create&lt;Zip&gt;(<span class="string">“zip”</span>) &#123;</span><br><span class="line">    description = <span class="string">“Archives sources in a zip file”</span></span><br><span class="line">    group = <span class="string">“Archive”</span></span><br><span class="line"></span><br><span class="line">    from(<span class="string">“src”</span>)</span><br><span class="line">    setArchiveName(<span class="string">“basic-demo-1.0.zip”</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</div></div></div></p>
+<div class="tabs" id="plugin"><ul class="nav-tabs"><li class="tab active"><a href="#plugin-1">Groovy  build.gradle</a></li><li class="tab"><a href="#plugin-2">Kotlin build.gradle.kts</a></li></ul><div class="tab-content"><div class="tab-pane active" id="plugin-1"><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id <span class="string">“base”</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="plugin-2"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id(<span class="string">“base”</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></div></div>
+<p>这个时候我们就可以利用一些额外的 <code>Task</code>，举个例子，我们要把一个目录中的东西都打成一个 <code>ZIP</code> 压缩包。<br><div class="tabs" id="zip"><ul class="nav-tabs"><li class="tab active"><a href="#zip-1">Groovy  build.gradle</a></li><li class="tab"><a href="#zip-2">Kotlin build.gradle.kts</a></li></ul><div class="tab-content"><div class="tab-pane active" id="zip-1"><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">task zip(<span class="string">type:</span> Zip, <span class="string">group:</span> <span class="string">“Archive”</span>, <span class="string">description:</span> <span class="string">“Archives sources in a zip file”</span>) &#123;</span><br><span class="line">    from <span class="string">“src”</span></span><br><span class="line">    setArchiveName <span class="string">“basic-demo-1.0.zip”</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="zip-2"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tasks.create&lt;Zip&gt;(<span class="string">“zip”</span>) &#123;</span><br><span class="line">    description = <span class="string">“Archives sources in a zip file”</span></span><br><span class="line">    group = <span class="string">“Archive”</span></span><br><span class="line"></span><br><span class="line">    from(<span class="string">“src”</span>)</span><br><span class="line">    setArchiveName(<span class="string">“basic-demo-1.0.zip”</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></div></div></p>
 <p><code>Gradle</code> 的设计理念是</p>
 <ul>
 <li>在项目中添加新任务</li>
@@ -746,36 +740,6 @@
   </article>
 
 
-
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-<span class="jiathis_txt">分享到：</span>
-<a class="jiathis_button_fav">收藏夹</a>
-<a class="jiathis_button_copy">复制网址</a>
-<a class="jiathis_button_email">邮件</a>
-<a class="jiathis_button_weixin">微信</a>
-<a class="jiathis_button_qzone">QQ空间</a>
-<a class="jiathis_button_tqq">腾讯微博</a>
-<a class="jiathis_button_douban">豆瓣</a>
-<a class="jiathis_button_share">一键分享</a>
-
-<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-<a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-var jiathis_config={
-  data_track_clickback:true,
-  summary:"",
-  shortUrl:false,
-  hideMore:false
-}
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2122379" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-      
-    </div>
   </div>
 
 
@@ -1126,7 +1090,7 @@ var jiathis_config={
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2018</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -1150,7 +1114,7 @@ var jiathis_config={
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a></div>
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" rel="external nofollow" href="https://theme-next.org">NexT.Gemini</a></div>
 
 
 
@@ -1176,7 +1140,10 @@ var jiathis_config={
     
 
     
+	
+    
 
+    
   </div>
 
   
@@ -1288,18 +1255,6 @@ var jiathis_config={
         loadComments();
       
     </script>
-  
-
-
-
-
-
-	
-
-
-
-
-
   
 
 

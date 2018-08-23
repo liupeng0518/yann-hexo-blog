@@ -570,11 +570,7 @@
 <p>这里有一个语法糖，对于解构的对象语法，kotlin 会去调用 <code>componentX</code> 函数，比如上文的 <code>name</code> 和 <code>age</code>，对应到 <code>kotlin</code> 其实是在 <code>var (name, age) = person</code> 调用了 <code>component1()</code> 和 <code>component2()</code> 函数。</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> j = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">component1</span><span class="params">()</span></span> = i</span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">component2</span><span class="params">()</span></span> = j</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> (i,j) = Test()</span><br></pre></td></tr></table></figure>
 <h2 id="中缀表达式"><a href="#中缀表达式" class="headerlink" title="中缀表达式"></a>中缀表达式</h2><p>在 <code>kotlin</code> 源码中，我们发现一些函数是被 <code>infix</code> 修饰的，这种函数在 <code>kotlin</code> 是能够使用 <code>中缀表达式</code> 进行操作的，举个例子：</p>
-<div class="tabs" id="infix-notation"><ul class="nav-tabs"><li class="tab active"><a href="#infix-notation-1">Kotlin infix</a></li><li class="tab"><a href="#infix-notation-2">Kotlin without infix</a></li></ul><div class="tab-content"><div class="tab-pane active" id="infix-notation-1"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> map = mapOf(<span class="number">1</span> to <span class="string">“one”</span>, <span class="number">2</span> to <span class="string">“two”</span>, <span class="number">3</span> to <span class="string">“three”</span>)</span><br></pre></td></tr></table></figure>
-
-</div><div class="tab-pane" id="infix-notation-2"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> map = mapOf(<span class="number">1.</span>to(<span class="string">“one”</span>), <span class="number">2.</span>to(<span class="string">“two”</span>), <span class="number">3.</span>to(<span class="string">“three”</span>))</span><br></pre></td></tr></table></figure>
-
-</div></div></div>
+<div class="tabs" id="infix-notation"><ul class="nav-tabs"><li class="tab active"><a href="#infix-notation-1">Kotlin infix</a></li><li class="tab"><a href="#infix-notation-2">Kotlin without infix</a></li></ul><div class="tab-content"><div class="tab-pane active" id="infix-notation-1"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> map = mapOf(<span class="number">1</span> to <span class="string">“one”</span>, <span class="number">2</span> to <span class="string">“two”</span>, <span class="number">3</span> to <span class="string">“three”</span>)</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="infix-notation-2"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> map = mapOf(<span class="number">1.</span>to(<span class="string">“one”</span>), <span class="number">2.</span>to(<span class="string">“two”</span>), <span class="number">3.</span>to(<span class="string">“three”</span>))</span><br></pre></td></tr></table></figure></div></div></div>
 <p><code>中缀表达式</code> 直观上的表现形式将 . 和 () 去掉了，带来的是代码的可读性的提高。我们看看<code>中缀函数的申明</code></p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">infix</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;A, B&gt;</span> A.<span class="title">to</span><span class="params">(that: <span class="type">B</span>)</span></span>: Pair&lt;A, B&gt; = Pair(<span class="keyword">this</span>, that)</span><br></pre></td></tr></table></figure>
 <p>这个函数和普通的函数并没有什么区别，唯独多的也就是 <code>infix</code> 关键字。但是如果想要申明一个函数是 <code>infix</code> 必须满足一下几个条件：</p>
@@ -716,36 +712,6 @@
   </article>
 
 
-
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-<span class="jiathis_txt">分享到：</span>
-<a class="jiathis_button_fav">收藏夹</a>
-<a class="jiathis_button_copy">复制网址</a>
-<a class="jiathis_button_email">邮件</a>
-<a class="jiathis_button_weixin">微信</a>
-<a class="jiathis_button_qzone">QQ空间</a>
-<a class="jiathis_button_tqq">腾讯微博</a>
-<a class="jiathis_button_douban">豆瓣</a>
-<a class="jiathis_button_share">一键分享</a>
-
-<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-<a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-var jiathis_config={
-  data_track_clickback:true,
-  summary:"",
-  shortUrl:false,
-  hideMore:false
-}
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2122379" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-      
-    </div>
   </div>
 
 
@@ -1096,7 +1062,7 @@ var jiathis_config={
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2018</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -1120,7 +1086,7 @@ var jiathis_config={
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a></div>
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" rel="external nofollow" href="https://theme-next.org">NexT.Gemini</a></div>
 
 
 
@@ -1146,7 +1112,10 @@ var jiathis_config={
     
 
     
+	
+    
 
+    
   </div>
 
   
@@ -1258,18 +1227,6 @@ var jiathis_config={
         loadComments();
       
     </script>
-  
-
-
-
-
-
-	
-
-
-
-
-
   
 
 
