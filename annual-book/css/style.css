@@ -27,7 +27,7 @@
     bottom: 0;
     content: '';
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
-    opacity: 0.7;
+    opacity: 0.95;
     -webkit-transform: skew(-45deg) scaleX(0);
     -ms-transform: skew(-45deg) scaleX(0);
     transform: skew(-45deg) scaleX(0);
@@ -188,6 +188,7 @@
 }
 
 /*----page styles---*/
+
 * {
     box-sizing: border-box;
     -moz-transition: all 0.6s ease;
@@ -248,5 +249,4 @@ h1 small {
 
 .made-with-love a:hover {
     text-decoration: underline;
-}
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+}<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
