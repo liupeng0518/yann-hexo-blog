@@ -224,16 +224,16 @@ h1 small {
 }
 
 h2 {
-    color: white;
-    padding: 1%;
-    font-size: 25px;
-    text-transform: uppercase;
-    font-weight: 500;
-    text-align: center;
+  color: black;
+  padding: 1%;
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: center;
 }
 
 .made-with-love {
-  margin-top: 30px;
+  margin-bottom: 30px;
   padding: 10px;
   font-size: 10px;
   font-family: arial;
@@ -329,4 +329,37 @@ body {
   height: 400px;
   width: 60%;
 }
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+
+.container {
+  margin: 0 auto;
+}
+
+ul.tabs {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  background: #222;
+}
+
+ul.tabs li {
+  background: none;
+  color: white;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+ul.tabs li.current {
+  background: #ededed;
+  color: #222;
+}
+
+.tab-content {
+  display: none;
+  padding: 15px;
+  height: 100%;
+}
+
+.tab-content.current {
+  display: inherit;
+}<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
