@@ -1,0 +1,84 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #00d2ff;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #5b5b5b, #4d4d4d);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #5b5b5b, #4d4d4d);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-family: "Roboto", sans-serif;
+}
+
+/* ---- grid ---- */
+.grid {
+    background: #EEE;
+    /* max-width: 1200px; */
+}
+
+/* clearfix */
+.grid:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* ---- grid-item ---- */
+.grid-sizer,
+.grid-item {
+    width: 20%;
+}
+
+.grid-item {
+    height: 120px;
+    float: left;
+    background: #d26;
+    border: 2px solid #333;
+    border-color: hsla(0, 0%, 0%, 0.5);
+    border-radius: 5px;
+}
+
+.grid-item--samll {
+    height: 340px;
+    width: 20%;
+}
+
+.grid-item--noraml {
+    height: 340px;
+    width: 40%;
+}
+
+.grid-item--bigger {
+    height: 400px;
+    width: 60%;
+}
+
+/* other */
+h1 {
+    color: white;
+    padding: 4%;
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+}
+
+h1 small {
+    font-size: 18px;
+    display: block;
+    text-transform: none;
+    font-weight: 300;
+    margin-top: 5px;
+}
+
+.made-with-love {
+    margin-top: 30px;
+    padding: 10px;
+    font-size: 10px;
+    font-family: arial;
+    clear: left;
+    text-align: center;
+    color: #fff;
+}<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
