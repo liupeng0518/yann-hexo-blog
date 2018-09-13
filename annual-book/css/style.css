@@ -362,4 +362,30 @@ ul.tabs li.current {
 
 .tab-content.current {
   display: inherit;
+}
+
+
+.not-recommend-item {
+  color: white;
+}
+
+.not-recommend-list {
+  display: block;
+  padding: 30px;
+}
+
+.not-recommend-list li {
+  padding-top: 20px;
+}
+
+.not-recommend-item a {
+  font-size: 20px;
+  color: white;
+}
+
+.not-recommend-item p {
+  padding-left: 20px;
+  padding-top: 10px;
+  font-size: 15px;
+  color: white;
 }<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
