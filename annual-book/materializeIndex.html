@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1,minimal-ui" name="viewport">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/vue-material.min.css">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/theme/default.css"> -->
+    <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/theme/default-dark.css">
+
+</head>
+
+<body>
+    <div id="app">
+        <md-tabs class="default-dark" md-alignment="right" md-elevation="2">
+            <md-tab class="md-tab" v-for="tab in tabs" :id="tab.id" :md-label="tab.name">
+                <md-card>
+                    <md-card-media>
+                        <img src="https://s1.ax1x.com/2018/08/30/PjDizd.png" alt="People">
+                    </md-card-media>
+                    <md-card-content>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea nostrum.
+                    </md-card-content>
+                </md-card>
+            </md-tab>
+        </md-tabs>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/vue-material@beta"></script>
+    <script>
+        Vue.use(VueMaterial.default)
+        new Vue({
+            el: '#app',
+            data: {
+                tabs: [{
+                    id: 'tab-book',
+                    name: '书籍'
+                }, {
+                    id: 'tab-video',
+                    name: '视频'
+                }, {
+                    id: 'tab-other',
+                    name: '其他'
+                }]
+            },
+        });
+    </script>
+
+    <style lang="css" scoped>
+        .md-card {
+            width: 320px;
+            margin: 4px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .md-tab {
+            background: #9e9e9e;
+            height: 100%;
+        }
+    </style>
+</body>
+
+</html>

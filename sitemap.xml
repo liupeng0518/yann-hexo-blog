@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.yannxia.top/2018/09/16/life/keywords-2018/</loc>
+    
+    <lastmod>2018-09-16T15:10:17.540Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.yannxia.top/2018/09/01/rethink/pain-of-microservice/</loc>
     
     <lastmod>2018-09-06T14:01:45.551Z</lastmod>
@@ -282,14 +289,14 @@
   </url>
   
   <url>
-    <loc>http://blog.yannxia.top/tags/index.html</loc>
+    <loc>http://blog.yannxia.top/categories/index.html</loc>
     
     <lastmod>2018-04-18T07:34:08.724Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.yannxia.top/categories/index.html</loc>
+    <loc>http://blog.yannxia.top/tags/index.html</loc>
     
     <lastmod>2018-04-18T07:34:08.724Z</lastmod>
     
