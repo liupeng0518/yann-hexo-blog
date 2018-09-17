@@ -25,8 +25,7 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render: 'ppt/easy-way-to-kotlin-for-java-proggamer/*.html'
-
+skip_render: ["ppt/easy-way-to-kotlin-for-java-proggamer/*.html", "annual-book/*.html"]
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -74,32 +73,30 @@ theme: next
 # Git deploy
 ## https://github.com/hexojs/hexo-deployer-git
 deploy:
-  -
-    type: git
+  - type: git
     message: Updated
     repo:
       github: git@github.com:yannxia/yann-hexo-blog.git,gh-pages
       coding: git@git.coding.net:yann/yann-hexo-blog.git,coding-pages
     # coding-2: git@git.coding.net:yann/my-blog-page.git,master
     # bae: https://git.duapp.com/appidb2814744p0,master
-  -
-    type: baidu_url_submitter
+  - type: baidu_url_submitter
 # deploy:
 #   type: git
 #   repo: git@github.com:yannxia/hexo.git
 #   branch: gh-pages
 #   message: Updated
 
-  # type: git
-  # repo: git@git.coding.net:yann/hexo.git
-  # branch: gh-pages
-  # message: Updated
+# type: git
+# repo: git@git.coding.net:yann/hexo.git
+# branch: gh-pages
+# message: Updated
 
 #  algolia
 algolia:
-  applicationID: 'SLJ0R87CAH'
-  apiKey: 'fd4f2896d73497ea343ec5d504a06bb4'
-  indexName: 'yann_blog'
+  applicationID: "SLJ0R87CAH"
+  apiKey: "fd4f2896d73497ea343ec5d504a06bb4"
+  indexName: "yann_blog"
   chunkSize: 5000
 
 # hexo sitemap网站地图
