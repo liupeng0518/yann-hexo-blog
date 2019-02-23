@@ -20,8 +20,8 @@
                     <li class="tab">
                         <a href="../annual-recommend/2018.html">Yann's 2018 Choice</a>
                     </li>
-                    <li class="tab" v-for="tab in currentSubLocations" :class="{'active': currentSubLocation === tab.id}">
-                        <a @click="getSubData(tab.id)">{{ tab.name }}</a>
+                    <li v-for="tab in tabs" :id="tab.id" :class="{'active': currentLocation === tab.id}">
+                        <a @click="getData(tab.id)">{{ tab.name }}</a>
                     </li>
                 </ul>
             </div>
