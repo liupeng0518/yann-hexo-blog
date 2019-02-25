@@ -104,13 +104,15 @@
 <meta property="og:description" content="Kotlin 的第一个特点就是一门 静态类型 语言，所以先从如何在 Kotlin 中声明变量，Kotlin 如何推断变量的类型，以及 Kotlin 支持创建变量的基本数据类型开始我们的学习之旅。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://s1.ax1x.com/2018/07/11/PuwrnO.png">
-<meta property="og:updated_time" content="2018-08-17T05:32:33.982Z">
+<meta property="og:updated_time" content="2019-02-23T17:29:37.998Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="写给 Java 开发者的 Kotlin 教程 (3) - 数据类型">
 <meta name="twitter:description" content="Kotlin 的第一个特点就是一门 静态类型 语言，所以先从如何在 Kotlin 中声明变量，Kotlin 如何推断变量的类型，以及 Kotlin 支持创建变量的基本数据类型开始我们的学习之旅。">
 <meta name="twitter:image" content="https://s1.ax1x.com/2018/07/11/PuwrnO.png">
 
 
+
+  <link rel="alternate" href="/atom.xml" title="Yann's Blog" type="application/atom+xml"/>
 
 
 
@@ -446,7 +448,7 @@
                 
               
 
-              <time title="创建时间：2018-07-11 13:52:11" itemprop="dateCreated datePublished" datetime="2018-07-11T13:52:11+08:00">2018-07-11</time>
+              <time title="创建时间：2018-07-11 21:38:48" itemprop="dateCreated datePublished" datetime="2018-07-11T21:38:48+08:00">2018-07-11</time>
             
 
             
@@ -463,7 +465,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-08-17 13:32:33" itemprop="dateModified" datetime="2018-08-17T13:32:33+08:00">2018-08-17</time>
+                <time title="修改时间：2019-02-24 01:29:37" itemprop="dateModified" datetime="2019-02-24T01:29:37+08:00">2019-02-24</time>
               
             
           </span>
@@ -584,7 +586,7 @@
 </table>
 <p><strong>敲黑板：</strong> 字符类型在 <code>Kotlin</code> 不是 <code>Number类型</code></p>
 <h4 id="显式转换"><a href="#显式转换" class="headerlink" title="显式转换"></a>显式转换</h4><p>我们先看一个例子，再来理解这个特性</p>
-<div class="tabs" id="explicit-conversions"><ul class="nav-tabs"><li class="tab active"><a href="#explicit-conversions-1">Kotlin</a></li><li class="tab"><a href="#explicit-conversions-2">Java</a></li></ul><div class="tab-content"><div class="tab-pane active" id="explicit-conversions-1"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> b: <span class="built_in">Byte</span> = <span class="number">1</span> </span><br><span class="line"><span class="keyword">val</span> i: <span class="built_in">Int</span> = b <span class="comment">// 编译错误</span></span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="explicit-conversions-2"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">byte</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> b = a; <span class="comment">//OK</span></span><br></pre></td></tr></table></figure></div></div></div>
+<div class="tabs" id="explicit-conversions"><ul class="nav-tabs"><li class="tab active"><a href="#explicit-conversions-1">Kotlin</a></li><li class="tab"><a href="#explicit-conversions-2">Java</a></li></ul><div class="tab-content"><div class="tab-pane active" id="explicit-conversions-1"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> b: <span class="built_in">Byte</span> = <span class="number">1</span></span><br><span class="line"><span class="keyword">val</span> i: <span class="built_in">Int</span> = b <span class="comment">// 编译错误</span></span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="explicit-conversions-2"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">byte</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> b = a; <span class="comment">//OK</span></span><br></pre></td></tr></table></figure></div></div></div>
 <p><code>Kotlin</code> 提供一系列的数据转换的函数，如下：</p>
 <ul>
 <li>toByte(): Byte</li>
@@ -602,9 +604,9 @@
 <li>shr(bits) – 有符号右移 (Java’s &gt;&gt;)</li>
 <li>ushr(bits) – 无符号右移 (Java’s &gt;&gt;&gt;)</li>
 <li>and(bits) – 与操作</li>
-<li>or(bits) – 或操作 </li>
-<li>xor(bits) – 异或操作 </li>
-<li>inv() –  反转操作</li>
+<li>or(bits) – 或操作</li>
+<li>xor(bits) – 异或操作</li>
+<li>inv() – 反转操作</li>
 </ul>
 <p>好奇的你，肯定想问为什么可以写成 <code>val x = (1 shl 2) and 0x000FF000</code> 这样的语法，其实这个在很多语言中也有<br>也就是所谓的 <code>中缀表达式</code> 这里的内容会在 <code>函数</code> 中细说。所以聪明的你也会联系到是否 <code>+</code> <code>-</code> <code>*</code> <code>%</code> 也如此。<br>的确如此……</p>
 <table>
@@ -657,23 +659,28 @@
 </tr>
 </tbody>
 </table>
-<h2 id="字符类型"><a href="#字符类型" class="headerlink" title="字符类型"></a>字符类型</h2><p>字符文字用单引号括起：如 ‘1’。可以使用反斜杠转义特殊字符。支持以下转义序列：<code>\t</code>，<code>\b</code>，<code>\n</code>，<code>\r</code>，<code>\</code>，<code>\&quot;</code>，<code>\\</code>和<code>\$</code>。要对其他字符进行编码，需要使用Unicode转义序列语法：<code>&#39;\uFF00&#39;</code></p>
-<h2 id="数组类型"><a href="#数组类型" class="headerlink" title="数组类型"></a>数组类型</h2><p>在 <code>Kotlin</code> 将java中的数据转换为了 <code>Array</code> 类<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Array</span>&lt;<span class="type">T</span>&gt; <span class="keyword">private</span> <span class="keyword">constructor</span></span>() &#123;</span><br><span class="line">    <span class="keyword">val</span> size: <span class="built_in">Int</span></span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">get</span><span class="params">(index: <span class="type">Int</span>)</span></span>: T</span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">set</span><span class="params">(index: <span class="type">Int</span>, value: <span class="type">T</span>)</span></span>: <span class="built_in">Unit</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">iterator</span><span class="params">()</span></span>: Iterator&lt;T&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="字符类型"><a href="#字符类型" class="headerlink" title="字符类型"></a>字符类型</h2><p>字符文字用单引号括起：如 ‘1’。可以使用反斜杠转义特殊字符。支持以下转义序列：<code>\t</code>，<code>\b</code>，<code>\n</code>，<code>\r</code>，<code>\</code>，<code>\&quot;</code>，<code>\\</code>和<code>\$</code>。要对其他字符进行编码，需要使用 Unicode 转义序列语法：<code>&#39;\uFF00&#39;</code></p>
+<h2 id="数组类型"><a href="#数组类型" class="headerlink" title="数组类型"></a>数组类型</h2><p>在 <code>Kotlin</code> 将 java 中的数据转换为了 <code>Array</code> 类</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Array</span>&lt;<span class="type">T</span>&gt; <span class="keyword">private</span> <span class="keyword">constructor</span></span>() &#123;</span><br><span class="line">    <span class="keyword">val</span> size: <span class="built_in">Int</span></span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">get</span><span class="params">(index: <span class="type">Int</span>)</span></span>: T</span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">set</span><span class="params">(index: <span class="type">Int</span>, value: <span class="type">T</span>)</span></span>: <span class="built_in">Unit</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">iterator</span><span class="params">()</span></span>: Iterator&lt;T&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>Kotlin</code> 创建一个数组提供一些列简单的函数来帮助我们创建数组，比如<br><div class="tabs" id="array"><ul class="nav-tabs"><li class="tab active"><a href="#array-1">Kotlin</a></li><li class="tab"><a href="#array-2">Java</a></li></ul><div class="tab-content"><div class="tab-pane active" id="array-1"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> x = arrayOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="comment">// 构造函数 创建一个 Array&lt;String&gt; 初始化为 [“0”, “1”, “4”, “9”, “16”]</span></span><br><span class="line"><span class="keyword">val</span> asc = Array(<span class="number">5</span>, &#123; i -&gt; (i * i).toString() &#125;)</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="array-2"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br></pre></td></tr></table></figure></div></div></div></p>
 <p>除此之外 <code>Kotlin</code> 为 <code>Array</code> 增加了更多的方便操作的函数。举个例子</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xx = arrayOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">xx = xx.plus(<span class="number">5</span>) <span class="comment">//增加一个元素在最后</span></span><br><span class="line">xx = xx.copyOfRange(<span class="number">0</span>, <span class="number">2</span>)<span class="comment">//拷贝 0 - 2 下标的元素</span></span><br></pre></td></tr></table></figure>
-<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="字符串字面值"><a href="#字符串字面值" class="headerlink" title="字符串字面值"></a>字符串字面值</h3><p>创建一个单行的字符串 <code>s</code> 这个和java一样。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> s = <span class="string">"Hello, world!\n"</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="字符串字面值"><a href="#字符串字面值" class="headerlink" title="字符串字面值"></a>字符串字面值</h3><p>创建一个单行的字符串 <code>s</code> 这个和 java 一样。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> s = <span class="string">"Hello, world!\n"</span></span><br></pre></td></tr></table></figure>
 <p>但是 <code>Kotlin</code> 支持多行 <code>String</code></p>
-<div class="tabs" id="multie-string"><ul class="nav-tabs"><li class="tab active"><a href="#multie-string-1">Kotlin</a></li><li class="tab"><a href="#multie-string-2">Java</a></li></ul><div class="tab-content"><div class="tab-pane active" id="multie-string-1"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> text = <span class="string">“””</span></span><br><span class="line"><span class="string">    select * from users</span></span><br><span class="line"><span class="string">    where</span></span><br><span class="line"><span class="string">      username = ‘jack’</span></span><br><span class="line"><span class="string">“””</span></span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="multie-string-2"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String text = <span class="string">“select * from users\n”</span> + </span><br><span class="line">    <span class="string">“where\n”</span> +  </span><br><span class="line">    <span class="string">“username = ‘jack’”</span></span><br></pre></td></tr></table></figure></div></div></div>
+<div class="tabs" id="multie-string"><ul class="nav-tabs"><li class="tab active"><a href="#multie-string-1">Kotlin</a></li><li class="tab"><a href="#multie-string-2">Java</a></li></ul><div class="tab-content"><div class="tab-pane active" id="multie-string-1"><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> text = <span class="string">“””</span></span><br><span class="line"><span class="string">select * from users</span></span><br><span class="line"><span class="string">where</span></span><br><span class="line"><span class="string">username = ‘jack’</span></span><br><span class="line"><span class="string">“””</span></span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="multie-string-2"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String text = <span class="string">“select * from users\n”</span> +</span><br><span class="line"><span class="string">“where\n”</span> +  </span><br><span class="line"> <span class="string">“username = ‘jack’”</span></span><br></pre></td></tr></table></figure></div></div></div>
 <p>这个特性在我们需要输出比较复杂的 <code>Sql</code>或者是多行文本的情况下是极为方便的。</p>
-<h3 id="字符串模板"><a href="#字符串模板" class="headerlink" title="字符串模板"></a>字符串模板</h3><p>字符串可以包含模板表达式 ，即一些小段代码，会求值并把结果合并到字符串中。 模板表达式以美元符（$）开头，由一个简单的名字构成:<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> i = <span class="number">10</span></span><br><span class="line">println(<span class="string">"i = <span class="variable">$i</span>"</span>) <span class="comment">// 输出“i = 10”</span></span><br></pre></td></tr></table></figure></p>
-<p>或者用花括号括起来的任意表达式<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> s = <span class="string">"abc"</span></span><br><span class="line">println(<span class="string">"<span class="variable">$s</span>.length is <span class="subst">$&#123;s.length&#125;</span>"</span>) <span class="comment">// 输出“abc.length is 3”</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="类型别名"><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h3><p>类型别名可以为已有的类型提供替代的名称. 如果类型名称太长, 你可以指定一个更短的名称, 然后使用新的名称。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">typealias NodeSet = Set&lt;Network.Node&gt;</span><br><span class="line">typealias FileTable&lt;K&gt; = MutableMap&lt;K, MutableList&lt;File&gt;&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="字符串模板"><a href="#字符串模板" class="headerlink" title="字符串模板"></a>字符串模板</h3><p>字符串可以包含模板表达式 ，即一些小段代码，会求值并把结果合并到字符串中。 模板表达式以美元符（\$）开头，由一个简单的名字构成:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> i = <span class="number">10</span></span><br><span class="line">println(<span class="string">"i = <span class="variable">$i</span>"</span>) <span class="comment">// 输出“i = 10”</span></span><br></pre></td></tr></table></figure>
+<p>或者用花括号括起来的任意表达式</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> s = <span class="string">"abc"</span></span><br><span class="line">println(<span class="string">"<span class="variable">$s</span>.length is <span class="subst">$&#123;s.length&#125;</span>"</span>) <span class="comment">// 输出“abc.length is 3”</span></span><br></pre></td></tr></table></figure>
+<h3 id="类型别名"><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h3><p>类型别名可以为已有的类型提供替代的名称. 如果类型名称太长, 你可以指定一个更短的名称, 然后使用新的名称。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">typealias NodeSet = Set&lt;Network.Node&gt;</span><br><span class="line">typealias FileTable&lt;K&gt; = MutableMap&lt;K, MutableList&lt;File&gt;&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const <span class="keyword">val</span> SUBSYSTEM_DEPRECATED: String = <span class="string">"This subsystem is deprecated"</span></span><br></pre></td></tr></table></figure>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>参考官方文档中还有 <code>Boolean</code> 与 <code>Char</code> 类型，这两个类型和 Java 是极为接近就不多做阐述。</p>
 <p>而且我们从文中，我们可以发现，<code>Kotlin</code> 不存在 <code>Java</code> 中的 原始数据类型和包装数据类型，不存在 <code>int Integer</code> <code>long Long</code> <code>byte Byte</code> 的关系，也算是去除了 <code>Java</code> 中不太 <code>OOP</code> 的一部分。</p>
 <h2 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><ul>
-<li>Q: 执行位运算的执行顺序<br>A: 中缀函数调用的优先级低于算术操作符、类型转换以及 rangeTo 操作符，但是高于布尔操作符 &amp;&amp; 与 ||、is- 与 in- 检测以及其他一些操作符，所以 <code>1 shl 2 + 3  === 1 shl (2 + 3)</code> </li>
+<li>Q: 执行位运算的执行顺序<br>A: 中缀函数调用的优先级低于算术操作符、类型转换以及 rangeTo 操作符，但是高于布尔操作符 &amp;&amp; 与 ||、is- 与 in- 检测以及其他一些操作符，所以 <code>1 shl 2 + 3 === 1 shl (2 + 3)</code></li>
 </ul>
 <h2 id="参考文献-amp-课外阅读"><a href="#参考文献-amp-课外阅读" class="headerlink" title="参考文献 &amp; 课外阅读"></a>参考文献 &amp; 课外阅读</h2><ul>
 <li><a href="https://www.zhihu.com/question/19918532/answer/21647195" target="_blank" rel="noopener">弱类型、强类型、动态类型、静态类型语言的区别是什么</a></li>
@@ -1031,6 +1038,13 @@
             </nav>
           
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           

@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Yann&#39;s Blog</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://blog.yannxia.top/"/>
+  <updated>2019-02-23T11:35:57.426Z</updated>
+  <id>http://blog.yannxia.top/</id>
+  
+  <author>
+    <name>yann.xia</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2019的学习计划</title>
+    <link href="http://blog.yannxia.top/2019/02/15/what-is-to-learn-in-2019/"/>
+    <id>http://blog.yannxia.top/2019/02/15/what-is-to-learn-in-2019/</id>
+    <published>2019-02-15T08:29:03.000Z</published>
+    <updated>2019-02-23T11:35:57.426Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;2018&lt;/code&gt;我准备学什么，还是在恬不知耻的活在首页，我现在就开始想着我&lt;code&gt;2019&lt;/code&gt;学什么了。终归学点东西总是比点计划没有的好点，至于如果什么都没学会，大概来年又能写下相同的话。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Todo" scheme="http://blog.yannxia.top/categories/Todo/"/>
+    
+      <category term="Plan" scheme="http://blog.yannxia.top/categories/Todo/Plan/"/>
+    
+    
+      <category term="Todo" scheme="http://blog.yannxia.top/tags/Todo/"/>
+    
+      <category term="Plan" scheme="http://blog.yannxia.top/tags/Plan/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2019年第5周推荐阅读</title>
+    <link href="http://blog.yannxia.top/2019/01/28/2019-week-5-recommend/"/>
+    <id>http://blog.yannxia.top/2019/01/28/2019-week-5-recommend/</id>
+    <published>2019-01-28T08:09:25.000Z</published>
+    <updated>2019-02-01T16:50:34.753Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;好文共享&quot;&gt;&lt;a href=&quot;#好文共享&quot; class=&quot;headerlink&quot; title=&quot;好文共享&quot;&gt;&lt;/a&gt;好文共享&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>2019年第4周推荐阅读</title>
+    <link href="http://blog.yannxia.top/2019/01/28/2019-week-4-recommend/"/>
+    <id>http://blog.yannxia.top/2019/01/28/2019-week-4-recommend/</id>
+    <published>2019-01-28T01:48:01.000Z</published>
+    <updated>2019-01-28T08:10:11.067Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/49947103&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>我的2018关键字</title>
+    <link href="http://blog.yannxia.top/2018/09/16/life/keywords-2018/"/>
+    <id>http://blog.yannxia.top/2018/09/16/life/keywords-2018/</id>
+    <published>2018-09-16T14:22:48.000Z</published>
+    <updated>2018-09-16T15:10:17.540Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;刚好有一个朋友，如果用十个词形容自己的现状，我想了想还是写下来，也算是水一篇博客。&lt;/p&gt;
+&lt;h2 id=&quot;1-碌碌无为-遥遥无期&quot;&gt;&lt;a href=&quot;#1-碌碌无为-遥遥无期&quot; class=&quot;headerlink&quot; title=&quot;1. 碌碌无为/遥遥无期&quot;&gt;&lt;/a&gt;1. 碌碌无为/遥遥无期&lt;/h2&gt;&lt;p&gt;对于我来说，这一年大概是我觉得最为碌碌无为的一年了，回想起来，不仅仅什么事情都没有做，还搞砸了一堆事情，计划的&lt;code&gt;马拉松&lt;/code&gt;,&lt;code&gt;读书计划&lt;/code&gt;,&lt;code&gt;减肥计划&lt;/code&gt;大概这个计划可以再陪伴一年了，老朋友明年见。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="life" scheme="http://blog.yannxia.top/categories/life/"/>
+    
+    
+      <category term="生活" scheme="http://blog.yannxia.top/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微服务之痛</title>
+    <link href="http://blog.yannxia.top/2018/09/01/rethink/pain-of-microservice/"/>
+    <id>http://blog.yannxia.top/2018/09/01/rethink/pain-of-microservice/</id>
+    <published>2018-09-01T10:00:48.000Z</published>
+    <updated>2018-09-06T14:01:45.551Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;笔者在最近的2年内，一直从事微服务咨询工作，帮助两位数的企业改造项目至微服务架构，然而这一切并非如想象中的一帆风顺，写下此篇也意在反思微服务的一些伤痛。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="rethink" scheme="http://blog.yannxia.top/categories/rethink/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>关于编程能力的反思</title>
+    <link href="http://blog.yannxia.top/2018/08/18/rethink/rethink-code-ability/"/>
+    <id>http://blog.yannxia.top/2018/08/18/rethink/rethink-code-ability/</id>
+    <published>2018-08-18T10:00:48.000Z</published>
+    <updated>2018-08-19T09:15:23.351Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我认为编程上有几种类型的问题&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;第一种是本源性的问题，比如 &lt;strong&gt;算法&lt;/strong&gt; ，明确性问题，有专业的科研从业者。&lt;/li&gt;
+&lt;li&gt;第二种是现实生活中的，输入的条件是不稳定的，外部因素也一直在变化。&lt;/li&gt;
+&lt;li&gt;第三类是技能无关的技能，比如团队的调节，团队目标的确定等。&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="rethink" scheme="http://blog.yannxia.top/categories/rethink/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>写给 Java 开发者的 Kotlin 教程 (13) - 最佳实践</title>
+    <link href="http://blog.yannxia.top/2018/08/17/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-best-practices/"/>
+    <id>http://blog.yannxia.top/2018/08/17/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-best-practices/</id>
+    <published>2018-08-17T07:40:48.000Z</published>
+    <updated>2018-08-17T09:29:10.035Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://s1.ax2x.com/2018/08/17/59jvsG.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="kotlin" scheme="http://blog.yannxia.top/categories/kotlin/"/>
+    
+      <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yannxia.top/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Gateway版本迭代反思</title>
+    <link href="http://blog.yannxia.top/2018/08/15/rethink/rethink-in-gateway/"/>
+    <id>http://blog.yannxia.top/2018/08/15/rethink/rethink-in-gateway/</id>
+    <published>2018-08-15T09:00:48.000Z</published>
+    <updated>2018-08-15T12:35:23.712Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;笔者在 2017.12 - 至今（2018.8）都沉浸在 &lt;code&gt;微服务治理平台&lt;/code&gt; 的 &lt;code&gt;网关&lt;/code&gt; 这个组件的构造之上，恰逢系统更新到 &lt;code&gt;1.2&lt;/code&gt; 著此作为反思。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;此处的网关指的是七层的 API 网关&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/08/15/PRero4.png&quot; alt=&quot;banner&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://blog.yannxia.top/categories/java/"/>
+    
+      <category term="gateway" scheme="http://blog.yannxia.top/categories/java/gateway/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>写给 Java 开发者的 Kotlin 教程 (12) - 拾遗</title>
+    <link href="http://blog.yannxia.top/2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-omissions/"/>
+    <id>http://blog.yannxia.top/2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-omissions/</id>
+    <published>2018-08-15T07:40:48.000Z</published>
+    <updated>2018-08-17T08:47:15.958Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Kotlin的泛型&quot;&gt;&lt;a href=&quot;#Kotlin的泛型&quot; class=&quot;headerlink&quot; title=&quot;Kotlin的泛型&quot;&gt;&lt;/a&gt;Kotlin的泛型&lt;/h2&gt;&lt;h2 id=&quot;密封类&quot;&gt;&lt;a href=&quot;#密封类&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="kotlin" scheme="http://blog.yannxia.top/categories/kotlin/"/>
+    
+      <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yannxia.top/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>写给 Java 开发者的 Kotlin 教程 (11) - object 关键字</title>
+    <link href="http://blog.yannxia.top/2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-object/"/>
+    <id>http://blog.yannxia.top/2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-object/</id>
+    <published>2018-08-15T06:40:48.000Z</published>
+    <updated>2018-08-17T08:41:25.075Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;对象表达式&quot;&gt;&lt;a href=&quot;#对象表达式&quot; class=&quot;headerlink&quot; title=&quot;对象表达式&quot;&gt;&lt;/a&gt;对象表达式&lt;/h2&gt;&lt;p&gt;&lt;code&gt;kotlin&lt;/code&gt; 里面有个关键字 &lt;code&gt;object&lt;/code&gt;，用作创建一个对象。&lt;br&gt;比如我们有个例子&lt;br&gt;&lt;figure class=&quot;highlight kotlin&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;open&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;A&lt;/span&gt;&lt;/span&gt;(x: &lt;span class=&quot;built_in&quot;&gt;Int&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;open&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;val&lt;/span&gt; y: &lt;span class=&quot;built_in&quot;&gt;Int&lt;/span&gt; = x&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;B&lt;/span&gt; &lt;/span&gt;&amp;#123;...&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;val&lt;/span&gt; ab: A = &lt;span class=&quot;keyword&quot;&gt;object&lt;/span&gt; : A(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;), B &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;val&lt;/span&gt; y = &lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="kotlin" scheme="http://blog.yannxia.top/categories/kotlin/"/>
+    
+      <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yannxia.top/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>写给 Java 开发者的 Kotlin 教程 (10) -  面向对象 - 继承与多态</title>
+    <link href="http://blog.yannxia.top/2018/08/14/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-class-polymorphism/"/>
+    <id>http://blog.yannxia.top/2018/08/14/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-class-polymorphism/</id>
+    <published>2018-08-14T13:40:48.000Z</published>
+    <updated>2018-08-15T04:05:54.606Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/08/14/P2gOAK.jpg&quot; alt=&quot;banner&quot;&gt;&lt;br&gt;继承是面向对象的最重要的特性之一，我们今天就来先看看继承这个特性，我们都知道 &lt;code&gt;kotlin&lt;/code&gt; 的任何一个类都是继承自 &lt;code&gt;Any&lt;/code&gt; 类。&lt;/p&gt;
+&lt;figure class=&quot;highlight kotlin&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt; // 隐形的 &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt; 继承自 &lt;span class=&quot;title&quot;&gt;Any&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="kotlin" scheme="http://blog.yannxia.top/categories/kotlin/"/>
+    
+      <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yannxia.top/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>OpenAPI（Swagger）快速入门</title>
+    <link href="http://blog.yannxia.top/2018/08/13/other/swagger/"/>
+    <id>http://blog.yannxia.top/2018/08/13/other/swagger/</id>
+    <published>2018-08-13T14:00:48.000Z</published>
+    <updated>2018-08-14T10:42:15.296Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/08/13/Pg2TYD.png&quot; alt=&quot;banner&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Swagger-是什么&quot;&gt;&lt;a href=&quot;#Swagger-是什么&quot; class=&quot;headerlink&quot; title=&quot;Swagger 是什么&quot;&gt;&lt;/a&gt;Swagger 是什么&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Swagger&lt;/code&gt;是使用&lt;code&gt;OpenAPI&lt;/code&gt;规范（OAS）开发 API 的最广泛使用的工具生态系统。2015 年，&lt;code&gt;SmartBear Software&lt;/code&gt;将&lt;code&gt;Swagger&lt;/code&gt;规范捐赠给&lt;code&gt;Linux Foundation&lt;/code&gt;，并将规范重命名为&lt;code&gt;OpenAPI&lt;/code&gt;规范。 &lt;code&gt;SmartBear&lt;/code&gt;还成为&lt;code&gt;OpenAPI Initiative（OAI）&lt;/code&gt;的创始成员，该机构以开放和透明的方式管理&lt;code&gt;OAS&lt;/code&gt;的发展。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;简而言之 Swagger 包含了一套 API 规范，并且提供一系列的生态组件&lt;br&gt;OpenAPI = 规范&lt;br&gt;Swagger = 实现规范的组件&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="doc" scheme="http://blog.yannxia.top/categories/doc/"/>
+    
+      <category term="swagger" scheme="http://blog.yannxia.top/categories/doc/swagger/"/>
+    
+      <category term="api" scheme="http://blog.yannxia.top/categories/doc/swagger/api/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>写给 Java 开发者的 Kotlin 教程 (9) -  面向对象 - 属性</title>
+    <link href="http://blog.yannxia.top/2018/08/07/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-class-with-properties/"/>
+    <id>http://blog.yannxia.top/2018/08/07/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-class-with-properties/</id>
+    <published>2018-08-07T12:00:48.000Z</published>
+    <updated>2018-08-13T14:00:05.193Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/08/07/PsMWvT.jpg&quot; alt=&quot;banner&quot;&gt;&lt;/p&gt;
+&lt;p&gt;上一章，我们聊过了面向对象的基础对象。我们继续来来对象中最为重要的 &lt;code&gt;属性&lt;/code&gt; 和 &lt;code&gt;方法&lt;/code&gt; 中的第一个。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="kotlin" scheme="http://blog.yannxia.top/categories/kotlin/"/>
+    
+      <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yannxia.top/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>写给 Java 开发者的 Kotlin 教程 (8) -  面向对象 - 基础</title>
+    <link href="http://blog.yannxia.top/2018/08/03/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-basic/"/>
+    <id>http://blog.yannxia.top/2018/08/03/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-basic/</id>
+    <published>2018-08-03T07:00:48.000Z</published>
+    <updated>2018-08-07T14:44:32.956Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/08/03/PBGkQK.jpg&quot; alt=&quot;banner&quot;&gt;&lt;/p&gt;
+&lt;p&gt;话不多说，Kotlin依然是一个门 &lt;code&gt;OOP&lt;/code&gt; 语言，我们从今天开始我们来踏上最后一段旅程。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="kotlin" scheme="http://blog.yannxia.top/categories/kotlin/"/>
+    
+      <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yannxia.top/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>写给 Java 开发者的 Kotlin 教程 (7) - 函数高阶</title>
+    <link href="http://blog.yannxia.top/2018/07/25/kotlin/easy-way-to-kotlin-for-java-proggamer/functions-advance/"/>
+    <id>http://blog.yannxia.top/2018/07/25/kotlin/easy-way-to-kotlin-for-java-proggamer/functions-advance/</id>
+    <published>2018-07-24T23:58:48.000Z</published>
+    <updated>2018-08-17T05:12:27.904Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/07/25/PtmXYn.jpg&quot; alt=&quot;banner&quot;&gt;&lt;/p&gt;
+&lt;p&gt;上一章，我们看过 &lt;code&gt;kotlin&lt;/code&gt; 的一些函数的基本用法，&lt;code&gt;kotlin&lt;/code&gt; 作为一门年轻的语言，当然不能和 &lt;code&gt;1995&lt;/code&gt;年的 &lt;code&gt;Java&lt;/code&gt; 一样，当然还有一些不一样的特性，我们今天就来看看 &lt;code&gt;kotlin&lt;/code&gt; 的一些函数的高阶特性。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="kotlin" scheme="http://blog.yannxia.top/categories/kotlin/"/>
+    
+      <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yannxia.top/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>写给 Java 开发者的 Kotlin 教程 (6) - 函数基础</title>
+    <link href="http://blog.yannxia.top/2018/07/22/kotlin/easy-way-to-kotlin-for-java-proggamer/functions/"/>
+    <id>http://blog.yannxia.top/2018/07/22/kotlin/easy-way-to-kotlin-for-java-proggamer/functions/</id>
+    <published>2018-07-22T07:52:48.000Z</published>
+    <updated>2018-07-22T09:45:13.319Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/07/22/PGJYwT.png&quot; alt=&quot;kotlin functions&quot;&gt;&lt;br&gt;函数是构成软件的基础块。我们今天就开始 &lt;code&gt;Kotlin&lt;/code&gt; 旅程的第二站 - &lt;code&gt;函数&lt;/code&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="kotlin" scheme="http://blog.yannxia.top/categories/kotlin/"/>
+    
+      <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yannxia.top/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>写给 Java 开发者的 Kotlin 教程 (5) - Null对象与类型安全</title>
+    <link href="http://blog.yannxia.top/2018/07/17/kotlin/easy-way-to-kotlin-for-java-proggamer/null-type/"/>
+    <id>http://blog.yannxia.top/2018/07/17/kotlin/easy-way-to-kotlin-for-java-proggamer/null-type/</id>
+    <published>2018-07-17T13:00:48.000Z</published>
+    <updated>2018-07-17T13:21:45.564Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/07/17/PlWoad.png&quot; alt=&quot;banner&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Kotlin 的类型系统旨在消除来自代码空引用的危险,许多编程语言（包括 &lt;code&gt;Java&lt;/code&gt;）中最常见的陷阱之一，就是访问空引用的成员会导致空引用异常。在 &lt;code&gt;Java&lt;/code&gt; 中，这等同于 &lt;code&gt;NullPointerException&lt;/code&gt; 或简称 &lt;code&gt;NPE&lt;/code&gt; 。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="kotlin" scheme="http://blog.yannxia.top/categories/kotlin/"/>
+    
+      <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yannxia.top/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Gradle 简易入门教程</title>
+    <link href="http://blog.yannxia.top/2018/07/14/gradle/easy-to-gradle/"/>
+    <id>http://blog.yannxia.top/2018/07/14/gradle/easy-to-gradle/</id>
+    <published>2018-07-14T00:40:48.000Z</published>
+    <updated>2018-07-14T06:12:39.598Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/07/14/PMmeYQ.png&quot; alt=&quot;banner&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Gradle&lt;/code&gt; 是一种构建工具，它抛弃了基于XML的构建脚本，取而代之的是采用一种基于 &lt;code&gt;Groovy&lt;/code&gt;（现在也支持 &lt;code&gt;Kotlin&lt;/code&gt;）的内部领域特定语言。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="buildtool" scheme="http://blog.yannxia.top/categories/buildtool/"/>
+    
+      <category term="gradle" scheme="http://blog.yannxia.top/categories/buildtool/gradle/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>写给 Java 开发者的 Kotlin 教程 (4) - 控制流表达式</title>
+    <link href="http://blog.yannxia.top/2018/07/12/kotlin/easy-way-to-kotlin-for-java-proggamer/control-flow/"/>
+    <id>http://blog.yannxia.top/2018/07/12/kotlin/easy-way-to-kotlin-for-java-proggamer/control-flow/</id>
+    <published>2018-07-12T00:00:15.000Z</published>
+    <updated>2018-07-12T00:29:38.070Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/07/12/Pu28Re.png&quot; alt=&quot;banner&quot;&gt;&lt;/p&gt;
+&lt;p&gt;有个先贤说过&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;掌握了规则就掌握了一切。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我认为在编程语言中掌握了 &lt;code&gt;控制语句&lt;/code&gt; 就算是掌握了编程语言（在 &lt;code&gt;FP&lt;/code&gt; 中效果打折）。所以我们今天开始要去探索编程语言中至为重要的 &lt;code&gt;Control Flow&lt;/code&gt; 部分。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="kotlin" scheme="http://blog.yannxia.top/categories/kotlin/"/>
+    
+      <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yannxia.top/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>写给 Java 开发者的 Kotlin 教程 (3) - 数据类型</title>
+    <link href="http://blog.yannxia.top/2018/07/11/kotlin/easy-way-to-kotlin-for-java-proggamer/data-types/"/>
+    <id>http://blog.yannxia.top/2018/07/11/kotlin/easy-way-to-kotlin-for-java-proggamer/data-types/</id>
+    <published>2018-07-11T13:38:48.000Z</published>
+    <updated>2019-02-23T17:29:37.998Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/07/11/PuwrnO.png&quot; alt=&quot;banner&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Kotlin&lt;/code&gt; 的第一个特点就是一门 &lt;a href=&quot;#参考文献&quot;&gt;&lt;code&gt;静态类型&lt;/code&gt;&lt;/a&gt; 语言，所以先从如何在 &lt;code&gt;Kotlin&lt;/code&gt; 中声明变量，&lt;code&gt;Kotlin&lt;/code&gt; 如何推断变量的类型，以及 &lt;code&gt;Kotlin&lt;/code&gt; 支持创建变量的基本数据类型开始我们的学习之旅。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="kotlin" scheme="http://blog.yannxia.top/categories/kotlin/"/>
+    
+      <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yannxia.top/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
+    
+    
+  </entry>
+  
+</feed>
