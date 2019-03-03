@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.yannxia.top/"/>
-  <updated>2019-02-23T11:35:57.426Z</updated>
+  <updated>2019-03-03T15:01:59.213Z</updated>
   <id>http://blog.yannxia.top/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>克市与乌市随记</title>
+    <link href="http://blog.yannxia.top/2019/02/27/something-about-it-in-karamay/"/>
+    <id>http://blog.yannxia.top/2019/02/27/something-about-it-in-karamay/</id>
+    <published>2019-02-26T17:08:01.000Z</published>
+    <updated>2019-03-03T15:01:59.213Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;机缘巧合之下，能够到&lt;a href=&quot;https://baike.baidu.com/item/克拉玛依/36972&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;code&gt;克拉玛依&lt;/code&gt;&lt;/a&gt;这里和 &lt;a href=&quot;http://www.hongyousoft.com.cn/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;code&gt;红有软件&lt;/code&gt;&lt;/a&gt;的前后进行过为了 3 周的&lt;code&gt;IT咨询&lt;/code&gt;功能在，从一个&lt;code&gt;IT&lt;/code&gt;从业者的眼中看&lt;code&gt;克拉玛依&lt;/code&gt;这个依靠油田拔地而起的城市，按照当地人的说法，这个城市几乎都围绕着&lt;code&gt;石油&lt;/code&gt;，&lt;code&gt;IT&lt;/code&gt;也不例外，&lt;code&gt;数字油田建设&lt;/code&gt;是&lt;code&gt;IT&lt;/code&gt;发展的核心。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="游记" scheme="http://blog.yannxia.top/categories/%E6%B8%B8%E8%AE%B0/"/>
+    
+    
+      <category term="游记" scheme="http://blog.yannxia.top/tags/%E6%B8%B8%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>2019的学习计划</title>
@@ -425,27 +445,6 @@
 &lt;p&gt;掌握了规则就掌握了一切。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;我认为在编程语言中掌握了 &lt;code&gt;控制语句&lt;/code&gt; 就算是掌握了编程语言（在 &lt;code&gt;FP&lt;/code&gt; 中效果打折）。所以我们今天开始要去探索编程语言中至为重要的 &lt;code&gt;Control Flow&lt;/code&gt; 部分。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="kotlin" scheme="http://blog.yannxia.top/categories/kotlin/"/>
-    
-      <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yannxia.top/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>写给 Java 开发者的 Kotlin 教程 (3) - 数据类型</title>
-    <link href="http://blog.yannxia.top/2018/07/11/kotlin/easy-way-to-kotlin-for-java-proggamer/data-types/"/>
-    <id>http://blog.yannxia.top/2018/07/11/kotlin/easy-way-to-kotlin-for-java-proggamer/data-types/</id>
-    <published>2018-07-11T13:38:48.000Z</published>
-    <updated>2019-02-23T17:29:37.998Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/07/11/PuwrnO.png&quot; alt=&quot;banner&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Kotlin&lt;/code&gt; 的第一个特点就是一门 &lt;a href=&quot;#参考文献&quot;&gt;&lt;code&gt;静态类型&lt;/code&gt;&lt;/a&gt; 语言，所以先从如何在 &lt;code&gt;Kotlin&lt;/code&gt; 中声明变量，&lt;code&gt;Kotlin&lt;/code&gt; 如何推断变量的类型，以及 &lt;code&gt;Kotlin&lt;/code&gt; 支持创建变量的基本数据类型开始我们的学习之旅。&lt;/p&gt;
     
     </summary>
     

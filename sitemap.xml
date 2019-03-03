@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.yannxia.top/2019/02/27/something-about-it-in-karamay/</loc>
+    
+    <lastmod>2019-03-03T15:01:59.213Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.yannxia.top/2018/07/11/kotlin/easy-way-to-kotlin-for-java-proggamer/data-types/</loc>
     
     <lastmod>2019-02-23T17:29:37.998Z</lastmod>
@@ -310,14 +317,14 @@
   </url>
   
   <url>
-    <loc>http://blog.yannxia.top/categories/index.html</loc>
+    <loc>http://blog.yannxia.top/tags/index.html</loc>
     
     <lastmod>2018-04-18T07:34:08.724Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.yannxia.top/tags/index.html</loc>
+    <loc>http://blog.yannxia.top/categories/index.html</loc>
     
     <lastmod>2018-04-18T07:34:08.724Z</lastmod>
     
