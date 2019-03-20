@@ -400,6 +400,855 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2017/03/01/spring-cloud-01-config/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yann.xia"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/Logo-2018.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yann's Blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/03/01/spring-cloud-01-config/" class="post-title-link" itemprop="url">Spring cloud 配置中心服务</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-03-01 15:27:07" itemprop="dateCreated datePublished" datetime="2017-03-01T15:27:07+08:00">2017-03-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-07 10:06:27" itemprop="dateModified" datetime="2018-03-07T10:06:27+08:00">2018-03-07</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/Spring-Cloud/" itemprop="url" rel="index"><span itemprop="name">Spring Cloud</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2017/03/01/spring-cloud-01-config/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/01/spring-cloud-01-config/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2017/03/01/spring-cloud-01-config/" class="leancloud_visitors" data-flag-title="Spring cloud 配置中心服务">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>为什么要写这一个系列的博客，主要是记录在自己学习Spring cloud中思考，倘若能够给大家一点点帮助，就更好了，写这个系列的话，抱着少即是多的心态，我们每一章讲的不会特别多，尽可能的每一章都比知识萃取的深一点。</p>
+<hr>
+<h4 id="PRE"><a href="#PRE" class="headerlink" title="PRE"></a>PRE</h4><p>本文写于 2017-03-01， 代码针对于 <strong>Spring Cloud Camden.SR5</strong> 版本。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/03/01/spring-cloud-01-config/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2017/02/20/object-oriented-design/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yann.xia"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/Logo-2018.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yann's Blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/02/20/object-oriented-design/" class="post-title-link" itemprop="url">SOLID, GRASP和其他面向对象设计的基本原则</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-02-20 15:27:07" itemprop="dateCreated datePublished" datetime="2017-02-20T15:27:07+08:00">2017-02-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-07 10:06:34" itemprop="dateModified" datetime="2018-03-07T10:06:34+08:00">2018-03-07</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OO/" itemprop="url" rel="index"><span itemprop="name">OO</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2017/02/20/object-oriented-design/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/20/object-oriented-design/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2017/02/20/object-oriented-design/" class="leancloud_visitors" data-flag-title="SOLID, GRASP和其他面向对象设计的基本原则">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>##学习面向对象的设计原则，并牢牢掌握SOLID和GRASP规则背后的思想</p>
+<p>今天开始编程，体验与Qlik合作带来的驱动数据应用开发的强大引擎。</p>
+<p>从一些老生常谈的事情开始说起来吧，软件代码应该符合以下特质：</p>
+<ul>
+<li>可维护性</li>
+<li>可扩展性</li>
+<li>模块化</li>
+</ul>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/02/20/object-oriented-design/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2017/02/07/getting-started-with-docker/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yann.xia"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/Logo-2018.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yann's Blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/02/07/getting-started-with-docker/" class="post-title-link" itemprop="url">从零开始学Docker</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-02-07 15:33:44" itemprop="dateCreated datePublished" datetime="2017-02-07T15:33:44+08:00">2017-02-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-07 10:06:58" itemprop="dateModified" datetime="2018-03-07T10:06:58+08:00">2018-03-07</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Docker/翻译/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2017/02/07/getting-started-with-docker/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/07/getting-started-with-docker/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2017/02/07/getting-started-with-docker/" class="leancloud_visitors" data-flag-title="从零开始学Docker">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
+<li><a href="#关于Docker">关于Docker</a></li>
+<li><a href="#Docker 架构">Docker 架构</a></li>
+<li><a href="#起航">起航</a></li>
+<li><a href="#其他常用命令">其他常用命令</a></li>
+<li><a href="#DOCKER集群">DOCKER集群</a></li>
+</ul>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/02/07/getting-started-with-docker/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2017/01/25/why-is-x-in-kmp/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yann.xia"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/Logo-2018.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yann's Blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/01/25/why-is-x-in-kmp/" class="post-title-link" itemprop="url">关于KMP算法中的一个小问题</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-25 13:46:07" itemprop="dateCreated datePublished" datetime="2017-01-25T13:46:07+08:00">2017-01-25</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-07 10:07:11" itemprop="dateModified" datetime="2018-03-07T10:07:11+08:00">2018-03-07</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/KMP/" itemprop="url" rel="index"><span itemprop="name">KMP</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/KMP/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2017/01/25/why-is-x-in-kmp/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/25/why-is-x-in-kmp/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2017/01/25/why-is-x-in-kmp/" class="leancloud_visitors" data-flag-title="关于KMP算法中的一个小问题">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>最近看了一个算法，KMP，字符串查询算法，这个方法有各种各样的讲解，我个人最喜欢的还是在 <a href="https://book.douban.com/subject/10432347/" target="_blank" rel="noopener">《算法》</a> 中所提到的用DFA的方式去解答这个算法。</p>
+<p>算法的核心可以看这篇文章：</p>
+<ul>
+<li><a href="http://blog.csdn.net/congduan/article/details/45459963" target="_blank" rel="noopener">从DFA角度理解KMP算法</a></li>
+<li><a href="http://judes.me/2016/04/10/kmp/" target="_blank" rel="noopener">算法第四版 kmp 算法</a></li>
+</ul>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/01/25/why-is-x-in-kmp/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2017/01/20/how-to-code-gobang-in-c/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1619,454 +2468,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2016/12/07/about-chameleon/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yann.xia"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/Logo-2018.png"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yann's Blog"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/12/07/about-chameleon/" class="post-title-link" itemprop="url">chameleon项目安利</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-12-07 17:18:31" itemprop="dateCreated datePublished" datetime="2016-12-07T17:18:31+08:00">2016-12-07</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-03-07 10:07:32" itemprop="dateModified" datetime="2018-03-07T10:07:32+08:00">2018-03-07</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <a href="/2016/12/07/about-chameleon/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/07/about-chameleon/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/2016/12/07/about-chameleon/" class="leancloud_visitors" data-flag-title="chameleon项目安利">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>chameleon(变色龙) 是一个Java的Bean Converter轮子，实现注解化类型转换。</p>
-<p><a href="https://github.com/yannxia/chameleon" target="_blank" rel="noopener">Github地址</a></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2016/12/07/about-chameleon/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2016/05/26/use-daocloud-hexo/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yann.xia"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/Logo-2018.png"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yann's Blog"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/05/26/use-daocloud-hexo/" class="post-title-link" itemprop="url">使用Daocloud持续部署Hexo</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-05-26 12:02:44" itemprop="dateCreated datePublished" datetime="2016-05-26T12:02:44+08:00">2016-05-26</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-03-07 09:54:16" itemprop="dateModified" datetime="2018-03-07T09:54:16+08:00">2018-03-07</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Docker/Daocloud/" itemprop="url" rel="index"><span itemprop="name">Daocloud</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Docker/Daocloud/Ci/" itemprop="url" rel="index"><span itemprop="name">Ci</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Docker/Daocloud/Ci/Lighttpd/" itemprop="url" rel="index"><span itemprop="name">Lighttpd</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <a href="/2016/05/26/use-daocloud-hexo/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/05/26/use-daocloud-hexo/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/2016/05/26/use-daocloud-hexo/" class="leancloud_visitors" data-flag-title="使用Daocloud持续部署Hexo">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>开始写博客，不太喜欢CSDN之类的技术博客，还是喜欢维护自己的博客网站，买了一个域名也一直没用，虽然手上也有一个ECS，但是搭建一个WordPress真的挺麻烦，而且只是想做一个安静的美男子。选来选取还是全静态的博客比较适合我这样的懒人，现在Github page使用的静态博客很轻便，大致上现在就是Jekyll 和 Hexo <a href="https://www.zhihu.com/question/21981094" target="_blank" rel="noopener">优缺点对比</a>. 总而言之，咱们也不能沦为设备党，还是应该以内容为主。</p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>静态博客的核心就在于整个生成的网站是全静态，没有任何与服务器交互的部分，所以服务器只要提供HTTP服务即可，所以可以部署在Github, Coding, BAE最便宜的静态实例之上。这些都是网上的教程很多，大家百度一波就好了，就在我把自己的HEXO博客挂在BAE的静态实例之上，就在考虑为什么不把博客放在Daoclou之上呢，Docker的容器化简直是现在是最火的方向。</p>
-<p>整理下思路，大致上也就是</p>
-<ol>
-<li>Step 1 ：打包一个Http server</li>
-<li>Step 2 ：把Pages放进web目录</li>
-<li>Step 3 ：启动服务器</li>
-</ol>
-<p>思路搞清楚，那我们就开始搞起来吧，首先我们需要的是一个WebServer，Nginx大家都耳熟能详，我们仅仅需要的是一个web 服务器，所以我选择使用Lighttpd，为什么选择这个可能是看见Light，我觉得占用的内存会低很多，毕竟我们使用的是免费的资源，配置还是很一般的。</p>
-<h2 id="编写Dockerfile"><a href="#编写Dockerfile" class="headerlink" title="编写Dockerfile"></a>编写Dockerfile</h2><p>Dockerfile</p>
-<pre><code>FROM jprjr/lighttpd
-#添加静态页面
-ADD public/ /srv/http/
-#启动服务器
-ENTRYPOINT [&quot;lighttpd&quot;, &quot;-D&quot;, &quot;-f&quot;, &quot;/etc/lighttpd/lighttpd.conf&quot;]
-</code></pre><p>内容只有这么多，注意public目录是放置Hexo generate 生成的全静态页面目录</p>
-<h2 id="部署项目"><a href="#部署项目" class="headerlink" title="部署项目"></a>部署项目</h2><p>首先当然将我们的代码上传至Coding or Github，建议对国有的支持，我选择了将整个项目创建于 Coding上，最终的项目如<br><a href="https://coding.net/u/yann/p/my-blog-page/git" target="_blank" rel="noopener">Coding-Hexo-项目</a></p>
-<ol>
-<li>创建一个新的构建<br><img src="http://cache.yannxia.info/%E5%88%9B%E5%BB%BA%E6%96%B0%E6%9E%84%E5%BB%BA.png" alt="创建新构建"><br><img src="http://cache.yannxia.info/%E6%9E%84%E5%BB%BA%E6%88%90%E5%8A%9F.png" alt="构建成功"></li>
-<li>构建成功后进行部署<br><img src="http://cache.yannxia.info/%E6%9E%84%E5%BB%BA%E6%88%90%E5%8A%9F.png" alt="部署成功"><br><img src="http://cache.yannxia.info/%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D.png" alt="绑定域名"><br>最后就是一路下一步，等待成功就Ok</li>
-</ol>
-<h2 id="检验成果"><a href="#检验成果" class="headerlink" title="检验成果"></a>检验成果</h2><p>从执行的域名就可以访问，<br><img src="http://cache.yannxia.info/5D5B2352-D79F-4AE1-936B-8046C3B39490.png" alt="访问域名"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>整来来说这么使用Daocloud进行Docker部署和Bae部署Hexo的静态是一样的道理，也能做到持续集成，但是我们仍然和hexo的命令没有完整的结合在一起，下一步实现一个Hook或者使用Python编写一个基于主分支修改之后，Daocloud也可以自动更新的方案。</p>
-<p>最后的最后，感谢Daocloud提供服务。</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2113,7 +2519,7 @@ ENTRYPOINT [&quot;lighttpd&quot;, &quot;-D&quot;, &quot;-f&quot;, &quot;/etc/lig
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-count">62</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

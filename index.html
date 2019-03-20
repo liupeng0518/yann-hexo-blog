@@ -400,6 +400,767 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2019/03/17/kubernetes/how-kubernetes-network-2/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yann.xia"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/Logo-2018.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yann's Blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/17/kubernetes/how-kubernetes-network-2/" class="post-title-link" itemprop="url">kubernetes网络原理(2) - Container & Pod</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-17 22:48:01" itemprop="dateCreated datePublished" datetime="2019-03-17T22:48:01+08:00">2019-03-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-20 16:43:05" itemprop="dateModified" datetime="2019-03-20T16:43:05+08:00">2019-03-20</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2019/03/17/kubernetes/how-kubernetes-network-2/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/17/kubernetes/how-kubernetes-network-2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/03/17/kubernetes/how-kubernetes-network-2/" class="leancloud_visitors" data-flag-title="kubernetes网络原理(2) - Container & Pod">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在 <a href="">kubernetes 网络原理(0) - 网络知识预备</a> 和 <a href="">kubernetes 网络原理(1) - 环境预备 &amp; 初窥网络</a> 中我们将基础的知识已经知悉，我们就来看看我们的网络通讯。</p>
+<p>我们已知道 <code>Kubernetes</code> 的逻辑架构如下：<br><img src="https://i.loli.net/2019/03/17/5c8e1371f3af1.png" alt="arc"></p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/17/kubernetes/how-kubernetes-network-2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2019/03/17/kubernetes/how-kubernetes-network-1/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yann.xia"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/Logo-2018.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yann's Blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/17/kubernetes/how-kubernetes-network-1/" class="post-title-link" itemprop="url">kubernetes网络原理(1) - 环境预备 & 初窥网络</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-17 21:48:01" itemprop="dateCreated datePublished" datetime="2019-03-17T21:48:01+08:00">2019-03-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-20 10:48:44" itemprop="dateModified" datetime="2019-03-20T10:48:44+08:00">2019-03-20</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2019/03/17/kubernetes/how-kubernetes-network-1/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/17/kubernetes/how-kubernetes-network-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/03/17/kubernetes/how-kubernetes-network-1/" class="leancloud_visitors" data-flag-title="kubernetes网络原理(1) - 环境预备 & 初窥网络">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="安装-kubernetes"><a href="#安装-kubernetes" class="headerlink" title="安装 kubernetes"></a>安装 kubernetes</h2><ul>
+<li><a href="https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/" target="_blank" rel="noopener">create cluster kubeadm</a></li>
+<li><a href="http://mediawiki.yannxia.top/index.php/Fastest_Install_Kubernetes" target="_blank" rel="noopener">fastest install kubernetes</a></li>
+</ul>
+<p>并且基于 <a href="https://www.projectcalico.org/" target="_blank" rel="noopener"><code>Calico</code></a> 网络构建 <code>Cluster</code> 集群</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/17/kubernetes/how-kubernetes-network-1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2019/03/07/kubernetes/how-kubernetes-network-0/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yann.xia"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/Logo-2018.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yann's Blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/07/kubernetes/how-kubernetes-network-0/" class="post-title-link" itemprop="url">kubernetes网络原理(0) - 网络知识预备</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-07 21:48:01" itemprop="dateCreated datePublished" datetime="2019-03-07T21:48:01+08:00">2019-03-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-20 16:45:26" itemprop="dateModified" datetime="2019-03-20T16:45:26+08:00">2019-03-20</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2019/03/07/kubernetes/how-kubernetes-network-0/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/07/kubernetes/how-kubernetes-network-0/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/03/07/kubernetes/how-kubernetes-network-0/" class="leancloud_visitors" data-flag-title="kubernetes网络原理(0) - 网络知识预备">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Docker 是“新瓶装旧酒”的产物，依赖于 Linux 内核技术 chroot 、namespace 和 cgroup。本篇先来看 namespace 技术。</p>
+<p>Docker 和虚拟机技术一样，从操作系统级上实现了资源的隔离，它本质上是宿主机上的进程（容器进程），所以资源隔离主要就是指进程资源的隔离。实现资源隔离的核心技术就是 Linux namespace。这技术和很多语言的命名空间的设计思想是一致的（如 C++ 的 namespace）。</p>
+<p>第零篇的话，我们就来看看最基础的 <code>namespace</code>，和我们后续需要使用的 <code>Tcpdump</code> 这个抓包工具。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/07/kubernetes/how-kubernetes-network-0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2019/03/06/rethink/microservice-trend-in-2019/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yann.xia"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/Logo-2018.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yann's Blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/06/rethink/microservice-trend-in-2019/" class="post-title-link" itemprop="url">微服务2019的新趋势</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-06 18:00:48" itemprop="dateCreated datePublished" datetime="2019-03-06T18:00:48+08:00">2019-03-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-20 16:52:32" itemprop="dateModified" datetime="2019-03-20T16:52:32+08:00">2019-03-20</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/rethink/" itemprop="url" rel="index"><span itemprop="name">rethink</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2019/03/06/rethink/microservice-trend-in-2019/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/06/rethink/microservice-trend-in-2019/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/03/06/rethink/microservice-trend-in-2019/" class="leancloud_visitors" data-flag-title="微服务2019的新趋势">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>微服务在<code>2019</code>的新趋势，势必是基础设施下行，应用支撑上行。下文展开了说。<br><img src="https://ws1.sinaimg.cn/large/eddc95fcly1g0sv992p3pj219s0ygh35.jpg" alt=""></p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/06/rethink/microservice-trend-in-2019/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2019/02/27/something-about-it-in-karamay/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1550,822 +2311,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2018/08/18/rethink/rethink-code-ability/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yann.xia"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/Logo-2018.png"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yann's Blog"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/08/18/rethink/rethink-code-ability/" class="post-title-link" itemprop="url">关于编程能力的反思</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-18 18:00:48" itemprop="dateCreated datePublished" datetime="2018-08-18T18:00:48+08:00">2018-08-18</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-08-19 17:15:23" itemprop="dateModified" datetime="2018-08-19T17:15:23+08:00">2018-08-19</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/rethink/" itemprop="url" rel="index"><span itemprop="name">rethink</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <a href="/2018/08/18/rethink/rethink-code-ability/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/08/18/rethink/rethink-code-ability/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/2018/08/18/rethink/rethink-code-ability/" class="leancloud_visitors" data-flag-title="关于编程能力的反思">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>我认为编程上有几种类型的问题</p>
-<ol>
-<li>第一种是本源性的问题，比如 <strong>算法</strong> ，明确性问题，有专业的科研从业者。</li>
-<li>第二种是现实生活中的，输入的条件是不稳定的，外部因素也一直在变化。</li>
-<li>第三类是技能无关的技能，比如团队的调节，团队目标的确定等。</li>
-</ol>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/08/18/rethink/rethink-code-ability/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2018/08/17/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-best-practices/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yann.xia"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/Logo-2018.png"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yann's Blog"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/08/17/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-best-practices/" class="post-title-link" itemprop="url">写给 Java 开发者的 Kotlin 教程 (13) - 最佳实践</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-17 15:40:48 / 修改时间：17:29:10" itemprop="dateCreated datePublished" datetime="2018-08-17T15:40:48+08:00">2018-08-17</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/kotlin/" itemprop="url" rel="index"><span itemprop="name">kotlin</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/kotlin/easy-way-to-kotlin-for-java-programer/" itemprop="url" rel="index"><span itemprop="name">easy-way-to-kotlin-for-java-programer</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <a href="/2018/08/17/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-best-practices/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/08/17/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-best-practices/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/2018/08/17/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-best-practices/" class="leancloud_visitors" data-flag-title="写给 Java 开发者的 Kotlin 教程 (13) - 最佳实践">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="https://s1.ax2x.com/2018/08/17/59jvsG.jpg" alt=""><br>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/08/17/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-best-practices/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2018/08/15/rethink/rethink-in-gateway/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yann.xia"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/Logo-2018.png"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yann's Blog"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/08/15/rethink/rethink-in-gateway/" class="post-title-link" itemprop="url">Gateway版本迭代反思</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-15 17:00:48 / 修改时间：20:35:23" itemprop="dateCreated datePublished" datetime="2018-08-15T17:00:48+08:00">2018-08-15</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/gateway/" itemprop="url" rel="index"><span itemprop="name">gateway</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <a href="/2018/08/15/rethink/rethink-in-gateway/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/08/15/rethink/rethink-in-gateway/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/2018/08/15/rethink/rethink-in-gateway/" class="leancloud_visitors" data-flag-title="Gateway版本迭代反思">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>笔者在 2017.12 - 至今（2018.8）都沉浸在 <code>微服务治理平台</code> 的 <code>网关</code> 这个组件的构造之上，恰逢系统更新到 <code>1.2</code> 著此作为反思。</p>
-<blockquote>
-<p>此处的网关指的是七层的 API 网关</p>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2018/08/15/PRero4.png" alt="banner"></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/08/15/rethink/rethink-in-gateway/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-omissions/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yann.xia"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/Logo-2018.png"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yann's Blog"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-omissions/" class="post-title-link" itemprop="url">写给 Java 开发者的 Kotlin 教程 (12) - 拾遗</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-15 15:40:48" itemprop="dateCreated datePublished" datetime="2018-08-15T15:40:48+08:00">2018-08-15</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-08-17 16:47:15" itemprop="dateModified" datetime="2018-08-17T16:47:15+08:00">2018-08-17</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/kotlin/" itemprop="url" rel="index"><span itemprop="name">kotlin</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/kotlin/easy-way-to-kotlin-for-java-programer/" itemprop="url" rel="index"><span itemprop="name">easy-way-to-kotlin-for-java-programer</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <a href="/2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-omissions/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-omissions/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-omissions/" class="leancloud_visitors" data-flag-title="写给 Java 开发者的 Kotlin 教程 (12) - 拾遗">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Kotlin的泛型"><a href="#Kotlin的泛型" class="headerlink" title="Kotlin的泛型"></a>Kotlin的泛型</h2><h2 id="密封类"><a href="#密封类" class="headerlink" title="密封类"></a>密封类</h2><p>密封类用来表示受限的类继承结构：当一个值为有限集中的类型、而不能有任何其他类型时。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sealed</span> <span class="class"><span class="keyword">class</span> <span class="title">Expr</span></span></span><br><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Const</span></span>(<span class="keyword">val</span> number: <span class="built_in">Double</span>) : Expr()</span><br><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Sum</span></span>(<span class="keyword">val</span> e1: Expr, <span class="keyword">val</span> e2: Expr) : Expr()</span><br><span class="line"><span class="keyword">object</span> NotANumber : Expr()</span><br></pre></td></tr></table></figure></p>
-<p>密封类的好处在于 <code>when</code> 语句<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">eval</span><span class="params">(expr: <span class="type">Expr</span>)</span></span>: <span class="built_in">Double</span> = <span class="keyword">when</span>(expr) &#123;</span><br><span class="line">    <span class="keyword">is</span> Const -&gt; expr.number</span><br><span class="line">    <span class="keyword">is</span> Sum -&gt; eval(expr.e1) + eval(expr.e2)</span><br><span class="line">    NotANumber -&gt; <span class="built_in">Double</span>.NaN</span><br><span class="line">    <span class="comment">// 不再需要 `else` 子句，因为我们已经覆盖了所有的情况</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="嵌套类和内部类"><a href="#嵌套类和内部类" class="headerlink" title="嵌套类和内部类"></a>嵌套类和内部类</h2><h3 id="嵌套类"><a href="#嵌套类" class="headerlink" title="嵌套类"></a>嵌套类</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> bar: <span class="built_in">Int</span> = <span class="number">1</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Nested</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">()</span></span> = <span class="number">2</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> demo = Outer.Nested().foo() <span class="comment">// == 2</span></span><br></pre></td></tr></table></figure>
-<h3 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">lass Outer &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> bar: <span class="built_in">Int</span> = <span class="number">1</span></span><br><span class="line">    inner <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">()</span></span> = bar</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> demo = Outer().Inner().foo() <span class="comment">// == 1</span></span><br></pre></td></tr></table></figure>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2412,7 +2362,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-count">62</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

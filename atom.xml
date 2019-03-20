@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.yannxia.top/"/>
-  <updated>2019-03-03T15:01:59.213Z</updated>
+  <updated>2019-03-20T08:43:05.818Z</updated>
   <id>http://blog.yannxia.top/</id>
   
   <author>
@@ -15,6 +15,79 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>kubernetes网络原理(2) - Container &amp; Pod</title>
+    <link href="http://blog.yannxia.top/2019/03/17/kubernetes/how-kubernetes-network-2/"/>
+    <id>http://blog.yannxia.top/2019/03/17/kubernetes/how-kubernetes-network-2/</id>
+    <published>2019-03-17T14:48:01.000Z</published>
+    <updated>2019-03-20T08:43:05.818Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在 &lt;a href=&quot;&quot;&gt;kubernetes 网络原理(0) - 网络知识预备&lt;/a&gt; 和 &lt;a href=&quot;&quot;&gt;kubernetes 网络原理(1) - 环境预备 &amp;amp; 初窥网络&lt;/a&gt; 中我们将基础的知识已经知悉，我们就来看看我们的网络通讯。&lt;/p&gt;
+&lt;p&gt;我们已知道 &lt;code&gt;Kubernetes&lt;/code&gt; 的逻辑架构如下：&lt;br&gt;&lt;img src=&quot;https://i.loli.net/2019/03/17/5c8e1371f3af1.png&quot; alt=&quot;arc&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>kubernetes网络原理(1) - 环境预备 &amp; 初窥网络</title>
+    <link href="http://blog.yannxia.top/2019/03/17/kubernetes/how-kubernetes-network-1/"/>
+    <id>http://blog.yannxia.top/2019/03/17/kubernetes/how-kubernetes-network-1/</id>
+    <published>2019-03-17T13:48:01.000Z</published>
+    <updated>2019-03-20T02:48:44.299Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;安装-kubernetes&quot;&gt;&lt;a href=&quot;#安装-kubernetes&quot; class=&quot;headerlink&quot; title=&quot;安装 kubernetes&quot;&gt;&lt;/a&gt;安装 kubernetes&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;create cluster kubeadm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://mediawiki.yannxia.top/index.php/Fastest_Install_Kubernetes&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;fastest install kubernetes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;并且基于 &lt;a href=&quot;https://www.projectcalico.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;code&gt;Calico&lt;/code&gt;&lt;/a&gt; 网络构建 &lt;code&gt;Cluster&lt;/code&gt; 集群&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>kubernetes网络原理(0) - 网络知识预备</title>
+    <link href="http://blog.yannxia.top/2019/03/07/kubernetes/how-kubernetes-network-0/"/>
+    <id>http://blog.yannxia.top/2019/03/07/kubernetes/how-kubernetes-network-0/</id>
+    <published>2019-03-07T13:48:01.000Z</published>
+    <updated>2019-03-20T08:45:26.620Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Docker 是“新瓶装旧酒”的产物，依赖于 Linux 内核技术 chroot 、namespace 和 cgroup。本篇先来看 namespace 技术。&lt;/p&gt;
+&lt;p&gt;Docker 和虚拟机技术一样，从操作系统级上实现了资源的隔离，它本质上是宿主机上的进程（容器进程），所以资源隔离主要就是指进程资源的隔离。实现资源隔离的核心技术就是 Linux namespace。这技术和很多语言的命名空间的设计思想是一致的（如 C++ 的 namespace）。&lt;/p&gt;
+&lt;p&gt;第零篇的话，我们就来看看最基础的 &lt;code&gt;namespace&lt;/code&gt;，和我们后续需要使用的 &lt;code&gt;Tcpdump&lt;/code&gt; 这个抓包工具。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>微服务2019的新趋势</title>
+    <link href="http://blog.yannxia.top/2019/03/06/rethink/microservice-trend-in-2019/"/>
+    <id>http://blog.yannxia.top/2019/03/06/rethink/microservice-trend-in-2019/</id>
+    <published>2019-03-06T10:00:48.000Z</published>
+    <updated>2019-03-20T08:52:32.152Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;微服务在&lt;code&gt;2019&lt;/code&gt;的新趋势，势必是基础设施下行，应用支撑上行。下文展开了说。&lt;br&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/eddc95fcly1g0sv992p3pj219s0ygh35.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="rethink" scheme="http://blog.yannxia.top/categories/rethink/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>克市与乌市随记</title>
@@ -358,93 +431,6 @@
     
       &lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/07/25/PtmXYn.jpg&quot; alt=&quot;banner&quot;&gt;&lt;/p&gt;
 &lt;p&gt;上一章，我们看过 &lt;code&gt;kotlin&lt;/code&gt; 的一些函数的基本用法，&lt;code&gt;kotlin&lt;/code&gt; 作为一门年轻的语言，当然不能和 &lt;code&gt;1995&lt;/code&gt;年的 &lt;code&gt;Java&lt;/code&gt; 一样，当然还有一些不一样的特性，我们今天就来看看 &lt;code&gt;kotlin&lt;/code&gt; 的一些函数的高阶特性。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="kotlin" scheme="http://blog.yannxia.top/categories/kotlin/"/>
-    
-      <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yannxia.top/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>写给 Java 开发者的 Kotlin 教程 (6) - 函数基础</title>
-    <link href="http://blog.yannxia.top/2018/07/22/kotlin/easy-way-to-kotlin-for-java-proggamer/functions/"/>
-    <id>http://blog.yannxia.top/2018/07/22/kotlin/easy-way-to-kotlin-for-java-proggamer/functions/</id>
-    <published>2018-07-22T07:52:48.000Z</published>
-    <updated>2018-07-22T09:45:13.319Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/07/22/PGJYwT.png&quot; alt=&quot;kotlin functions&quot;&gt;&lt;br&gt;函数是构成软件的基础块。我们今天就开始 &lt;code&gt;Kotlin&lt;/code&gt; 旅程的第二站 - &lt;code&gt;函数&lt;/code&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="kotlin" scheme="http://blog.yannxia.top/categories/kotlin/"/>
-    
-      <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yannxia.top/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>写给 Java 开发者的 Kotlin 教程 (5) - Null对象与类型安全</title>
-    <link href="http://blog.yannxia.top/2018/07/17/kotlin/easy-way-to-kotlin-for-java-proggamer/null-type/"/>
-    <id>http://blog.yannxia.top/2018/07/17/kotlin/easy-way-to-kotlin-for-java-proggamer/null-type/</id>
-    <published>2018-07-17T13:00:48.000Z</published>
-    <updated>2018-07-17T13:21:45.564Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/07/17/PlWoad.png&quot; alt=&quot;banner&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Kotlin 的类型系统旨在消除来自代码空引用的危险,许多编程语言（包括 &lt;code&gt;Java&lt;/code&gt;）中最常见的陷阱之一，就是访问空引用的成员会导致空引用异常。在 &lt;code&gt;Java&lt;/code&gt; 中，这等同于 &lt;code&gt;NullPointerException&lt;/code&gt; 或简称 &lt;code&gt;NPE&lt;/code&gt; 。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="kotlin" scheme="http://blog.yannxia.top/categories/kotlin/"/>
-    
-      <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yannxia.top/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Gradle 简易入门教程</title>
-    <link href="http://blog.yannxia.top/2018/07/14/gradle/easy-to-gradle/"/>
-    <id>http://blog.yannxia.top/2018/07/14/gradle/easy-to-gradle/</id>
-    <published>2018-07-14T00:40:48.000Z</published>
-    <updated>2018-07-14T06:12:39.598Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/07/14/PMmeYQ.png&quot; alt=&quot;banner&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Gradle&lt;/code&gt; 是一种构建工具，它抛弃了基于XML的构建脚本，取而代之的是采用一种基于 &lt;code&gt;Groovy&lt;/code&gt;（现在也支持 &lt;code&gt;Kotlin&lt;/code&gt;）的内部领域特定语言。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="buildtool" scheme="http://blog.yannxia.top/categories/buildtool/"/>
-    
-      <category term="gradle" scheme="http://blog.yannxia.top/categories/buildtool/gradle/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>写给 Java 开发者的 Kotlin 教程 (4) - 控制流表达式</title>
-    <link href="http://blog.yannxia.top/2018/07/12/kotlin/easy-way-to-kotlin-for-java-proggamer/control-flow/"/>
-    <id>http://blog.yannxia.top/2018/07/12/kotlin/easy-way-to-kotlin-for-java-proggamer/control-flow/</id>
-    <published>2018-07-12T00:00:15.000Z</published>
-    <updated>2018-07-12T00:29:38.070Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/07/12/Pu28Re.png&quot; alt=&quot;banner&quot;&gt;&lt;/p&gt;
-&lt;p&gt;有个先贤说过&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;掌握了规则就掌握了一切。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;我认为在编程语言中掌握了 &lt;code&gt;控制语句&lt;/code&gt; 就算是掌握了编程语言（在 &lt;code&gt;FP&lt;/code&gt; 中效果打折）。所以我们今天开始要去探索编程语言中至为重要的 &lt;code&gt;Control Flow&lt;/code&gt; 部分。&lt;/p&gt;
     
     </summary>
     

@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.yannxia.top/2019/03/06/rethink/microservice-trend-in-2019/</loc>
+    
+    <lastmod>2019-03-20T08:52:32.152Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.yannxia.top/2019/03/07/kubernetes/how-kubernetes-network-0/</loc>
+    
+    <lastmod>2019-03-20T08:45:26.620Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.yannxia.top/2019/03/17/kubernetes/how-kubernetes-network-2/</loc>
+    
+    <lastmod>2019-03-20T08:43:05.818Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.yannxia.top/2019/03/17/kubernetes/how-kubernetes-network-1/</loc>
+    
+    <lastmod>2019-03-20T02:48:44.299Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.yannxia.top/2019/02/27/something-about-it-in-karamay/</loc>
     
     <lastmod>2019-03-03T15:01:59.213Z</lastmod>
@@ -317,14 +345,14 @@
   </url>
   
   <url>
-    <loc>http://blog.yannxia.top/tags/index.html</loc>
+    <loc>http://blog.yannxia.top/categories/index.html</loc>
     
     <lastmod>2018-04-18T07:34:08.724Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.yannxia.top/categories/index.html</loc>
+    <loc>http://blog.yannxia.top/tags/index.html</loc>
     
     <lastmod>2018-04-18T07:34:08.724Z</lastmod>
     
