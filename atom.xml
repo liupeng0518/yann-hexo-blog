@@ -141,11 +141,11 @@
   </entry>
   
   <entry>
-    <title>Kubernetes-Calico-网络原理(0) - 网络知识预备</title>
+    <title>Kubernetes-网络原理(0) - 网络知识预备</title>
     <link href="http://blog.yannxia.top/2019/03/07/kubernetes/how-kubernetes-network-0/"/>
     <id>http://blog.yannxia.top/2019/03/07/kubernetes/how-kubernetes-network-0/</id>
     <published>2019-03-07T13:48:01.000Z</published>
-    <updated>2019-03-21T02:32:43.491Z</updated>
+    <updated>2019-03-22T05:08:35.249Z</updated>
     
     <summary type="html">
     
@@ -159,14 +159,10 @@
     
       <category term="network" scheme="http://blog.yannxia.top/categories/kubernetes/network/"/>
     
-      <category term="calico" scheme="http://blog.yannxia.top/categories/kubernetes/network/calico/"/>
-    
     
       <category term="kubernetes" scheme="http://blog.yannxia.top/tags/kubernetes/"/>
     
       <category term="network" scheme="http://blog.yannxia.top/tags/network/"/>
-    
-      <category term="calico" scheme="http://blog.yannxia.top/tags/calico/"/>
     
   </entry>
   
