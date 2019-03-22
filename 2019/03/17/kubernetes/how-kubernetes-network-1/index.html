@@ -97,16 +97,17 @@
 
 
   <meta name="description" content="安装 kubernetes create cluster kubeadm fastest install kubernetes  并且基于 Calico 网络构建 Cluster 集群">
+<meta name="keywords" content="kubernetes,network,calico">
 <meta property="og:type" content="article">
-<meta property="og:title" content="kubernetes网络原理(1) - 环境预备 &amp; 初窥网络">
+<meta property="og:title" content="Kubernetes-Calico-网络原理(1) - 环境预备 &amp; 初窥网络">
 <meta property="og:url" content="http://blog.yannxia.top/2019/03/17/kubernetes/how-kubernetes-network-1/index.html">
 <meta property="og:site_name" content="Yann&#39;s Blog">
 <meta property="og:description" content="安装 kubernetes create cluster kubeadm fastest install kubernetes  并且基于 Calico 网络构建 Cluster 集群">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/eddc95fcgy1g0zwugecopj20m40dkq3b.jpg">
-<meta property="og:updated_time" content="2019-03-20T02:48:44.299Z">
+<meta property="og:updated_time" content="2019-03-21T02:33:10.023Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kubernetes网络原理(1) - 环境预备 &amp; 初窥网络">
+<meta name="twitter:title" content="Kubernetes-Calico-网络原理(1) - 环境预备 &amp; 初窥网络">
 <meta name="twitter:description" content="安装 kubernetes create cluster kubeadm fastest install kubernetes  并且基于 Calico 网络构建 Cluster 集群">
 <meta name="twitter:image" content="https://ws1.sinaimg.cn/large/eddc95fcgy1g0zwugecopj20m40dkq3b.jpg">
 
@@ -127,7 +128,7 @@
   };
 </script>
 
-  <title>kubernetes网络原理(1) - 环境预备 & 初窥网络 | Yann's Blog</title>
+  <title>Kubernetes-Calico-网络原理(1) - 环境预备 & 初窥网络 | Yann's Blog</title>
   
 
 
@@ -422,7 +423,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">kubernetes网络原理(1) - 环境预备 & 初窥网络
+          <h2 class="post-title" itemprop="name headline">Kubernetes-Calico-网络原理(1) - 环境预备 & 初窥网络
 
               
             
@@ -465,11 +466,43 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-20 10:48:44" itemprop="dateModified" datetime="2019-03-20T10:48:44+08:00">2019-03-20</time>
+                <time title="修改时间：2019-03-21 10:33:10" itemprop="dateModified" datetime="2019-03-21T10:33:10+08:00">2019-03-21</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/kubernetes/" itemprop="url" rel="index"><span itemprop="name">kubernetes</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/kubernetes/network/" itemprop="url" rel="index"><span itemprop="name">network</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/kubernetes/network/calico/" itemprop="url" rel="index"><span itemprop="name">calico</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -491,7 +524,7 @@
 
           
           
-            <span id="/2019/03/17/kubernetes/how-kubernetes-network-1/" class="leancloud_visitors" data-flag-title="kubernetes网络原理(1) - 环境预备 & 初窥网络">
+            <span id="/2019/03/17/kubernetes/how-kubernetes-network-1/" class="leancloud_visitors" data-flag-title="Kubernetes-Calico-网络原理(1) - 环境预备 & 初窥网络">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -529,7 +562,8 @@
 <p>并且基于 <a href="https://www.projectcalico.org/" target="_blank" rel="noopener"><code>Calico</code></a> 网络构建 <code>Cluster</code> 集群</p>
 <a id="more"></a>
 <h2 id="部署架构"><a href="#部署架构" class="headerlink" title="部署架构"></a>部署架构</h2><p><img src="https://ws1.sinaimg.cn/large/eddc95fcgy1g0zwugecopj20m40dkq3b.jpg" alt="deplyment-arch"><br>最终我们按照上图配置好物理网络即可。</p>
-<p>我们给机器打上不同的 <code>tag</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl label nodes k8s-worker-1 worker=no-1</span><br><span class="line">kubectl label nodes k8s-worker-2 worker=no-2</span><br></pre></td></tr></table></figure></p>
+<p>我们给机器打上不同的 <code>tag</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl label nodes k8s-worker-1 worker=no-1</span><br><span class="line">kubectl label nodes k8s-worker-2 worker=no-2</span><br></pre></td></tr></table></figure>
 <h2 id="网络初窥"><a href="#网络初窥" class="headerlink" title="网络初窥"></a>网络初窥</h2><p>我们在 <code>k8s-master</code> 的机器上执行 <code>ip a</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 回环地址</span></span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::1/128 scope host</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line"><span class="comment"># 物理网卡</span></span><br><span class="line">2: ens192: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc mq state UP group default qlen 1000</span><br><span class="line">    link/ether 00:50:56:b4:60:31 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 10.12.22.1/16 brd 10.12.255.255 scope global ens192</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 fe80::250:56ff:feb4:6031/64 scope link</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line"><span class="comment"># Docker0</span></span><br><span class="line">3: docker0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc noqueue state DOWN group default</span><br><span class="line">    link/ether 02:42:f3:85:bf:61 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line"><span class="comment"># Tun0 网卡</span></span><br><span class="line">4: tunl0@NONE: &lt;NOARP,UP,LOWER_UP&gt; mtu 1440 qdisc noqueue state UNKNOWN group default qlen 1</span><br><span class="line">    link/ipip 0.0.0.0 brd 0.0.0.0</span><br><span class="line">    inet 192.168.0.1/32 brd 192.168.0.1 scope global tunl0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
 <p>我们发现除了，我们经常看到的 <code>docker0</code> 网卡，还多了一个 <code>tunl0</code> 网卡，我们知道 <code>tunl0</code> 一头连接着一个<code>Aplication</code>，那我们大致上可以猜测出来，<code>tunl0</code>的出口就是<code>Calico</code>的网络处理应用。</p>
@@ -560,14 +594,14 @@
 </tr>
 </tbody>
 </table>
-<h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">+--------------------+              +--------------------+ </span><br><span class="line">|   +------------+   |              |   +------------+   | </span><br><span class="line">|   |            |   |              |   |            |   | </span><br><span class="line">|   |    ConA    |   |              |   |    ConB    |   | </span><br><span class="line">|   |            |   |              |   |            |   | </span><br><span class="line">|   +-----+------+   |              |   +-----+------+   | </span><br><span class="line">|         |veth      |              |         |veth      | </span><br><span class="line">|       wl-A         |              |       wl-B         | </span><br><span class="line">|         |          |              |         |          |</span><br><span class="line">+-------node-A-------+              +-------node-B-------+ </span><br><span class="line">        |    |                               |    |</span><br><span class="line">        |    | type1.  <span class="keyword">in</span> the same lan       |    |</span><br><span class="line">        |    +-------------------------------+    |</span><br><span class="line">        |                                         |</span><br><span class="line">        |      type2. <span class="keyword">in</span> different network        |</span><br><span class="line">        |             +-------------+             |</span><br><span class="line">        |             |             |             |</span><br><span class="line">        +-------------+   Routers   |-------------+</span><br><span class="line">                      |             |</span><br><span class="line">                      +-------------+</span><br></pre></td></tr></table></figure>
-<p>图片与文字来自<sup><a href="#Calico网络的原理-组网方式与使用">附录2</a></sup></p>
+<h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">+--------------------+              +--------------------+</span><br><span class="line">|   +------------+   |              |   +------------+   |</span><br><span class="line">|   |            |   |              |   |            |   |</span><br><span class="line">|   |    ConA    |   |              |   |    ConB    |   |</span><br><span class="line">|   |            |   |              |   |            |   |</span><br><span class="line">|   +-----+------+   |              |   +-----+------+   |</span><br><span class="line">|         |veth      |              |         |veth      |</span><br><span class="line">|       wl-A         |              |       wl-B         |</span><br><span class="line">|         |          |              |         |          |</span><br><span class="line">+-------node-A-------+              +-------node-B-------+</span><br><span class="line">        |    |                               |    |</span><br><span class="line">        |    | type1.  <span class="keyword">in</span> the same lan       |    |</span><br><span class="line">        |    +-------------------------------+    |</span><br><span class="line">        |                                         |</span><br><span class="line">        |      type2. <span class="keyword">in</span> different network        |</span><br><span class="line">        |             +-------------+             |</span><br><span class="line">        |             |             |             |</span><br><span class="line">        +-------------+   Routers   |-------------+</span><br><span class="line">                      |             |</span><br><span class="line">                      +-------------+</span><br></pre></td></tr></table></figure>
+<p>图片与文字来自<sup><a href="#Calico网络的原理-组网方式与使用">附录 2</a></sup></p>
 <blockquote>
-<p> 核心问题是，nodeA怎样得知下一跳的地址？答案是node之间通过BGP协议交换路由信息。<br>   每个node上运行一个软路由软件bird，并且被设置成BGP Speaker，与其它node通过BGP协议交换路由信息。<br>   可以简单理解为，每一个node都会向其它node通知这样的信息:<br>   我是X.X.X.X，某个IP或者网段在我这里，它们的下一跳地址是我。<br>   通过这种方式每个node知晓了每个workload-endpoint的下一跳地址。</p>
+<p>核心问题是，nodeA 怎样得知下一跳的地址？答案是 node 之间通过 BGP 协议交换路由信息。<br>每个 node 上运行一个软路由软件 bird，并且被设置成 BGP Speaker，与其它 node 通过 BGP 协议交换路由信息。<br>可以简单理解为，每一个 node 都会向其它 node 通知这样的信息:<br>我是 X.X.X.X，某个 IP 或者网段在我这里，它们的下一跳地址是我。<br>通过这种方式每个 node 知晓了每个 workload-endpoint 的下一跳地址。</p>
 </blockquote>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://blog.scottlowe.org/2013/09/04/introducing-linux-network-namespaces/" target="_blank" rel="noopener">introducing-linux-network-namespaces</a></li>
-<li><a href="https://www.lijiaocn.com/%E9%A1%B9%E7%9B%AE/2017/04/11/calico-usage.html#as-per-rack" target="_blank" rel="noopener">Calico网络的原理-组网方式与使用</a></li>
+<li><a href="https://www.lijiaocn.com/%E9%A1%B9%E7%9B%AE/2017/04/11/calico-usage.html#as-per-rack" target="_blank" rel="noopener">Calico 网络的原理-组网方式与使用</a></li>
 </ul>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
       
@@ -631,7 +665,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://blog.yannxia.top/2019/03/17/kubernetes/how-kubernetes-network-1/" title="kubernetes网络原理(1) - 环境预备 & 初窥网络">http://blog.yannxia.top/2019/03/17/kubernetes/how-kubernetes-network-1/</a>
+    <a href="http://blog.yannxia.top/2019/03/17/kubernetes/how-kubernetes-network-1/" title="Kubernetes-Calico-网络原理(1) - 环境预备 & 初窥网络">http://blog.yannxia.top/2019/03/17/kubernetes/how-kubernetes-network-1/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -642,6 +676,16 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/kubernetes/" rel="tag"># kubernetes</a>
+          
+            <a href="/tags/network/" rel="tag"># network</a>
+          
+            <a href="/tags/calico/" rel="tag"># calico</a>
+          
+        </div>
+      
 
       
       
@@ -651,8 +695,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/07/kubernetes/how-kubernetes-network-0/" rel="next" title="kubernetes网络原理(0) - 网络知识预备">
-                <i class="fa fa-chevron-left"></i> kubernetes网络原理(0) - 网络知识预备
+              <a href="/2019/03/07/kubernetes/how-kubernetes-network-0/" rel="next" title="Kubernetes-Calico-网络原理(0) - 网络知识预备">
+                <i class="fa fa-chevron-left"></i> Kubernetes-Calico-网络原理(0) - 网络知识预备
               </a>
             
           </div>
@@ -661,8 +705,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/17/kubernetes/how-kubernetes-network-2/" rel="prev" title="kubernetes网络原理(2) - Container & Pod">
-                kubernetes网络原理(2) - Container & Pod <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/17/kubernetes/how-kubernetes-network-2/" rel="prev" title="Kubernetes-Calico-网络原理(2) - Container & Pod">
+                Kubernetes-Calico-网络原理(2) - Container & Pod <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -744,7 +788,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">62</span>
+                    <span class="site-state-item-count">64</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -851,7 +895,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">47</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -916,7 +966,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">26</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1203,7 +1259,7 @@
   var disqus_config = function() {
     this.page.url = "http://blog.yannxia.top/2019/03/17/kubernetes/how-kubernetes-network-1/";
     this.page.identifier = "2019/03/17/kubernetes/how-kubernetes-network-1/";
-    this.page.title = 'kubernetes网络原理(1) - 环境预备 & 初窥网络';
+    this.page.title = 'Kubernetes-Calico-网络原理(1) - 环境预备 & 初窥网络';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');

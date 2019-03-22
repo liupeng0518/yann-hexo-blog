@@ -97,15 +97,16 @@
 
 
   <meta name="description" content="Docker 是“新瓶装旧酒”的产物，依赖于 Linux 内核技术 chroot 、namespace 和 cgroup。本篇先来看 namespace 技术。 Docker 和虚拟机技术一样，从操作系统级上实现了资源的隔离，它本质上是宿主机上的进程（容器进程），所以资源隔离主要就是指进程资源的隔离。实现资源隔离的核心技术就是 Linux namespace。这技术和很多语言的命名空间的设计思想是">
+<meta name="keywords" content="kubernetes,network,calico">
 <meta property="og:type" content="article">
-<meta property="og:title" content="kubernetes网络原理(0) - 网络知识预备">
+<meta property="og:title" content="Kubernetes-Calico-网络原理(0) - 网络知识预备">
 <meta property="og:url" content="http://blog.yannxia.top/2019/03/07/kubernetes/how-kubernetes-network-0/index.html">
 <meta property="og:site_name" content="Yann&#39;s Blog">
 <meta property="og:description" content="Docker 是“新瓶装旧酒”的产物，依赖于 Linux 内核技术 chroot 、namespace 和 cgroup。本篇先来看 namespace 技术。 Docker 和虚拟机技术一样，从操作系统级上实现了资源的隔离，它本质上是宿主机上的进程（容器进程），所以资源隔离主要就是指进程资源的隔离。实现资源隔离的核心技术就是 Linux namespace。这技术和很多语言的命名空间的设计思想是">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-20T08:45:26.620Z">
+<meta property="og:updated_time" content="2019-03-21T02:32:43.491Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kubernetes网络原理(0) - 网络知识预备">
+<meta name="twitter:title" content="Kubernetes-Calico-网络原理(0) - 网络知识预备">
 <meta name="twitter:description" content="Docker 是“新瓶装旧酒”的产物，依赖于 Linux 内核技术 chroot 、namespace 和 cgroup。本篇先来看 namespace 技术。 Docker 和虚拟机技术一样，从操作系统级上实现了资源的隔离，它本质上是宿主机上的进程（容器进程），所以资源隔离主要就是指进程资源的隔离。实现资源隔离的核心技术就是 Linux namespace。这技术和很多语言的命名空间的设计思想是">
 
 
@@ -125,7 +126,7 @@
   };
 </script>
 
-  <title>kubernetes网络原理(0) - 网络知识预备 | Yann's Blog</title>
+  <title>Kubernetes-Calico-网络原理(0) - 网络知识预备 | Yann's Blog</title>
   
 
 
@@ -420,7 +421,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">kubernetes网络原理(0) - 网络知识预备
+          <h2 class="post-title" itemprop="name headline">Kubernetes-Calico-网络原理(0) - 网络知识预备
 
               
             
@@ -463,11 +464,43 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-20 16:45:26" itemprop="dateModified" datetime="2019-03-20T16:45:26+08:00">2019-03-20</time>
+                <time title="修改时间：2019-03-21 10:32:43" itemprop="dateModified" datetime="2019-03-21T10:32:43+08:00">2019-03-21</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/kubernetes/" itemprop="url" rel="index"><span itemprop="name">kubernetes</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/kubernetes/network/" itemprop="url" rel="index"><span itemprop="name">network</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/kubernetes/network/calico/" itemprop="url" rel="index"><span itemprop="name">calico</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -489,7 +522,7 @@
 
           
           
-            <span id="/2019/03/07/kubernetes/how-kubernetes-network-0/" class="leancloud_visitors" data-flag-title="kubernetes网络原理(0) - 网络知识预备">
+            <span id="/2019/03/07/kubernetes/how-kubernetes-network-0/" class="leancloud_visitors" data-flag-title="Kubernetes-Calico-网络原理(0) - 网络知识预备">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -662,7 +695,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://blog.yannxia.top/2019/03/07/kubernetes/how-kubernetes-network-0/" title="kubernetes网络原理(0) - 网络知识预备">http://blog.yannxia.top/2019/03/07/kubernetes/how-kubernetes-network-0/</a>
+    <a href="http://blog.yannxia.top/2019/03/07/kubernetes/how-kubernetes-network-0/" title="Kubernetes-Calico-网络原理(0) - 网络知识预备">http://blog.yannxia.top/2019/03/07/kubernetes/how-kubernetes-network-0/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -672,6 +705,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/kubernetes/" rel="tag"># kubernetes</a>
+          
+            <a href="/tags/network/" rel="tag"># network</a>
+          
+            <a href="/tags/calico/" rel="tag"># calico</a>
+          
+        </div>
       
 
       
@@ -692,8 +735,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/17/kubernetes/how-kubernetes-network-1/" rel="prev" title="kubernetes网络原理(1) - 环境预备 & 初窥网络">
-                kubernetes网络原理(1) - 环境预备 & 初窥网络 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/17/kubernetes/how-kubernetes-network-1/" rel="prev" title="Kubernetes-Calico-网络原理(1) - 环境预备 & 初窥网络">
+                Kubernetes-Calico-网络原理(1) - 环境预备 & 初窥网络 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -775,7 +818,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">62</span>
+                    <span class="site-state-item-count">64</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -882,7 +925,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">47</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -947,7 +996,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">26</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1234,7 +1289,7 @@
   var disqus_config = function() {
     this.page.url = "http://blog.yannxia.top/2019/03/07/kubernetes/how-kubernetes-network-0/";
     this.page.identifier = "2019/03/07/kubernetes/how-kubernetes-network-0/";
-    this.page.title = 'kubernetes网络原理(0) - 网络知识预备';
+    this.page.title = 'Kubernetes-Calico-网络原理(0) - 网络知识预备';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');
