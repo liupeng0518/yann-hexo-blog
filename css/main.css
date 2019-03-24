@@ -2018,7 +2018,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #9affff;
+  background: #bdb098;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3443,4 +3443,10 @@ ul.breadcrumb li+li:last-child {
   .pagination {
     margin: 8px 0 0;
   }
+}
+.image-footer {
+  position: relative;
+  margin-top: -25px;
+  text-align: center;
+  clear: both;
 }

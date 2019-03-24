@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.yannxia.top/"/>
-  <updated>2019-03-22T05:04:13.130Z</updated>
+  <updated>2019-03-24T07:57:05.791Z</updated>
   <id>http://blog.yannxia.top/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Kubernetes-网络原理(5) - ClusterIP</title>
+    <link href="http://blog.yannxia.top/2019/03/22/kubernetes/how-kubernetes-network-5/"/>
+    <id>http://blog.yannxia.top/2019/03/22/kubernetes/how-kubernetes-network-5/</id>
+    <published>2019-03-22T13:48:01.000Z</published>
+    <updated>2019-03-24T07:57:05.791Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我们看完的了简单的网络通讯，在&lt;code&gt;Kubernetes&lt;/code&gt;中还有一个很重要的&lt;code&gt;ClusterIP&lt;/code&gt;的概念。如下图所示，这个是&lt;code&gt;K8s&lt;/code&gt;实现服务负载均衡的核心基础。&lt;br&gt;&lt;img src=&quot;https://i.loli.net/2019/03/22/5c946f9b14785.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="kubernetes" scheme="http://blog.yannxia.top/categories/kubernetes/"/>
+    
+      <category term="network" scheme="http://blog.yannxia.top/categories/kubernetes/network/"/>
+    
+    
+      <category term="kubernetes" scheme="http://blog.yannxia.top/tags/kubernetes/"/>
+    
+      <category term="network" scheme="http://blog.yannxia.top/tags/network/"/>
+    
+  </entry>
   
   <entry>
     <title>Kubernetes-Calico-网络原理(4) - BGP</title>
@@ -145,7 +169,7 @@
     <link href="http://blog.yannxia.top/2019/03/07/kubernetes/how-kubernetes-network-0/"/>
     <id>http://blog.yannxia.top/2019/03/07/kubernetes/how-kubernetes-network-0/</id>
     <published>2019-03-07T13:48:01.000Z</published>
-    <updated>2019-03-22T05:08:35.249Z</updated>
+    <updated>2019-03-22T05:13:46.032Z</updated>
     
     <summary type="html">
     
@@ -469,27 +493,6 @@
       <category term="swagger" scheme="http://blog.yannxia.top/categories/doc/swagger/"/>
     
       <category term="api" scheme="http://blog.yannxia.top/categories/doc/swagger/api/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>写给 Java 开发者的 Kotlin 教程 (9) -  面向对象 - 属性</title>
-    <link href="http://blog.yannxia.top/2018/08/07/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-class-with-properties/"/>
-    <id>http://blog.yannxia.top/2018/08/07/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-class-with-properties/</id>
-    <published>2018-08-07T12:00:48.000Z</published>
-    <updated>2018-08-13T14:00:05.193Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/08/07/PsMWvT.jpg&quot; alt=&quot;banner&quot;&gt;&lt;/p&gt;
-&lt;p&gt;上一章，我们聊过了面向对象的基础对象。我们继续来来对象中最为重要的 &lt;code&gt;属性&lt;/code&gt; 和 &lt;code&gt;方法&lt;/code&gt; 中的第一个。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="kotlin" scheme="http://blog.yannxia.top/categories/kotlin/"/>
-    
-      <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yannxia.top/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
     
     
   </entry>
