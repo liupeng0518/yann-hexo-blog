@@ -27,7 +27,8 @@
             </div>
             <div class="nav-content grey darken-3">
                 <ul class="tabs tabs-transparent">
-                    <li class="tab" v-for="tab in currentSubLocations" :class="{'active': currentSubLocation === tab.id}">
+                    <li class="tab" v-for="tab in currentSubLocations"
+                        :class="{'active': currentSubLocation === tab.id}">
                         <a @click="getSubData(tab.id)">{{ tab.name }}</a>
                     </li>
                 </ul>
@@ -39,7 +40,8 @@
                 <div class="card hoverable">
                     <div class="card-image">
                         <img class="item-image" :src="data.image" />
-                        <a :href="data.url" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">link
+                        <a :href="data.url" class="btn-floating halfway-fab waves-effect waves-light red"><i
+                                class="material-icons">link
                             </i></a>
                     </div>
                     <div class="card-content card-content-normal">
@@ -95,6 +97,18 @@
                             image: "https://s2.ax1x.com/2019/02/23/khoVXV.jpg",
                             url: "https://movie.douban.com/subject/26266893/",
                             recommendText: "中式科幻元年之作",
+                            recommendStar: "★★★★★"
+                        }, {
+                            name: "地久天长",
+                            image: "https://i.loli.net/2019/03/25/5c98730418d59.png",
+                            url: "https://movie.douban.com/subject/26715636",
+                            recommendText: "so long, my son",
+                            recommendStar: "★★★★★"
+                        }, {
+                            name: "波西米亚狂想曲",
+                            image: "https://i.loli.net/2019/03/25/5c988324c53e1.png",
+                            url: "https://movie.douban.com/subject/5300054/",
+                            recommendText: "Queen, Never Death.",
                             recommendStar: "★★★★★"
                         }],
                         normal: [],
