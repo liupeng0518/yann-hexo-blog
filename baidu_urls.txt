@@ -1,5 +1,5 @@
+http://blog.yannxia.top/2019/04/13/cs/art-of-software/
+http://blog.yannxia.top/2019/04/09/sc-or-art/
 http://blog.yannxia.top/2019/03/22/kubernetes/how-kubernetes-network-5/
 http://blog.yannxia.top/2019/03/21/kubernetes/how-kubernetes-network-4/
 http://blog.yannxia.top/2019/03/20/kubernetes/how-kubernetes-network-3/
-http://blog.yannxia.top/2019/03/17/kubernetes/how-kubernetes-network-2/
-http://blog.yannxia.top/2019/03/17/kubernetes/how-kubernetes-network-1/

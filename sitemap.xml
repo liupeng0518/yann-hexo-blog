@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.yannxia.top/2019/04/13/cs/art-of-software/</loc>
+    
+    <lastmod>2019-04-13T15:59:51.809Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.yannxia.top/2019/04/09/sc-or-art/</loc>
+    
+    <lastmod>2019-04-09T03:08:37.202Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.yannxia.top/2019/03/22/kubernetes/how-kubernetes-network-5/</loc>
     
     <lastmod>2019-03-24T07:57:05.791Z</lastmod>
@@ -366,14 +380,14 @@
   </url>
   
   <url>
-    <loc>http://blog.yannxia.top/tags/index.html</loc>
+    <loc>http://blog.yannxia.top/categories/index.html</loc>
     
     <lastmod>2018-04-18T07:34:08.724Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.yannxia.top/categories/index.html</loc>
+    <loc>http://blog.yannxia.top/tags/index.html</loc>
     
     <lastmod>2018-04-18T07:34:08.724Z</lastmod>
     

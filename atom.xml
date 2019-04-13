@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.yannxia.top/"/>
-  <updated>2019-03-24T07:57:05.791Z</updated>
+  <updated>2019-04-13T15:59:51.809Z</updated>
   <id>http://blog.yannxia.top/</id>
   
   <author>
@@ -15,6 +15,49 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>兵法与项目管理</title>
+    <link href="http://blog.yannxia.top/2019/04/13/cs/art-of-software/"/>
+    <id>http://blog.yannxia.top/2019/04/13/cs/art-of-software/</id>
+    <published>2019-04-13T15:48:01.000Z</published>
+    <updated>2019-04-13T15:59:51.809Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;孙子兵法有云：“凡战者，以正合，以奇胜。” 讲的是从战略是正面要刚得住，而依靠一支尖刀部队打开战场的僵局，而获得战场的胜利。项目管理也应担如此，然而往往大部分的项目截取了后半段而忽略了前半段，呜呼哀哉。&lt;/p&gt;
+&lt;p&gt;现代软件工程也存在着形如蒙代尔三角，质量，成本，风险。当控制得了风险和成本，那就不能要求太高的质量。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>计算机科学/艺术</title>
+    <link href="http://blog.yannxia.top/2019/04/09/sc-or-art/"/>
+    <id>http://blog.yannxia.top/2019/04/09/sc-or-art/</id>
+    <published>2019-04-09T02:24:00.000Z</published>
+    <updated>2019-04-09T03:08:37.202Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;不知道，大家是不是一直受《The Art of Computer
+        
+      
+    
+    </summary>
+    
+      <category term="吐槽" scheme="http://blog.yannxia.top/categories/%E5%90%90%E6%A7%BD/"/>
+    
+    
+      <category term="吐槽" scheme="http://blog.yannxia.top/tags/%E5%90%90%E6%A7%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>Kubernetes-网络原理(5) - ClusterIP</title>
@@ -446,53 +489,6 @@
       <category term="kotlin" scheme="http://blog.yannxia.top/categories/kotlin/"/>
     
       <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yannxia.top/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>写给 Java 开发者的 Kotlin 教程 (10) -  面向对象 - 继承与多态</title>
-    <link href="http://blog.yannxia.top/2018/08/14/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-class-polymorphism/"/>
-    <id>http://blog.yannxia.top/2018/08/14/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-class-polymorphism/</id>
-    <published>2018-08-14T13:40:48.000Z</published>
-    <updated>2018-08-15T04:05:54.606Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/08/14/P2gOAK.jpg&quot; alt=&quot;banner&quot;&gt;&lt;br&gt;继承是面向对象的最重要的特性之一，我们今天就来先看看继承这个特性，我们都知道 &lt;code&gt;kotlin&lt;/code&gt; 的任何一个类都是继承自 &lt;code&gt;Any&lt;/code&gt; 类。&lt;/p&gt;
-&lt;figure class=&quot;highlight kotlin&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt; // 隐形的 &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt; 继承自 &lt;span class=&quot;title&quot;&gt;Any&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="kotlin" scheme="http://blog.yannxia.top/categories/kotlin/"/>
-    
-      <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yannxia.top/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>OpenAPI（Swagger）快速入门</title>
-    <link href="http://blog.yannxia.top/2018/08/13/other/swagger/"/>
-    <id>http://blog.yannxia.top/2018/08/13/other/swagger/</id>
-    <published>2018-08-13T14:00:48.000Z</published>
-    <updated>2018-08-14T10:42:15.296Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/08/13/Pg2TYD.png&quot; alt=&quot;banner&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Swagger-是什么&quot;&gt;&lt;a href=&quot;#Swagger-是什么&quot; class=&quot;headerlink&quot; title=&quot;Swagger 是什么&quot;&gt;&lt;/a&gt;Swagger 是什么&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Swagger&lt;/code&gt;是使用&lt;code&gt;OpenAPI&lt;/code&gt;规范（OAS）开发 API 的最广泛使用的工具生态系统。2015 年，&lt;code&gt;SmartBear Software&lt;/code&gt;将&lt;code&gt;Swagger&lt;/code&gt;规范捐赠给&lt;code&gt;Linux Foundation&lt;/code&gt;，并将规范重命名为&lt;code&gt;OpenAPI&lt;/code&gt;规范。 &lt;code&gt;SmartBear&lt;/code&gt;还成为&lt;code&gt;OpenAPI Initiative（OAI）&lt;/code&gt;的创始成员，该机构以开放和透明的方式管理&lt;code&gt;OAS&lt;/code&gt;的发展。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;简而言之 Swagger 包含了一套 API 规范，并且提供一系列的生态组件&lt;br&gt;OpenAPI = 规范&lt;br&gt;Swagger = 实现规范的组件&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="doc" scheme="http://blog.yannxia.top/categories/doc/"/>
-    
-      <category term="swagger" scheme="http://blog.yannxia.top/categories/doc/swagger/"/>
-    
-      <category term="api" scheme="http://blog.yannxia.top/categories/doc/swagger/api/"/>
     
     
   </entry>
