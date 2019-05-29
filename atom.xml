@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.yannxia.top/"/>
-  <updated>2019-04-13T15:59:51.809Z</updated>
+  <updated>2019-05-29T14:12:10.228Z</updated>
   <id>http://blog.yannxia.top/</id>
   
   <author>
@@ -15,6 +15,22 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>云原生之下的Java</title>
+    <link href="http://blog.yannxia.top/2019/05/29/fxxk-java-in-cloud-native/"/>
+    <id>http://blog.yannxia.top/2019/05/29/fxxk-java-in-cloud-native/</id>
+    <published>2019-05-29T13:56:52.000Z</published>
+    <updated>2019-05-29T14:12:10.228Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;自从公司的运行平台全线迁入了 &lt;code&gt;Kubenetes&lt;/code&gt; 之后总是觉得 &lt;code&gt;Devops&lt;/code&gt; 变成了一个比以前更困难的事情，反思了一下，这一切的困境居然是从现在所使用的 &lt;code&gt;Java&lt;/code&gt; 编程语言而来，那我们先聊聊云原生。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>兵法与项目管理</title>
@@ -463,26 +479,6 @@
           &lt;h2 id=&quot;Kotlin的泛型&quot;&gt;&lt;a href=&quot;#Kotlin的泛型&quot; class=&quot;headerlink&quot; title=&quot;Kotlin的泛型&quot;&gt;&lt;/a&gt;Kotlin的泛型&lt;/h2&gt;&lt;h2 id=&quot;密封类&quot;&gt;&lt;a href=&quot;#密封类&quot;
         
       
-    
-    </summary>
-    
-      <category term="kotlin" scheme="http://blog.yannxia.top/categories/kotlin/"/>
-    
-      <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yannxia.top/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>写给 Java 开发者的 Kotlin 教程 (11) - object 关键字</title>
-    <link href="http://blog.yannxia.top/2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-object/"/>
-    <id>http://blog.yannxia.top/2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-object/</id>
-    <published>2018-08-15T06:40:48.000Z</published>
-    <updated>2018-08-17T08:41:25.075Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;对象表达式&quot;&gt;&lt;a href=&quot;#对象表达式&quot; class=&quot;headerlink&quot; title=&quot;对象表达式&quot;&gt;&lt;/a&gt;对象表达式&lt;/h2&gt;&lt;p&gt;&lt;code&gt;kotlin&lt;/code&gt; 里面有个关键字 &lt;code&gt;object&lt;/code&gt;，用作创建一个对象。&lt;br&gt;比如我们有个例子&lt;br&gt;&lt;figure class=&quot;highlight kotlin&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;open&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;A&lt;/span&gt;&lt;/span&gt;(x: &lt;span class=&quot;built_in&quot;&gt;Int&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;open&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;val&lt;/span&gt; y: &lt;span class=&quot;built_in&quot;&gt;Int&lt;/span&gt; = x&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;B&lt;/span&gt; &lt;/span&gt;&amp;#123;...&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;val&lt;/span&gt; ab: A = &lt;span class=&quot;keyword&quot;&gt;object&lt;/span&gt; : A(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;), B &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;val&lt;/span&gt; y = &lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
     
     </summary>
     
