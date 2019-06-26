@@ -99,14 +99,14 @@
   <meta name="description" content="Zuul2Zuul2的难产，终于在 2018.4.13 上架了中心仓库，也代表着Zuul正式加入Netty全家桶的怀抱，关于 Zuul2 有一篇宏观性的博文有兴趣的可以阅读 Zuul 2 : The Netflix Journey to Asynchronous, Non-Blocking Systems 此篇博客。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Zuul2源码分析">
-<meta property="og:url" content="http://blog.yannxia.top/2018/06/22/java/microservice/gateway/zuul2/index.html">
-<meta property="og:site_name" content="Yann&#39;s Blog">
+<meta property="og:url" content="http://blog.yanickxia.top/2018/06/22/java/microservice/gateway/zuul2/index.html">
+<meta property="og:site_name" content="Yanick&#39;s Blog">
 <meta property="og:description" content="Zuul2Zuul2的难产，终于在 2018.4.13 上架了中心仓库，也代表着Zuul正式加入Netty全家桶的怀抱，关于 Zuul2 有一篇宏观性的博文有兴趣的可以阅读 Zuul 2 : The Netflix Journey to Asynchronous, Non-Blocking Systems 此篇博客。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://s1.ax1x.com/2018/06/22/PSzIQs.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/06/22/PSzHe0.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/06/22/PpSZSH.png">
-<meta property="og:updated_time" content="2018-06-22T13:32:38.635Z">
+<meta property="og:updated_time" content="2018-06-22T13:32:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Zuul2源码分析">
 <meta name="twitter:description" content="Zuul2Zuul2的难产，终于在 2018.4.13 上架了中心仓库，也代表着Zuul正式加入Netty全家桶的怀抱，关于 Zuul2 有一篇宏观性的博文有兴趣的可以阅读 Zuul 2 : The Netflix Journey to Asynchronous, Non-Blocking Systems 此篇博客。">
@@ -114,13 +114,13 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Yann's Blog" type="application/atom+xml"/>
+  <link rel="alternate" href="/atom.xml" title="Yanick's Blog" type="application/atom+xml"/>
 
 
 
   
   
-  <link rel="canonical" href="http://blog.yannxia.top/2018/06/22/java/microservice/gateway/zuul2/"/>
+  <link rel="canonical" href="http://blog.yanickxia.top/2018/06/22/java/microservice/gateway/zuul2/"/>
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>Zuul2源码分析 | Yann's Blog</title>
+  <title>Zuul2源码分析 | Yanick's Blog</title>
   
 
 
@@ -189,7 +189,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Yann's Blog</span>
+        <span class="site-title">Yanick's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -417,16 +417,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.yannxia.top/2018/06/22/java/microservice/gateway/zuul2/"/>
+    <link itemprop="mainEntityOfPage" href="http://blog.yanickxia.top/2018/06/22/java/microservice/gateway/zuul2/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yann.xia"/>
+      <meta itemprop="name" content="Yanick.xia"/>
       <meta itemprop="description" content=""/>
       <meta itemprop="image" content="/images/Logo-2018.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yann's Blog"/>
+      <meta itemprop="name" content="Yanick's Blog"/>
     </span>
 
     
@@ -574,7 +574,7 @@
 <p>➊ 构建一个新的 <code>ServerGroup</code><br>➋ <code>setupServerBootstrap()</code> 初始化一个 <code>ServerBootstrap</code>，根据之前Netty的分析，我们知道Netty需要使用 <code>ServerBootstrap</code> 进行 端口绑定，那这里是不是就是那个东西。<br>我们继续深入</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> ChannelFuture <span class="title">setupServerBootstrap</span><span class="params">(<span class="keyword">int</span> port, ChannelInitializer channelInitializer)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> InterruptedException</span>&#123;</span><br><span class="line">    ServerBootstrap serverBootstrap = <span class="keyword">new</span> ServerBootstrap().group(</span><br><span class="line">            serverGroup.clientToProxyBossPool,</span><br><span class="line">            serverGroup.clientToProxyWorkerPool); ➊</span><br><span class="line"></span><br><span class="line">    serverBootstrap.childHandler(channelInitializer); ➋</span><br><span class="line">    serverBootstrap.validate();</span><br><span class="line"></span><br><span class="line">    LOG.info(<span class="string">"Binding to port: "</span> + port);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Flag status as UP just before binding to the port.</span></span><br><span class="line">    serverStatusManager.localStatus(InstanceInfo.InstanceStatus.UP); ➌</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Bind and start to accept incoming connections.</span></span><br><span class="line">    <span class="keyword">return</span> serverBootstrap.bind(port).sync();  ➍</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在 ➊ 构建了一个 <code>ServerBootstrap</code> 这个正是Netty的启动类<br>➋ 正如Netty的启动中的处理数据的 <code>Handler</code> 那这里应该也就是Zuul处理的核心所在<br>➌ 一个我们的老朋友，和Eureka集成时改变服务器状态<br>➍ 绑定 <code>ServerNioSockertChannel</code> 不再多做分析</p>
-<h2 id="1-3-休息"><a href="#1-3-休息" class="headerlink" title="1/3 休息"></a>1/3 休息</h2><p>我们已经发现了Zuul2是如何启动一个Netty服务的，我们解决了图中红框部分的原理，那我们接下来去了解最为重要的这些Filter是如何工作的，我们上启动中已经发现一个很重要的对象 <code>channelInitializer</code> 我们知道在Netty中，是将一系列的 <code>Handler</code> 聚合在一起并使用 <code>Pipeline</code> 执行（参考<a href="http://blog.yannxia.top/2018/06/20/java/netty/netty-3-pipeline/">Netty源码分析-(3)-ChannelPipeline</a>）我们可以猜测 zuul 的做法是类型，我们从这个 <code>channelInitializer</code> 入手去研究。</p>
+<h2 id="1-3-休息"><a href="#1-3-休息" class="headerlink" title="1/3 休息"></a>1/3 休息</h2><p>我们已经发现了Zuul2是如何启动一个Netty服务的，我们解决了图中红框部分的原理，那我们接下来去了解最为重要的这些Filter是如何工作的，我们上启动中已经发现一个很重要的对象 <code>channelInitializer</code> 我们知道在Netty中，是将一系列的 <code>Handler</code> 聚合在一起并使用 <code>Pipeline</code> 执行（参考<a href="http://blog.yannxia.top/2018/06/20/java/netty/netty-3-pipeline/" target="_blank" rel="noopener">Netty源码分析-(3)-ChannelPipeline</a>）我们可以猜测 zuul 的做法是类型，我们从这个 <code>channelInitializer</code> 入手去研究。</p>
 <h2 id="ZuulServerChannelInitializer"><a href="#ZuulServerChannelInitializer" class="headerlink" title="ZuulServerChannelInitializer"></a>ZuulServerChannelInitializer</h2><p>我们轻而易举的可以发现 <code>ChannelInitializer</code> 其实是  <code>ZuulServerChannelInitializer</code> 对象。在initChannel中我们发现了<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">initChannel</span><span class="params">(Channel ch)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">    ChannelPipeline pipeline = ch.pipeline();</span><br><span class="line">    storeChannel(ch);</span><br><span class="line">    addTimeoutHandlers(pipeline);</span><br><span class="line">    addPassportHandler(pipeline);</span><br><span class="line">    addTcpRelatedHandlers(pipeline);</span><br><span class="line">    addHttp1Handlers(pipeline);</span><br><span class="line">    addHttpRelatedHandlers(pipeline);</span><br><span class="line">    addZuulHandlers(pipeline); ➊</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>在➊前面的都比较简单都是一些标准的 <code>Handler</code> 大家可以自己阅读，最为重要是 <code>addZuulHandlers(pipeline);</code> 这个函数，我们继续深入。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">addZuulHandlers</span><span class="params">(<span class="keyword">final</span> ChannelPipeline pipeline)</span></span>&#123;</span><br><span class="line">    pipeline.addLast(<span class="string">"logger"</span>, nettyLogger);</span><br><span class="line">    pipeline.addLast(<span class="keyword">new</span> ClientRequestReceiver(sessionContextDecorator));</span><br><span class="line">    pipeline.addLast(passportLoggingHandler);</span><br><span class="line">    addZuulFilterChainHandler(pipeline); ➋</span><br><span class="line">    pipeline.addLast(<span class="keyword">new</span> ClientResponseWriter(requestCompleteHandler, registry));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -657,7 +657,7 @@
         
       
       <div style="display: inline-block">
-        <img src="/images/wxpay.jpg" alt="yann.xia 微信支付"/>
+        <img src="/images/wxpay.jpg" alt="Yanick.xia 微信支付"/>
         <p>微信支付</p>
       </div>
     
@@ -666,7 +666,7 @@
         
       
       <div style="display: inline-block">
-        <img src="/images/alipay-2.jpg" alt="yann.xia 支付宝"/>
+        <img src="/images/alipay-2.jpg" alt="Yanick.xia 支付宝"/>
         <p>支付宝</p>
       </div>
     
@@ -690,11 +690,11 @@
 
 <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者： </strong>yann.xia</li>
+    <strong>本文作者： </strong>Yanick.xia</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://blog.yannxia.top/2018/06/22/java/microservice/gateway/zuul2/" title="Zuul2源码分析">http://blog.yannxia.top/2018/06/22/java/microservice/gateway/zuul2/</a>
+    <a href="http://blog.yanickxia.top/2018/06/22/java/microservice/gateway/zuul2/" title="Zuul2源码分析">http://blog.yanickxia.top/2018/06/22/java/microservice/gateway/zuul2/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -793,9 +793,9 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/images/Logo-2018.png"
-                alt="yann.xia"/>
+                alt="Yanick.xia"/>
             
-              <p class="site-author-name" itemprop="name">yann.xia</p>
+              <p class="site-author-name" itemprop="name">Yanick.xia</p>
               <div class="site-description motion-element" itemprop="description"></div>
           </div>
 
@@ -1301,7 +1301,7 @@
 
 <script>
   var disqus_config = function() {
-    this.page.url = "http://blog.yannxia.top/2018/06/22/java/microservice/gateway/zuul2/";
+    this.page.url = "http://blog.yanickxia.top/2018/06/22/java/microservice/gateway/zuul2/";
     this.page.identifier = "2018/06/22/java/microservice/gateway/zuul2/";
     this.page.title = 'Zuul2源码分析';
     };
