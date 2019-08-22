@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Yann's Blog
+title: Yanick's Blog
 subtitle:
 description:
-author: yann.xia
+author: Yanick.xia
 language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://blog.yannxia.top
+url: http://blog.yanickxia.site
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -25,7 +25,11 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render: ["ppt/easy-way-to-kotlin-for-java-proggamer/*.html", "annual-book/*.html"]
+skip_render:
+  [
+    "ppt/easy-way-to-kotlin-for-java-proggamer/*.html",
+    "annual-recommend/*.html",
+  ]
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -76,7 +80,7 @@ deploy:
   - type: git
     message: Updated
     repo:
-      github: git@github.com:yannxia/yann-hexo-blog.git,gh-pages
+      github: git@github.com:yanickxia/yann-hexo-blog.git,gh-pages
       coding: git@git.coding.net:yann/yann-hexo-blog.git,coding-pages
     # coding-2: git@git.coding.net:yann/my-blog-page.git,master
     # bae: https://git.duapp.com/appidb2814744p0,master
@@ -108,3 +112,15 @@ baidu_url_submit:
   host: blog.yannxia.top
   token: etkvxK9GucUBxQPn
   path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
+
+# geneator rss feed
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: " "
+  order_by: -date
+  icon: icon.png
