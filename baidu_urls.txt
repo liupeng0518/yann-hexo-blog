@@ -1,5 +1,5 @@
-http://blog.yanickxia.top/2019/05/29/fxxk-java-in-cloud-native/
-http://blog.yanickxia.top/2019/04/13/cs/art-of-software/
-http://blog.yanickxia.top/2019/04/09/sc-or-art/
-http://blog.yanickxia.top/2019/03/22/kubernetes/how-kubernetes-network-5/
-http://blog.yanickxia.top/2019/03/21/kubernetes/how-kubernetes-network-4/
+http://blog.yanickxia.site/2019/08/21/life/criticize-not-good/
+http://blog.yanickxia.site/2019/05/29/fxxk-java-in-cloud-native/
+http://blog.yanickxia.site/2019/04/13/cs/art-of-software/
+http://blog.yanickxia.site/2019/04/09/sc-or-art/
+http://blog.yanickxia.site/2019/03/22/kubernetes/how-kubernetes-network-5/

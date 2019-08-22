@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://blog.yanickxia.top/"/>
-  <updated>2019-05-29T14:12:10.000Z</updated>
-  <id>http://blog.yanickxia.top/</id>
+  <link href="http://blog.yanickxia.site/"/>
+  <updated>2019-08-21T08:31:08.132Z</updated>
+  <id>http://blog.yanickxia.site/</id>
   
   <author>
     <name>Yanick.xia</name>
@@ -17,9 +17,29 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>批判无用论</title>
+    <link href="http://blog.yanickxia.site/2019/08/21/life/criticize-not-good/"/>
+    <id>http://blog.yanickxia.site/2019/08/21/life/criticize-not-good/</id>
+    <published>2019-08-21T08:22:48.000Z</published>
+    <updated>2019-08-21T08:31:08.132Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;从业这些年来，从来不觉得批判能给我带来什么，当我去批判某个人或者某件事的时候，我所获得的只是更大的反弹。这仿佛说起来很不政治正确，观点是一个非常容易说出来的事情，尤其是现在的互联网时代，你的每一个论点都会被无限的放大，所有的网友都像你的前女友一样，处处给你挑刺，试图在你微薄的上下文中找到你对话的漏洞，并且将漏洞放大一百倍，然后用高位者的姿态教育你一番，以上论点在任意场景下都适用。这一切的背后都是个人意志的无限放大乃至于失控。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="life" scheme="http://blog.yanickxia.site/categories/life/"/>
+    
+    
+      <category term="生活" scheme="http://blog.yanickxia.site/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
     <title>云原生之下的Java</title>
-    <link href="http://blog.yanickxia.top/2019/05/29/fxxk-java-in-cloud-native/"/>
-    <id>http://blog.yanickxia.top/2019/05/29/fxxk-java-in-cloud-native/</id>
+    <link href="http://blog.yanickxia.site/2019/05/29/fxxk-java-in-cloud-native/"/>
+    <id>http://blog.yanickxia.site/2019/05/29/fxxk-java-in-cloud-native/</id>
     <published>2019-05-29T13:56:52.000Z</published>
     <updated>2019-05-29T14:12:10.000Z</updated>
     
@@ -34,8 +54,8 @@
   
   <entry>
     <title>兵法与项目管理</title>
-    <link href="http://blog.yanickxia.top/2019/04/13/cs/art-of-software/"/>
-    <id>http://blog.yanickxia.top/2019/04/13/cs/art-of-software/</id>
+    <link href="http://blog.yanickxia.site/2019/04/13/cs/art-of-software/"/>
+    <id>http://blog.yanickxia.site/2019/04/13/cs/art-of-software/</id>
     <published>2019-04-13T15:48:01.000Z</published>
     <updated>2019-04-13T15:59:51.000Z</updated>
     
@@ -51,8 +71,8 @@
   
   <entry>
     <title>计算机科学/艺术</title>
-    <link href="http://blog.yanickxia.top/2019/04/09/sc-or-art/"/>
-    <id>http://blog.yanickxia.top/2019/04/09/sc-or-art/</id>
+    <link href="http://blog.yanickxia.site/2019/04/09/sc-or-art/"/>
+    <id>http://blog.yanickxia.site/2019/04/09/sc-or-art/</id>
     <published>2019-04-09T02:24:00.000Z</published>
     <updated>2019-04-09T03:08:37.000Z</updated>
     
@@ -68,17 +88,17 @@
     
     </summary>
     
-      <category term="吐槽" scheme="http://blog.yanickxia.top/categories/%E5%90%90%E6%A7%BD/"/>
+      <category term="吐槽" scheme="http://blog.yanickxia.site/categories/%E5%90%90%E6%A7%BD/"/>
     
     
-      <category term="吐槽" scheme="http://blog.yanickxia.top/tags/%E5%90%90%E6%A7%BD/"/>
+      <category term="吐槽" scheme="http://blog.yanickxia.site/tags/%E5%90%90%E6%A7%BD/"/>
     
   </entry>
   
   <entry>
     <title>Kubernetes-网络原理(5) - ClusterIP</title>
-    <link href="http://blog.yanickxia.top/2019/03/22/kubernetes/how-kubernetes-network-5/"/>
-    <id>http://blog.yanickxia.top/2019/03/22/kubernetes/how-kubernetes-network-5/</id>
+    <link href="http://blog.yanickxia.site/2019/03/22/kubernetes/how-kubernetes-network-5/"/>
+    <id>http://blog.yanickxia.site/2019/03/22/kubernetes/how-kubernetes-network-5/</id>
     <published>2019-03-22T13:48:01.000Z</published>
     <updated>2019-03-24T07:57:05.000Z</updated>
     
@@ -88,21 +108,21 @@
     
     </summary>
     
-      <category term="kubernetes" scheme="http://blog.yanickxia.top/categories/kubernetes/"/>
+      <category term="kubernetes" scheme="http://blog.yanickxia.site/categories/kubernetes/"/>
     
-      <category term="network" scheme="http://blog.yanickxia.top/categories/kubernetes/network/"/>
+      <category term="network" scheme="http://blog.yanickxia.site/categories/kubernetes/network/"/>
     
     
-      <category term="kubernetes" scheme="http://blog.yanickxia.top/tags/kubernetes/"/>
+      <category term="kubernetes" scheme="http://blog.yanickxia.site/tags/kubernetes/"/>
     
-      <category term="network" scheme="http://blog.yanickxia.top/tags/network/"/>
+      <category term="network" scheme="http://blog.yanickxia.site/tags/network/"/>
     
   </entry>
   
   <entry>
     <title>Kubernetes-Calico-网络原理(4) - BGP</title>
-    <link href="http://blog.yanickxia.top/2019/03/21/kubernetes/how-kubernetes-network-4/"/>
-    <id>http://blog.yanickxia.top/2019/03/21/kubernetes/how-kubernetes-network-4/</id>
+    <link href="http://blog.yanickxia.site/2019/03/21/kubernetes/how-kubernetes-network-4/"/>
+    <id>http://blog.yanickxia.site/2019/03/21/kubernetes/how-kubernetes-network-4/</id>
     <published>2019-03-21T09:48:01.000Z</published>
     <updated>2019-03-22T05:04:13.000Z</updated>
     
@@ -112,25 +132,25 @@
     
     </summary>
     
-      <category term="kubernetes" scheme="http://blog.yanickxia.top/categories/kubernetes/"/>
+      <category term="kubernetes" scheme="http://blog.yanickxia.site/categories/kubernetes/"/>
     
-      <category term="network" scheme="http://blog.yanickxia.top/categories/kubernetes/network/"/>
+      <category term="network" scheme="http://blog.yanickxia.site/categories/kubernetes/network/"/>
     
-      <category term="calico" scheme="http://blog.yanickxia.top/categories/kubernetes/network/calico/"/>
+      <category term="calico" scheme="http://blog.yanickxia.site/categories/kubernetes/network/calico/"/>
     
     
-      <category term="kubernetes" scheme="http://blog.yanickxia.top/tags/kubernetes/"/>
+      <category term="kubernetes" scheme="http://blog.yanickxia.site/tags/kubernetes/"/>
     
-      <category term="network" scheme="http://blog.yanickxia.top/tags/network/"/>
+      <category term="network" scheme="http://blog.yanickxia.site/tags/network/"/>
     
-      <category term="calico" scheme="http://blog.yanickxia.top/tags/calico/"/>
+      <category term="calico" scheme="http://blog.yanickxia.site/tags/calico/"/>
     
   </entry>
   
   <entry>
     <title>Kubernetes-Calico-网络原理(3) - Pod &amp; Node</title>
-    <link href="http://blog.yanickxia.top/2019/03/20/kubernetes/how-kubernetes-network-3/"/>
-    <id>http://blog.yanickxia.top/2019/03/20/kubernetes/how-kubernetes-network-3/</id>
+    <link href="http://blog.yanickxia.site/2019/03/20/kubernetes/how-kubernetes-network-3/"/>
+    <id>http://blog.yanickxia.site/2019/03/20/kubernetes/how-kubernetes-network-3/</id>
     <published>2019-03-20T09:48:01.000Z</published>
     <updated>2019-03-21T02:33:17.000Z</updated>
     
@@ -147,25 +167,25 @@
     
     </summary>
     
-      <category term="kubernetes" scheme="http://blog.yanickxia.top/categories/kubernetes/"/>
+      <category term="kubernetes" scheme="http://blog.yanickxia.site/categories/kubernetes/"/>
     
-      <category term="network" scheme="http://blog.yanickxia.top/categories/kubernetes/network/"/>
+      <category term="network" scheme="http://blog.yanickxia.site/categories/kubernetes/network/"/>
     
-      <category term="calico" scheme="http://blog.yanickxia.top/categories/kubernetes/network/calico/"/>
+      <category term="calico" scheme="http://blog.yanickxia.site/categories/kubernetes/network/calico/"/>
     
     
-      <category term="kubernetes" scheme="http://blog.yanickxia.top/tags/kubernetes/"/>
+      <category term="kubernetes" scheme="http://blog.yanickxia.site/tags/kubernetes/"/>
     
-      <category term="network" scheme="http://blog.yanickxia.top/tags/network/"/>
+      <category term="network" scheme="http://blog.yanickxia.site/tags/network/"/>
     
-      <category term="calico" scheme="http://blog.yanickxia.top/tags/calico/"/>
+      <category term="calico" scheme="http://blog.yanickxia.site/tags/calico/"/>
     
   </entry>
   
   <entry>
     <title>Kubernetes-Calico-网络原理(2) - Container &amp; Pod</title>
-    <link href="http://blog.yanickxia.top/2019/03/17/kubernetes/how-kubernetes-network-2/"/>
-    <id>http://blog.yanickxia.top/2019/03/17/kubernetes/how-kubernetes-network-2/</id>
+    <link href="http://blog.yanickxia.site/2019/03/17/kubernetes/how-kubernetes-network-2/"/>
+    <id>http://blog.yanickxia.site/2019/03/17/kubernetes/how-kubernetes-network-2/</id>
     <published>2019-03-17T14:48:01.000Z</published>
     <updated>2019-03-21T02:33:13.000Z</updated>
     
@@ -176,25 +196,25 @@
     
     </summary>
     
-      <category term="kubernetes" scheme="http://blog.yanickxia.top/categories/kubernetes/"/>
+      <category term="kubernetes" scheme="http://blog.yanickxia.site/categories/kubernetes/"/>
     
-      <category term="network" scheme="http://blog.yanickxia.top/categories/kubernetes/network/"/>
+      <category term="network" scheme="http://blog.yanickxia.site/categories/kubernetes/network/"/>
     
-      <category term="calico" scheme="http://blog.yanickxia.top/categories/kubernetes/network/calico/"/>
+      <category term="calico" scheme="http://blog.yanickxia.site/categories/kubernetes/network/calico/"/>
     
     
-      <category term="kubernetes" scheme="http://blog.yanickxia.top/tags/kubernetes/"/>
+      <category term="kubernetes" scheme="http://blog.yanickxia.site/tags/kubernetes/"/>
     
-      <category term="network" scheme="http://blog.yanickxia.top/tags/network/"/>
+      <category term="network" scheme="http://blog.yanickxia.site/tags/network/"/>
     
-      <category term="calico" scheme="http://blog.yanickxia.top/tags/calico/"/>
+      <category term="calico" scheme="http://blog.yanickxia.site/tags/calico/"/>
     
   </entry>
   
   <entry>
     <title>Kubernetes-Calico-网络原理(1) - 环境预备 &amp; 初窥网络</title>
-    <link href="http://blog.yanickxia.top/2019/03/17/kubernetes/how-kubernetes-network-1/"/>
-    <id>http://blog.yanickxia.top/2019/03/17/kubernetes/how-kubernetes-network-1/</id>
+    <link href="http://blog.yanickxia.site/2019/03/17/kubernetes/how-kubernetes-network-1/"/>
+    <id>http://blog.yanickxia.site/2019/03/17/kubernetes/how-kubernetes-network-1/</id>
     <published>2019-03-17T13:48:01.000Z</published>
     <updated>2019-03-21T02:33:10.000Z</updated>
     
@@ -208,25 +228,25 @@
     
     </summary>
     
-      <category term="kubernetes" scheme="http://blog.yanickxia.top/categories/kubernetes/"/>
+      <category term="kubernetes" scheme="http://blog.yanickxia.site/categories/kubernetes/"/>
     
-      <category term="network" scheme="http://blog.yanickxia.top/categories/kubernetes/network/"/>
+      <category term="network" scheme="http://blog.yanickxia.site/categories/kubernetes/network/"/>
     
-      <category term="calico" scheme="http://blog.yanickxia.top/categories/kubernetes/network/calico/"/>
+      <category term="calico" scheme="http://blog.yanickxia.site/categories/kubernetes/network/calico/"/>
     
     
-      <category term="kubernetes" scheme="http://blog.yanickxia.top/tags/kubernetes/"/>
+      <category term="kubernetes" scheme="http://blog.yanickxia.site/tags/kubernetes/"/>
     
-      <category term="network" scheme="http://blog.yanickxia.top/tags/network/"/>
+      <category term="network" scheme="http://blog.yanickxia.site/tags/network/"/>
     
-      <category term="calico" scheme="http://blog.yanickxia.top/tags/calico/"/>
+      <category term="calico" scheme="http://blog.yanickxia.site/tags/calico/"/>
     
   </entry>
   
   <entry>
     <title>Kubernetes-网络原理(0) - 网络知识预备</title>
-    <link href="http://blog.yanickxia.top/2019/03/07/kubernetes/how-kubernetes-network-0/"/>
-    <id>http://blog.yanickxia.top/2019/03/07/kubernetes/how-kubernetes-network-0/</id>
+    <link href="http://blog.yanickxia.site/2019/03/07/kubernetes/how-kubernetes-network-0/"/>
+    <id>http://blog.yanickxia.site/2019/03/07/kubernetes/how-kubernetes-network-0/</id>
     <published>2019-03-07T13:48:01.000Z</published>
     <updated>2019-03-22T05:13:46.000Z</updated>
     
@@ -238,21 +258,21 @@
     
     </summary>
     
-      <category term="kubernetes" scheme="http://blog.yanickxia.top/categories/kubernetes/"/>
+      <category term="kubernetes" scheme="http://blog.yanickxia.site/categories/kubernetes/"/>
     
-      <category term="network" scheme="http://blog.yanickxia.top/categories/kubernetes/network/"/>
+      <category term="network" scheme="http://blog.yanickxia.site/categories/kubernetes/network/"/>
     
     
-      <category term="kubernetes" scheme="http://blog.yanickxia.top/tags/kubernetes/"/>
+      <category term="kubernetes" scheme="http://blog.yanickxia.site/tags/kubernetes/"/>
     
-      <category term="network" scheme="http://blog.yanickxia.top/tags/network/"/>
+      <category term="network" scheme="http://blog.yanickxia.site/tags/network/"/>
     
   </entry>
   
   <entry>
     <title>微服务2019的新趋势</title>
-    <link href="http://blog.yanickxia.top/2019/03/06/rethink/microservice-trend-in-2019/"/>
-    <id>http://blog.yanickxia.top/2019/03/06/rethink/microservice-trend-in-2019/</id>
+    <link href="http://blog.yanickxia.site/2019/03/06/rethink/microservice-trend-in-2019/"/>
+    <id>http://blog.yanickxia.site/2019/03/06/rethink/microservice-trend-in-2019/</id>
     <published>2019-03-06T10:00:48.000Z</published>
     <updated>2019-03-20T08:52:32.000Z</updated>
     
@@ -262,15 +282,15 @@
     
     </summary>
     
-      <category term="rethink" scheme="http://blog.yanickxia.top/categories/rethink/"/>
+      <category term="rethink" scheme="http://blog.yanickxia.site/categories/rethink/"/>
     
     
   </entry>
   
   <entry>
     <title>克市与乌市随记</title>
-    <link href="http://blog.yanickxia.top/2019/02/27/something-about-it-in-karamay/"/>
-    <id>http://blog.yanickxia.top/2019/02/27/something-about-it-in-karamay/</id>
+    <link href="http://blog.yanickxia.site/2019/02/27/something-about-it-in-karamay/"/>
+    <id>http://blog.yanickxia.site/2019/02/27/something-about-it-in-karamay/</id>
     <published>2019-02-26T17:08:01.000Z</published>
     <updated>2019-03-03T15:01:59.000Z</updated>
     
@@ -280,17 +300,17 @@
     
     </summary>
     
-      <category term="游记" scheme="http://blog.yanickxia.top/categories/%E6%B8%B8%E8%AE%B0/"/>
+      <category term="游记" scheme="http://blog.yanickxia.site/categories/%E6%B8%B8%E8%AE%B0/"/>
     
     
-      <category term="游记" scheme="http://blog.yanickxia.top/tags/%E6%B8%B8%E8%AE%B0/"/>
+      <category term="游记" scheme="http://blog.yanickxia.site/tags/%E6%B8%B8%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>2019的学习计划</title>
-    <link href="http://blog.yanickxia.top/2019/02/15/what-is-to-learn-in-2019/"/>
-    <id>http://blog.yanickxia.top/2019/02/15/what-is-to-learn-in-2019/</id>
+    <link href="http://blog.yanickxia.site/2019/02/15/what-is-to-learn-in-2019/"/>
+    <id>http://blog.yanickxia.site/2019/02/15/what-is-to-learn-in-2019/</id>
     <published>2019-02-15T08:29:03.000Z</published>
     <updated>2019-02-23T11:35:57.000Z</updated>
     
@@ -300,21 +320,21 @@
     
     </summary>
     
-      <category term="Todo" scheme="http://blog.yanickxia.top/categories/Todo/"/>
+      <category term="Todo" scheme="http://blog.yanickxia.site/categories/Todo/"/>
     
-      <category term="Plan" scheme="http://blog.yanickxia.top/categories/Todo/Plan/"/>
+      <category term="Plan" scheme="http://blog.yanickxia.site/categories/Todo/Plan/"/>
     
     
-      <category term="Todo" scheme="http://blog.yanickxia.top/tags/Todo/"/>
+      <category term="Todo" scheme="http://blog.yanickxia.site/tags/Todo/"/>
     
-      <category term="Plan" scheme="http://blog.yanickxia.top/tags/Plan/"/>
+      <category term="Plan" scheme="http://blog.yanickxia.site/tags/Plan/"/>
     
   </entry>
   
   <entry>
     <title>2019年第5周推荐阅读</title>
-    <link href="http://blog.yanickxia.top/2019/01/28/2019-week-5-recommend/"/>
-    <id>http://blog.yanickxia.top/2019/01/28/2019-week-5-recommend/</id>
+    <link href="http://blog.yanickxia.site/2019/01/28/2019-week-5-recommend/"/>
+    <id>http://blog.yanickxia.site/2019/01/28/2019-week-5-recommend/</id>
     <published>2019-01-28T08:09:25.000Z</published>
     <updated>2019-02-01T16:50:34.000Z</updated>
     
@@ -336,8 +356,8 @@
   
   <entry>
     <title>2019年第4周推荐阅读</title>
-    <link href="http://blog.yanickxia.top/2019/01/28/2019-week-4-recommend/"/>
-    <id>http://blog.yanickxia.top/2019/01/28/2019-week-4-recommend/</id>
+    <link href="http://blog.yanickxia.site/2019/01/28/2019-week-4-recommend/"/>
+    <id>http://blog.yanickxia.site/2019/01/28/2019-week-4-recommend/</id>
     <published>2019-01-28T01:48:01.000Z</published>
     <updated>2019-01-28T08:10:11.000Z</updated>
     
@@ -359,8 +379,8 @@
   
   <entry>
     <title>我的2018关键字</title>
-    <link href="http://blog.yanickxia.top/2018/09/16/life/keywords-2018/"/>
-    <id>http://blog.yanickxia.top/2018/09/16/life/keywords-2018/</id>
+    <link href="http://blog.yanickxia.site/2018/09/16/life/keywords-2018/"/>
+    <id>http://blog.yanickxia.site/2018/09/16/life/keywords-2018/</id>
     <published>2018-09-16T14:22:48.000Z</published>
     <updated>2018-09-16T15:10:17.000Z</updated>
     
@@ -371,17 +391,17 @@
     
     </summary>
     
-      <category term="life" scheme="http://blog.yanickxia.top/categories/life/"/>
+      <category term="life" scheme="http://blog.yanickxia.site/categories/life/"/>
     
     
-      <category term="生活" scheme="http://blog.yanickxia.top/tags/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="http://blog.yanickxia.site/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
   <entry>
     <title>微服务之痛</title>
-    <link href="http://blog.yanickxia.top/2018/09/01/rethink/pain-of-microservice/"/>
-    <id>http://blog.yanickxia.top/2018/09/01/rethink/pain-of-microservice/</id>
+    <link href="http://blog.yanickxia.site/2018/09/01/rethink/pain-of-microservice/"/>
+    <id>http://blog.yanickxia.site/2018/09/01/rethink/pain-of-microservice/</id>
     <published>2018-09-01T10:00:48.000Z</published>
     <updated>2018-09-06T14:01:45.000Z</updated>
     
@@ -391,15 +411,15 @@
     
     </summary>
     
-      <category term="rethink" scheme="http://blog.yanickxia.top/categories/rethink/"/>
+      <category term="rethink" scheme="http://blog.yanickxia.site/categories/rethink/"/>
     
     
   </entry>
   
   <entry>
     <title>关于编程能力的反思</title>
-    <link href="http://blog.yanickxia.top/2018/08/18/rethink/rethink-code-ability/"/>
-    <id>http://blog.yanickxia.top/2018/08/18/rethink/rethink-code-ability/</id>
+    <link href="http://blog.yanickxia.site/2018/08/18/rethink/rethink-code-ability/"/>
+    <id>http://blog.yanickxia.site/2018/08/18/rethink/rethink-code-ability/</id>
     <published>2018-08-18T10:00:48.000Z</published>
     <updated>2018-08-19T09:15:23.000Z</updated>
     
@@ -414,15 +434,15 @@
     
     </summary>
     
-      <category term="rethink" scheme="http://blog.yanickxia.top/categories/rethink/"/>
+      <category term="rethink" scheme="http://blog.yanickxia.site/categories/rethink/"/>
     
     
   </entry>
   
   <entry>
     <title>写给 Java 开发者的 Kotlin 教程 (13) - 最佳实践</title>
-    <link href="http://blog.yanickxia.top/2018/08/17/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-best-practices/"/>
-    <id>http://blog.yanickxia.top/2018/08/17/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-best-practices/</id>
+    <link href="http://blog.yanickxia.site/2018/08/17/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-best-practices/"/>
+    <id>http://blog.yanickxia.site/2018/08/17/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-best-practices/</id>
     <published>2018-08-17T07:40:48.000Z</published>
     <updated>2018-08-17T09:29:10.000Z</updated>
     
@@ -432,17 +452,17 @@
     
     </summary>
     
-      <category term="kotlin" scheme="http://blog.yanickxia.top/categories/kotlin/"/>
+      <category term="kotlin" scheme="http://blog.yanickxia.site/categories/kotlin/"/>
     
-      <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yanickxia.top/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
+      <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yanickxia.site/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
     
     
   </entry>
   
   <entry>
     <title>Gateway版本迭代反思</title>
-    <link href="http://blog.yanickxia.top/2018/08/15/rethink/rethink-in-gateway/"/>
-    <id>http://blog.yanickxia.top/2018/08/15/rethink/rethink-in-gateway/</id>
+    <link href="http://blog.yanickxia.site/2018/08/15/rethink/rethink-in-gateway/"/>
+    <id>http://blog.yanickxia.site/2018/08/15/rethink/rethink-in-gateway/</id>
     <published>2018-08-15T09:00:48.000Z</published>
     <updated>2018-08-15T12:35:23.000Z</updated>
     
@@ -456,35 +476,9 @@
     
     </summary>
     
-      <category term="java" scheme="http://blog.yanickxia.top/categories/java/"/>
+      <category term="java" scheme="http://blog.yanickxia.site/categories/java/"/>
     
-      <category term="gateway" scheme="http://blog.yanickxia.top/categories/java/gateway/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>写给 Java 开发者的 Kotlin 教程 (12) - 拾遗</title>
-    <link href="http://blog.yanickxia.top/2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-omissions/"/>
-    <id>http://blog.yanickxia.top/2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-omissions/</id>
-    <published>2018-08-15T07:40:48.000Z</published>
-    <updated>2018-08-17T08:47:15.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Kotlin的泛型&quot;&gt;&lt;a href=&quot;#Kotlin的泛型&quot; class=&quot;headerlink&quot; title=&quot;Kotlin的泛型&quot;&gt;&lt;/a&gt;Kotlin的泛型&lt;/h2&gt;&lt;h2 id=&quot;密封类&quot;&gt;&lt;a href=&quot;#密封类&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="kotlin" scheme="http://blog.yanickxia.top/categories/kotlin/"/>
-    
-      <category term="easy-way-to-kotlin-for-java-programer" scheme="http://blog.yanickxia.top/categories/kotlin/easy-way-to-kotlin-for-java-programer/"/>
+      <category term="gateway" scheme="http://blog.yanickxia.site/categories/java/gateway/"/>
     
     
   </entry>

@@ -98,7 +98,7 @@
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="Yanick&#39;s Blog">
-<meta property="og:url" content="http://blog.yanickxia.top/page/3/index.html">
+<meta property="og:url" content="http://blog.yanickxia.site/page/3/index.html">
 <meta property="og:site_name" content="Yanick&#39;s Blog">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
@@ -112,7 +112,7 @@
 
   
   
-  <link rel="canonical" href="http://blog.yanickxia.top/page/3/"/>
+  <link rel="canonical" href="http://blog.yanickxia.site/page/3/"/>
 
 
 
@@ -408,7 +408,214 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.yanickxia.top/2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-object/"/>
+    <link itemprop="mainEntityOfPage" href="http://blog.yanickxia.site/2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-omissions/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yanick.xia"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/Logo-2018.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yanick's Blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-omissions/" class="post-title-link" itemprop="url">写给 Java 开发者的 Kotlin 教程 (12) - 拾遗</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-15 15:40:48" itemprop="dateCreated datePublished" datetime="2018-08-15T15:40:48+08:00">2018-08-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-17 16:47:15" itemprop="dateModified" datetime="2018-08-17T16:47:15+08:00">2018-08-17</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/kotlin/" itemprop="url" rel="index"><span itemprop="name">kotlin</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/kotlin/easy-way-to-kotlin-for-java-programer/" itemprop="url" rel="index"><span itemprop="name">easy-way-to-kotlin-for-java-programer</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-omissions/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-omissions/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-omissions/" class="leancloud_visitors" data-flag-title="写给 Java 开发者的 Kotlin 教程 (12) - 拾遗">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Kotlin的泛型"><a href="#Kotlin的泛型" class="headerlink" title="Kotlin的泛型"></a>Kotlin的泛型</h2><h2 id="密封类"><a href="#密封类" class="headerlink" title="密封类"></a>密封类</h2><p>密封类用来表示受限的类继承结构：当一个值为有限集中的类型、而不能有任何其他类型时。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sealed</span> <span class="class"><span class="keyword">class</span> <span class="title">Expr</span></span></span><br><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Const</span></span>(<span class="keyword">val</span> number: <span class="built_in">Double</span>) : Expr()</span><br><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Sum</span></span>(<span class="keyword">val</span> e1: Expr, <span class="keyword">val</span> e2: Expr) : Expr()</span><br><span class="line"><span class="keyword">object</span> NotANumber : Expr()</span><br></pre></td></tr></table></figure></p>
+<p>密封类的好处在于 <code>when</code> 语句<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">eval</span><span class="params">(expr: <span class="type">Expr</span>)</span></span>: <span class="built_in">Double</span> = <span class="keyword">when</span>(expr) &#123;</span><br><span class="line">    <span class="keyword">is</span> Const -&gt; expr.number</span><br><span class="line">    <span class="keyword">is</span> Sum -&gt; eval(expr.e1) + eval(expr.e2)</span><br><span class="line">    NotANumber -&gt; <span class="built_in">Double</span>.NaN</span><br><span class="line">    <span class="comment">// 不再需要 `else` 子句，因为我们已经覆盖了所有的情况</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="嵌套类和内部类"><a href="#嵌套类和内部类" class="headerlink" title="嵌套类和内部类"></a>嵌套类和内部类</h2><h3 id="嵌套类"><a href="#嵌套类" class="headerlink" title="嵌套类"></a>嵌套类</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> bar: <span class="built_in">Int</span> = <span class="number">1</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Nested</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">()</span></span> = <span class="number">2</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> demo = Outer.Nested().foo() <span class="comment">// == 2</span></span><br></pre></td></tr></table></figure>
+<h3 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">lass Outer &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> bar: <span class="built_in">Int</span> = <span class="number">1</span></span><br><span class="line">    inner <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">()</span></span> = bar</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> demo = Outer().Inner().foo() <span class="comment">// == 1</span></span><br></pre></td></tr></table></figure>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.yanickxia.site/2018/08/15/kotlin/easy-way-to-kotlin-for-java-proggamer/kotlin-object/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yanick.xia"/>
@@ -618,7 +825,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.yanickxia.top/2018/08/14/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-class-polymorphism/"/>
+    <link itemprop="mainEntityOfPage" href="http://blog.yanickxia.site/2018/08/14/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-class-polymorphism/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yanick.xia"/>
@@ -829,7 +1036,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.yanickxia.top/2018/08/13/other/swagger/"/>
+    <link itemprop="mainEntityOfPage" href="http://blog.yanickxia.site/2018/08/13/other/swagger/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yanick.xia"/>
@@ -1050,7 +1257,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.yanickxia.top/2018/08/07/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-class-with-properties/"/>
+    <link itemprop="mainEntityOfPage" href="http://blog.yanickxia.site/2018/08/07/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-class-with-properties/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yanick.xia"/>
@@ -1261,7 +1468,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.yanickxia.top/2018/08/03/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-basic/"/>
+    <link itemprop="mainEntityOfPage" href="http://blog.yanickxia.site/2018/08/03/kotlin/easy-way-to-kotlin-for-java-proggamer/oop-basic/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yanick.xia"/>
@@ -1472,7 +1679,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.yanickxia.top/2018/07/25/kotlin/easy-way-to-kotlin-for-java-proggamer/functions-advance/"/>
+    <link itemprop="mainEntityOfPage" href="http://blog.yanickxia.site/2018/07/25/kotlin/easy-way-to-kotlin-for-java-proggamer/functions-advance/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yanick.xia"/>
@@ -1683,7 +1890,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.yanickxia.top/2018/07/22/kotlin/easy-way-to-kotlin-for-java-proggamer/functions/"/>
+    <link itemprop="mainEntityOfPage" href="http://blog.yanickxia.site/2018/07/22/kotlin/easy-way-to-kotlin-for-java-proggamer/functions/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yanick.xia"/>
@@ -1881,7 +2088,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.yanickxia.top/2018/07/17/kotlin/easy-way-to-kotlin-for-java-proggamer/null-type/"/>
+    <link itemprop="mainEntityOfPage" href="http://blog.yanickxia.site/2018/07/17/kotlin/easy-way-to-kotlin-for-java-proggamer/null-type/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yanick.xia"/>
@@ -2080,7 +2287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.yanickxia.top/2018/07/14/gradle/easy-to-gradle/"/>
+    <link itemprop="mainEntityOfPage" href="http://blog.yanickxia.site/2018/07/14/gradle/easy-to-gradle/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yanick.xia"/>
@@ -2264,209 +2471,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.yanickxia.top/2018/07/12/kotlin/easy-way-to-kotlin-for-java-proggamer/control-flow/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yanick.xia"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/Logo-2018.png"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yanick's Blog"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/07/12/kotlin/easy-way-to-kotlin-for-java-proggamer/control-flow/" class="post-title-link" itemprop="url">写给 Java 开发者的 Kotlin 教程 (4) - 控制流表达式</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-07-12 08:00:15 / 修改时间：08:29:38" itemprop="dateCreated datePublished" datetime="2018-07-12T08:00:15+08:00">2018-07-12</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/kotlin/" itemprop="url" rel="index"><span itemprop="name">kotlin</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/kotlin/easy-way-to-kotlin-for-java-programer/" itemprop="url" rel="index"><span itemprop="name">easy-way-to-kotlin-for-java-programer</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2018/07/12/kotlin/easy-way-to-kotlin-for-java-proggamer/control-flow/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/07/12/kotlin/easy-way-to-kotlin-for-java-proggamer/control-flow/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/2018/07/12/kotlin/easy-way-to-kotlin-for-java-proggamer/control-flow/" class="leancloud_visitors" data-flag-title="写给 Java 开发者的 Kotlin 教程 (4) - 控制流表达式">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="https://s1.ax1x.com/2018/07/12/Pu28Re.png" alt="banner"></p>
-<p>有个先贤说过</p>
-<blockquote>
-<p>掌握了规则就掌握了一切。</p>
-</blockquote>
-<p>我认为在编程语言中掌握了 <code>控制语句</code> 就算是掌握了编程语言（在 <code>FP</code> 中效果打折）。所以我们今天开始要去探索编程语言中至为重要的 <code>Control Flow</code> 部分。</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/07/12/kotlin/easy-way-to-kotlin-for-java-proggamer/control-flow/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2517,7 +2521,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">68</span>
+                    <span class="site-state-item-count">69</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
